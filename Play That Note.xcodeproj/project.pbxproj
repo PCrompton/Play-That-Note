@@ -187,6 +187,7 @@
 				960144321DD132D0006146C2 /* Sources */,
 				960144331DD132D0006146C2 /* Frameworks */,
 				960144341DD132D0006146C2 /* Resources */,
+				9602EC891DD139380032CD83 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -309,6 +310,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9602EC891DD139380032CD83 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Beethoven.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Pitchy.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		960144321DD132D0006146C2 /* Sources */ = {
