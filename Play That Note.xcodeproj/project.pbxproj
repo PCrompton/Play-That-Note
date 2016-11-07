@@ -14,6 +14,9 @@
 		960144441DD132D1006146C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 960144421DD132D1006146C2 /* LaunchScreen.storyboard */; };
 		9601444F1DD132D1006146C2 /* Play_That_NoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9601444E1DD132D1006146C2 /* Play_That_NoteTests.swift */; };
 		9601445A1DD132D1006146C2 /* Play_That_NoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960144591DD132D1006146C2 /* Play_That_NoteUITests.swift */; };
+		9602EC7D1DD136AC0032CD83 /* vexFlow in Resources */ = {isa = PBXBuildFile; fileRef = 9602EC7C1DD136AC0032CD83 /* vexFlow */; };
+		9602EC861DD137A90032CD83 /* Beethoven.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9602EC851DD137A90032CD83 /* Beethoven.framework */; };
+		9602EC881DD137B50032CD83 /* Pitchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9602EC871DD137B50032CD83 /* Pitchy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		960144551DD132D1006146C2 /* Play That NoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Play That NoteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		960144591DD132D1006146C2 /* Play_That_NoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play_That_NoteUITests.swift; sourceTree = "<group>"; };
 		9601445B1DD132D1006146C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9602EC7C1DD136AC0032CD83 /* vexFlow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vexFlow; sourceTree = "<group>"; };
+		9602EC851DD137A90032CD83 /* Beethoven.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beethoven.framework; path = Carthage/Build/iOS/Beethoven.framework; sourceTree = "<group>"; };
+		9602EC871DD137B50032CD83 /* Pitchy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitchy.framework; path = Carthage/Build/iOS/Pitchy.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9602EC861DD137A90032CD83 /* Beethoven.framework in Frameworks */,
+				9602EC881DD137B50032CD83 /* Pitchy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +89,7 @@
 				9601444D1DD132D1006146C2 /* Play That NoteTests */,
 				960144581DD132D1006146C2 /* Play That NoteUITests */,
 				960144371DD132D0006146C2 /* Products */,
+				9602EC841DD137A90032CD83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,11 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				960144391DD132D0006146C2 /* AppDelegate.swift */,
-				9601443B1DD132D0006146C2 /* ViewController.swift */,
-				9601443D1DD132D0006146C2 /* Main.storyboard */,
-				960144401DD132D1006146C2 /* Assets.xcassets */,
-				960144421DD132D1006146C2 /* LaunchScreen.storyboard */,
-				960144451DD132D1006146C2 /* Info.plist */,
+				9602EC831DD1373B0032CD83 /* Model */,
+				9602EC821DD1372A0032CD83 /* Views */,
+				9602EC811DD137220032CD83 /* Controllers */,
+				9602EC7E1DD136CA0032CD83 /* Supporting Files */,
 			);
 			path = "Play That Note";
 			sourceTree = "<group>";
@@ -123,6 +131,50 @@
 				9601445B1DD132D1006146C2 /* Info.plist */,
 			);
 			path = "Play That NoteUITests";
+			sourceTree = "<group>";
+		};
+		9602EC7E1DD136CA0032CD83 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				960144451DD132D1006146C2 /* Info.plist */,
+				960144401DD132D1006146C2 /* Assets.xcassets */,
+				9602EC7C1DD136AC0032CD83 /* vexFlow */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9602EC811DD137220032CD83 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9601443B1DD132D0006146C2 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9602EC821DD1372A0032CD83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9601443D1DD132D0006146C2 /* Main.storyboard */,
+				960144421DD132D1006146C2 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9602EC831DD1373B0032CD83 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		9602EC841DD137A90032CD83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9602EC871DD137B50032CD83 /* Pitchy.framework */,
+				9602EC851DD137A90032CD83 /* Beethoven.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +289,7 @@
 			files = (
 				960144441DD132D1006146C2 /* LaunchScreen.storyboard in Resources */,
 				960144411DD132D1006146C2 /* Assets.xcassets in Resources */,
+				9602EC7D1DD136AC0032CD83 /* vexFlow in Resources */,
 				9601443F1DD132D1006146C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +469,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K79BKV3T6H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Play That Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Crompton-Apps.Play-That-Note";
@@ -429,6 +486,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = K79BKV3T6H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Play That Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Crompton-Apps.Play-That-Note";
@@ -514,6 +575,7 @@
 				960144601DD132D1006146C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		960144611DD132D1006146C2 /* Build configuration list for PBXNativeTarget "Play That NoteTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +584,7 @@
 				960144631DD132D1006146C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		960144641DD132D1006146C2 /* Build configuration list for PBXNativeTarget "Play That NoteUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +593,7 @@
 				960144661DD132D1006146C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
