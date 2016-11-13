@@ -8,8 +8,17 @@
 
 import Foundation
 
-enum Clef {
-    case Treble = "treble"
-    case Bass = "bass"
-    case Alto = "alto"
+enum Clef: String {
+    case treble = "treble"
+    case bass = "bass"
+    case alto = "alto"
+    case tenor = "tenor"
+    case percussion = "percussion"
+    case soprano = "soprano"
+    case mezzoSoprano = "mezzo-soprano"
+    case baritoneC = "baritone-c"
+    case baritoneF = "baritone-f"
+    case subbass = "subbass"
+    case french = "french"
+    case tab = "tab"
 }

@@ -2,8 +2,11 @@
 #note {
     background-color: yellow;
     width: 100%;
+    margin:0;
 }
 
 body {
     background-color: lightblue;
+    overflow: hidden;
+    margin: 0;
 }

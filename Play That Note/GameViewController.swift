@@ -14,11 +14,20 @@ import AVFoundation
 
 class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDelegate {
 
+    // MARK: Parameters
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
     var webView: WKWebView?
     let jsDrawStaffWithPitch = "drawStaffWithPitch"
+    var lowest = try! Note(letter: .C, octave: 2)
+    var highest = try! Note(letter: .E, octave: 4)
+    var clef = Clef.bass
+    var consecutivePitches = [Pitch]()
+    let consecutiveMax = 3
+    let bufferSize: AVAudioFrameCount = 4096
+    let estimationStragegy = EstimationStrategy.yin
+    let audioURL: URL? = nil
     
     var dimensions: String {
         get {
@@ -34,22 +43,13 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
             webView?.reload()
         }
     }
-    var lowest = try! Note(letter: .C, octave: 4)
-    var highest = try! Note(letter: .A, octave: 5)
-    var consecutivePitches = [Pitch]()
-    let consecutiveMax = 3
-    let bufferSize: AVAudioFrameCount = 4096
-    let estimationStragegy = EstimationStrategy.yin
-    let audioURL: URL? = nil
     
-    
+    // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         let config = Config(bufferSize: bufferSize, estimationStrategy: estimationStragegy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = -30.0
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +59,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         if let webView = webView {
             webView.navigationDelegate = self
             webView.allowsBackForwardNavigationGestures = false
-            webView.isUserInteractionEnabled = true
+            webView.isUserInteractionEnabled = false
             containerView.addSubview(webView)
             
             if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "vexFlow") {
@@ -70,13 +70,13 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         }
     }
     
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let pitch = noteToPlay?.string {
-            let clef = "treble"
-            webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \(dimensions))")
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        pitchEngine?.stop()
     }
     
+
+    // MARK: Gameplay Functions
     @IBAction func StartButton(_ sender: UIButton) {
         if !pitchEngine!.active {
             pitchEngine?.start()
@@ -96,11 +96,6 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         return try! Note(index: index)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        pitchEngine?.stop()
-    }
-    
     func checkIfIsPitch(pitches: [Pitch]) -> Bool {
         for i in 1..<pitches.count {
             if pitches[i].note.index != pitches[i-1].note.index {
@@ -110,8 +105,14 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         return true
     }
     
+    // MARK: WKNavigationDelegate Functions
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if let pitch = noteToPlay?.string {
+            webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \(dimensions))")
+        }
+    }
     
-    // Mark PitchEngineDelegate functions
+    // MARK: PitchEngineDelegate functions
     public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
         let note = pitch.note
         print(note.string)
@@ -142,7 +143,6 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
                     }
                     alertController.addAction(action)
                 }
-                
                 present(alertController, animated: true)
             }
         }
@@ -150,12 +150,13 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     
     public func pitchEngineDidReceiveError(_ pitchEngine: PitchEngine, error: Error) {
         print(Error.self)
+        consecutivePitches.removeAll()
     }
     
     public func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine) {
-        //print("PitchEngine went below threshhold")
+        print("Below Threshhold")
+        consecutivePitches.removeAll()
         return
     }
-
 }
 
