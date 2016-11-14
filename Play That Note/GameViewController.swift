@@ -20,8 +20,8 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     
     var webView: WKWebView?
     let jsDrawStaffWithPitch = "drawStaffWithPitch"
-    var lowest = try! Note(letter: .C, octave: 2)
-    var highest = try! Note(letter: .E, octave: 4)
+    var lowest = try! Note(letter: .C, octave: 1)
+    var highest = try! Note(letter: .C, octave: 7)
     var clef = Clef.bass {
         didSet {
             switch clef {
@@ -43,10 +43,15 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         }
     }
     var consecutivePitches = [Pitch]()
-    let consecutiveMax = 3
-    let bufferSize: AVAudioFrameCount = 4096
-    let estimationStragegy = EstimationStrategy.yin
-    let audioURL: URL? = nil
+    
+    var consecutiveMax = 3
+    var bufferSize: AVAudioFrameCount = 4096
+    var estimationStragegy = EstimationStrategy.yin
+    var levelThreshold: Float = -30.0 {
+        didSet {
+            pitchEngine?.levelThreshold = levelThreshold
+        }
+    }
     
     var dimensions: String {
         get {
@@ -63,12 +68,26 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         }
     }
     
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var incorrectLabel: UILabel!
+    
+    var correct: Int = 0 {
+        didSet {
+            correctLabel.text = "Correct: \(correct)"
+        }
+    }
+    var incorrect: Int = 0 {
+        didSet {
+            incorrectLabel.text = "Incorrect: \(incorrect)"
+        }
+    }
+    
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         let config = Config(bufferSize: bufferSize, estimationStrategy: estimationStragegy)
         pitchEngine = PitchEngine(config: config, delegate: self)
-        pitchEngine?.levelThreshold = -30.0
+        pitchEngine?.levelThreshold = levelThreshold
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,13 +174,10 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
                 print(pitch.note.string, pitch.note.index)
                 if note.index == noteToPlay!.index {
                     alertController.message = "Congrates, you played \(note.string)"
+                    correct += 1
                 } else {
                     alertController.message = "Sorry, that was not \(noteToPlay!.string)"
-                    let action = UIAlertAction(title: "Try Again", style: .default) {
-                        (action) in
-                        self.pitchEngine?.start()
-                    }
-                    alertController.addAction(action)
+                    incorrect += 1
                 }
                 present(alertController, animated: true)
             }
