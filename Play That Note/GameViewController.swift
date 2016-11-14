@@ -35,8 +35,8 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
                 lowest = try! Note(letter: .G, octave: 2);
                 highest = try! Note(letter: .F, octave: 5)
             case .tenor:
-                lowest = try! Note(letter: .B, octave: 2);
-                highest = try! Note(letter: .A, octave: 5)
+                lowest = try! Note(letter: .E, octave: 2);
+                highest = try! Note(letter: .D, octave: 5)
             default:
                 return
             }
