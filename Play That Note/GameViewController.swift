@@ -22,7 +22,26 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     let jsDrawStaffWithPitch = "drawStaffWithPitch"
     var lowest = try! Note(letter: .C, octave: 2)
     var highest = try! Note(letter: .E, octave: 4)
-    var clef = Clef.bass
+    var clef = Clef.bass {
+        didSet {
+            switch clef {
+            case .treble:
+                lowest = try! Note(letter: .F, octave: 3);
+                highest = try! Note(letter: .E, octave: 6)
+            case .bass:
+                lowest = try! Note(letter: .A, octave: 1);
+                highest = try! Note(letter: .G, octave: 4)
+            case .alto:
+                lowest = try! Note(letter: .G, octave: 2);
+                highest = try! Note(letter: .F, octave: 5)
+            case .tenor:
+                lowest = try! Note(letter: .B, octave: 2);
+                highest = try! Note(letter: .A, octave: 5)
+            default:
+                return
+            }
+        }
+    }
     var consecutivePitches = [Pitch]()
     let consecutiveMax = 3
     let bufferSize: AVAudioFrameCount = 4096

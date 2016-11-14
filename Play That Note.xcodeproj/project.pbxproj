@@ -150,8 +150,8 @@
 		9602EC811DD137220032CD83 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9601443B1DD132D0006146C2 /* GameViewController.swift */,
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
+				9601443B1DD132D0006146C2 /* GameViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
