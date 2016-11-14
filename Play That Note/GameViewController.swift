@@ -83,7 +83,6 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
             
             if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "vexFlow") {
                 let request = URLRequest(url: url)
-                noteToPlay = try! Note(letter: .C, octave: 4)
                 webView.load(request)
             }
         }
@@ -128,6 +127,8 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let pitch = noteToPlay?.string {
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \(dimensions))")
+        } else {
+            webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(null, \"\(clef)\", \(dimensions))")
         }
     }
     
