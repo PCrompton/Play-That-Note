@@ -14,5 +14,5 @@ struct Settings {
     static var consecutiveMax = 3
     static var bufferSize: AVAudioFrameCount = 4096
     static var estimationStragegy = EstimationStrategy.yin
-    static var levelThreshold: Float = -30.0
+    static var levelThreshold: Float = -20.0
 }

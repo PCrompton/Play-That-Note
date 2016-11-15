@@ -15,6 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var consecutivePitchesStepper: UIStepper!
     @IBOutlet weak var bufferSizeLabel: UILabel!
     @IBOutlet weak var bufferSizeSlider: UISlider!
+    @IBOutlet weak var levelThresholdLabel: UILabel!
     @IBOutlet weak var levelThresholdSlider: UISlider!
     
     
@@ -25,6 +26,8 @@ class SettingsTableViewController: UITableViewController {
         consecutivePitchesLabel.text = "\(Settings.consecutiveMax) Pitches"
         bufferSizeLabel.text = "\(Settings.bufferSize)"
         bufferSizeSlider.value = Float(Settings.bufferSize)
+        levelThresholdLabel.text = "\(Settings.levelThreshold)"
+        levelThresholdSlider.value = Settings.levelThreshold
     }
     
     // MARK: IBActions
@@ -45,6 +48,8 @@ class SettingsTableViewController: UITableViewController {
         print("Slider Value Changed", Settings.bufferSize)
     }
     
-    @IBAction func levelThresholdSlider(_ sender: UISlider) {
+    @IBAction func levelThresholdSlider(_ slider: UISlider) {
+        levelThresholdLabel.text = "\(slider.value)"
+        Settings.levelThreshold = slider.value
     }
 }

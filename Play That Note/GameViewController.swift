@@ -145,7 +145,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     // MARK: PitchEngineDelegate functions
     public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
         let note = pitch.note
-        print(note.string)
+        print(note.string, pitchEngine.signalLevel)
         if consecutivePitches.count < Settings.consecutiveMax {
             consecutivePitches.append(pitch)
         } else {
@@ -181,7 +181,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     }
     
     public func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine) {
-        print("Below Threshhold")
+        print("Below Threshhold", pitchEngine.signalLevel)
         consecutivePitches.removeAll()
         return
     }
