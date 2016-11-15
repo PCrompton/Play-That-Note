@@ -127,8 +127,8 @@
                                                     </connections>
                                                 </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l73-Zn-jdF">
-                                                    <rect key="frame" x="34" y="11" width="44.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="34" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -145,14 +145,35 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Buffer Size" id="meS-80-Weu">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BCl-6C-XKt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cAf-DH-72z">
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAf-DH-72z" id="ZUQ-sw-xpX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOy-lx-LVJ">
+                                                    <rect key="frame" x="34" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NOy-lx-LVJ" firstAttribute="centerY" secondItem="ZUQ-sw-xpX" secondAttribute="centerY" id="JgD-Fv-DJB"/>
+                                                <constraint firstItem="NOy-lx-LVJ" firstAttribute="leading" secondItem="ZUQ-sw-xpX" secondAttribute="leadingMargin" constant="26" id="mxj-Ii-CS5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BCl-6C-XKt">
+                                        <rect key="frame" x="0.0" y="144" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BCl-6C-XKt" id="XXa-an-QaF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="064-jg-E66">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4096" minValue="1" maxValue="12288" translatesAutoresizingMaskIntoConstraints="NO" id="064-jg-E66">
                                                     <rect key="frame" x="23" y="-1" width="329" height="45"/>
                                                     <connections>
                                                         <action selector="bufferSlider:" destination="N7v-t8-xuT" eventType="valueChanged" id="1hG-Az-KTZ"/>
@@ -172,7 +193,7 @@
                             <tableViewSection headerTitle="Level Threshhold" id="PW6-7N-cMJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HcQ-bh-RYZ">
-                                        <rect key="frame" x="0.0" y="172" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="216" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HcQ-bh-RYZ" id="wmd-kw-jKp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -209,6 +230,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bufferSizeLabel" destination="NOy-lx-LVJ" id="Jy4-2p-4vA"/>
                         <outlet property="bufferSizeSlider" destination="064-jg-E66" id="8vP-UW-Y2z"/>
                         <outlet property="consecutivePitchesLabel" destination="l73-Zn-jdF" id="vp2-xF-WhH"/>
                         <outlet property="consecutivePitchesStepper" destination="PRi-vF-QOL" id="bZy-dJ-oAi"/>
