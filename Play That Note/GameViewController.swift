@@ -44,15 +44,6 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     }
     var consecutivePitches = [Pitch]()
     
-    var consecutiveMax = 3
-    var bufferSize: AVAudioFrameCount = 4096
-    var estimationStragegy = EstimationStrategy.yin
-    var levelThreshold: Float = -30.0 {
-        didSet {
-            pitchEngine?.levelThreshold = levelThreshold
-        }
-    }
-    
     var dimensions: String {
         get {
             let dimParams = "\(Int(containerView.frame.width)), \(Int(containerView.frame.height))"
@@ -85,9 +76,9 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = Config(bufferSize: bufferSize, estimationStrategy: estimationStragegy)
+        let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStragegy)
         pitchEngine = PitchEngine(config: config, delegate: self)
-        pitchEngine?.levelThreshold = levelThreshold
+        pitchEngine?.levelThreshold = Settings.levelThreshold
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,7 +146,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
         let note = pitch.note
         print(note.string)
-        if consecutivePitches.count < consecutiveMax {
+        if consecutivePitches.count < Settings.consecutiveMax {
             consecutivePitches.append(pitch)
         } else {
             consecutivePitches.remove(at: 0)

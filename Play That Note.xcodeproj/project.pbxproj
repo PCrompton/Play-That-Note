@@ -19,6 +19,7 @@
 		9602EC881DD137B50032CD83 /* Pitchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9602EC871DD137B50032CD83 /* Pitchy.framework */; };
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
+		96A732301DDA83A200BEB3D1 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A7322F1DDA83A200BEB3D1 /* Settings.swift */; };
 		96E7990E1DD7E82E00199087 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E7990D1DD7E82E00199087 /* Clef.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		9602EC871DD137B50032CD83 /* Pitchy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitchy.framework; path = Carthage/Build/iOS/Pitchy.framework; sourceTree = "<group>"; };
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		96A7322F1DDA83A200BEB3D1 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		96E7990D1DD7E82E00199087 /* Clef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clef.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,9 +154,9 @@
 		9602EC811DD137220032CD83 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
 				9601443B1DD132D0006146C2 /* GameViewController.swift */,
+				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				96E7990D1DD7E82E00199087 /* Clef.swift */,
+				96A7322F1DDA83A200BEB3D1 /* Settings.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -343,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A732301DDA83A200BEB3D1 /* Settings.swift in Sources */,
 				96E7990E1DD7E82E00199087 /* Clef.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,

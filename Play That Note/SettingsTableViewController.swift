@@ -10,7 +10,24 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
+    
+    // MARK: Properties
+    @IBOutlet weak var consecutivePitchesTextField: UITextField!
+    @IBOutlet weak var bufferSizeSlider: UISlider!
+    @IBOutlet weak var levelThresholdSlider: UISlider!
+
+
+    // MARK: Methods
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func consecutivePitchesStepper(_ sender: Any) {
+    }
+    
+    @IBAction func bufferSlider(_ sender: Any) {
+    }
+    
+    @IBAction func levelThresholdSlider(_ sender: Any) {
     }
 }
