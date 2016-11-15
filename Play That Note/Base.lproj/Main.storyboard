@@ -120,23 +120,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="PRi-vF-QOL">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="PRi-vF-QOL">
                                                     <rect key="frame" x="273" y="7" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="consecutivePitchesStepper:" destination="N7v-t8-xuT" eventType="valueChanged" id="IFs-vd-x6x"/>
                                                     </connections>
                                                 </stepper>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5jE-0J-Cec">
-                                                    <rect key="frame" x="8" y="6" width="28" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l73-Zn-jdF">
+                                                    <rect key="frame" x="34" y="11" width="44.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="5jE-0J-Cec" firstAttribute="centerY" secondItem="woG-md-E8n" secondAttribute="centerY" id="1an-D6-OOe"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="5jE-0J-Cec" secondAttribute="leading" id="8Wi-W1-Mrd"/>
                                                 <constraint firstItem="PRi-vF-QOL" firstAttribute="centerY" secondItem="woG-md-E8n" secondAttribute="centerY" id="I20-l2-uGO"/>
+                                                <constraint firstItem="l73-Zn-jdF" firstAttribute="centerY" secondItem="woG-md-E8n" secondAttribute="centerY" id="gbQ-CU-nld"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="l73-Zn-jdF" secondAttribute="leading" constant="-26" id="ogi-3V-FCW"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="PRi-vF-QOL" secondAttribute="trailing" id="qMg-ww-E3B"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -204,13 +204,14 @@
                     <navigationItem key="navigationItem" id="p9Q-8w-6sF">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Xob-An-tU2">
                             <connections>
-                                <action selector="doneButton:" destination="N7v-t8-xuT" id="ziD-NZ-5sg"/>
+                                <action selector="doneButton" destination="N7v-t8-xuT" id="p0e-U8-FbW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bufferSizeSlider" destination="064-jg-E66" id="8vP-UW-Y2z"/>
-                        <outlet property="consecutivePitchesTextField" destination="5jE-0J-Cec" id="ht9-2V-RtE"/>
+                        <outlet property="consecutivePitchesLabel" destination="l73-Zn-jdF" id="vp2-xF-WhH"/>
+                        <outlet property="consecutivePitchesStepper" destination="PRi-vF-QOL" id="bZy-dJ-oAi"/>
                         <outlet property="levelThresholdSlider" destination="bZI-XF-V7H" id="tox-ox-0HE"/>
                     </connections>
                 </tableViewController>

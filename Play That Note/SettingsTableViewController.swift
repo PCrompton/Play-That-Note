@@ -10,24 +10,35 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    
     // MARK: Properties
-    @IBOutlet weak var consecutivePitchesTextField: UITextField!
+    @IBOutlet weak var consecutivePitchesLabel: UILabel!
+    @IBOutlet weak var consecutivePitchesStepper: UIStepper!
     @IBOutlet weak var bufferSizeSlider: UISlider!
     @IBOutlet weak var levelThresholdSlider: UISlider!
-
-
-    // MARK: Methods
-    @IBAction func doneButton(_ sender: Any) {
+    
+    // MARK: Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        consecutivePitchesStepper.value = Double(Settings.consecutiveMax)
+        consecutivePitchesLabel.text = "\(Settings.consecutiveMax) Pitches"
+    }
+    
+    // MARK: IBActions
+    @IBAction func doneButton() {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func consecutivePitchesStepper(_ sender: Any) {
+    @IBAction func consecutivePitchesStepper(_ stepper: UIStepper) {
+        
+        consecutivePitchesLabel.text = "\(Int(stepper.value)) Pitches"
+        Settings.consecutiveMax = Int(stepper.value)
+        print("Stepper Pressed", Settings.consecutiveMax)
     }
     
-    @IBAction func bufferSlider(_ sender: Any) {
+    @IBAction func bufferSlider(_ sender: UISlider) {
+        
     }
     
-    @IBAction func levelThresholdSlider(_ sender: Any) {
+    @IBAction func levelThresholdSlider(_ sender: UISlider) {
     }
 }
