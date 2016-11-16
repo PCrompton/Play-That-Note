@@ -23,14 +23,14 @@ class SettingsTableViewController: UITableViewController {
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        consecutivePitchesLabel.text = "\(UserDefaults.standard.value(forKey: "consecutivePitches")!) Pitches"
-        consecutivePitchesStepper.value = UserDefaults.standard.value(forKey: "consecutivePitches") as! Double
+        consecutivePitchesLabel.text = "\(Settings.consecutivePitches) Pitches"
+        consecutivePitchesStepper.value = Double(Settings.consecutivePitches)
         
-        bufferSizeLabel.text = "\(UserDefaults.standard.value(forKey: "bufferSize")!)"
-        bufferSizeSlider.value = Float(UserDefaults.standard.value(forKey: "bufferSize") as! AVAudioFrameCount)
+        bufferSizeLabel.text = "\(Settings.bufferSize)"
+        bufferSizeSlider.value = Float(Settings.bufferSize)
         
-        levelThresholdLabel.text = "\(UserDefaults.standard.value(forKey: "levelThreshold")!) dB"
-        levelThresholdSlider.value = UserDefaults.standard.value(forKey: "levelThreshold") as! Float
+        levelThresholdLabel.text = "\(Settings.levelThreshold) dB"
+        levelThresholdSlider.value = Settings.levelThreshold
     }
     
     // MARK: IBActions
@@ -41,35 +41,31 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func consecutivePitchesStepper(_ stepper: UIStepper) {
         consecutivePitchesLabel.text = "\(Int(stepper.value)) Pitches"
-        UserDefaults.standard.set(Int(stepper.value), forKey: "consecutivePitches")
-        //print("Stepper Pressed", Settings.consecutivePitches)
+        Settings.consecutivePitches = Int(stepper.value)
+        print("Stepper Pressed", Settings.consecutivePitches)
     }
     
     @IBAction func bufferSlider(_ slider: UISlider) {
         bufferSizeLabel.text = "\(Int(slider.value))"
-        UserDefaults.standard.set(slider.value, forKey: "bufferSize")
-        //print("Slider Value Changed", Settings.bufferSize)
+        Settings.bufferSize = AVAudioFrameCount(slider.value)
+        print("Slider Value Changed", Settings.bufferSize)
     }
     
     @IBAction func levelThresholdSlider(_ slider: UISlider) {
         levelThresholdLabel.text = "\(slider.value) dB"
-        UserDefaults.standard.set(slider.value, forKey: "levelThreshold")
+        Settings.levelThreshold = slider.value
     }
 
     @IBAction func restoreDefaultsButton(_ sender: UIBarButtonItem) {
+        Settings.resetToDefaults()
         consecutivePitchesLabel.text = "\(Settings.consecutivePitches) Pitches"
         consecutivePitchesStepper.value = Double(Settings.consecutivePitches)
-        UserDefaults.standard.set(Settings.consecutivePitches, forKey: "consecutivePitches")
-        
+
         bufferSizeLabel.text = "\(Settings.bufferSize)"
         bufferSizeSlider.value = Float(Settings.bufferSize)
-        UserDefaults.standard.set(Settings.bufferSize, forKey: "bufferSize")
-        
+
         levelThresholdLabel.text = "\(Settings.levelThreshold) db"
         levelThresholdSlider.value = Settings.levelThreshold
-        UserDefaults.standard.set(Settings.levelThreshold, forKey: "levelThreshold")
-        
-        
-        
+
     }
 }

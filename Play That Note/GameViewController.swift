@@ -76,7 +76,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStragegy)
+        let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = Settings.levelThreshold
     }
