@@ -15,7 +15,7 @@ struct Settings {
         static var consecutivePitches = 3
         static var bufferSize: AVAudioFrameCount = 4096
         static var levelThreshold: Float = -20.0
-        static var estimationStrategy = EstimationStrategy.yin
+        static let estimationStrategy = EstimationStrategy.yin
     }
     
     static var consecutivePitches = Defaults.consecutivePitches {

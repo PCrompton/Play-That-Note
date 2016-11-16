@@ -17,10 +17,11 @@
 		9602EC7D1DD136AC0032CD83 /* vexFlow in Resources */ = {isa = PBXBuildFile; fileRef = 9602EC7C1DD136AC0032CD83 /* vexFlow */; };
 		9602EC861DD137A90032CD83 /* Beethoven.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9602EC851DD137A90032CD83 /* Beethoven.framework */; };
 		9602EC881DD137B50032CD83 /* Pitchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9602EC871DD137B50032CD83 /* Pitchy.framework */; };
+		966362791DDCDF7400E2E000 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362761DDCDF7400E2E000 /* Clef.swift */; };
+		9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362771DDCDF7400E2E000 /* CoreDataStack.swift */; };
+		9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362781DDCDF7400E2E000 /* Settings.swift */; };
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
-		96A732301DDA83A200BEB3D1 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A7322F1DDA83A200BEB3D1 /* Settings.swift */; };
-		96E7990E1DD7E82E00199087 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E7990D1DD7E82E00199087 /* Clef.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +58,11 @@
 		9602EC7C1DD136AC0032CD83 /* vexFlow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vexFlow; sourceTree = "<group>"; };
 		9602EC851DD137A90032CD83 /* Beethoven.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beethoven.framework; path = Carthage/Build/iOS/Beethoven.framework; sourceTree = "<group>"; };
 		9602EC871DD137B50032CD83 /* Pitchy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitchy.framework; path = Carthage/Build/iOS/Pitchy.framework; sourceTree = "<group>"; };
+		966362761DDCDF7400E2E000 /* Clef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clef.swift; path = "Play That Note/Clef.swift"; sourceTree = "<group>"; };
+		966362771DDCDF7400E2E000 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Play That Note/CoreDataStack.swift"; sourceTree = "<group>"; };
+		966362781DDCDF7400E2E000 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Play That Note/Settings.swift"; sourceTree = "<group>"; };
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		96A7322F1DDA83A200BEB3D1 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		96E7990D1DD7E82E00199087 /* Clef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clef.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +175,9 @@
 		9602EC831DD1373B0032CD83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				96E7990D1DD7E82E00199087 /* Clef.swift */,
-				96A7322F1DDA83A200BEB3D1 /* Settings.swift */,
+				966362771DDCDF7400E2E000 /* CoreDataStack.swift */,
+				966362761DDCDF7400E2E000 /* Clef.swift */,
+				966362781DDCDF7400E2E000 /* Settings.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -346,12 +349,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96A732301DDA83A200BEB3D1 /* Settings.swift in Sources */,
-				96E7990E1DD7E82E00199087 /* Clef.swift in Sources */,
+				9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */,
+				9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,
 				96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */,
 				96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */,
+				966362791DDCDF7400E2E000 /* Clef.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

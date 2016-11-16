@@ -151,8 +151,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         } else {
             consecutivePitches.remove(at: 0)
             consecutivePitches.append(pitch)
-            let isPitch = checkIfIsPitch(pitches: consecutivePitches)
-            if isPitch {
+            if checkIfIsPitch(pitches: consecutivePitches) {
                 pitchEngine.stop()
                 consecutivePitches.removeAll()
                 let alertController = UIAlertController(title: note.string, message: nil, preferredStyle: .alert)
