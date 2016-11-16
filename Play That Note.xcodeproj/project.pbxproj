@@ -20,6 +20,8 @@
 		966362791DDCDF7400E2E000 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362761DDCDF7400E2E000 /* Clef.swift */; };
 		9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362771DDCDF7400E2E000 /* CoreDataStack.swift */; };
 		9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362781DDCDF7400E2E000 /* Settings.swift */; };
+		9663627D1DDCE00400E2E000 /* CoreDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */; };
+		966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */; };
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		966362761DDCDF7400E2E000 /* Clef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clef.swift; path = "Play That Note/Clef.swift"; sourceTree = "<group>"; };
 		966362771DDCDF7400E2E000 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Play That Note/CoreDataStack.swift"; sourceTree = "<group>"; };
 		966362781DDCDF7400E2E000 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Play That Note/Settings.swift"; sourceTree = "<group>"; };
+		9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataViewController.swift; sourceTree = "<group>"; };
+		9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +160,7 @@
 		9602EC811DD137220032CD83 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */,
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
 				9601443B1DD132D0006146C2 /* GameViewController.swift */,
 				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
@@ -175,9 +180,11 @@
 		9602EC831DD1373B0032CD83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */,
 				966362771DDCDF7400E2E000 /* CoreDataStack.swift */,
 				966362761DDCDF7400E2E000 /* Clef.swift */,
 				966362781DDCDF7400E2E000 /* Settings.swift */,
+				966362851DDCE22200E2E000 /* Managed Objects */,
 			);
 			name = Model;
 			path = ..;
@@ -190,6 +197,13 @@
 				9602EC851DD137A90032CD83 /* Beethoven.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		966362851DDCE22200E2E000 /* Managed Objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Managed Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +364,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */,
+				9663627D1DDCE00400E2E000 /* CoreDataViewController.swift in Sources */,
 				9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,
+				966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */,
 				96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */,
 				96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */,
 				966362791DDCDF7400E2E000 /* Clef.swift in Sources */,
@@ -635,6 +651,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */,
+			);
+			currentVersion = 9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9601442E1DD132D0006146C2 /* Project object */;
 }

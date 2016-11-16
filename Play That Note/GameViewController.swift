@@ -12,7 +12,7 @@ import Beethoven
 import WebKit
 import AVFoundation
 
-class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDelegate {
+class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigationDelegate {
 
     // MARK: Parameters
     @IBOutlet weak var startButton: UIButton!

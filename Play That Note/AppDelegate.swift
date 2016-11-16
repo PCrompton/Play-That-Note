@@ -12,6 +12,7 @@ import AVFoundation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    let stack = CoreDataStack(modelName: "Model")!
     
     func checkIfFirstLaunch() {
         if (UserDefaults.standard.bool(forKey: "hasLaunchedBefore")) {
