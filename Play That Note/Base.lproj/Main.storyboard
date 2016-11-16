@@ -244,6 +244,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="p9Q-8w-6sF">
+                        <barButtonItem key="leftBarButtonItem" title="Restore Defaults" id="fHn-x4-toP">
+                            <connections>
+                                <action selector="restoreDefaultsButton:" destination="N7v-t8-xuT" id="xUk-5m-IAL"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Xob-An-tU2">
                             <connections>
                                 <action selector="doneButton" destination="N7v-t8-xuT" id="p0e-U8-FbW"/>

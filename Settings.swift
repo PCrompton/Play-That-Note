@@ -11,7 +11,7 @@ import Beethoven
 import AVFoundation
 
 struct Settings {
-    static var consecutiveMax = 3
+    static var consecutivePitches = 3
     static var bufferSize: AVAudioFrameCount = 4096
     static var estimationStragegy = EstimationStrategy.yin
     static var levelThreshold: Float = -20.0

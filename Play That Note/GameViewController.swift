@@ -146,7 +146,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
         let note = pitch.note
         print(note.string, pitchEngine.signalLevel)
-        if consecutivePitches.count < Settings.consecutiveMax {
+        if consecutivePitches.count < Settings.consecutivePitches {
             consecutivePitches.append(pitch)
         } else {
             consecutivePitches.remove(at: 0)
