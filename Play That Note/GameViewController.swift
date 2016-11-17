@@ -11,6 +11,7 @@ import Pitchy
 import Beethoven
 import WebKit
 import AVFoundation
+import CoreData
 
 class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigationDelegate {
 
@@ -79,6 +80,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = Settings.levelThreshold
+        fetchStoredFlashcards()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,6 +105,14 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         pitchEngine?.stop()
     }
     
+    // MARK: CoreData Functions
+    func fetchStoredFlashcards() {
+        let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Flashcard")
+        fetchRequst.sortDescriptors = [NSSortDescriptor(key: "pitchIndex", ascending: true)]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController?.delegate = self
+        executeSearch()
+    }
 
     // MARK: Gameplay Functions
     @IBAction func StartButton(_ sender: UIButton) {
