@@ -22,6 +22,8 @@
 		9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362781DDCDF7400E2E000 /* Settings.swift */; };
 		9663627D1DDCE00400E2E000 /* CoreDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */; };
 		966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */; };
+		966362A81DDD512200E2E000 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */; };
+		966362A91DDD512200E2E000 /* Flashcard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */; };
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +67,8 @@
 		966362781DDCDF7400E2E000 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Play That Note/Settings.swift"; sourceTree = "<group>"; };
 		9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataViewController.swift; sourceTree = "<group>"; };
 		9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +206,8 @@
 		966362851DDCE22200E2E000 /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
+				966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */,
+				966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */,
 			);
 			name = "Managed Objects";
 			sourceTree = "<group>";
@@ -363,11 +369,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966362A81DDD512200E2E000 /* Flashcard+CoreDataClass.swift in Sources */,
 				9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */,
 				9663627D1DDCE00400E2E000 /* CoreDataViewController.swift in Sources */,
 				9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,
+				966362A91DDD512200E2E000 /* Flashcard+CoreDataProperties.swift in Sources */,
 				966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */,
 				96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */,
 				96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */,
