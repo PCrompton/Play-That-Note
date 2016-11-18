@@ -15,6 +15,8 @@ struct CoreDataStack {
     private let coordinator : NSPersistentStoreCoordinator
     private let modelURL : URL
     private let dbURL : URL
+    private let persistingContext: NSManagedObjectContext
+    private let backgroundContext: NSManagedObjectContext
     let context : NSManagedObjectContext
     
     // MARK:  - Initializers
@@ -37,9 +39,17 @@ struct CoreDataStack {
         // Create the store coordinator
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         
+        // Create a persistingContext (private queue) and a child one (main queue)
         // create a context and add connect it to the coordinator
+        persistingContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        persistingContext.persistentStoreCoordinator = coordinator
+        
         context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        context.persistentStoreCoordinator = coordinator
+        context.parent = persistingContext
+
+        // Create a background context child of main context
+        backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundContext.parent = context
         
         // Add a SQLite store located in the documents folder
         let fm = FileManager.default
@@ -51,10 +61,13 @@ struct CoreDataStack {
         
         self.dbURL = docUrl.appendingPathComponent("model.sqlite")
        
-        do{
-            try addStoreCoordinator(storeType: NSSQLiteStoreType, configuration: nil, storeURL: dbURL as NSURL, options: nil)
+        // Options for migration
+        let options = [NSInferMappingModelAutomaticallyOption: true, NSMigratePersistentStoresAutomaticallyOption: true]
+        
+        do {
+            try addStoreCoordinator(storeType: NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: options)
             
-        }catch{
+        } catch{
             print("unable to add store at \(dbURL)")
         }
     }
@@ -62,8 +75,8 @@ struct CoreDataStack {
     // MARK:  - Utils
     func addStoreCoordinator(storeType: String,
                              configuration: String?,
-                             storeURL: NSURL,
-                             options : [NSObject : AnyObject]?) throws{
+                             storeURL: URL,
+                             options : [AnyHashable: Any]?) throws {
         
         try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: dbURL as URL, options: nil)
         
@@ -77,32 +90,52 @@ struct CoreDataStack {
         
         try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: dbURL, options: nil)
     }
-
-    // MARK:  - Save
-    func saveContext() throws{
-        if context.hasChanges {
-            try context.save()
+    
+    func delete(objects: [NSManagedObject]) {
+        for object in objects {
+            context.delete(object)
         }
     }
     
-    func autoSave(delayInSeconds : Int){
+    // MARK: - CoreDataStack (Batch Processing in the Background)
+    
+    typealias Batch = (_ workerContext: NSManagedObjectContext) -> ()
+    
+    func performBackgroundBatchOperation(batch: @escaping Batch) {
         
-        if delayInSeconds > 0 {
-            do{
-                try saveContext()
-                print("Autosaving")
-            }catch{
-                print("Error while autosaving")
+        backgroundContext.perform() {
+            batch(self.backgroundContext)
+            
+            // Save it to the parent context, so normal saving
+            // can work
+            do {
+                try self.backgroundContext.save()
+            } catch {
+                fatalError("Error while saving backgroundContext: \(error)")
             }
-            
-            let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
-            let time = DispatchTime(uptimeNanoseconds: delayInNanoSeconds)
+        }
+    }
 
-            DispatchQueue.main.asyncAfter(deadline: time, execute: { 
-                self.autoSave(delayInSeconds: delayInSeconds)
-            })
-  
-            
+    // MARK:  - Save
+    func save() {
+        context.performAndWait { 
+            if self.context.hasChanges {
+                do {
+                    try self.context.save()
+                    print("Successfully saved context")
+                } catch {
+                    fatalError("Error while saving main context: \(error)")
+                }
+                
+                // now we save in the background
+                self.persistingContext.perform() {
+                    do {
+                        try self.persistingContext.save()
+                    } catch {
+                        fatalError("Error while saving persisting context: \(error)")
+                    }
+                }
+            }
         }
     }
 }

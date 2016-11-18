@@ -54,7 +54,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     }
     
     var pitchEngine: PitchEngine?
-    var noteToPlay: Note? {
+    var flashcardToShow: Flashcard? {
         didSet {
             webView?.reload()
         }
@@ -63,14 +63,16 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
     
+    var flashcards = [Flashcard]()
+    
     var correct: Int = 0 {
         didSet {
-            correctLabel.text = "Correct: \(correct)"
+            correctLabel.text = "Correct: \(flashcardToShow?.correct)"
         }
     }
     var incorrect: Int = 0 {
         didSet {
-            incorrectLabel.text = "Incorrect: \(incorrect)"
+            incorrectLabel.text = "Incorrect: \(flashcardToShow?.incorrect)"
         }
     }
     
@@ -117,6 +119,22 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
         executeSearch()
+        
+        flashcards = fetchedResultsController?.fetchedObjects as! [Flashcard]
+        if flashcards.count == 0 {
+            flashcards = createFlashcards()
+        }
+        stack.save()
+    }
+    
+    func createFlashcards() -> [Flashcard] {
+        var flashcards = [Flashcard]()
+        for i in lowest.index...highest.index {
+            let note = try! Note(index: i)
+            let flashcard = Flashcard(with: clef, note: note.letter.rawValue, pitchIndex: Int32(i), insertInto: stack.context)
+            flashcards.append(flashcard)
+        }
+        return flashcards
     }
 
     // MARK: Gameplay Functions
@@ -125,7 +143,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
             pitchEngine?.start()
             sender.setTitle("Stop", for: .normal)
             print("Pitch Engine Started")
-            noteToPlay = getNoteToPlayInRange(low: lowest, high: highest)
+            flashcardToShow = getRandomflashcard()
         } else {
             pitchEngine?.stop()
             sender.setTitle("Start", for: .normal)
@@ -133,10 +151,9 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         }
     }
     
-    func getNoteToPlayInRange(low: Note, high: Note) -> Note {
-        let range = high.index-low.index
-        let index = Int(arc4random_uniform(UInt32(range+1))) + low.index
-        return try! Note(index: index)
+    func getRandomflashcard() -> Flashcard {
+        let index = Int(arc4random_uniform(UInt32(flashcards.count)))
+        return flashcards[index]
     }
     
     func checkIfIsPitch(pitches: [Pitch]) -> Bool {
@@ -150,7 +167,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     
     // MARK: WKNavigationDelegate Functions
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let pitch = noteToPlay?.string {
+        if let pitch = flashcardToShow?.pitchIndex {
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \(dimensions))")
         } else {
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(null, \"\(clef)\", \(dimensions))")
@@ -173,16 +190,16 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
                 let action = UIAlertAction(title: "Next", style: .default) {
                     (action) in
                     self.pitchEngine?.start()
-                    self.noteToPlay = self.getNoteToPlayInRange(low: self.lowest, high: self.highest)
+                    self.flashcardToShow = self.getRandomflashcard()
                 }
                 alertController.addAction(action)
                 print(pitch.note.string, pitch.note.index)
-                if note.index == noteToPlay!.index {
+                if note.index == Int((flashcardToShow?.pitchIndex)!) {
                     alertController.message = "Congrates, you played \(note.string)"
-                    correct += 1
+                    flashcardToShow?.correct += 1
                 } else {
-                    alertController.message = "Sorry, that was not \(noteToPlay!.string)"
-                    incorrect += 1
+                    alertController.message = "Sorry, that was not \(flashcardToShow?.note)"
+                    flashcardToShow?.incorrect += 1
                 }
                 present(alertController, animated: true)
             }
