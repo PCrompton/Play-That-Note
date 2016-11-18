@@ -21,14 +21,17 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     
     var webView: WKWebView?
     let jsDrawStaffWithPitch = "drawStaffWithPitch"
+    
     var lowest = try! Note(letter: .C, octave: 1)
     var highest = try! Note(letter: .C, octave: 7)
     var clef = Clef.treble {
         didSet {
             switch clef {
             case .treble:
-                lowest = try! Note(letter: .F, octave: 3);
-                highest = try! Note(letter: .E, octave: 6)
+//                lowest = try! Note(letter: .F, octave: 3);
+//                highest = try! Note(letter: .E, octave: 6)
+                lowest = try! Note(letter: .G, octave: 3);
+                highest = try! Note(letter: .C, octave: 4)
             case .bass:
                 lowest = try! Note(letter: .A, octave: 1);
                 highest = try! Note(letter: .G, octave: 4)
@@ -54,19 +57,21 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     }
     
     var pitchEngine: PitchEngine?
+    var flashcards = [Flashcard]()
     var flashcardToShow: Flashcard? {
         didSet {
             webView?.reload()
-            correctLabel.text = "Correct: \(flashcardToShow!.correct)"
-            incorrectLabel.text = "Incorrect: \(flashcardToShow!.incorrect)"
+            guard let flashcard = flashcardToShow else {
+                print("No flashcard found")
+                return
+            }
+            correctLabel.text = "Correct: \(flashcard.correct)"
+            incorrectLabel.text = "Incorrect: \(flashcard.incorrect)"
         }
     }
     
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
-    
-    var flashcards = [Flashcard]()
-    
     var correct: Int = 0
     var incorrect: Int = 0
     
@@ -105,7 +110,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     func fetchStoredFlashcards() {
         let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Flashcard")
         fetchRequst.sortDescriptors = [NSSortDescriptor(key: "pitchIndex", ascending: true)]
-        let clefPredicate = NSPredicate(format: "clef = %@", argumentArray: [clef])
+        let clefPredicate = NSPredicate(format: "clef = %@", argumentArray: [clef.rawValue])
         let minPredicate = NSPredicate(format: "pitchIndex >= %@", argumentArray: [lowest.index])
         let maxPredicate = NSPredicate(format: "pitchIndex <= %@", argumentArray: [highest.index])
         let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [clefPredicate, minPredicate, maxPredicate])
@@ -119,6 +124,10 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
             flashcards = createFlashcards()
         }
         stack.save()
+        
+        for flashcard in flashcards {
+            print(flashcard.clef!, flashcard.note!, flashcard.correct, flashcard.incorrect)
+        }
     }
     
     func createFlashcards() -> [Flashcard] {
@@ -199,6 +208,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
                     flashcardToShow?.incorrect += 1
                 }
                 stack.save()
+                print(fetchedResultsController?.fetchedObjects as! [Flashcard])
                 present(alertController, animated: true)
             }
         }
