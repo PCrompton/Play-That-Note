@@ -28,10 +28,8 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         didSet {
             switch clef {
             case .treble:
-//                lowest = try! Note(letter: .F, octave: 3);
-//                highest = try! Note(letter: .E, octave: 6)
-                lowest = try! Note(letter: .G, octave: 3);
-                highest = try! Note(letter: .C, octave: 4)
+                lowest = try! Note(letter: .F, octave: 3);
+                highest = try! Note(letter: .E, octave: 6)
             case .bass:
                 lowest = try! Note(letter: .A, octave: 1);
                 highest = try! Note(letter: .G, octave: 4)
