@@ -57,6 +57,8 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     var flashcardToShow: Flashcard? {
         didSet {
             webView?.reload()
+            correctLabel.text = "Correct: \(flashcardToShow!.correct)"
+            incorrectLabel.text = "Incorrect: \(flashcardToShow!.incorrect)"
         }
     }
     
@@ -65,16 +67,8 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     
     var flashcards = [Flashcard]()
     
-    var correct: Int = 0 {
-        didSet {
-            correctLabel.text = "Correct: \(flashcardToShow?.correct)"
-        }
-    }
-    var incorrect: Int = 0 {
-        didSet {
-            incorrectLabel.text = "Incorrect: \(flashcardToShow?.incorrect)"
-        }
-    }
+    var correct: Int = 0
+    var incorrect: Int = 0
     
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
@@ -131,7 +125,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         var flashcards = [Flashcard]()
         for i in lowest.index...highest.index {
             let note = try! Note(index: i)
-            let flashcard = Flashcard(with: clef, note: note.letter.rawValue, pitchIndex: Int32(i), insertInto: stack.context)
+            let flashcard = Flashcard(with: clef, note: note.string, pitchIndex: Int32(i), insertInto: stack.context)
             flashcards.append(flashcard)
         }
         return flashcards
@@ -167,7 +161,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     
     // MARK: WKNavigationDelegate Functions
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let pitch = flashcardToShow?.pitchIndex {
+        if let pitch = flashcardToShow?.note {
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \(dimensions))")
         } else {
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(null, \"\(clef)\", \(dimensions))")
@@ -198,9 +192,13 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
                     alertController.message = "Congrates, you played \(note.string)"
                     flashcardToShow?.correct += 1
                 } else {
-                    alertController.message = "Sorry, that was not \(flashcardToShow?.note)"
+                    guard let note = flashcardToShow?.note else {
+                        fatalError("No note found")
+                    }
+                    alertController.message = "Sorry, that was not \(note)"
                     flashcardToShow?.incorrect += 1
                 }
+                stack.save()
                 present(alertController, animated: true)
             }
         }
