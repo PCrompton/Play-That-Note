@@ -11,10 +11,17 @@ import CoreData
 
 @objc(Flashcard)
 public class Flashcard: NSManagedObject {
-    
+    var totalAnswered: Int {
+        get {
+            return Int(self.correct + self.incorrect)
+        }
+    }
     var percentage: Double {
         get {
-            return Double(self.correct)/Double(self.correct + self.incorrect)*100
+            if totalAnswered != 0 {
+                return Double(correct)/Double(totalAnswered)*100
+            }
+            return 0.0
         }
     }
     var plusMinus: Int {
