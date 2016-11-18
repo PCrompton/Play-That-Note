@@ -149,6 +149,10 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cct-xC-Ciz" id="stH-Gx-ze6"/>
+                                    <outlet property="delegate" destination="cct-xC-Ciz" id="E7L-X7-BeI"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -166,6 +170,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="PQt-Sn-JHg" id="Y4T-Bz-Vic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31B-gu-aTQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
