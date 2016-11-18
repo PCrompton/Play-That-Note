@@ -23,7 +23,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     let jsDrawStaffWithPitch = "drawStaffWithPitch"
     var lowest = try! Note(letter: .C, octave: 1)
     var highest = try! Note(letter: .C, octave: 7)
-    var clef = Clef.bass {
+    var clef = Clef.treble {
         didSet {
             switch clef {
             case .treble:
@@ -109,6 +109,11 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     func fetchStoredFlashcards() {
         let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Flashcard")
         fetchRequst.sortDescriptors = [NSSortDescriptor(key: "pitchIndex", ascending: true)]
+        let clefPredicate = NSPredicate(format: "clef = %@", argumentArray: [clef])
+        let minPredicate = NSPredicate(format: "pitchIndex >= %@", argumentArray: [lowest.index])
+        let maxPredicate = NSPredicate(format: "pitchIndex <= %@", argumentArray: [highest.index])
+        let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [clefPredicate, minPredicate, maxPredicate])
+        fetchRequst.predicate = andPredicate
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
         executeSearch()
