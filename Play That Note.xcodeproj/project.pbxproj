@@ -24,6 +24,7 @@
 		966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */; };
 		966362A81DDD512200E2E000 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */; };
 		966362A91DDD512200E2E000 /* Flashcard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */; };
+		9670B71B1DDF9E6A00094762 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B71A1DDF9E6A00094762 /* StatsViewController.swift */; };
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9670B71A1DDF9E6A00094762 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
 				9601443B1DD132D0006146C2 /* GameViewController.swift */,
 				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
+				9670B71A1DDF9E6A00094762 /* StatsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */,
 				96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */,
 				96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */,
+				9670B71B1DDF9E6A00094762 /* StatsViewController.swift in Sources */,
 				966362791DDCDF7400E2E000 /* Clef.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
