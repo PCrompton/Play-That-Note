@@ -124,7 +124,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         stack.save()
         
         for flashcard in flashcards {
-            print(flashcard.clef!, flashcard.note!, flashcard.correct, flashcard.incorrect)
+            print(flashcard.clef!, flashcard.note!, flashcard.percentage, flashcard.correct, flashcard.incorrect)
         }
     }
     
@@ -152,9 +152,24 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         }
     }
     
+    func getRandomBool() -> Bool {
+        let num = Int(arc4random_uniform(2))
+        if num == 0 {
+            return true
+        } else {
+            return false
+        }
+    }
     func getRandomflashcard() -> Flashcard {
         let index = Int(arc4random_uniform(UInt32(flashcards.count)))
-        return flashcards[index]
+        let flashcard = flashcards[index]
+        if flashcard.percentage > 75.0 {
+            let bool = getRandomBool()
+            if bool {
+                return getRandomflashcard()
+            }
+        }
+        return flashcard
     }
     
     func checkIfIsPitch(pitches: [Pitch]) -> Bool {

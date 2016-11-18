@@ -14,7 +14,7 @@ public class Flashcard: NSManagedObject {
     
     var percentage: Double {
         get {
-            return Double(self.correct)/Double(self.correct + self.incorrect)
+            return Double(self.correct)/Double(self.correct + self.incorrect)*100
         }
     }
     var plusMinus: Int {
