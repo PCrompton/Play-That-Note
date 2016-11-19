@@ -48,6 +48,20 @@ class ClefStatsViewController: CoreDataViewController, UITableViewDataSource, UI
         return (correct, incorrect)
     }
     
+    func getFlashcards(for clef: Clef) -> [Flashcard] {
+        var flashcardsForClef = [Flashcard]()
+        if let flashcards = flashcards {
+            for flashcard in flashcards {
+                if let flashcardClef = flashcard.clef {
+                    if flashcardClef == clef.rawValue {
+                        flashcardsForClef.append(flashcard)
+                    }
+                }
+            }
+        }
+        return flashcardsForClef
+    }
+    
     
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -87,5 +101,15 @@ class ClefStatsViewController: CoreDataViewController, UITableViewDataSource, UI
             cell.detailTextLabel?.text = "\(Int(percentage))%"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let statsVC = storyboard?.instantiateViewController(withIdentifier: "StatsViewController") as! StatsViewController
+        let cell = tableView.cellForRow(at: indexPath) as! ClefTableViewCell
+        if let clef = cell.clef {
+            statsVC.clef = clef
+            statsVC.flashcards = getFlashcards(for: clef)
+            show(statsVC, sender: self)
+        }
     }
 }
