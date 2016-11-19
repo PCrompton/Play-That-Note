@@ -160,13 +160,21 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
             return false
         }
     }
+    
     func getRandomflashcard() -> Flashcard {
         let index = Int(arc4random_uniform(UInt32(flashcards.count)))
         let flashcard = flashcards[index]
-        if flashcard.percentage > 75.0 {
-            let bool = getRandomBool()
+        if flashcard.percentage > 50.0 {
+            var bool = getRandomBool()
             if bool {
                 return getRandomflashcard()
+            } else {
+                if flashcard.percentage > 75.0 {
+                    bool = getRandomBool()
+                    if bool {
+                        return getRandomflashcard()
+                    }
+                }
             }
         }
         return flashcard

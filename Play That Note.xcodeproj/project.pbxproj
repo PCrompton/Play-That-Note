@@ -25,6 +25,8 @@
 		966362A81DDD512200E2E000 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */; };
 		966362A91DDD512200E2E000 /* Flashcard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */; };
 		9670B71B1DDF9E6A00094762 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B71A1DDF9E6A00094762 /* StatsViewController.swift */; };
+		9670B71F1DE0D86000094762 /* ClefStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */; };
+		9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */; };
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,8 @@
 		966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9670B71A1DDF9E6A00094762 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClefStatsViewController.swift; sourceTree = "<group>"; };
+		9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClefTableViewCell.swift; sourceTree = "<group>"; };
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +174,7 @@
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
 				9601443B1DD132D0006146C2 /* GameViewController.swift */,
 				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
+				9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */,
 				9670B71A1DDF9E6A00094762 /* StatsViewController.swift */,
 			);
 			name = Controllers;
@@ -180,6 +185,7 @@
 			children = (
 				9601443D1DD132D0006146C2 /* Main.storyboard */,
 				960144421DD132D1006146C2 /* LaunchScreen.storyboard */,
+				9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -375,11 +381,13 @@
 				966362A81DDD512200E2E000 /* Flashcard+CoreDataClass.swift in Sources */,
 				9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */,
 				9663627D1DDCE00400E2E000 /* CoreDataViewController.swift in Sources */,
+				9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */,
 				9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,
 				966362A91DDD512200E2E000 /* Flashcard+CoreDataProperties.swift in Sources */,
 				966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */,
+				9670B71F1DE0D86000094762 /* ClefStatsViewController.swift in Sources */,
 				96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */,
 				96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */,
 				9670B71B1DDF9E6A00094762 /* StatsViewController.swift in Sources */,

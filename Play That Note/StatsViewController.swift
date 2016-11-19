@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class StatsViewController: CoreDataViewController, UITableViewDelegate, UITableViewDataSource {
-
+    var clef: Clef?
     var flashcards: [Flashcard]?
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +21,11 @@ class StatsViewController: CoreDataViewController, UITableViewDelegate, UITableV
     
     func fetchStoredFlashcards() {
         let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Flashcard")
-        fetchRequst.sortDescriptors = [NSSortDescriptor(key: "pitchIndex", ascending: true)]
+        fetchRequst.sortDescriptors = [NSSortDescriptor(key: "clef", ascending: true), NSSortDescriptor(key: "pitchIndex", ascending: true)]
+        if let clef = clef {
+            let predicate = NSPredicate(format: "clef = %@", argumentArray: [clef.rawValue])
+            fetchRequst.predicate = predicate
+        }
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
         executeSearch()
@@ -33,6 +37,7 @@ class StatsViewController: CoreDataViewController, UITableViewDelegate, UITableV
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: UITableViewDataSource functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let flashcards = flashcards {
             return flashcards.count
@@ -50,6 +55,10 @@ class StatsViewController: CoreDataViewController, UITableViewDelegate, UITableV
         cell?.textLabel?.text = "\(flashcard.clef!.capitalized) Clef, \(flashcard.note!)"
         cell?.detailTextLabel?.text = "\(Int(flashcard.percentage))%"
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 
 }
