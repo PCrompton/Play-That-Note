@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Pitchy
 
 class ClefTableViewCell: UITableViewCell {
     var clef: Clef? = nil

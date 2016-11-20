@@ -56,5 +56,11 @@ class StatsViewController: CoreDataViewController, UITableViewDelegate, UITableV
         cell?.detailTextLabel?.text = "\(Int(flashcard.percentage))%"
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let flashcardStatsVC = storyboard?.instantiateViewController(withIdentifier: "FlashcardStatsViewController") as! FlashcardStatsViewController
+        flashcardStatsVC.flashcard = flashcards?[indexPath.row]
+        show(flashcardStatsVC, sender: self)
+    }
 
 }
