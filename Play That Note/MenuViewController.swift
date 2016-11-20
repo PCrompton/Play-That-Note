@@ -9,6 +9,11 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        title = "Choose a Clef"
+    }
+    
     // MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

@@ -55,7 +55,11 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     }
     
     var pitchEngine: PitchEngine?
-    var flashcards = [Flashcard]()
+    var flashcards = [Flashcard]() {
+        didSet {
+            clefStats = getStats(for: clef)
+        }
+    }
     var flashcardToShow: Flashcard? {
         didSet {
             webView?.reload()
@@ -65,11 +69,40 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
             }
             correctLabel.text = "Correct: \(flashcard.correct)"
             incorrectLabel.text = "Incorrect: \(flashcard.incorrect)"
+            percentageLabel.text = "\(Int(flashcard.percentage))%"
+            plusMinusLabel.text = "+/-: \(flashcard.plusMinus)"
+            if flashcard.plusMinus < 0 {
+                plusMinusLabel.textColor = UIColor.red
+            } else if flashcard.plusMinus > 0 {
+                plusMinusLabel.textColor = UIColor.green
+            } else {
+                plusMinusLabel.textColor = UIColor.blue
+            }
         }
     }
+    @IBOutlet weak var clefPercentageLabel: UILabel!
+    @IBOutlet weak var clefPlusMinusLabel: UILabel!
     
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet var plusMinusLabel: UILabel!
+    
+    var clefStats = (0, 0) {
+        didSet {
+            let percentage = Double(clefStats.0)/Double(clefStats.0 + clefStats.1)*100
+            let plusMinus = clefStats.0-clefStats.1
+            clefPercentageLabel.text = "\(clef.rawValue.capitalized) Clef: \(Int(percentage))%"
+            clefPlusMinusLabel.text = "+/-: \(plusMinus)"
+            if plusMinus < 0 {
+                clefPlusMinusLabel.textColor = UIColor.red
+            } else if plusMinus > 0 {
+                clefPlusMinusLabel.textColor = UIColor.green
+            } else {
+                clefPlusMinusLabel.textColor = UIColor.blue
+            }
+        }
+    }
     var correct: Int = 0
     var incorrect: Int = 0
     
@@ -189,6 +222,19 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         return true
     }
     
+    func getStats(for clef: Clef) -> (Int, Int) {
+        var correct = 0
+        var incorrect = 0
+        
+        for flashcard in flashcards {
+            if clef.rawValue == flashcard.clef {
+                correct += Int(flashcard.correct)
+                incorrect += Int(flashcard.incorrect)
+            }
+        }
+        return (correct, incorrect)
+    }
+    
     // MARK: WKNavigationDelegate Functions
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let pitch = flashcardToShow?.note {
@@ -221,12 +267,14 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
                 if note.index == Int((flashcardToShow?.pitchIndex)!) {
                     alertController.message = "Congrates, you played \(note.string)"
                     flashcardToShow?.correct += 1
+                    clefStats.0 += 1
                 } else {
                     guard let note = flashcardToShow?.note else {
                         fatalError("No note found")
                     }
                     alertController.message = "Sorry, that was not \(note)"
                     flashcardToShow?.incorrect += 1
+                    clefStats.1 += 1
                 }
                 stack.save()
                 print(fetchedResultsController?.fetchedObjects as! [Flashcard])
