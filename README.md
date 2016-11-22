@@ -28,7 +28,7 @@ Statistics are grouped by clef. To view details of statistics for each clef, tap
 
 ### Beethoven & Pitchy
 
-For pitch detection, Play That Note relies on the open source framework Beethoven, which itself is dependent on another open source framework called Pitchy. Both can be found on Github:
+For pitch detection, Play That Note relies on the open source framework Beethoven, which itself is dependent on another open source framework, Pitchy. Both can be found on Github:
 
 * [Beethoven](https://github.com/vadymmarkov/Beethoven.git)
 * [Pitchy](https://github.com/vadymmarkov/Pitchy.git)
@@ -37,5 +37,5 @@ For pitch detection, Play That Note relies on the open source framework Beethove
 
 For displaying musical notation, Play That Note uses the Javascript library Vexflow, which can be found on Github:
 
-* [Vexflow](https://github.com/vadymmarkov/Pitchy.git)
+* [Vexflow](https://github.com/0xfe/vexflow.git)
 
