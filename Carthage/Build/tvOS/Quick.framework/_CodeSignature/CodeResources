@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/Quick.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		g/zJlKqdLVpfLIMiegnTyrcIPlc=
+		+6Z2NP3x9xIS11u292X3ZvLZ660=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -113,11 +113,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			g/zJlKqdLVpfLIMiegnTyrcIPlc=
+			+6Z2NP3x9xIS11u292X3ZvLZ660=
 			</data>
 			<key>hash2</key>
 			<data>
-			EPp75W/3y6illf/ozJVXEGlfGgbgzc8mTYAWLQuz7+o=
+			tYMsixR20AjUeqyvKx8E7rM20SPHTu00YnE5urPjL90=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
