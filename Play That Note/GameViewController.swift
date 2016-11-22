@@ -90,7 +90,10 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
     
     var clefStats = (0, 0) {
         didSet {
-            let percentage = Double(clefStats.0)/Double(clefStats.0 + clefStats.1)*100
+            var percentage = 0.0
+            if (clefStats.0 + clefStats.1) != 0 {
+                percentage = Double(clefStats.0)/Double(clefStats.0 + clefStats.1)*100
+            }
             let plusMinus = clefStats.0-clefStats.1
             clefPercentageLabel.text = "\(clef.rawValue.capitalized) Clef: \(Int(percentage))%"
             clefPlusMinusLabel.text = "+/-: \(plusMinus)"
