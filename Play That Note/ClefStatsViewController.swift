@@ -9,64 +9,17 @@
 import UIKit
 import CoreData
 
-class ClefStatsViewController: CoreDataViewController, UITableViewDataSource, UITableViewDelegate {
-
-    var flashcards: [Flashcard]? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     
     @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        fetchStoredFlashcards()
-    }
-    
-    func fetchStoredFlashcards() {
-        let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Flashcard")
-        fetchRequst.sortDescriptors = [NSSortDescriptor(key: "clef", ascending: true), NSSortDescriptor(key: "pitchIndex", ascending: true)]
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController?.delegate = self
-        executeSearch()
         
-        flashcards = fetchedResultsController?.fetchedObjects as? [Flashcard]
-    }
-    
-    func getStats(for clef: Clef) -> (Int, Int) {
-        var correct = 0
-        var incorrect = 0
-        if let flashcards = flashcards {
-            for flashcard in flashcards {
-                if clef.rawValue == flashcard.clef {
-                    correct += Int(flashcard.correct)
-                    incorrect += Int(flashcard.incorrect)
-                }
-            }
-        }
-        return (correct, incorrect)
-    }
-    
-    func getFlashcards(for clef: Clef) -> [Flashcard] {
-        var flashcardsForClef = [Flashcard]()
-        if let flashcards = flashcards {
-            for flashcard in flashcards {
-                if let flashcardClef = flashcard.clef {
-                    if flashcardClef == clef.rawValue {
-                        flashcardsForClef.append(flashcard)
-                    }
-                }
-            }
-        }
-        return flashcardsForClef
-    }
-    
-    
+    // MARK: IBActions
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: TableViewDataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
@@ -91,24 +44,23 @@ class ClefStatsViewController: CoreDataViewController, UITableViewDataSource, UI
         }
         if let clef = cell.clef {
             cell.textLabel?.text = "\(clef.rawValue.capitalized) Clef"
-            let stats = getStats(for: clef)
-            let percentage: Double
-            if (stats.0 + stats.1) != 0 {
-                percentage = Double(stats.0)/Double(stats.0 + stats.1)*100
+            let stats = Stats.getStats(for: Stats.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil))
+            let percentage = stats["percentage"] as? Double
+            if let percentage = percentage {
+                cell.detailTextLabel?.text = "\(Int(percentage))%"
             } else {
-                percentage = 0.0
+                cell.detailTextLabel?.text = "Not Started"
             }
-            cell.detailTextLabel?.text = "\(Int(percentage))%"
         }
         return cell
     }
     
+    // MARK: TableViewDelegate Functions
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let statsVC = storyboard?.instantiateViewController(withIdentifier: "StatsViewController") as! StatsViewController
         let cell = tableView.cellForRow(at: indexPath) as! ClefTableViewCell
         if let clef = cell.clef {
             statsVC.clef = clef
-            statsVC.flashcards = getFlashcards(for: clef)
             show(statsVC, sender: self)
         }
     }

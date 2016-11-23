@@ -20,17 +20,17 @@
 		966362791DDCDF7400E2E000 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362761DDCDF7400E2E000 /* Clef.swift */; };
 		9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362771DDCDF7400E2E000 /* CoreDataStack.swift */; };
 		9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362781DDCDF7400E2E000 /* Settings.swift */; };
-		9663627D1DDCE00400E2E000 /* CoreDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */; };
-		966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */; };
-		966362A81DDD512200E2E000 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */; };
-		966362A91DDD512200E2E000 /* Flashcard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */; };
 		9670B71B1DDF9E6A00094762 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B71A1DDF9E6A00094762 /* StatsViewController.swift */; };
 		9670B71F1DE0D86000094762 /* ClefStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */; };
 		9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */; };
 		9670B7231DE12D5E00094762 /* FlashcardStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B7221DE12D5E00094762 /* FlashcardStatsViewController.swift */; };
-		9670B7251DE4CC5E00094762 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9670B7241DE4CC5E00094762 /* README.md */; };
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
+		96E27C771DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C741DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift */; };
+		96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C751DE52CB900B8AFF4 /* Model.xcdatamodeld */; };
+		96E27C7A1DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C791DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift */; };
+		96E27C801DE52EF900B8AFF4 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C7F1DE52EF900B8AFF4 /* README.md */; };
+		96E27C821DE5D62100B8AFF4 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C811DE5D62100B8AFF4 /* Stats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,17 +70,17 @@
 		966362761DDCDF7400E2E000 /* Clef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clef.swift; path = "Play That Note/Clef.swift"; sourceTree = "<group>"; };
 		966362771DDCDF7400E2E000 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Play That Note/CoreDataStack.swift"; sourceTree = "<group>"; };
 		966362781DDCDF7400E2E000 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Play That Note/Settings.swift"; sourceTree = "<group>"; };
-		9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataViewController.swift; sourceTree = "<group>"; };
-		9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
-		966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Flashcard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9670B71A1DDF9E6A00094762 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClefStatsViewController.swift; sourceTree = "<group>"; };
 		9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClefTableViewCell.swift; sourceTree = "<group>"; };
 		9670B7221DE12D5E00094762 /* FlashcardStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardStatsViewController.swift; sourceTree = "<group>"; };
-		9670B7241DE4CC5E00094762 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		96E27C741DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Flashcard+CoreDataProperties.swift"; path = "Play That Note/Flashcard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		96E27C761DE52CB900B8AFF4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		96E27C791DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Flashcard+CoreDataClass.swift"; path = "Play That Note/Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		96E27C7F1DE52EF900B8AFF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		96E27C811DE5D62100B8AFF4 /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stats.swift; path = "Play That Note/Stats.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +134,7 @@
 		960144381DD132D0006146C2 /* Play That Note */ = {
 			isa = PBXGroup;
 			children = (
-				9670B7241DE4CC5E00094762 /* README.md */,
+				96E27C7F1DE52EF900B8AFF4 /* README.md */,
 				960144391DD132D0006146C2 /* AppDelegate.swift */,
 				9602EC831DD1373B0032CD83 /* Model */,
 				9602EC821DD1372A0032CD83 /* Views */,
@@ -175,7 +175,6 @@
 		9602EC811DD137220032CD83 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9663627C1DDCE00400E2E000 /* CoreDataViewController.swift */,
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
 				9601443B1DD132D0006146C2 /* GameViewController.swift */,
 				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
@@ -199,10 +198,11 @@
 		9602EC831DD1373B0032CD83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */,
+				96E27C751DE52CB900B8AFF4 /* Model.xcdatamodeld */,
 				966362771DDCDF7400E2E000 /* CoreDataStack.swift */,
 				966362761DDCDF7400E2E000 /* Clef.swift */,
 				966362781DDCDF7400E2E000 /* Settings.swift */,
+				96E27C811DE5D62100B8AFF4 /* Stats.swift */,
 				966362851DDCE22200E2E000 /* Managed Objects */,
 			);
 			name = Model;
@@ -221,8 +221,8 @@
 		966362851DDCE22200E2E000 /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
-				966362A61DDD512200E2E000 /* Flashcard+CoreDataClass.swift */,
-				966362A71DDD512200E2E000 /* Flashcard+CoreDataProperties.swift */,
+				96E27C791DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift */,
+				96E27C741DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift */,
 			);
 			name = "Managed Objects";
 			sourceTree = "<group>";
@@ -384,17 +384,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				966362A81DDD512200E2E000 /* Flashcard+CoreDataClass.swift in Sources */,
+				96E27C771DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift in Sources */,
 				9670B7231DE12D5E00094762 /* FlashcardStatsViewController.swift in Sources */,
 				9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */,
-				9663627D1DDCE00400E2E000 /* CoreDataViewController.swift in Sources */,
+				96E27C7A1DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift in Sources */,
 				9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */,
+				96E27C801DE52EF900B8AFF4 /* README.md in Sources */,
+				96E27C821DE5D62100B8AFF4 /* Stats.swift in Sources */,
 				9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */,
-				9670B7251DE4CC5E00094762 /* README.md in Sources */,
+				96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,
-				966362A91DDD512200E2E000 /* Flashcard+CoreDataProperties.swift in Sources */,
-				966362801DDCE0FF00E2E000 /* Model.xcdatamodeld in Sources */,
 				9670B71F1DE0D86000094762 /* ClefStatsViewController.swift in Sources */,
 				96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */,
 				96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */,
@@ -685,13 +685,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9663627E1DDCE0FF00E2E000 /* Model.xcdatamodeld */ = {
+		96E27C751DE52CB900B8AFF4 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */,
+				96E27C761DE52CB900B8AFF4 /* Model.xcdatamodel */,
 			);
-			currentVersion = 9663627F1DDCE0FF00E2E000 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 96E27C761DE52CB900B8AFF4 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = "Play That Note/Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

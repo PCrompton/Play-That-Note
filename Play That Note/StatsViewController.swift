@@ -9,35 +9,27 @@
 import UIKit
 import CoreData
 
-class StatsViewController: CoreDataViewController, UITableViewDelegate, UITableViewDataSource {
+class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: Properties
     var clef: Clef?
     var flashcards: [Flashcard]?
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchStoredFlashcards()
-    }
-    
-    func fetchStoredFlashcards() {
-        let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Flashcard")
-        fetchRequst.sortDescriptors = [NSSortDescriptor(key: "clef", ascending: true), NSSortDescriptor(key: "pitchIndex", ascending: true)]
         if let clef = clef {
-            let predicate = NSPredicate(format: "clef = %@", argumentArray: [clef.rawValue])
-            fetchRequst.predicate = predicate
+            flashcards = Stats.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil)
         }
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController?.delegate = self
-        executeSearch()
-        
-        flashcards = fetchedResultsController?.fetchedObjects as? [Flashcard]
     }
     
+    // MARK: IBActions
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: UITableViewDataSource functions
+    // MARK: UITableViewDataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let flashcards = flashcards {
             return flashcards.count
@@ -57,10 +49,10 @@ class StatsViewController: CoreDataViewController, UITableViewDelegate, UITableV
         return cell!
     }
     
+    // MARK: TableViewDelegate Functions
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let flashcardStatsVC = storyboard?.instantiateViewController(withIdentifier: "FlashcardStatsViewController") as! FlashcardStatsViewController
         flashcardStatsVC.flashcard = flashcards?[indexPath.row]
         show(flashcardStatsVC, sender: self)
     }
-
 }

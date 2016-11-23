@@ -10,18 +10,20 @@ import UIKit
 import WebKit
 import CoreData
 
-class FlashcardStatsViewController: CoreDataViewController, WKNavigationDelegate  {
+class FlashcardStatsViewController: UIViewController, WKNavigationDelegate  {
     
+    //
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var plusMinusLabel: UILabel!
-    
     @IBOutlet weak var containerView: UIView!
     
     var flashcard: Flashcard?
-    var webView: WKWebView?
+    
     let jsDrawStaffWithPitch = "drawStaffWithPitch"
+    var webView: WKWebView?
+    
     var dimensions: String {
         get {
             let dimParams = "\(Int(containerView.frame.width)), \(Int(containerView.frame.height))"
@@ -29,6 +31,8 @@ class FlashcardStatsViewController: CoreDataViewController, WKNavigationDelegate
             return dimParams
         }
     }
+    
+    // MARK: Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let flashcard = flashcard else {
@@ -73,5 +77,4 @@ class FlashcardStatsViewController: CoreDataViewController, WKNavigationDelegate
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(null, \"\(clef)\", \(dimensions))")
         }
     }
-
 }

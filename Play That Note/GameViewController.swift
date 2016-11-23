@@ -13,14 +13,33 @@ import WebKit
 import AVFoundation
 import CoreData
 
-class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigationDelegate {
+class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDelegate {
 
     // MARK: Parameters
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var clefPercentageLabel: UILabel!
+    @IBOutlet weak var clefPlusMinusLabel: UILabel!
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var incorrectLabel: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet weak var plusMinusLabel: UILabel!
+    
+    let stack = Stats.stack
+    
+    var pitchEngine: PitchEngine?
+    var consecutivePitches = [Pitch]()
+    
+    let jsDrawStaffWithPitch = "drawStaffWithPitch"
     
     var webView: WKWebView?
-    let jsDrawStaffWithPitch = "drawStaffWithPitch"
+    var dimensions: String {
+        get {
+            let dimParams = "\(Int(containerView.frame.width)), \(Int(containerView.frame.height))"
+            print(dimParams)
+            return dimParams
+        }
+    }
     
     var lowest = try! Note(letter: .C, octave: 1)
     var highest = try! Note(letter: .C, octave: 7)
@@ -44,17 +63,7 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
             }
         }
     }
-    var consecutivePitches = [Pitch]()
-    
-    var dimensions: String {
-        get {
-            let dimParams = "\(Int(containerView.frame.width)), \(Int(containerView.frame.height))"
-            print(dimParams)
-            return dimParams
-        }
-    }
-    
-    var pitchEngine: PitchEngine?
+
     var flashcards = [Flashcard]() {
         didSet {
             clefStats = getStats(for: clef)
@@ -71,51 +80,36 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
             incorrectLabel.text = "Incorrect: \(flashcard.incorrect)"
             percentageLabel.text = "\(Int(flashcard.percentage))%"
             plusMinusLabel.text = "+/-: \(flashcard.plusMinus)"
-            if flashcard.plusMinus < 0 {
-                plusMinusLabel.textColor = UIColor.red
-            } else if flashcard.plusMinus > 0 {
-                plusMinusLabel.textColor = UIColor.green
-            } else {
-                plusMinusLabel.textColor = UIColor.blue
-            }
+            plusMinusLabel.textColor = getLabelColor(for: flashcard.plusMinus)
         }
     }
-    @IBOutlet weak var clefPercentageLabel: UILabel!
-    @IBOutlet weak var clefPlusMinusLabel: UILabel!
-    
-    @IBOutlet weak var correctLabel: UILabel!
-    @IBOutlet weak var incorrectLabel: UILabel!
-    @IBOutlet weak var percentageLabel: UILabel!
-    @IBOutlet var plusMinusLabel: UILabel!
-    
+
     var clefStats = (0, 0) {
         didSet {
-            var percentage = 0.0
-            if (clefStats.0 + clefStats.1) != 0 {
-                percentage = Double(clefStats.0)/Double(clefStats.0 + clefStats.1)*100
-            }
-            let plusMinus = clefStats.0-clefStats.1
-            clefPercentageLabel.text = "\(clef.rawValue.capitalized) Clef: \(Int(percentage))%"
-            clefPlusMinusLabel.text = "+/-: \(plusMinus)"
-            if plusMinus < 0 {
-                clefPlusMinusLabel.textColor = UIColor.red
-            } else if plusMinus > 0 {
-                clefPlusMinusLabel.textColor = UIColor.green
+            let stats = Stats.getStats(for: flashcards)
+            if let percentage = stats["percentage"] as? Double {
+                clefPercentageLabel.text = "\(clef.rawValue.capitalized) Clef: \(Int(percentage))%"
             } else {
-                clefPlusMinusLabel.textColor = UIColor.blue
+                clefPercentageLabel.text = "No Data"
             }
+            let plusMinus = stats["plusMinus"] as! Int
+            clefPlusMinusLabel.text = "+/-: \(plusMinus)"
+            clefPlusMinusLabel.textColor = getLabelColor(for: plusMinus)
         }
     }
-    var correct: Int = 0
-    var incorrect: Int = 0
-    
+
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = Settings.levelThreshold
-        fetchStoredFlashcards()
+        //fetchStoredFlashcards()
+        flashcards = Stats.fetchSavedFlashcards(for: clef, lowest: Int32(lowest.index), highest: Int32(highest.index))
+        if flashcards.count == 0 {
+            flashcards = createFlashcards()
+            stack.save()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,49 +134,44 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
         pitchEngine?.stop()
     }
     
-    // MARK: CoreData Functions
-    func fetchStoredFlashcards() {
-        let fetchRequst = NSFetchRequest<NSManagedObject>(entityName: "Flashcard")
-        fetchRequst.sortDescriptors = [NSSortDescriptor(key: "pitchIndex", ascending: true)]
-        let clefPredicate = NSPredicate(format: "clef = %@", argumentArray: [clef.rawValue])
-        let minPredicate = NSPredicate(format: "pitchIndex >= %@", argumentArray: [lowest.index])
-        let maxPredicate = NSPredicate(format: "pitchIndex <= %@", argumentArray: [highest.index])
-        let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [clefPredicate, minPredicate, maxPredicate])
-        fetchRequst.predicate = andPredicate
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController?.delegate = self
-        executeSearch()
-        
-        flashcards = fetchedResultsController?.fetchedObjects as! [Flashcard]
-        if flashcards.count == 0 {
-            flashcards = createFlashcards()
-        }
-        stack.save()
-        
-        for flashcard in flashcards {
-            print(flashcard.clef!, flashcard.note!, flashcard.percentage, flashcard.correct, flashcard.incorrect)
-        }
-    }
-    
+    // MARK: Data Functions
     func createFlashcards() -> [Flashcard] {
         var flashcards = [Flashcard]()
         for i in lowest.index...highest.index {
             let note = try! Note(index: i)
             let flashcard = Flashcard(with: clef, note: note.string, pitchIndex: Int32(i), insertInto: stack.context)
             flashcards.append(flashcard)
+            if note.letter.rawValue.characters.count == 1 {
+                if note.letter != .C && note.letter != .F {
+                    let flatFlashcard = Flashcard(with: clef, note: "\(note.letter.rawValue)b\(note.octave)", pitchIndex: Int32(i-1), insertInto: stack.context)
+                    flashcards.append(flatFlashcard)
+                }
+            }
         }
         return flashcards
     }
-
+    
+    func getLabelColor(for value: Int) -> UIColor {
+        if value < 0 {
+            return UIColor.red
+        } else if value > 0 {
+            return UIColor.green
+        } else {
+            return UIColor.blue
+        }
+    }
     // MARK: Gameplay Functions
     @IBAction func StartButton(_ sender: UIButton) {
-        if !pitchEngine!.active {
-            pitchEngine?.start()
+        guard let pitchEngine = pitchEngine else {
+            fatalError("No Pitch Engine Found")
+        }
+        if !pitchEngine.active {
+            pitchEngine.start()
             sender.setTitle("Stop", for: .normal)
             print("Pitch Engine Started")
             flashcardToShow = getRandomflashcard()
         } else {
-            pitchEngine?.stop()
+            pitchEngine.stop()
             sender.setTitle("Start", for: .normal)
             print("Pitch Engine Stopped")
         }
@@ -280,7 +269,6 @@ class GameViewController: CoreDataViewController, PitchEngineDelegate, WKNavigat
                     clefStats.1 += 1
                 }
                 stack.save()
-                print(fetchedResultsController?.fetchedObjects as! [Flashcard])
                 present(alertController, animated: true)
             }
         }
