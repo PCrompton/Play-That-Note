@@ -60,7 +60,7 @@ struct Stats {
         results["totalAnswered"] = total
         results["plusMinus"] = rawStats.0 - rawStats.1
         if total != 0 {
-            results["percentage"] = Double(rawStats.0/total)
+            results["percentage"] = Double(rawStats.0)/Double(total) * 100
         } else {
             results["percentage"] = nil
         }
