@@ -12,6 +12,7 @@ import Beethoven
 import WebKit
 import AVFoundation
 import CoreData
+import GameKit
 
 class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDelegate {
 
@@ -133,6 +134,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         pitchEngine?.stop()
+        sendScore()
     }
     
     // MARK: Data Functions
@@ -161,6 +163,26 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
             return UIColor.blue
         }
     }
+    
+    func sendScore() {
+        if GKLocalPlayer.localPlayer().isAuthenticated {
+            let totalFlashcards = Stats.fetchSavedFlashcards(with: nil)
+            let totalStats = Stats.getStats(for: totalFlashcards)
+            let totalPlusMinus = totalStats["plusMinus"] as! Int
+            let scoreReporter = GKScore(leaderboardIdentifier: "total.plus.minus")
+            scoreReporter.value = Int64(totalPlusMinus)
+            let scoreArray: [GKScore] = [scoreReporter]
+            GKScore.report(scoreArray, withCompletionHandler: { (error) in
+                if let error = error {
+                    print("Error reporting scores: \(error)")
+                } else {
+                    print("Successfully reported scores")
+                }
+            })
+        }
+
+    }
+    
     // MARK: Gameplay Functions
     @IBAction func StartButton(_ sender: UIButton) {
         guard let pitchEngine = pitchEngine else {

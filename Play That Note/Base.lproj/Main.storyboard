@@ -180,6 +180,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aMB-9a-MVn">
+                        <barButtonItem key="leftBarButtonItem" title="Leaderboards" id="IKZ-5O-206">
+                            <connections>
+                                <action selector="leaderboardsButton:" destination="dzI-8c-0bk" id="xye-2J-57b"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="pqF-xm-LYc">
                             <connections>
                                 <action selector="doneButton:" destination="dzI-8c-0bk" id="QT5-c2-gMW"/>
@@ -211,7 +216,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StatsCell" textLabel="8aC-17-Hn7" detailTextLabel="kbi-sT-OYx" style="IBUITableViewCellStyleValue1" id="tCP-M3-IGx">
-                                        <rect key="frame" x="0.0" y="28" width="376" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCP-M3-IGx" id="kEC-FE-j8e">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>

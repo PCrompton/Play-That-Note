@@ -41,7 +41,7 @@ class MenuViewController: UIViewController {
             if let viewController = viewController {
                 self.present(viewController, animated: true, completion: nil)
             } else {
-                print(GKLocalPlayer.localPlayer().isAuthenticated)
+                print("Authentication Successful: \(GKLocalPlayer.localPlayer().isAuthenticated)")
             }
         }
     }
