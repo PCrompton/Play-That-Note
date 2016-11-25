@@ -39,3 +39,6 @@ For displaying musical notation, Play That Note uses the Javascript library Vexf
 
 * [Vexflow](https://github.com/0xfe/vexflow.git)
 
+### Compatability
+
+XCode 8.1, iOS 10.1.1
