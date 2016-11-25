@@ -116,6 +116,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         super.viewWillAppear(true)
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height))
         webView?.configuration.ignoresViewportScaleLimits = true
+        webView?.backgroundColor = UIColor.clear
         if let webView = webView {
             webView.navigationDelegate = self
             webView.allowsBackForwardNavigationGestures = false

@@ -42,17 +42,17 @@
                                 <rect key="frame" x="50" y="100" width="275" height="467"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="e9q-Dz-bBn">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="233.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="234"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9md-Bq-b8M">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="233.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="234"/>
                                                 <state key="normal" title="Treble Clef" image="Treble Clef"/>
                                                 <connections>
                                                     <segue destination="BYZ-38-t0r" kind="show" identifier="treble" id="DOS-F8-8Jo"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYi-MM-rPE">
-                                                <rect key="frame" x="150" y="0.0" width="125" height="233.5"/>
+                                                <rect key="frame" x="150" y="0.0" width="125" height="234"/>
                                                 <state key="normal" title="Bass Clef" image="Bass Clef"/>
                                                 <connections>
                                                     <segue destination="BYZ-38-t0r" kind="show" identifier="bass" id="IdE-Xc-1ah"/>
@@ -61,17 +61,17 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ET2-E0-zEe">
-                                        <rect key="frame" x="0.0" y="233.5" width="275" height="233.5"/>
+                                        <rect key="frame" x="0.0" y="234" width="275" height="233"/>
                                         <subviews>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vI-sE-Cyq">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="233.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="233"/>
                                                 <state key="normal" title="Alto Clef" image="Alto Clef"/>
                                                 <connections>
                                                     <segue destination="BYZ-38-t0r" kind="show" identifier="alto" id="dnd-ke-CKN"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jby-eL-3Yz">
-                                                <rect key="frame" x="150" y="0.0" width="125" height="233.5"/>
+                                                <rect key="frame" x="150" y="0.0" width="125" height="233"/>
                                                 <state key="normal" title="Tenor Clef" image="Tenor Clef"/>
                                                 <connections>
                                                     <segue destination="BYZ-38-t0r" kind="show" id="rt2-VS-yCD"/>
@@ -207,14 +207,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PQt-Sn-JHg">
-                                <rect key="frame" x="-1" y="0.0" width="376" height="667"/>
+                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StatsCell" textLabel="8aC-17-Hn7" detailTextLabel="kbi-sT-OYx" style="IBUITableViewCellStyleValue1" id="tCP-M3-IGx">
                                         <rect key="frame" x="0.0" y="28" width="376" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCP-M3-IGx" id="kEC-FE-j8e">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8aC-17-Hn7">
@@ -225,7 +225,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kbi-sT-OYx">
-                                                    <rect key="frame" x="317" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="316" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -459,13 +459,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRt-Vd-16T">
-                                <rect key="frame" x="0.0" y="164" width="375" height="200"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="uUi-Q0-KyO"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dgA-3e-3zo">
                                 <rect key="frame" x="0.0" y="372" width="375" height="110"/>
                                 <subviews>
@@ -534,8 +527,14 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRt-Vd-16T">
+                                <rect key="frame" x="0.0" y="164" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="uUi-Q0-KyO"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TRt-Vd-16T" firstAttribute="top" secondItem="9fy-Yw-W9l" secondAttribute="bottom" constant="8" id="5tf-m6-e2T"/>
                             <constraint firstItem="TRt-Vd-16T" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="7vp-te-4h5"/>
@@ -581,7 +580,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-sj-dAC">
                                 <rect key="frame" x="0.0" y="120" width="375" height="200"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="eD7-yB-HYo"/>
                                 </constraints>
@@ -629,7 +627,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Rk6-r8-G9T" firstAttribute="top" secondItem="Q3s-sj-dAC" secondAttribute="bottom" constant="8" id="3jn-7u-PKc"/>
                             <constraint firstItem="Rk6-r8-G9T" firstAttribute="width" secondItem="Q3s-sj-dAC" secondAttribute="width" id="6pd-gl-BLy"/>

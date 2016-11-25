@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import GameKit
 
 class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         title = "Choose a Clef"
+        authenticateLocalPlayer()
     }
     
     // MARK: Segue
@@ -32,6 +34,15 @@ class MenuViewController: UIViewController {
         default: return
         }
     }
-
-
+    
+    func authenticateLocalPlayer() {
+        let localPlayer = GKLocalPlayer.localPlayer()
+        localPlayer.authenticateHandler = { (viewController, error) -> Void in
+            if let viewController = viewController {
+                self.present(viewController, animated: true, completion: nil)
+            } else {
+                print(GKLocalPlayer.localPlayer().isAuthenticated)
+            }
+        }
+    }
 }

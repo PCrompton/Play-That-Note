@@ -296,7 +296,7 @@
 				TargetAttributes = {
 					960144351DD132D0006146C2 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = K79BKV3T6H;
+						DevelopmentTeam = F7XWAC4QF7;
 						ProvisioningStyle = Automatic;
 					};
 					960144491DD132D1006146C2 = {
@@ -552,14 +552,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = K79BKV3T6H;
+				DEVELOPMENT_TEAM = F7XWAC4QF7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Play That Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Crompton-Apps.Play-That-Note";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.crompton-apps-play-that-note";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -571,14 +571,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = K79BKV3T6H;
+				DEVELOPMENT_TEAM = F7XWAC4QF7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Play That Note/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Crompton-Apps.Play-That-Note";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.crompton-apps-play-that-note";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

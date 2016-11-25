@@ -53,6 +53,7 @@ class FlashcardStatsViewController: UIViewController, WKNavigationDelegate  {
         super.viewWillAppear(true)
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: containerView.frame.width, height: containerView.frame.height))
         webView?.configuration.ignoresViewportScaleLimits = true
+        webView?.scrollView.isScrollEnabled = true
         if let webView = webView {
             webView.navigationDelegate = self
             webView.allowsBackForwardNavigationGestures = false
