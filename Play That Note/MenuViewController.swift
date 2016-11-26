@@ -11,9 +11,12 @@ import GameKit
 
 class MenuViewController: UIViewController {
     
+    let statsModelController = StatsModelController()
     override func viewDidLoad() {
         title = "Choose a Clef"
-        authenticateLocalPlayer()
+        statsModelController.authenticateLocalPlayer { (viewController) in
+            self.present(viewController, animated: true, completion: nil)
+        }
     }
     
     // MARK: Segue
@@ -32,17 +35,6 @@ class MenuViewController: UIViewController {
         case 2: destinationController.clef = Clef.alto
         case 3: destinationController.clef = Clef.tenor
         default: return
-        }
-    }
-    
-    func authenticateLocalPlayer() {
-        let localPlayer = GKLocalPlayer.localPlayer()
-        localPlayer.authenticateHandler = { (viewController, error) -> Void in
-            if let viewController = viewController {
-                self.present(viewController, animated: true, completion: nil)
-            } else {
-                print("Authentication Successful: \(GKLocalPlayer.localPlayer().isAuthenticated)")
-            }
         }
     }
 }

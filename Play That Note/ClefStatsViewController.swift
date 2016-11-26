@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import GameKit
 
-class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GKGameCenterControllerDelegate {
+class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var statsModelController = StatsModelController()
     
@@ -18,9 +18,7 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
         
     // MARK: IBActions
     @IBAction func leaderboardsButton(_ sender: Any) {
-        let gameCenterViewController = GKGameCenterViewController()
-        gameCenterViewController.gameCenterDelegate = self
-        present(gameCenterViewController, animated: true, completion: nil)
+        present(statsModelController.getGameCenterViewController(), animated: true, completion: nil)
     }
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -70,9 +68,5 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
             statsVC.clef = clef
             show(statsVC, sender: self)
         }
-    }
-    
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
     }
 }

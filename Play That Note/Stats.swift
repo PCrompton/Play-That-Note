@@ -12,7 +12,7 @@ import UIKit
 
 struct Stats {
     
-    var flashcards = [Flashcard]()
+    var flashcards: [Flashcard]
     
     var correct: Int {
         get {

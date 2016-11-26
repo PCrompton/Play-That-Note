@@ -65,11 +65,8 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         }
     }
 
-    var flashcards = [Flashcard]() {
-        didSet {
-            statsModelController.flashcards = flashcards
-        }
-    }
+    var flashcards = [Flashcard]()
+    
     var flashcardToShow: Flashcard? {
         didSet {
             webView?.reload()

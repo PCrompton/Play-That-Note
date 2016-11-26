@@ -11,15 +11,9 @@ import CoreData
 import GameKit
 import Pitchy
 
-class StatsModelController {
+class StatsModelController: NSObject, GKGameCenterControllerDelegate {
     let stack = (UIApplication.shared.delegate as! AppDelegate).stack
     var fetchedResultsController: NSFetchedResultsController<NSManagedObject>?
-    var flashcards = [Flashcard]() {
-        didSet {
-            stats.flashcards = flashcards
-        }
-    }
-    var stats = Stats()
     
     // MARK: CoreData Functions
     func fetchSavedFlashcards(with predicates: [NSPredicate]?) -> [Flashcard] {
@@ -53,13 +47,12 @@ class StatsModelController {
     }
     
     func getStats(for flashcards: [Flashcard]) -> Stats {
-        var stats = Stats()
-        stats.flashcards = flashcards
+        let stats = Stats(flashcards: flashcards)
         return stats
     }
     
     func getStats(for clef: Clef, lowest: Int32?, highest: Int32?) -> Stats {
-        var flashcards = fetchSavedFlashcards(for: clef, lowest: lowest, highest: highest)
+        let flashcards = fetchSavedFlashcards(for: clef, lowest: lowest, highest: highest)
         return getStats(for: flashcards)
     }
     
@@ -88,6 +81,17 @@ class StatsModelController {
         }
         return flashcards
     }
+    // MARK: GameCenter functions
+    func authenticateLocalPlayer(completion: ((_ viewController: UIViewController) -> Void)?) {
+        let localPlayer = GKLocalPlayer.localPlayer()
+        localPlayer.authenticateHandler = { (viewController, error) -> Void in
+            if let viewController = viewController {
+                completion?(viewController)
+            } else {
+                print("Authentication Successful: \(GKLocalPlayer.localPlayer().isAuthenticated)")
+            }
+        }
+    }
     
     func sendScores() {
         if GKLocalPlayer.localPlayer().isAuthenticated {
@@ -97,13 +101,24 @@ class StatsModelController {
             let scoreReporter = GKScore(leaderboardIdentifier: "total.plus.minus")
             scoreReporter.value = Int64(totalPlusMinus)
             let scoreArray: [GKScore] = [scoreReporter]
-            GKScore.report(scoreArray, withCompletionHandler: { (error) in
+            GKScore.report(scoreArray) { (error) in
                 if let error = error {
                     print("Error reporting scores: \(error)")
                 } else {
                     print("Successfully reported scores")
                 }
-            })
+            }
         }
+    }
+    
+    func getGameCenterViewController() -> GKGameCenterViewController {
+        let gameCenterViewController = GKGameCenterViewController()
+        gameCenterViewController.gameCenterDelegate = self
+        return gameCenterViewController
+    }
+    
+    // MARK: GKGameCenterControllerDelegate functions
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
     }
 }
