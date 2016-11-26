@@ -12,7 +12,6 @@ import Beethoven
 import WebKit
 import AVFoundation
 import CoreData
-import GameKit
 
 class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDelegate {
 
@@ -28,6 +27,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     
     let stack = (UIApplication.shared.delegate as! AppDelegate).stack
     let statsModelController = StatsModelController()
+    let gameCenterModelController = GameCenterModelController()
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     
@@ -117,7 +117,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         pitchEngine?.stop()
-        statsModelController.sendScores()
+        gameCenterModelController.sendScores()
     }
     
     // MARK: Data Functions

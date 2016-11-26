@@ -8,17 +8,17 @@
 
 import UIKit
 import CoreData
-import GameKit
 
 class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var statsModelController = StatsModelController()
+    let statsModelController = StatsModelController()
+    let gameCenterModelController = GameCenterModelController()
     
     @IBOutlet weak var tableView: UITableView!
         
     // MARK: IBActions
     @IBAction func leaderboardsButton(_ sender: Any) {
-        present(statsModelController.getGameCenterViewController(), animated: true, completion: nil)
+        present(gameCenterModelController.getGameCenterViewController(), animated: true, completion: nil)
     }
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)

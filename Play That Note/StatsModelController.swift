@@ -8,10 +8,10 @@
 
 import Foundation
 import CoreData
-import GameKit
+import UIKit
 import Pitchy
 
-class StatsModelController: NSObject, GKGameCenterControllerDelegate {
+class StatsModelController {
     let stack = (UIApplication.shared.delegate as! AppDelegate).stack
     var fetchedResultsController: NSFetchedResultsController<NSManagedObject>?
     
@@ -46,15 +46,6 @@ class StatsModelController: NSObject, GKGameCenterControllerDelegate {
         return fetchSavedFlashcards(with: predicates)
     }
     
-    func getStats(for flashcards: [Flashcard]) -> Stats {
-        let stats = Stats(flashcards: flashcards)
-        return stats
-    }
-    
-    func getStats(for clef: Clef, lowest: Int32?, highest: Int32?) -> Stats {
-        let flashcards = fetchSavedFlashcards(for: clef, lowest: lowest, highest: highest)
-        return getStats(for: flashcards)
-    }
     
     func executeSearch() {
         if let fc = fetchedResultsController {
@@ -81,44 +72,15 @@ class StatsModelController: NSObject, GKGameCenterControllerDelegate {
         }
         return flashcards
     }
-    // MARK: GameCenter functions
-    func authenticateLocalPlayer(completion: ((_ viewController: UIViewController) -> Void)?) {
-        let localPlayer = GKLocalPlayer.localPlayer()
-        localPlayer.authenticateHandler = { (viewController, error) -> Void in
-            if let viewController = viewController {
-                completion?(viewController)
-            } else {
-                print("Authentication Successful: \(GKLocalPlayer.localPlayer().isAuthenticated)")
-            }
-        }
+    
+    // MARK: Stats functions
+    func getStats(for flashcards: [Flashcard]) -> Stats {
+        let stats = Stats(flashcards: flashcards)
+        return stats
     }
     
-    func sendScores() {
-        if GKLocalPlayer.localPlayer().isAuthenticated {
-            let totalFlashcards = fetchSavedFlashcards(with: nil)
-            let totalStats = getStats(for: totalFlashcards)
-            let totalPlusMinus = totalStats.plusMinus
-            let scoreReporter = GKScore(leaderboardIdentifier: "total.plus.minus")
-            scoreReporter.value = Int64(totalPlusMinus)
-            let scoreArray: [GKScore] = [scoreReporter]
-            GKScore.report(scoreArray) { (error) in
-                if let error = error {
-                    print("Error reporting scores: \(error)")
-                } else {
-                    print("Successfully reported scores")
-                }
-            }
-        }
-    }
-    
-    func getGameCenterViewController() -> GKGameCenterViewController {
-        let gameCenterViewController = GKGameCenterViewController()
-        gameCenterViewController.gameCenterDelegate = self
-        return gameCenterViewController
-    }
-    
-    // MARK: GKGameCenterControllerDelegate functions
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
+    func getStats(for clef: Clef, lowest: Int32?, highest: Int32?) -> Stats {
+        let flashcards = fetchSavedFlashcards(for: clef, lowest: lowest, highest: highest)
+        return getStats(for: flashcards)
     }
 }

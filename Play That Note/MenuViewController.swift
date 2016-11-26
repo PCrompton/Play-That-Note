@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import GameKit
 
 class MenuViewController: UIViewController {
     
     let statsModelController = StatsModelController()
+    let gameCenterModelController = GameCenterModelController()
     override func viewDidLoad() {
         title = "Choose a Clef"
-        statsModelController.authenticateLocalPlayer { (viewController) in
+        gameCenterModelController.authenticateLocalPlayer { (viewController) in
             self.present(viewController, animated: true, completion: nil)
         }
     }
