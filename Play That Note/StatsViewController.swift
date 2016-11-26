@@ -14,13 +14,14 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: Properties
     var clef: Clef?
     var flashcards: [Flashcard]?
+    var statsModelController = StatsModelController()
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         if let clef = clef {
-            flashcards = Stats.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil)
+            flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil)
         }
     }
     

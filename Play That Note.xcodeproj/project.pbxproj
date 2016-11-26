@@ -31,6 +31,7 @@
 		96E27C7A1DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C791DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift */; };
 		96E27C801DE52EF900B8AFF4 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C7F1DE52EF900B8AFF4 /* README.md */; };
 		96E27C821DE5D62100B8AFF4 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C811DE5D62100B8AFF4 /* Stats.swift */; };
+		96E27C861DE9211E00B8AFF4 /* StatsModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C851DE9211E00B8AFF4 /* StatsModelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		96E27C791DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Flashcard+CoreDataClass.swift"; path = "Play That Note/Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		96E27C7F1DE52EF900B8AFF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		96E27C811DE5D62100B8AFF4 /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stats.swift; path = "Play That Note/Stats.swift"; sourceTree = "<group>"; };
+		96E27C851DE9211E00B8AFF4 /* StatsModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,12 +177,8 @@
 		9602EC811DD137220032CD83 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
-				9601443B1DD132D0006146C2 /* GameViewController.swift */,
-				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
-				9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */,
-				9670B71A1DDF9E6A00094762 /* StatsViewController.swift */,
-				9670B7221DE12D5E00094762 /* FlashcardStatsViewController.swift */,
+				96E27C841DE920E600B8AFF4 /* Model Controllers */,
+				96E27C831DE920DA00B8AFF4 /* View Controllers */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -225,6 +223,27 @@
 				96E27C741DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift */,
 			);
 			name = "Managed Objects";
+			sourceTree = "<group>";
+		};
+		96E27C831DE920DA00B8AFF4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
+				9601443B1DD132D0006146C2 /* GameViewController.swift */,
+				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
+				9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */,
+				9670B71A1DDF9E6A00094762 /* StatsViewController.swift */,
+				9670B7221DE12D5E00094762 /* FlashcardStatsViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		96E27C841DE920E600B8AFF4 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96E27C851DE9211E00B8AFF4 /* StatsModelController.swift */,
+			);
+			name = "Model Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,6 +409,7 @@
 				96E27C7A1DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift in Sources */,
 				9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */,
 				96E27C801DE52EF900B8AFF4 /* README.md in Sources */,
+				96E27C861DE9211E00B8AFF4 /* StatsModelController.swift in Sources */,
 				96E27C821DE5D62100B8AFF4 /* Stats.swift in Sources */,
 				9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */,
 				96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */,

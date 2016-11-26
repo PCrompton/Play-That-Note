@@ -26,8 +26,8 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var plusMinusLabel: UILabel!
     
-    let stack = Stats.stack
-    
+    let stack = (UIApplication.shared.delegate as! AppDelegate).stack
+    let statsModelController = StatsModelController()
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     
@@ -67,7 +67,7 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
 
     var flashcards = [Flashcard]() {
         didSet {
-            clefStats = getStats(for: clef)
+            statsModelController.flashcards = flashcards
         }
     }
     var flashcardToShow: Flashcard? {
@@ -85,32 +85,18 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         }
     }
 
-    var clefStats = (0, 0) {
-        didSet {
-            let stats = Stats.getStats(for: flashcards)
-            if let percentage = stats["percentage"] as? Double {
-                clefPercentageLabel.text = "\(clef.rawValue.capitalized) Clef: \(Int(percentage))%"
-            } else {
-                clefPercentageLabel.text = "No Data"
-            }
-            let plusMinus = stats["plusMinus"] as! Int
-            clefPlusMinusLabel.text = "+/-: \(plusMinus)"
-            clefPlusMinusLabel.textColor = getLabelColor(for: plusMinus)
-        }
-    }
-
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = Settings.levelThreshold
-        //fetchStoredFlashcards()
-        flashcards = Stats.fetchSavedFlashcards(for: clef, lowest: Int32(lowest.index), highest: Int32(highest.index))
+        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(lowest.index), highest: Int32(highest.index))
         if flashcards.count == 0 {
-            flashcards = createFlashcards()
+            flashcards = statsModelController.createFlashcards(clef: clef, lowest: lowest, highest: highest)
             stack.save()
         }
+        updateClefStatsLabels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,26 +120,10 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         pitchEngine?.stop()
-        sendScore()
+        statsModelController.sendScores()
     }
     
     // MARK: Data Functions
-    func createFlashcards() -> [Flashcard] {
-        var flashcards = [Flashcard]()
-        for i in lowest.index...highest.index {
-            let note = try! Note(index: i)
-            let flashcard = Flashcard(with: clef, note: note.string, pitchIndex: Int32(i), insertInto: stack.context)
-            flashcards.append(flashcard)
-            if note.letter.rawValue.characters.count == 1 {
-                if note.letter != .C && note.letter != .F {
-                    let flatFlashcard = Flashcard(with: clef, note: "\(note.letter.rawValue)b\(note.octave)", pitchIndex: Int32(i-1), insertInto: stack.context)
-                    flashcards.append(flatFlashcard)
-                }
-            }
-        }
-        return flashcards
-    }
-    
     func getLabelColor(for value: Int) -> UIColor {
         if value < 0 {
             return UIColor.red
@@ -164,23 +134,15 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         }
     }
     
-    func sendScore() {
-        if GKLocalPlayer.localPlayer().isAuthenticated {
-            let totalFlashcards = Stats.fetchSavedFlashcards(with: nil)
-            let totalStats = Stats.getStats(for: totalFlashcards)
-            let totalPlusMinus = totalStats["plusMinus"] as! Int
-            let scoreReporter = GKScore(leaderboardIdentifier: "total.plus.minus")
-            scoreReporter.value = Int64(totalPlusMinus)
-            let scoreArray: [GKScore] = [scoreReporter]
-            GKScore.report(scoreArray, withCompletionHandler: { (error) in
-                if let error = error {
-                    print("Error reporting scores: \(error)")
-                } else {
-                    print("Successfully reported scores")
-                }
-            })
+    func updateClefStatsLabels() {
+        let clefStats = statsModelController.getStats(for: clef, lowest: nil, highest: nil)
+        clefPlusMinusLabel.text = "+/-: \(clefStats.plusMinus)"
+        clefPlusMinusLabel.textColor = getLabelColor(for: clefStats.plusMinus)
+        if let percentage = clefStats.percentage {
+            clefPercentageLabel.text = "\(Int(percentage))%"
+        } else {
+            clefPercentageLabel.text = "No Data"
         }
-
     }
     
     // MARK: Gameplay Functions
@@ -237,19 +199,6 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
         return true
     }
     
-    func getStats(for clef: Clef) -> (Int, Int) {
-        var correct = 0
-        var incorrect = 0
-        
-        for flashcard in flashcards {
-            if clef.rawValue == flashcard.clef {
-                correct += Int(flashcard.correct)
-                incorrect += Int(flashcard.incorrect)
-            }
-        }
-        return (correct, incorrect)
-    }
-    
     // MARK: WKNavigationDelegate Functions
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if let pitch = flashcardToShow?.note {
@@ -282,16 +231,15 @@ class GameViewController: UIViewController, PitchEngineDelegate, WKNavigationDel
                 if note.index == Int((flashcardToShow?.pitchIndex)!) {
                     alertController.message = "Congrates, you played \(note.string)"
                     flashcardToShow?.correct += 1
-                    clefStats.0 += 1
                 } else {
                     guard let note = flashcardToShow?.note else {
                         fatalError("No note found")
                     }
                     alertController.message = "Sorry, that was not \(note)"
                     flashcardToShow?.incorrect += 1
-                    clefStats.1 += 1
                 }
                 stack.save()
+                updateClefStatsLabels()
                 present(alertController, animated: true)
             }
         }

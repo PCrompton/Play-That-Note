@@ -12,6 +12,7 @@ import GameKit
 
 class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GKGameCenterControllerDelegate {
     
+    var statsModelController = StatsModelController()
     
     @IBOutlet weak var tableView: UITableView!
         
@@ -50,8 +51,8 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
         }
         if let clef = cell.clef {
             cell.textLabel?.text = "\(clef.rawValue.capitalized) Clef"
-            let stats = Stats.getStats(for: Stats.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil))
-            let percentage = stats["percentage"] as? Double
+            let stats = statsModelController.getStats(for: statsModelController.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil))
+            let percentage = stats.percentage
             if let percentage = percentage {
                 cell.detailTextLabel?.text = "\(Int(percentage))%"
             } else {
