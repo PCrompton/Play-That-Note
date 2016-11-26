@@ -559,7 +559,7 @@
                     <connections>
                         <outlet property="clefPercentageLabel" destination="Vk2-H3-1Lq" id="Qiz-SR-wvS"/>
                         <outlet property="clefPlusMinusLabel" destination="BBR-8o-0U3" id="4id-rb-946"/>
-                        <outlet property="containerView" destination="TRt-Vd-16T" id="gI8-g7-yrr"/>
+                        <outlet property="containerView" destination="TRt-Vd-16T" id="iDa-7q-bAS"/>
                         <outlet property="correctLabel" destination="l6T-Wd-cW8" id="Yiw-Nj-qe9"/>
                         <outlet property="incorrectLabel" destination="RFo-tB-pAV" id="sVN-no-LyZ"/>
                         <outlet property="percentageLabel" destination="Ozf-e7-AI1" id="GIA-gB-9AA"/>
