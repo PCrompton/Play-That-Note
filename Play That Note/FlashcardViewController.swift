@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import Pitchy
 
-class FlashcardSuperViewController: UIViewController, WKNavigationDelegate {
+class FlashcardViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: Parameters
     @IBOutlet weak var containerView: UIView!
@@ -59,25 +59,15 @@ class FlashcardSuperViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    var flashcardToShow: Flashcard? {
+    var flashcard: Flashcard? {
         didSet {
             webView?.reload()
-            guard let flashcard = flashcardToShow else {
-                print("No flashcard found")
-                return
-            }
-            correctLabel.text = "Correct: \(flashcard.correct)"
-            incorrectLabel.text = "Incorrect: \(flashcard.incorrect)"
-            percentageLabel.text = "\(Int(flashcard.percentage))%"
-            plusMinusLabel.text = "+/-: \(flashcard.plusMinus)"
-            plusMinusLabel.textColor = getLabelColor(for: flashcard.plusMinus)
         }
     }
     
     // MARK: Lifecycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateClefStatsLabels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +90,8 @@ class FlashcardSuperViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: WKNavigationDelegate functions
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if let pitch = flashcardToShow?.note {
+        updateStatsLabels()
+        if let pitch = flashcard?.note {
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \(dimensions))")
         } else {
             webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(null, \"\(clef)\", \(dimensions))")
@@ -116,6 +107,23 @@ class FlashcardSuperViewController: UIViewController, WKNavigationDelegate {
         } else {
             return UIColor.blue
         }
+    }
+    
+    func updateStatsLabels() {
+        updateFlashcardStatsLabels()
+        updateClefStatsLabels()
+    }
+    
+    func updateFlashcardStatsLabels() {
+        guard let flashcard = flashcard else {
+            print("No flashcard found")
+            return
+        }
+        correctLabel.text = "Correct: \(flashcard.correct)"
+        incorrectLabel.text = "Incorrect: \(flashcard.incorrect)"
+        percentageLabel.text = "\(Int(flashcard.percentage))%"
+        plusMinusLabel.text = "+/-: \(flashcard.plusMinus)"
+        plusMinusLabel.textColor = getLabelColor(for: flashcard.plusMinus)
     }
     
     func updateClefStatsLabels() {

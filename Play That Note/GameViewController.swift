@@ -12,14 +12,13 @@ import Beethoven
 import AVFoundation
 import CoreData
 
-class GameViewController: FlashcardSuperViewController, PitchEngineDelegate {
+class GameViewController: FlashcardViewController, PitchEngineDelegate {
 
     // MARK: Parameters
     @IBOutlet weak var startButton: UIButton!
     
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
-
     var flashcards = [Flashcard]()
 
 
@@ -52,7 +51,7 @@ class GameViewController: FlashcardSuperViewController, PitchEngineDelegate {
             pitchEngine.start()
             sender.setTitle("Stop", for: .normal)
             print("Pitch Engine Started")
-            flashcardToShow = getRandomflashcard()
+            flashcard = getRandomflashcard()
         } else {
             pitchEngine.stop()
             sender.setTitle("Start", for: .normal)
@@ -113,22 +112,22 @@ class GameViewController: FlashcardSuperViewController, PitchEngineDelegate {
                 let action = UIAlertAction(title: "Next", style: .default) {
                     (action) in
                     self.pitchEngine?.start()
-                    self.flashcardToShow = self.getRandomflashcard()
+                    self.flashcard = self.getRandomflashcard()
                 }
                 alertController.addAction(action)
                 print(pitch.note.string, pitch.note.index)
-                if note.index == Int((flashcardToShow?.pitchIndex)!) {
+                if note.index == Int((flashcard?.pitchIndex)!) {
                     alertController.message = "Congrates, you played \(note.string)"
-                    flashcardToShow?.correct += 1
+                    flashcard?.correct += 1
                 } else {
-                    guard let note = flashcardToShow?.note else {
+                    guard let note = flashcard?.note else {
                         fatalError("No note found")
                     }
                     alertController.message = "Sorry, that was not \(note)"
-                    flashcardToShow?.incorrect += 1
+                    flashcard?.incorrect += 1
                 }
                 stack.save()
-                updateClefStatsLabels()
+                updateStatsLabels()
                 present(alertController, animated: true)
             }
         }
