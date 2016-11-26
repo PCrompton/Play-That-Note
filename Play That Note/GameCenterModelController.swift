@@ -10,6 +10,7 @@ import Foundation
 import GameKit
 
 class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
+    let statsModelController = StatsModelController()
     
     // MARK: GameCenter functions
     func authenticateLocalPlayer(completion: ((_ viewController: UIViewController) -> Void)?) {
@@ -25,8 +26,8 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
     
     func sendScores() {
         if GKLocalPlayer.localPlayer().isAuthenticated {
-            let totalFlashcards = fetchSavedFlashcards(with: nil)
-            let totalStats = getStats(for: totalFlashcards)
+            let totalFlashcards = statsModelController.fetchSavedFlashcards(with: nil)
+            let totalStats = statsModelController.getStats(for: totalFlashcards)
             let totalPlusMinus = totalStats.plusMinus
             let scoreReporter = GKScore(leaderboardIdentifier: "total.plus.minus")
             scoreReporter.value = Int64(totalPlusMinus)
