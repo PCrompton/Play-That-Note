@@ -38,10 +38,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8m1-z6-Nok">
-                                <rect key="frame" x="50" y="100" width="275" height="467"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FDA-zY-rb4">
+                                <rect key="frame" x="50" y="64" width="275" height="40"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="e9q-Dz-bBn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awx-Q2-JtE">
+                                        <rect key="frame" x="0.0" y="0.0" width="91.5" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="LJe-iC-4hk">
+                                        <rect key="frame" x="91.5" y="0.0" width="92" height="40"/>
+                                        <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCX-L1-tNh">
+                                        <rect key="frame" x="183.5" y="0.0" width="91.5" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="i1n-vZ-2Mk"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8m1-z6-Nok">
+                                <rect key="frame" x="50" y="112.5" width="275" height="467"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="e9q-Dz-bBn">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="233.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9md-Bq-b8M">
@@ -60,10 +84,10 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ET2-E0-zEe">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ET2-E0-zEe">
                                         <rect key="frame" x="0.0" y="233.5" width="275" height="233.5"/>
                                         <subviews>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vI-sE-Cyq">
+                                            <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vI-sE-Cyq">
                                                 <rect key="frame" x="0.0" y="0.0" width="125" height="233.5"/>
                                                 <state key="normal" title="Alto Clef" image="Alto Clef"/>
                                                 <connections>
@@ -84,9 +108,12 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="FDA-zY-rb4" firstAttribute="top" secondItem="MXD-66-ngG" secondAttribute="bottom" id="4iv-vd-sQC"/>
+                            <constraint firstItem="FDA-zY-rb4" firstAttribute="centerX" secondItem="8m1-z6-Nok" secondAttribute="centerX" id="4oS-6z-nMs"/>
                             <constraint firstItem="8m1-z6-Nok" firstAttribute="centerX" secondItem="YkE-0S-D4v" secondAttribute="centerX" id="IK8-T2-D4I"/>
+                            <constraint firstItem="8m1-z6-Nok" firstAttribute="top" secondItem="FDA-zY-rb4" secondAttribute="bottom" constant="8" id="S3q-g3-Vxp"/>
                             <constraint firstItem="8m1-z6-Nok" firstAttribute="height" secondItem="YkE-0S-D4v" secondAttribute="height" constant="-200" id="TKg-Hd-fFJ"/>
-                            <constraint firstItem="8m1-z6-Nok" firstAttribute="centerY" secondItem="YkE-0S-D4v" secondAttribute="centerY" id="ddZ-oZ-RVo"/>
+                            <constraint firstItem="FDA-zY-rb4" firstAttribute="width" secondItem="8m1-z6-Nok" secondAttribute="width" id="inv-ri-hge"/>
                             <constraint firstItem="8m1-z6-Nok" firstAttribute="width" secondItem="YkE-0S-D4v" secondAttribute="width" constant="-100" id="wcY-Ie-tBX"/>
                         </constraints>
                     </view>
@@ -102,10 +129,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bestScoresActivityIndicator" destination="LJe-iC-4hk" id="G7L-OH-nyv"/>
+                        <outlet property="bestScoresLabel" destination="dCX-L1-tNh" id="Hkd-2A-Hpo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkE-EQ-ess" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="-9"/>
+            <point key="canvasLocation" x="-60" y="-9.4452773613193415"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oRr-MG-SKa">

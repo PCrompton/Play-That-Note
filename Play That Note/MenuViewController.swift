@@ -12,11 +12,50 @@ class MenuViewController: UIViewController {
     
     let statsModelController = StatsModelController()
     let gameCenterModelController = GameCenterModelController()
+    
+    @IBOutlet weak var bestScoresLabel: UILabel!
+    
+    @IBOutlet weak var bestScoresActivityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         title = "Choose a Clef"
-        gameCenterModelController.authenticateLocalPlayer { (viewController) in
-            self.present(viewController, animated: true, completion: nil)
+
+        gameCenterModelController.authenticateLocalPlayer { (viewController, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.showErrorPopup(with: "Error Authenticating Player", message: "Check your internet connection")
+                }
+            }
+            if let viewController = viewController {
+                self.present(viewController, animated: true, completion: nil)
+            } else {
+                self.gameCenterModelController.getBestScores(completion: { (scores, error) in
+                    if error != nil {
+                        DispatchQueue.main.async {
+                            self.bestScoresActivityIndicator.stopAnimating()
+                            self.bestScoresLabel.text = "No Connection"
+                            self.bestScoresLabel.isHidden = false
+                            self.showErrorPopup(with: "Error Downloading Scores", message: "Check your internet connection")
+                        }
+                    }
+                    if let scores = scores {
+                        DispatchQueue.main.async {
+                            let randomScoreIndex = Int(arc4random_uniform(UInt32(scores.count)))
+                            self.bestScoresLabel.text = scores[randomScoreIndex]
+                            self.bestScoresActivityIndicator.stopAnimating()
+                            self.bestScoresLabel.isHidden = false
+                        }
+                    }
+                })
+            }
         }
+    }
+    
+    func showErrorPopup(with title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: Segue

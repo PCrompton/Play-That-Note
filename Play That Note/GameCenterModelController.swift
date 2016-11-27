@@ -13,13 +13,36 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
     let statsModelController = StatsModelController()
     
     // MARK: GameCenter functions
-    func authenticateLocalPlayer(completion: ((_ viewController: UIViewController) -> Void)?) {
+    func authenticateLocalPlayer(completion: ((_ viewController: UIViewController?, _ error: Error?) -> Void)?) {
         let localPlayer = GKLocalPlayer.localPlayer()
         localPlayer.authenticateHandler = { (viewController, error) -> Void in
-            if let viewController = viewController {
-                completion?(viewController)
-            } else {
+            if viewController == nil {
                 print("Authentication Successful: \(GKLocalPlayer.localPlayer().isAuthenticated)")
+            }
+            completion?(viewController, error)
+        }
+    }
+    func getBestScores(completion: @escaping (_ scores: [String]?, _ error: Error?) -> Void) {
+        GKLeaderboard.loadLeaderboards() { (leaderboards, error) in
+            if let error = error {
+                completion(nil, error)
+            } else if let leaderboards = leaderboards {
+                print("Leaderboards: \(leaderboards)")
+                var bestScores = [String]()
+                for leaderboard in leaderboards {
+                    leaderboard.playerScope = .global
+                    leaderboard.loadScores(completionHandler: { (scores, error) in
+                        if let error = error {
+                            completion(nil, error)
+                        }
+                        if let bestScore = scores?[0].formattedValue {
+                            bestScores.append(bestScore)
+                            if leaderboards.last === leaderboard {
+                                completion(bestScores, nil)
+                            }
+                        }
+                    })
+                }
             }
         }
     }
@@ -45,6 +68,7 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
     func getGameCenterViewController() -> GKGameCenterViewController {
         let gameCenterViewController = GKGameCenterViewController()
         gameCenterViewController.gameCenterDelegate = self
+        gameCenterViewController.viewState = .leaderboards
         return gameCenterViewController
     }
     

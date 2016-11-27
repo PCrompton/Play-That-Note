@@ -74,6 +74,11 @@ class StatsModelController {
     }
     
     // MARK: Stats functions
+    func getStatsTotals() -> Stats {
+        let flashcards = fetchSavedFlashcards(with: nil)
+        return getStats(for: flashcards)
+    }
+    
     func getStats(for flashcards: [Flashcard]) -> Stats {
         let stats = Stats(flashcards: flashcards)
         return stats
