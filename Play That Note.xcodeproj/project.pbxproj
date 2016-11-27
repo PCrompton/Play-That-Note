@@ -188,9 +188,9 @@
 		9602EC821DD1372A0032CD83 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */,
 				9601443D1DD132D0006146C2 /* Main.storyboard */,
 				960144421DD132D1006146C2 /* LaunchScreen.storyboard */,
-				9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

@@ -37,8 +37,10 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
                         }
                         if let bestScore = scores?[0].formattedValue {
                             bestScores.append(bestScore)
-                            if leaderboards.last === leaderboard {
+                            if leaderboards[leaderboards.endIndex-1] === leaderboard {
                                 completion(bestScores, nil)
+                            } else {
+                                completion(nil, nil)
                             }
                         }
                     })
@@ -49,12 +51,18 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
     
     func sendScores() {
         if GKLocalPlayer.localPlayer().isAuthenticated {
-            let totalFlashcards = statsModelController.fetchSavedFlashcards(with: nil)
-            let totalStats = statsModelController.getStats(for: totalFlashcards)
+            var scoreArray = [GKScore]()
+            let totalStats = statsModelController.getStatsTotals()
             let totalPlusMinus = totalStats.plusMinus
-            let scoreReporter = GKScore(leaderboardIdentifier: "total.plus.minus")
-            scoreReporter.value = Int64(totalPlusMinus)
-            let scoreArray: [GKScore] = [scoreReporter]
+            let totalPercentage = totalStats.percentage
+            let totalPlusMinusScoreReporter = GKScore(leaderboardIdentifier: "total.plus.minus")
+            scoreArray.append(totalPlusMinusScoreReporter)
+            let totalPercentageScoreReporter = GKScore(leaderboardIdentifier: "total.percentage")
+            totalPlusMinusScoreReporter.value = Int64(totalPlusMinus)
+            if let totalPercentage = totalPercentage {
+                totalPercentageScoreReporter.value = Int64(totalPercentage)
+                scoreArray.append(totalPercentageScoreReporter)
+            }
             GKScore.report(scoreArray) { (error) in
                 if let error = error {
                     print("Error reporting scores: \(error)")
@@ -69,6 +77,7 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
         let gameCenterViewController = GKGameCenterViewController()
         gameCenterViewController.gameCenterDelegate = self
         gameCenterViewController.viewState = .leaderboards
+        gameCenterViewController.leaderboardIdentifier = "total.plus.minus"
         return gameCenterViewController
     }
     
