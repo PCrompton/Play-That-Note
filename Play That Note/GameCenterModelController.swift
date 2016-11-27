@@ -39,8 +39,6 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
                             bestScores.append(bestScore)
                             if leaderboards[leaderboards.endIndex-1] === leaderboard {
                                 completion(bestScores, nil)
-                            } else {
-                                completion(nil, nil)
                             }
                         }
                     })

@@ -18,8 +18,18 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var bestScoresActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         title = "Choose a Clef"
         authenticatePlayerAndDownloadScores()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if gameCenterModelController.localPlayer.isAuthenticated {
+            getBestScores()
+        } else {
+            authenticatePlayerAndDownloadScores()
+        }
     }
     
     func authenticatePlayerAndDownloadScores() {
@@ -31,29 +41,32 @@ class MenuViewController: UIViewController {
             }
             if let viewController = viewController {
                 self.present(viewController, animated: true, completion: nil)
-            } else {
-                self.gameCenterModelController.getBestScores(completion: { (scores, error) in
-                    if error != nil {
-                        DispatchQueue.main.async {
-                            self.bestScoresLabel.text = "No Connection"
-                            self.showErrorPopup(with: "Error Downloading Scores", message: "Check your internet connection")
-                        }
-                    }
-                    if let scores = scores {
-                        DispatchQueue.main.async {
-                            let randomScoreIndex = Int(arc4random_uniform(UInt32(scores.count)))
-                            self.bestScoresLabel.text = scores[randomScoreIndex]
-                        }
-                    } else {
-                        self.bestScoresLabel.text = "No Data"
-                    }
-                    DispatchQueue.main.async {
-                        self.bestScoresActivityIndicator.stopAnimating()
-                        self.bestScoresLabel.isHidden = false
-                    }
-                })
             }
+            self.getBestScores()
         }
+    }
+    
+    func getBestScores() {
+        gameCenterModelController.getBestScores(completion: { (scores, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    self.bestScoresLabel.text = "No Connection"
+                    self.showErrorPopup(with: "Error Downloading Scores", message: "Check your internet connection")
+                }
+            }
+            if let scores = scores {
+                DispatchQueue.main.async {
+                    let randomScoreIndex = Int(arc4random_uniform(UInt32(scores.count)))
+                    self.bestScoresLabel.text = scores[randomScoreIndex]
+                }
+            } else {
+                self.bestScoresLabel.text = "No Data"
+            }
+            DispatchQueue.main.async {
+                self.bestScoresActivityIndicator.stopAnimating()
+                self.bestScoresLabel.isHidden = false
+            }
+        })
     }
     
     func showErrorPopup(with title: String, message: String) {
