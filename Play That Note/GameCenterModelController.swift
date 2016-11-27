@@ -11,10 +11,10 @@ import GameKit
 
 class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
     let statsModelController = StatsModelController()
+    let localPlayer = GKLocalPlayer.localPlayer()
     
     // MARK: GameCenter functions
     func authenticateLocalPlayer(completion: ((_ viewController: UIViewController?, _ error: Error?) -> Void)?) {
-        let localPlayer = GKLocalPlayer.localPlayer()
         localPlayer.authenticateHandler = { (viewController, error) -> Void in
             if viewController == nil {
                 print("Authentication Successful: \(GKLocalPlayer.localPlayer().isAuthenticated)")

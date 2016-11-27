@@ -1,12 +1,14 @@
 
 #note {
 /*    background-color: grey;*/
+
     width: 100%;
     margin:0;
 }
 
 body {
 /*    background-color: whitesmoke;*/
+background-image: url("../images/rough-beige-paper-texture.jpg");
     overflow: hidden;
     margin: 0;
 }

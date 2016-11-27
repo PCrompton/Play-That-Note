@@ -19,7 +19,16 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         title = "Choose a Clef"
-
+        authenticatePlayerAndDownloadScores()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !gameCenterModelController.localPlayer.isAuthenticated {
+            authenticatePlayerAndDownloadScores()
+        }
+    }
+    
+    func authenticatePlayerAndDownloadScores() {
         gameCenterModelController.authenticateLocalPlayer { (viewController, error) in
             if error != nil {
                 DispatchQueue.main.async {
