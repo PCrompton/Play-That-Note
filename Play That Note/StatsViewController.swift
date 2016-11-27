@@ -54,6 +54,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let flashcardVC = storyboard?.instantiateViewController(withIdentifier: "FlashcardViewController") as! FlashcardViewController
         flashcardVC.flashcard = flashcards?[indexPath.row]
+        flashcardVC.clef = clef!
         show(flashcardVC, sender: self)
     }
 }
