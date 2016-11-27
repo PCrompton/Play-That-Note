@@ -49,6 +49,11 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
         if !pitchEngine.active {
             pitchEngine.start()
+            
+            // These two lines of code are here to guard against a known bug in the Beethoven framework where the pitchEngine may not start on the first try
+            pitchEngine.stop()
+            pitchEngine.start()
+            
             sender.setTitle("Stop", for: .normal)
             print("Pitch Engine Started")
             flashcard = getRandomflashcard()
