@@ -59,8 +59,10 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
             totalPlusMinusScoreReporter.value = Int64(totalPlusMinus)
             if let totalPercentage = totalPercentage {
                 totalPercentageScoreReporter.value = Int64(totalPercentage)
-                scoreArray.append(totalPercentageScoreReporter)
+            } else {
+                totalPercentageScoreReporter.value = Int64(0)
             }
+            scoreArray.append(totalPercentageScoreReporter)
             GKScore.report(scoreArray) { (error) in
                 if let error = error {
                     print("Error reporting scores: \(error)")
