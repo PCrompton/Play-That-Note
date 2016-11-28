@@ -17,6 +17,7 @@
 		9602EC7D1DD136AC0032CD83 /* vexFlow in Resources */ = {isa = PBXBuildFile; fileRef = 9602EC7C1DD136AC0032CD83 /* vexFlow */; };
 		9602EC861DD137A90032CD83 /* Beethoven.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9602EC851DD137A90032CD83 /* Beethoven.framework */; };
 		9602EC881DD137B50032CD83 /* Pitchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9602EC871DD137B50032CD83 /* Pitchy.framework */; };
+		961ED74A1DEBC44000DA941B /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961ED7491DEBC44000DA941B /* GameKit.framework */; };
 		966362791DDCDF7400E2E000 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362761DDCDF7400E2E000 /* Clef.swift */; };
 		9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362771DDCDF7400E2E000 /* CoreDataStack.swift */; };
 		9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362781DDCDF7400E2E000 /* Settings.swift */; };
@@ -69,6 +70,7 @@
 		9602EC7C1DD136AC0032CD83 /* vexFlow */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vexFlow; sourceTree = "<group>"; };
 		9602EC851DD137A90032CD83 /* Beethoven.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beethoven.framework; path = Carthage/Build/iOS/Beethoven.framework; sourceTree = "<group>"; };
 		9602EC871DD137B50032CD83 /* Pitchy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pitchy.framework; path = Carthage/Build/iOS/Pitchy.framework; sourceTree = "<group>"; };
+		961ED7491DEBC44000DA941B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		966362761DDCDF7400E2E000 /* Clef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clef.swift; path = "Play That Note/Clef.swift"; sourceTree = "<group>"; };
 		966362771DDCDF7400E2E000 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Play That Note/CoreDataStack.swift"; sourceTree = "<group>"; };
 		966362781DDCDF7400E2E000 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Play That Note/Settings.swift"; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961ED74A1DEBC44000DA941B /* GameKit.framework in Frameworks */,
 				9602EC861DD137A90032CD83 /* Beethoven.framework in Frameworks */,
 				9602EC881DD137B50032CD83 /* Pitchy.framework in Frameworks */,
 			);
@@ -212,6 +215,7 @@
 		9602EC841DD137A90032CD83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				961ED7491DEBC44000DA941B /* GameKit.framework */,
 				9602EC871DD137B50032CD83 /* Pitchy.framework */,
 				9602EC851DD137A90032CD83 /* Beethoven.framework */,
 			);
@@ -230,8 +234,8 @@
 		96E27C831DE920DA00B8AFF4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				96E27C891DEA43F200B8AFF4 /* FlashcardViewController.swift */,
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
+				96E27C891DEA43F200B8AFF4 /* FlashcardViewController.swift */,
 				9601443B1DD132D0006146C2 /* GameViewController.swift */,
 				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
 				9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */,
@@ -320,6 +324,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = F7XWAC4QF7;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					960144491DD132D1006146C2 = {
 						CreatedOnToolsVersion = 8.1;

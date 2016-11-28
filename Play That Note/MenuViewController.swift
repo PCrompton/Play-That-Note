@@ -16,9 +16,11 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var bestScoresLabel: UILabel!
     
     @IBOutlet weak var bestScoresActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var gameCenterLoginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameCenterLoginButton.isHidden = true
         title = "Choose a Clef"
         authenticatePlayerAndDownloadScores()
     }
@@ -35,12 +37,21 @@ class MenuViewController: UIViewController {
     func authenticatePlayerAndDownloadScores() {
         gameCenterModelController.authenticateLocalPlayer { (viewController, error) in
             if error != nil {
+                print(error!.localizedDescription)
                 DispatchQueue.main.async {
+                    if !self.gameCenterModelController.localPlayer.isAuthenticated {
+                        self.gameCenterLoginButton.isHidden = false
+                    }
                     self.showErrorPopup(with: "Error Authenticating Player", message: "Check your internet connection")
                 }
             }
             if let viewController = viewController {
                 self.present(viewController, animated: true, completion: nil)
+            }
+            if self.gameCenterModelController.localPlayer.isAuthenticated {
+                self.gameCenterLoginButton.isHidden = true
+            } else {
+                self.gameCenterLoginButton.isHidden = false
             }
             self.getBestScores()
             self.gameCenterModelController.sendScores()
@@ -93,6 +104,16 @@ class MenuViewController: UIViewController {
         case 2: destinationController.clef = Clef.alto
         case 3: destinationController.clef = Clef.tenor
         default: return
+        }
+    }
+    @IBAction func gameCenterLoginButton(_ sender: Any) {
+        gameCenterModelController.authenticateLocalPlayer { (viewController, error) in
+            if let error = error {
+                self.showErrorPopup(with: "Error authenticating player", message: "Check your internet connection \(error)")
+            }
+            if let viewController = viewController {
+                self.present(viewController, animated: true, completion: nil)
+            }
         }
     }
 }
