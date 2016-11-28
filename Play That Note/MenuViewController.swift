@@ -43,6 +43,7 @@ class MenuViewController: UIViewController {
                 self.present(viewController, animated: true, completion: nil)
             }
             self.getBestScores()
+            self.gameCenterModelController.sendScores()
         }
     }
     
