@@ -131,6 +131,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bestScoreStackView" destination="FDA-zY-rb4" id="JpE-1z-5Mp"/>
                         <outlet property="bestScoresActivityIndicator" destination="LJe-iC-4hk" id="G7L-OH-nyv"/>
                         <outlet property="bestScoresLabel" destination="dCX-L1-tNh" id="Hkd-2A-Hpo"/>
                     </connections>

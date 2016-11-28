@@ -13,11 +13,13 @@ class MenuViewController: UIViewController {
     let statsModelController = StatsModelController()
     let gameCenterModelController = GameCenterModelController()
     
+    @IBOutlet weak var bestScoreStackView: UIStackView!
     @IBOutlet weak var bestScoresLabel: UILabel!
     @IBOutlet weak var bestScoresActivityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bestScoreStackView.isHidden = true
         title = "Choose a Clef"
         authenticatePlayerAndDownloadScores()
     }
@@ -26,25 +28,23 @@ class MenuViewController: UIViewController {
         super.viewWillAppear(animated)
         if gameCenterModelController.localPlayer.isAuthenticated {
             getBestScores()
+            bestScoreStackView.isHidden = false
         } else {
             authenticatePlayerAndDownloadScores()
+            bestScoreStackView.isHidden = true
         }
     }
     
     func authenticatePlayerAndDownloadScores() {
         gameCenterModelController.authenticateLocalPlayer { (viewController, error) in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                DispatchQueue.main.async {
-                    self.showErrorPopup(with: "Error Authenticating Player", message: "Check your internet connection")
-                }
-                return
-            }
             if let viewController = viewController {
                 self.present(viewController, animated: true, completion: nil)
             }
             self.getBestScores()
             self.gameCenterModelController.sendScores()
+            if self.gameCenterModelController.localPlayer.isAuthenticated {
+                self.bestScoreStackView.isHidden = false
+            }
         }
     }
     
@@ -52,8 +52,14 @@ class MenuViewController: UIViewController {
         gameCenterModelController.getBestScores(completion: { (scores, error) in
             if error != nil {
                 DispatchQueue.main.async {
+                    let errorMessage: String
+                    if self.gameCenterModelController.localPlayer.isAuthenticated {
+                        errorMessage = "Check your internet connection"
+                    } else {
+                        errorMessage = "You are not logged into Game Center. To log into Game Center, open the iOS Settings app, scroll down to Game Center and tap \"Sign In.\""
+                    }
                     self.bestScoresLabel.text = "No Connection"
-                    self.showErrorPopup(with: "Error Downloading Scores", message: "Check your internet connection")
+                    self.showErrorPopup(with: "Error Downloading Scores", message: errorMessage)
                 }
             }
             if let scores = scores {
