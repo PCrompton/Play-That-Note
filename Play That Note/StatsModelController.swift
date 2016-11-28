@@ -73,6 +73,11 @@ class StatsModelController {
         return flashcards
     }
     
+    func deleteAllFlashcards() {
+        let flashcards = fetchSavedFlashcards(with: nil)
+        stack.delete(objects: flashcards)
+    }
+    
     // MARK: Stats functions
     func getStatsTotals() -> Stats {
         let flashcards = fetchSavedFlashcards(with: nil)

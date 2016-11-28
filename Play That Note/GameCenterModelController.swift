@@ -48,7 +48,7 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
     }
     
     func sendScores() {
-        if GKLocalPlayer.localPlayer().isAuthenticated {
+        if localPlayer.isAuthenticated {
             var scoreArray = [GKScore]()
             let totalStats = statsModelController.getStatsTotals()
             let totalPlusMinus = totalStats.plusMinus

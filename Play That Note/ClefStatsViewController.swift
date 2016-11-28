@@ -20,6 +20,19 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func leaderboardsButton(_ sender: Any) {
         present(gameCenterModelController.getGameCenterViewController(), animated: true, completion: nil)
     }
+    @IBAction func resetButton(_ sender: Any) {
+        let alertVC = UIAlertController(title: "Are you sure you want to reset your statistics?", message: "All statistics, including those in Game Center will be deleted. This cannot be undone.", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
+            { (UIAlertAction) in
+                self.statsModelController.deleteAllFlashcards()
+                self.gameCenterModelController.sendScores()
+                self.tableView.reloadData()
+        })
+        alertVC.addAction(cancelAction)
+        alertVC.addAction(deleteAction)
+        present(alertVC, animated: true, completion: nil)
+    }
     @IBAction func doneButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
