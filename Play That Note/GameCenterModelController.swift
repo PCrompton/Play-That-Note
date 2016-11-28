@@ -17,7 +17,7 @@ class GameCenterModelController: NSObject, GKGameCenterControllerDelegate {
     func authenticateLocalPlayer(completion: ((_ viewController: UIViewController?, _ error: Error?) -> Void)?) {
         localPlayer.authenticateHandler = { (viewController, error) -> Void in
             if viewController == nil {
-                print("Authentication Successful: \(GKLocalPlayer.localPlayer().isAuthenticated)")
+                print("Authentication Successful: \(self.localPlayer.isAuthenticated)")
             }
             completion?(viewController, error)
         }
