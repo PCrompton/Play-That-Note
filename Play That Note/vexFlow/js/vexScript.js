@@ -6,7 +6,7 @@ function drawStaffWithPitch(pitch, clef, width, height) {
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
     
-    var stave = new VF.Stave(25, 0, width-100);
+    var stave = new VF.Stave(25, 25, width-100);
     stave.addClef(clef);
     stave.setContext(context).draw();
     
