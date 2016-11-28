@@ -85,8 +85,7 @@ class StatsModelController {
     }
     
     func getStats(for flashcards: [Flashcard]) -> Stats {
-        let stats = Stats(flashcards: flashcards)
-        return stats
+        return Stats(flashcards: flashcards)
     }
     
     func getStats(for clef: Clef, lowest: Int32?, highest: Int32?) -> Stats {

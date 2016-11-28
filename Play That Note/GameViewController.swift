@@ -42,7 +42,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     }
     
     // MARK: Gameplay Functions
-    @IBAction func StartButton(_ sender: UIButton) {
+    @IBAction func startButton(_ sender: UIButton) {
         guard let pitchEngine = pitchEngine else {
             fatalError("No Pitch Engine Found")
         }
@@ -64,12 +64,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     }
     
     func getRandomBool() -> Bool {
-        let num = Int(arc4random_uniform(2))
-        if num == 0 {
-            return true
-        } else {
-            return false
-        }
+        return Int(arc4random_uniform(2)) == 0
     }
     
     func getRandomflashcard() -> Flashcard {

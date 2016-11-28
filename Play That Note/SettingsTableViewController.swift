@@ -42,13 +42,11 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func consecutivePitchesStepper(_ stepper: UIStepper) {
         consecutivePitchesLabel.text = "\(Int(stepper.value)) Pitches"
         Settings.consecutivePitches = Int(stepper.value)
-        print("Stepper Pressed", Settings.consecutivePitches)
     }
     
     @IBAction func bufferSlider(_ slider: UISlider) {
         bufferSizeLabel.text = "\(Int(slider.value))"
         Settings.bufferSize = AVAudioFrameCount(slider.value)
-        print("Slider Value Changed", Settings.bufferSize)
     }
     
     @IBAction func levelThresholdSlider(_ slider: UISlider) {

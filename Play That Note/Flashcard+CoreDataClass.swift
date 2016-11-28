@@ -12,22 +12,16 @@ import CoreData
 @objc(Flashcard)
 public class Flashcard: NSManagedObject {
     var totalAnswered: Int {
-        get {
-            return Int(self.correct + self.incorrect)
-        }
+        return Int(self.correct + self.incorrect)
     }
     var percentage: Double {
-        get {
-            if totalAnswered != 0 {
-                return Double(correct)/Double(totalAnswered)*100
-            }
-            return 0.0
+        if totalAnswered != 0 {
+            return Double(correct)/Double(totalAnswered)*100
         }
+        return 0.0
     }
     var plusMinus: Int {
-        get {
-            return self.correct - self.incorrect
-        }
+        return self.correct - self.incorrect
     }
     
     convenience init(with clef: Clef, note: String, pitchIndex: Int32, insertInto context: NSManagedObjectContext) {

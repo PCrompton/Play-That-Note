@@ -581,7 +581,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="StartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KHs-Se-ck5"/>
+                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hwi-id-ITh"/>
                                 </connections>
                             </button>
                         </subviews>

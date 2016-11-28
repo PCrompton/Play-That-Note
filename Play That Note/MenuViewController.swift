@@ -33,11 +33,12 @@ class MenuViewController: UIViewController {
     
     func authenticatePlayerAndDownloadScores() {
         gameCenterModelController.authenticateLocalPlayer { (viewController, error) in
-            if error != nil {
+            guard error == nil else {
                 print(error!.localizedDescription)
                 DispatchQueue.main.async {
                     self.showErrorPopup(with: "Error Authenticating Player", message: "Check your internet connection")
                 }
+                return
             }
             if let viewController = viewController {
                 self.present(viewController, animated: true, completion: nil)

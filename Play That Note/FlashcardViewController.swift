@@ -29,11 +29,9 @@ class FlashcardViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView?
     var dimensions: String {
-        get {
-            let dimParams = "\(Int(containerView.frame.width)), \(Int(containerView.frame.height))"
-            print(dimParams)
-            return dimParams
-        }
+        let dimParams = "\(Int(containerView.frame.width)), \(Int(containerView.frame.height))"
+        print(dimParams)
+        return dimParams
     }
     
     var lowest = try! Note(letter: .C, octave: 1)

@@ -15,44 +15,34 @@ struct Stats {
     var flashcards: [Flashcard]
     
     var correct: Int {
-        get {
-            var result = 0
-            for flashcard in flashcards {
-                result += Int(flashcard.correct)
-            }
-            return result
+        var result = 0
+        for flashcard in flashcards {
+            result += Int(flashcard.correct)
         }
+        return result
     }
     
     var incorrect: Int {
-        get {
-            var result = 0
-            for flashcard in flashcards {
-                result += Int(flashcard.incorrect)
-            }
-            return result
+        var result = 0
+        for flashcard in flashcards {
+            result += Int(flashcard.incorrect)
         }
+        return result
     }
     
     var plusMinus: Int {
-        get {
-            return correct - incorrect
-        }
+        return correct - incorrect
     }
     
     var totalTries: Int {
-        get {
-            return correct + incorrect
-        }
+        return correct + incorrect
     }
     
     var percentage: Double? {
-        get {
-            if totalTries == 0 {
-                return nil
-            } else {
-                return Double(correct)/Double(totalTries) * 100
-            }
+        if totalTries == 0 {
+            return nil
+        } else {
+            return Double(correct)/Double(totalTries) * 100
         }
     }
 }
