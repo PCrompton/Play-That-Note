@@ -22,6 +22,8 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         if let clef = clef {
             flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil)
+        } else {
+            flashcards = statsModelController.fetchSavedFlashcards(with: nil)
         }
     }
     
@@ -39,22 +41,23 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCell") as! ClefTableViewCell
         guard let flashcards = flashcards else {
             print("no flashcards found")
-            return cell!
+            return cell
         }
         let flashcard = flashcards[indexPath.row]
-        cell?.textLabel?.text = "\(flashcard.clef!.capitalized) Clef, \(flashcard.note!)"
-        cell?.detailTextLabel?.text = "\(Int(flashcard.percentage))%"
-        return cell!
+        cell.clef = flashcard.clef.map { Clef(rawValue: $0) }!
+        cell.textLabel?.text = "\(flashcard.clef!.capitalized) Clef, \(flashcard.note!)"
+        cell.detailTextLabel?.text = "\(Int(flashcard.percentage))%"
+        return cell
     }
     
     // MARK: TableViewDelegate Functions
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let flashcardVC = storyboard?.instantiateViewController(withIdentifier: "FlashcardViewController") as! FlashcardViewController
         flashcardVC.flashcard = flashcards?[indexPath.row]
-        flashcardVC.clef = clef!
+        flashcardVC.clef = (tableView.cellForRow(at: indexPath) as! ClefTableViewCell).clef!
         show(flashcardVC, sender: self)
     }
 }

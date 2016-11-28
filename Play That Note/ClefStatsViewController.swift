@@ -26,7 +26,7 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: TableViewDataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,16 +47,23 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
         default:
             cell.clef = nil
         }
+        let stats: Stats
         if let clef = cell.clef {
             cell.textLabel?.text = "\(clef.rawValue.capitalized) Clef"
-            let stats = statsModelController.getStats(for: statsModelController.fetchSavedFlashcards(for: clef, lowest: nil, highest: nil))
-            let percentage = stats.percentage
-            if let percentage = percentage {
-                cell.detailTextLabel?.text = "\(Int(percentage))%"
-            } else {
-                cell.detailTextLabel?.text = "Not Started"
-            }
+            stats = statsModelController.getStats(for: clef, lowest: nil, highest: nil)
+        } else {
+            cell.textLabel?.text = "Total"
+            stats = statsModelController.getStatsTotals()
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: (cell.textLabel?.font.pointSize)!)
+            cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: (cell.detailTextLabel?.font.pointSize)!)
         }
+        let percentage = stats.percentage
+        if let percentage = percentage {
+            cell.detailTextLabel?.text = "\(Int(percentage))%"
+        } else {
+            cell.detailTextLabel?.text = "Not Started"
+        }
+
         return cell
     }
     
@@ -64,9 +71,7 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let statsVC = storyboard?.instantiateViewController(withIdentifier: "StatsViewController") as! StatsViewController
         let cell = tableView.cellForRow(at: indexPath) as! ClefTableViewCell
-        if let clef = cell.clef {
-            statsVC.clef = clef
-            show(statsVC, sender: self)
-        }
+        statsVC.clef = cell.clef
+        show(statsVC, sender: self)
     }
 }

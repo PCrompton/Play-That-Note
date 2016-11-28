@@ -121,14 +121,15 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
                 }
                 alertController.addAction(action)
                 print(pitch.note.string, pitch.note.index)
+                guard let noteToDisplay = flashcard?.note else {
+                    fatalError("No note found")
+                }
                 if note.index == Int((flashcard?.pitchIndex)!) {
-                    alertController.message = "Congrates, you played \(note.string)"
+                    alertController.title = noteToDisplay
+                    alertController.message = "Congrates, you played \(noteToDisplay)"
                     flashcard?.correct += 1
                 } else {
-                    guard let note = flashcard?.note else {
-                        fatalError("No note found")
-                    }
-                    alertController.message = "Sorry, that was not \(note)"
+                    alertController.message = "Sorry, that was not \(noteToDisplay)"
                     flashcard?.incorrect += 1
                 }
                 stack.save()
