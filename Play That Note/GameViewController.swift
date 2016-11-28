@@ -21,7 +21,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
 
-
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +75,9 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     func getRandomflashcard() -> Flashcard {
         let index = Int(arc4random_uniform(UInt32(flashcards.count)))
         let flashcard = flashcards[index]
+        if flashcard === self.flashcard {
+            return getRandomflashcard()
+        }
         if flashcard.percentage > 50.0 {
             var bool = getRandomBool()
             if bool {
