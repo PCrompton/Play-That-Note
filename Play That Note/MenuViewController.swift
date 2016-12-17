@@ -17,6 +17,15 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var bestScoresLabel: UILabel!
     @IBOutlet weak var bestScoresActivityIndicator: UIActivityIndicatorView!
 
+    @IBOutlet weak var trebleClefButton: UIButton!
+    @IBOutlet weak var bassClefButton: UIButton!
+    @IBOutlet weak var altoClefButton: UIButton!
+    @IBOutlet weak var tenorClefButton: UIButton!
+    
+    @IBOutlet weak var clefStackView: UIStackView!
+    @IBOutlet weak var topClefStackView: UIStackView!
+    @IBOutlet weak var bottomClefStackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bestScoreStackView.isHidden = true
@@ -32,6 +41,35 @@ class MenuViewController: UIViewController {
         } else {
             authenticatePlayerAndDownloadScores()
             bestScoreStackView.isHidden = true
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.verticalSizeClass == .compact {
+            trebleClefButton.contentVerticalAlignment = .center
+            trebleClefButton.contentHorizontalAlignment = .center
+
+            bassClefButton.contentVerticalAlignment = .center
+            bassClefButton.contentHorizontalAlignment = .center
+            
+            altoClefButton.contentVerticalAlignment = .center
+            altoClefButton.contentHorizontalAlignment = .center
+            
+            tenorClefButton.contentVerticalAlignment = .center
+            tenorClefButton.contentHorizontalAlignment = .center
+        } else {
+            trebleClefButton.contentVerticalAlignment = .bottom
+            trebleClefButton.contentHorizontalAlignment = .right
+            
+            bassClefButton.contentVerticalAlignment = .bottom
+            bassClefButton.contentHorizontalAlignment = .left
+            
+            altoClefButton.contentVerticalAlignment = .top
+            altoClefButton.contentHorizontalAlignment = .right
+            
+            tenorClefButton.contentVerticalAlignment = .top
+            tenorClefButton.contentHorizontalAlignment = .left
         }
     }
     
