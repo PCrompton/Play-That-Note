@@ -24,8 +24,6 @@ class FlashcardViewController: UIViewController {
     let stack = (UIApplication.shared.delegate as! AppDelegate).stack
     let statsModelController = StatsModelController()
     let gameCenterModelController = GameCenterModelController()
-        
-    var flashcardView: FlashcardView?
     
     var lowest = try! Note(letter: .C, octave: 1)
     var highest = try! Note(letter: .C, octave: 7)
@@ -50,9 +48,14 @@ class FlashcardViewController: UIViewController {
         }
     }
     
+    var flashcardView: FlashcardView?
+    
     var flashcard: Flashcard? {
         didSet {
-            //updateStatsLabels()
+            if let flashcard = flashcard {
+                flashcardView?.pitch = flashcard.note!
+                flashcardView?.clef = flashcard.clef!
+            }
             _ = flashcardView?.reload()
         }
     }
@@ -64,6 +67,7 @@ class FlashcardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        updateStatsLabels()
         flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
     }
 
