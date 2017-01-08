@@ -32,9 +32,9 @@ ___swift_noop_self_return
 ___swift_memcpy_array0_1
 ___swift_memmove_array0_1
 __TMaV9Beethoven21QuinnsSecondEstimator
-___swift_memcpy8_8
-___swift_memcpy_array8_8
-___swift_memmove_array8_8
+___swift_memcpy4_4
+___swift_memcpy_array4_4
+___swift_memmove_array4_4
 _rt_swift_slowAlloc
 _rt_swift_slowDealloc
 __TTSfq4n_d___TFVs6MirrorCfT10reflectingP__S_
@@ -112,10 +112,10 @@ __TMLMO9Beethoven16PitchEngineError
 __TMLMO9Beethoven15EstimationError
 __TMV9Beethoven21QuinnsSecondEstimator
 Apple LLVM version 8.0.0 (clang-800.0.42.1)
--emit-bc "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/QuinnsSecondEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/JainsEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Estimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/LocationEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/QuinnsFirstEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/EstimationStrategy.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/BarycentricEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/QuadradicEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/EstimationError.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/YINEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/SignalTracking/SignalTracker.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Transformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/PitchEngine.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/SignalTracking/Units/OutputSignalTracker.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Library/YINUtil.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/MaxValueEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/HPSEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Strategies/SimpleTransformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Library/Extensions/Array+Extensions.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Config.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/SignalTracking/Units/InputSignalTracker.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Strategies/YINTransformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Library/Buffer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Strategies/FFTTransformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/EstimationFactory.swift" -target arm64-apple-ios8.0 -Xllvm -aarch64-use-tbi -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk -I /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Products/Release-iphoneos -F /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Products/Release-iphoneos -F "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Carthage/Build/iOS" -g -module-cache-path /Users/work/Library/Developer/Xcode/DerivedData/ModuleCache -serialize-debugging-options -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-generated-files.hmap -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-own-target-headers.hmap -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/all-product-headers.yaml -Xcc -iquote -Xcc /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-project-headers.hmap -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Products/Release-iphoneos/include -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/DerivedSources/arm64 -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/DerivedSources -Xcc "-working-directory/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven" -emit-module-doc-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Beethoven.swiftdoc -O -module-name Beethoven -emit-module-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Beethoven.swiftmodule -emit-objc-header-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Beethoven-Swift.h -serialize-diagnostics-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/QuinnsSecondEstimator.dia -emit-dependencies-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/QuinnsSecondEstimator.d -num-threads 4 -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/QuinnsSecondEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/JainsEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Estimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/LocationEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/QuinnsFirstEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/EstimationStrategy.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/BarycentricEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/QuadradicEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/EstimationError.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/YINEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/SignalTracker.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Transformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/PitchEngine.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/OutputSignalTracker.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/YINUtil.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/MaxValueEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/HPSEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/SimpleTransformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Array+Extensions.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Config.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/InputSignalTracker.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/YINTransformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/Buffer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/FFTTransformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/arm64/EstimationFactory.bc -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift
+-emit-bc "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/QuinnsSecondEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/JainsEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Estimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/LocationEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/QuinnsFirstEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/EstimationStrategy.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/BarycentricEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/QuadradicEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/EstimationError.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/YINEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/SignalTracking/SignalTracker.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Transformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/PitchEngine.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/SignalTracking/Units/OutputSignalTracker.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Library/YINUtil.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/MaxValueEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/HPSEstimator.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Strategies/SimpleTransformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Library/Extensions/Array+Extensions.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Config.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/SignalTracking/Units/InputSignalTracker.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Strategies/YINTransformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Library/Buffer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Transform/Strategies/FFTTransformer.swift" "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/EstimationFactory.swift" -target armv7-apple-ios8.0 -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk -I /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Products/Release-iphoneos -F /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Products/Release-iphoneos -F "/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Carthage/Build/iOS" -g -module-cache-path /Users/work/Library/Developer/Xcode/DerivedData/ModuleCache -serialize-debugging-options -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-generated-files.hmap -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-own-target-headers.hmap -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/all-product-headers.yaml -Xcc -iquote -Xcc /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Beethoven-project-headers.hmap -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Products/Release-iphoneos/include -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/DerivedSources/armv7 -Xcc -I/Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/DerivedSources -Xcc "-working-directory/Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven" -emit-module-doc-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Beethoven.swiftdoc -O -module-name Beethoven -emit-module-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Beethoven.swiftmodule -emit-objc-header-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Beethoven-Swift.h -serialize-diagnostics-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/QuinnsSecondEstimator.dia -emit-dependencies-path /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/QuinnsSecondEstimator.d -num-threads 4 -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/QuinnsSecondEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/JainsEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Estimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/LocationEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/QuinnsFirstEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/EstimationStrategy.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/BarycentricEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/QuadradicEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/EstimationError.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/YINEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/SignalTracker.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Transformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/PitchEngine.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/OutputSignalTracker.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/YINUtil.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/MaxValueEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/HPSEstimator.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/SimpleTransformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Array+Extensions.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Config.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/InputSignalTracker.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/YINTransformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/Buffer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/FFTTransformer.bc -o /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/Objects-normal/armv7/EstimationFactory.bc -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift
 <swift-imported-modules>
 /Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven
-Apple Swift version 3.0.1 (swiftlang-800.0.58.6 clang-800.0.42.1)
+Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)
 /Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/QuinnsSecondEstimator.swift
 _TMaMO9Beethoven15EstimationError
 QuinnsSecondEstimator.swift
@@ -170,9 +170,9 @@ _TTSg5Sf___TFVs22_ContiguousArrayBufferg5countSi
 _TTSfq4n_d___TFVs6MirrorCfT10reflectingP__S_
 _TMaPs17CustomReflectable_
 get_field_types_AVAudioSessionRecordPermission
-__swift_memmove_array8_8
-__swift_memcpy_array8_8
-__swift_memcpy8_8
+__swift_memmove_array4_4
+__swift_memcpy_array4_4
+__swift_memcpy4_4
 _TMaV9Beethoven21QuinnsSecondEstimator
 get_field_types_QuinnsSecondEstimator
 __swift_memmove_array0_1
@@ -419,17 +419,18 @@ __TMV9Beethoven12YINEstimator
 /Users/work/Documents/Development/iOS Nanodegree/iOS Portfolio Apps/Play That Note/Carthage/Checkouts/Beethoven/Source/Estimation/Strategies/YINEstimator.swift
 YINEstimator.swift
 cumulativeDifference
-_TTSg5Sf___TFSaap9subscriptFSix
-_TTSg5Sf___TFSa22_checkSubscript_nativefSiT_
 _TTSg5GVs14CountableRangeSi_GS_Si_s13IndexableBases___TFVs16IndexingIterator4nextfT_GSqwx8_Element_
-_TTWSis9EquatablesZFS_oi2eefTxx_Sb
-parabolicInterpolation
-absoluteThreshold
 _TTSg5SiSis10ComparablesSis11_Strideables___TTWuRxs10Comparablexs11_StrideablewxPS0_6Strides13SignedIntegerrGVs14CountableRangex_s13IndexableBasesFS4_9formIndexfT5afterRwx5Index_T_
 _TTSg5GVs14CountableRangeSi_GS_Si_s9Indexables___TFEsPs9Indexable9formIndexfT5afterRwx5Index_T_
 _TTSg5SiSis10ComparablesSis11_Strideables___TTWuRxs10Comparablexs11_StrideablewxPS0_6Strides13SignedIntegerrGVs14CountableRangex_s13IndexableBasesFS4_5indexfT5afterwx5Index_wxS5_
 _TTSg5SiSis10ComparablesSis11_Strideables___TFVs14CountableRange5indexfT5afterx_x
 _TTWSis11_StrideablesFS_8advancedfT2bywx6Stride_x
+_TTWSis9EquatablesZFS_oi2eefTxx_Sb
+parabolicInterpolation
+absoluteThreshold
+_TTSg5GVs14CountableRangeSi_GS_Si_s9Indexables___TFEsPs9Indexable20_failEarlyRangeCheckfTwx5Index6boundsGVs5RangewxS0___T_
+_TTWSis10ComparablesZFS_oi2lefTxx_Sb
+_TTSg5Sf___TFSaap9subscriptFSix
 _TTSg5Sf___TFSa29_makeMutableAndUniqueOrPinnedfT_T_
 _TTSg5Sf___TZFSa11_copyBufferfRGVs12_ArrayBufferx_T_
 _TTSg5Sf___TFVs12_ArrayBuffer38isMutableAndUniquelyReferencedOrPinnedfT_Sb
@@ -438,6 +439,7 @@ _TTSg5Sf___TFSa18_getElementAddressfSiGSpx_
 _TTSg5GVs12_ArrayBufferSf_GS_Sf_s20_ArrayBufferProtocols___TFesRxs20_ArrayBufferProtocolwx5IndexzSirS_g20subscriptBaseAddressGSpwx7Element_
 _TTSg5Sf___TTWurGVs12_ArrayBufferx_s20_ArrayBufferProtocolsFS0_g19firstElementAddressGSpwx7Element_
 _TTSg5Sf___TFVs12_ArrayBufferg19firstElementAddressGSpx_
+_TTSg5Sf___TFSa22_checkSubscript_nativefSiT_
 _TMaV9Beethoven12YINEstimator
 get_field_types_YINEstimator
 _TMaP9Beethoven11Transformer_
@@ -477,7 +479,7 @@ __TFFC9Beethoven11PitchEngine5startFT_T_U_FT_T_
 __TTRXFo___XFdCb___
 __TFFC9Beethoven11PitchEngine5startFT_T_U0_FSbT_
 __TFFFC9Beethoven11PitchEngine5startFT_T_U0_FSbT_U_FT_T_
-__TTRXFo_dSb__XFdCb_dSb__
+__TTRXFo_dSb__XFdCb_dV10ObjectiveC8ObjCBool__
 __TFFFC9Beethoven11PitchEngine13signalTrackerFTPS_13SignalTracker_16didReceiveBufferCSo16AVAudioPCMBuffer6atTimeCSo11AVAudioTime_T_U_FT_T_U_FT_T_
 __TFFFC9Beethoven11PitchEngine13signalTrackerFTPS_13SignalTracker_16didReceiveBufferCSo16AVAudioPCMBuffer6atTimeCSo11AVAudioTime_T_U_FT_T_U0_FT_T_
 __TFFC9Beethoven11PitchEngine36signalTrackerWentBelowLevelThresholdFPS_13SignalTracker_T_U_FT_T_
@@ -623,7 +625,7 @@ active.set
 active.get
 bufferSize.get
 stop
-_TTRXFo_dSb__XFdCb_dSb__
+_TTRXFo_dSb__XFdCb_dV10ObjectiveC8ObjCBool__
 _TFFFC9Beethoven11PitchEngine5startFT_T_U0_FSbT_U_FT_T_
 _TFFC9Beethoven11PitchEngine5startFT_T_U0_FSbT_
 _TTRXFo___XFdCb___
@@ -740,6 +742,7 @@ _TTSg5Sf___TFSa15reserveCapacityfSiT_
 _TTSg5Sf___TFVs12_ArrayBufferCfTGVs22_ContiguousArrayBufferx_19shiftedToStartIndexSi_GS_x_
 _TTSg5Sf___TFVs12_ArrayBuffer13_copyContentsfT8subRangeGVs5RangeSi_12initializingGSpx__GSpx_
 _TTSg5Sf___TFVs22_ContiguousArrayBuffer13_copyContentsfT8subRangeGVs5RangeSi_12initializingGSpx__GSpx_
+_TTSg5Sf___TFSp10initializefT4fromGSPx_5countSi_T_
 _TTSg5GVs12_ArrayBufferSf_GS_Sf_s22RandomAccessCollections___TFesRxs22RandomAccessCollectionwx5Indexs10Strideablewx13IndexDistancezWx7Indices11SubSequenceS2__wxS0_zWxS3_S4_S4_8Iterator7Element_wxS3_zGVs14CountableRangewxS0__WxS0_6Stride_zWxS3_S4_S2__WxS3_7Indices_zGS7_wxS0__WxS3_S2__zWxS3_S4_S2__WxS3_S0__zWxS3_S4_S4_S5_S6__WxS3_S4__zGS7_wxS0__WxS3_8_Element_zWxS3_S4_S4_S5_S6__WxS3_S5__zGVs16IndexingIteratorGS7_wxS0___WxS3_S9_S9__zGS7_wxS0__WxS3_S9_S2__zWxS3_S4_S2__WxS3_S9_S0__zWxS3_S4_S4_S5_S6__WxS3_S9_S4__zGS7_wxS0__WxS3_S9_S10__zWxS3_S4_S4_S5_S6__WxS3_S9_S5__zGS11_GS7_wxS0___WxS3_S4_S9__zGS7_wxS0__WxS3_S4_S0__zWxS3_S4_S4_S5_S6__WxS3_S4_S4__zGS7_wxS0__WxS3_S4_S10__zWxS3_S4_S4_S5_S6__WxS3_S4_S5__zGS11_GS7_wxS0___WxS3_S5_S6__zWxS3_S4_S4_S5_S6__WxS3_S9_S9_S0__zWxS3_S4_S4_S5_S6__WxS3_S9_S9_S4__zGS7_wxS0__WxS3_S9_S9_S10__zWxS3_S4_S4_S5_S6__WxS3_S9_S9_S5__zGS11_GS7_wxS0___WxS3_S9_S4_S0__zWxS3_S4_S4_S5_S6__WxS3_S9_S4_S4__zGS7_wxS0__WxS3_S9_S4_S10__zWxS3_S4_S4_S5_S6__WxS3_S9_S4_S5__zGS11_GS7_wxS0___WxS3_S9_S5_S6__zWxS3_S4_S4_S5_S6__WxS3_S4_S9_S0__zWxS3_S4_S4_S5_S6__WxS3_S4_S9_S4__zGS7_wxS0__WxS3_S4_S9_S10__zWxS3_S4_S4_S5_S6__WxS3_S4_S9_S5__zGS11_GS7_wxS0___WxS3_S4_S4_S0__zWxS3_S4_S4_S5_S6__WxS3_S4_S4_S4__zGS7_wxS0__WxS3_S4_S4_S10__zWxS3_S4_S4_S5_S6__WxS3_S4_S4_S5__zGS11_GS7_wxS0___WxS3_S4_S5_S6__zWxS3_S4_S4_S5_S6__WxS3_S9_S9_S5_S6__zWxS3_S4_S4_S5_S6__WxS3_S9_S4_S5_S6__zWxS3_S4_S4_S5_S6__WxS3_S4_S9_S5_S6__zWxS3_S4_S4_S5_S6__rS_g7indicesGS7_wxS0__
 _TTSg5Sf___TTWurGVs12_ArrayBufferx_s13IndexableBasesFS0_g8endIndexwx5Index
 _TTSg5Sf___TFVs12_ArrayBufferg8endIndexSi
@@ -792,9 +795,9 @@ __TTWV9Beethoven12HPSEstimatorS_9EstimatorS_FS1_g11transformerPS_11Transformer_
 __TTWV9Beethoven12HPSEstimatorS_9EstimatorS_FS1_17estimateFrequencyfzT10sampleRateSf6bufferVS_6Buffer_Sf
 __TTWV9Beethoven12HPSEstimatorS_9EstimatorS_FS1_17estimateFrequencyfT10sampleRateSf8locationSi11bufferCountSi_Sf
 __TWaV9Beethoven12HPSEstimatorS_9EstimatorS_
-___swift_memcpy16_8
-___swift_memcpy_array16_8
-___swift_memmove_array16_8
+___swift_memcpy8_4
+___swift_memcpy_array8_4
+___swift_memmove_array8_4
 __TMaV9Beethoven12HPSEstimator
 __TTSf4n_d_d_n_n___TTSf4s_s___TFV9Beethoven12HPSEstimator16estimateLocationfzT6bufferVS_6Buffer_Si
 __TWPV9Beethoven12HPSEstimatorS_17LocationEstimatorS_
@@ -809,9 +812,9 @@ HPSEstimator.swift
 _TTSg5SiSis10ComparablesSis11_Strideables___TFVs19ClosedRangeIterator4nextfT_GSqx_
 _TMaV9Beethoven12HPSEstimator
 get_field_types_HPSEstimator
-__swift_memmove_array16_8
-__swift_memcpy_array16_8
-__swift_memcpy16_8
+__swift_memmove_array8_4
+__swift_memcpy_array8_4
+__swift_memcpy8_4
 _TWaV9Beethoven12HPSEstimatorS_9EstimatorS_
 _TWaV9Beethoven12HPSEstimatorS_17LocationEstimatorS_
 __TTWV9Beethoven17SimpleTransformerS_11TransformerS_FS1_9transformfzT6bufferCSo16AVAudioPCMBuffer_VS_6Buffer
@@ -894,9 +897,11 @@ __TwxxV9Beethoven6Config
 __TwCpV9Beethoven6Config
 __TwcpV9Beethoven6Config
 __TwcaV9Beethoven6Config
+___swift_memcpy12_4
 __TwtaV9Beethoven6Config
 __TwXxV9Beethoven6Config
 __TwCcV9Beethoven6Config
+___swift_memmove_array12_4
 __TMfV9Beethoven6Config
 __TMRfV9Beethoven6Config
 __TMLGSqV10Foundation3URL_
@@ -905,9 +910,11 @@ _TMaV9Beethoven6Config
 Config.swift
 get_field_types_Config
 _TMaGSqV10Foundation3URL_
+__swift_memmove_array12_4
 _TwCcV9Beethoven6Config
 _TwXxV9Beethoven6Config
 _TwtaV9Beethoven6Config
+__swift_memcpy12_4
 _TwcaV9Beethoven6Config
 _TwcpV9Beethoven6Config
 _TwCpV9Beethoven6Config
@@ -1051,11 +1058,9 @@ __TwxxV9Beethoven6Buffer
 __TwCpV9Beethoven6Buffer
 __TwcpV9Beethoven6Buffer
 __TwcaV9Beethoven6Buffer
-___swift_memcpy24_8
 __TwtaV9Beethoven6Buffer
 __TwXxV9Beethoven6Buffer
 __TwCcV9Beethoven6Buffer
-___swift_memmove_array24_8
 __TwxsV9Beethoven6Buffer
 __TwxgV9Beethoven6Buffer
 __TMaV9Beethoven6Buffer
@@ -1074,11 +1079,9 @@ _TMaGSqGSaSf__
 _TMaGSaSf_
 _TwxgV9Beethoven6Buffer
 _TwxsV9Beethoven6Buffer
-__swift_memmove_array24_8
 _TwCcV9Beethoven6Buffer
 _TwXxV9Beethoven6Buffer
 _TwtaV9Beethoven6Buffer
-__swift_memcpy24_8
 _TwcaV9Beethoven6Buffer
 _TwcpV9Beethoven6Buffer
 _TwCpV9Beethoven6Buffer
@@ -1130,7 +1133,29 @@ _TMaV9Beethoven17EstimationFactory
 get_field_types_EstimationFactory
 /Users/work/Library/Developer/Xcode/DerivedData/Beethoven-fgecfkbluhztbrfchezwovayqcgr/Build/Intermediates/Beethoven.build/Release-iphoneos/Beethoven-iOS.build/DerivedSources/Beethoven_vers.c
 __ZL15__ARCLite__loadv
+__ZL30add_image_hook_autoreleasepoolPK11mach_headerl
+__ZL34__arclite_objc_autoreleasePoolPushv
+__ZL33__arclite_objc_autoreleasePoolPopPv
+__ZL19patch_lazy_pointersPK11mach_headerP7patch_tm
+__ZL42__arclite_NSArray_objectAtIndexedSubscriptP7NSArrayP13objc_selectorj
+__ZL53__arclite_NSMutableArray_setObject_atIndexedSubscriptP14NSMutableArrayP13objc_selectorP11objc_objectj
+__ZL46__arclite_NSDictionary_objectForKeyedSubscriptP12NSDictionaryP13objc_selectorP11objc_object
+__ZL47__arclite_NSOrderedSet_objectAtIndexedSubscriptP12NSOrderedSetP13objc_selectorj
+__ZL58__arclite_NSMutableOrderedSet_setObject_atIndexedSubscriptP19NSMutableOrderedSetP13objc_selectorP11objc_objectj
 __ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
+__ZL18add_image_hook_ARCPK11mach_headerl
+__ZL36__arclite_object_setInstanceVariableP11objc_objectPKcPv
+__ZL24__arclite_object_setIvarP11objc_objectP9objc_ivarS0_
+__ZL21__arclite_object_copyP11objc_objectm
+__ZL21__arclite_objc_retainP11objc_object
+__ZL26__arclite_objc_retainBlockP11objc_object
+__ZL22__arclite_objc_releaseP11objc_object
+__ZL26__arclite_objc_autoreleaseP11objc_object
+__ZL32__arclite_objc_retainAutoreleaseP11objc_object
+__ZL37__arclite_objc_autoreleaseReturnValueP11objc_object
+__ZL43__arclite_objc_retainAutoreleaseReturnValueP11objc_object
+__ZL44__arclite_objc_retainAutoreleasedReturnValueP11objc_object
+__ZL26__arclite_objc_storeStrongPP11objc_objectS0_
 __ZL22add_image_hook_swiftV1PK11mach_headerl
 __ZL42__arclite_NSUndoManagerProxy_isKindOfClassP11objc_objectP13objc_selectorP10objc_class
 __ZL13replaceMethodP10objc_classP13objc_selectorPFP11objc_objectS4_S2_zEPS6_
@@ -1174,9 +1199,17 @@ __ZL11_class_name
 __ZL32OBJC_$_CLASS_METHODS___ARCLite__
 __ZL17_load_method_name
 __ZL17_load_method_type
+__ZL23NSAutoreleasePool_class
+__ZZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+__ZGVZL30add_image_hook_autoreleasepoolPK11mach_headerlE7patches
+l_OBJC_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteIndexedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteIndexedSubscripting__
 l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
 l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
 l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
+__ZZL18add_image_hook_ARCPK11mach_headerlE7patches
+__ZGVZL18add_image_hook_ARCPK11mach_headerlE7patches
 __ZL30NSUndoManagerProxy_targetClass
 __ZL29original_NSManagedObject_init
 __ZL40original_NSManagedObject_allocWithEntity
@@ -1204,8 +1237,7 @@ __ZL25original_protocol_getName
 __ZL36original_objc_copyClassNamesForImage
 __ZL12demangleLock
 __ZL9Demangled
-Apple LLVM version 8.0.0 (clang-800.0.42)
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -fembed-bitcode -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/arm64 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/Symbols/BuiltProducts -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -fgnu-inline-asm -Wno-error=incomplete-umbrella -Wno-error=incomplete-umbrella -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~962/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.o -mlinker-version=274.1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch armv7 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -fembed-bitcode -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/armv7 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/Symbols/BuiltProducts -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -fgnu-inline-asm -Wno-error=incomplete-umbrella -Wno-error=incomplete-umbrella -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-65~1093/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/armv7/arclite.o -mlinker-version=274.2 -march=armv7a
 /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65/source/arclite.mm
 /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-65
 fixStringForCoreData
@@ -1213,7 +1245,7 @@ cxxConstruct
 arclite_uninitialized_function
 scanMangledField
 isdigit
-/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.Internal.sdk/usr/include/ctype.h
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.Internal.sdk/usr/include/ctype.h
 __isctype
 demangledName
 copySwiftV1DemangledName
@@ -1258,7 +1290,6 @@ __arclite_NSManagedObject_init
 replaceMethod
 __arclite_NSUndoManagerProxy_isKindOfClass
 add_image_hook_swiftV1
-patch_lazy_pointers
 patch_t<const char **(const char *, unsigned int *)>
 patch_t<const char *(Protocol *)>
 patch_t<const char *(Class)>
@@ -1267,9 +1298,51 @@ patch_t<Class (const char *)>
 patch_t<void *(id)>
 patch_t<Class (Class, const char *, unsigned long)>
 patch_t<Class (Class, const objc_image_info *)>
+__arclite_objc_storeStrong
+__arclite_objc_release
+__arclite_objc_retain
+__arclite_objc_retainAutoreleasedReturnValue
+__arclite_objc_retainAutoreleaseReturnValue
+__arclite_objc_autoreleaseReturnValue
+__arclite_objc_retainAutorelease
+__arclite_objc_autorelease
+__arclite_objc_retainBlock
+__arclite_object_copy
+fixupCopiedReferences
+_class_getInstanceStart
+alignedInstanceStart
+__arclite_class_usesAutomaticRetainRelease
+classOrSuperClassesUseARR
+__arclite_object_setIvar
+isScannedOffset
+_ivar_getClass
+__arclite_object_setInstanceVariable
+add_image_hook_ARC
+patch_t<void (id *, id)>
+patch_t<id (id)>
+patch_t<void (id)>
+patch_t<id (id, unsigned long)>
+patch_t<void (id, objc_ivar *, id)>
+patch_t<objc_ivar *(id, const char *, void *)>
 __arclite_NSMutableDictionary__setObject_forKeyedSubscript
+__arclite_NSMutableOrderedSet_setObject_atIndexedSubscript
+__arclite_NSOrderedSet_objectAtIndexedSubscript
+__arclite_NSDictionary_objectForKeyedSubscript
+__arclite_NSMutableArray_setObject_atIndexedSubscript
+__arclite_NSArray_objectAtIndexedSubscript
+patch_lazy_pointers
+__arclite_objc_autoreleasePoolPop
+__arclite_objc_autoreleasePoolPush
+add_image_hook_autoreleasepool
+patch_t<void (void *)>
+patch_t<void *()>
 __ARCLite__load
 install_swiftV1
+install_ARC
 install_dict_nil_value
 addOrReplaceMethod
 keyedGetter
+install_subscripting
+addMethod
+indexedGetter
+install_autoreleasepool
