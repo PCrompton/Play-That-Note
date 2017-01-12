@@ -1,12 +1,14 @@
 function drawStaffWithPitch(pitch, clef, width, height) {
     VF = Vex.Flow;
     var div = document.getElementById("note")
-    var renderer = new VF.Renderer(div, VF.Renderer.Backends.CANVAS);
+    var renderer = new VF.Renderer(document.getElementById("note"), VF.Renderer.Backends.SVG);
     renderer.resize(width, height);
+//    document.getElementById("note").setAttribute("width", width)
+//    document.getElementById("note").setAttribute("height", height)
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
     
-    var stave = new VF.Stave(25, 25, width-100);
+    var stave = new VF.Stave(width*.05, height/5, width*0.85);
     stave.addClef(clef);
     stave.setContext(context).draw();
     

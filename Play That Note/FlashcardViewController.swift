@@ -70,7 +70,12 @@ class FlashcardViewController: UIViewController {
         updateStatsLabels()
         flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
     }
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        _ = flashcardView?.reload()
+    }
+    
     // MARK: Data Functions
     func getLabelColor(for value: Int) -> UIColor {
         if value < 0 {

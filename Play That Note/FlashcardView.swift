@@ -39,7 +39,7 @@ class FlashcardView: WKWebView, WKNavigationDelegate {
         self.configuration.ignoresViewportScaleLimits = true
         self.backgroundColor = UIColor.clear
         self.allowsBackForwardNavigationGestures = false
-        self.isUserInteractionEnabled = true
+        self.isUserInteractionEnabled = false
         
         if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "vexFlow") {
             let request = URLRequest(url: url)
