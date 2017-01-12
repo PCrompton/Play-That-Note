@@ -3,8 +3,8 @@ function drawStaffWithPitch(pitch, clef, width, height) {
     var div = document.getElementById("note")
     var renderer = new VF.Renderer(document.getElementById("note"), VF.Renderer.Backends.SVG);
     renderer.resize(width, height);
-//    document.getElementById("note").setAttribute("width", width)
-//    document.getElementById("note").setAttribute("height", height)
+    document.getElementById("note").setAttribute("width", width)
+    document.getElementById("note").setAttribute("height", height)
     var context = renderer.getContext();
     context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
     
