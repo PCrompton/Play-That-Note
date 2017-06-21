@@ -1,0 +1,1163 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04D13F85B27A3A1B5C0222E483F5059D /* QuinnsFirstEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691A343D73CE46E47E04D97071383BD /* QuinnsFirstEstimator.swift */; };
+		08357A83E61021E347373792CAAFECEF /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A2B59C2A69C1F05B2A25D200A91BB3 /* Note.swift */; };
+		1AF170CC500770EF267743E29672EAA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46228D88AD5A8781C31A85EFCB09A344 /* Foundation.framework */; };
+		1AFA6FFA0E2337EE70FC2579C9ED21BC /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A16BF4A9E61DF8529B3F2DEE983DB3 /* Transformer.swift */; };
+		21CFDFB8ECC6B1F5789DCD069A446538 /* QuadradicEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74AF6EB28238998C5B11977766C0D12 /* QuadradicEstimator.swift */; };
+		22C81372648684C1D6B6C9D8420D2541 /* Pitchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CE40D3CA713D3372504837FE0FCD22 /* Pitchy.framework */; };
+		23BE538C9C4C716EADE64F69E4C314DD /* YINEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AD285B26A58DDFD9C03ADE5A185D17 /* YINEstimator.swift */; };
+		25255DBB5F0EB9CE4F729D4105A84373 /* NoteCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199FF693F99A5E27478739A9E30D6C1D /* NoteCalculator.swift */; };
+		25CABDF17F20F3ADEFDAE8D49467C8E6 /* YINUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB74D7135F8104B69711D8A6B27539B /* YINUtil.swift */; };
+		2CA78BAA28CDFDD97DA714FB5BFBD381 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3E27952B6549F846EF58A49629D751 /* AVFoundation.framework */; };
+		2CDEE252F67391BC8A6D36AE38C83445 /* OutputSignalTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657E077A3E80C9105AB564BD653F6C5C /* OutputSignalTracker.swift */; };
+		341348DB826C075DEDFA5D537E41AE22 /* Pods-Play That Note-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 57BB28339B56E0A3036C56867AAE88C4 /* Pods-Play That Note-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36977DB5D9BE23508D8EA743CF67D987 /* Beethoven-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E34758040152DAEEDECB655C2424225 /* Beethoven-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B20D9D5ADE7D2F55134DD5DD17CA73A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46228D88AD5A8781C31A85EFCB09A344 /* Foundation.framework */; };
+		3BA8044ECC8A295422AE7CCD2E326586 /* QuinnsSecondEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B277869456F6BF4586FF2EB6BD7E32 /* QuinnsSecondEstimator.swift */; };
+		3BD34C102B617AD65226DBDFA533DFB7 /* HPSEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F9991B5ADE3ED0C138F951422673A /* HPSEstimator.swift */; };
+		4301257650881EC75FD0F1EEB452ED05 /* FFTTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E14636023709906B879CABA22EE67 /* FFTTransformer.swift */; };
+		43D0FBED04DD05F4FAB28457C7400CD3 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA47870C12981F8FB370F2699F9878B /* Estimator.swift */; };
+		5177161F3D8DDF21BBBFCCCF78F6FE71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46228D88AD5A8781C31A85EFCB09A344 /* Foundation.framework */; };
+		51EC9456AD3E137CC9BCFADCE33A2ECA /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C4ADDDF01A3576643905E6A46CEBC2 /* Error.swift */; };
+		536849A7674DC8ADD2EC790F47975FA9 /* Pods-Play That Note-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBFEC2D673D8EB2FF500EA744E1CD4 /* Pods-Play That Note-dummy.m */; };
+		537A488E42E39D3E82998DFD30A5AF7F /* SignalTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140C08AF8389E7613973B805C3827CBA /* SignalTracker.swift */; };
+		555E4D190DF390C9A8CD695562CFF0D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46228D88AD5A8781C31A85EFCB09A344 /* Foundation.framework */; };
+		5EAF5565DB4559B99E3184B7FD61C40A /* LocationEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7259302FAF30539277483DA08F3C85 /* LocationEstimator.swift */; };
+		5FFABC2A07016276C1B7199AE4E62E44 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DD32B2F175BA35F437553D38528EE4 /* Buffer.swift */; };
+		63BBA9004DCCE8CD71054679A7C3D071 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7210AEDB67D350596250FCDD3D595D4A /* Accelerate.framework */; };
+		658950949B2077330037FB6A7FEBA442 /* Beethoven-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F8887F7E3EF6ED008791AE045B24B214 /* Beethoven-dummy.m */; };
+		67A36459994B9D66D88EA5014B65C94A /* PitchCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280E3E413AD4A12CF02CA8533F72F1E /* PitchCalculator.swift */; };
+		6AB2DF70BF555CA050BDA581F2844B1D /* Pods-Play That NoteUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9BB02DDB559ECB81B425D751DA3CD64 /* Pods-Play That NoteUITests-dummy.m */; };
+		6F53A77FC38726A98A9CE81E5F47FCB0 /* BarycentricEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECF5919025A30CDAD2F7C2CD73A1BBA /* BarycentricEstimator.swift */; };
+		75E11DD106D5BD413B47456CF40A6849 /* MaxValueEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C2A0441C1079496F1D2AF9276506A /* MaxValueEstimator.swift */; };
+		7975F8BF699B87EDADECAA216466B14F /* YINTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901EA02C83EFC1092FDCEAC10E48765B /* YINTransformer.swift */; };
+		7A7363483516BEF52D6634222856AE7F /* EstimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AC782ABFB2D1711663F94E09F81050 /* EstimationFactory.swift */; };
+		7AF0A6F31C5B07F0899F09B06F0077A8 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3342206978D843AC0E0C26694C8DFD29 /* Pitch.swift */; };
+		7E4B543CE8D9C50D7E94EF5CC405AAE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46228D88AD5A8781C31A85EFCB09A344 /* Foundation.framework */; };
+		8E3B41758B80662F3B5AC74C118DD5C8 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DF3AE61486E59AA22E04A7980510D /* Config.swift */; };
+		9A990EB7DCC9F135DD2A6624F8189CB9 /* InputSignalTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDDE1A90BE5185CBFF5EB5989FE552 /* InputSignalTracker.swift */; };
+		9CBAADEC879CE9A0671F09053ED2125B /* PitchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E626B6309DE7E6EA24E6F50AE22D72 /* PitchEngine.swift */; };
+		AA0D91D8AED023BAAE8AAB6619EEA6D0 /* JainsEstimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB219FDEC1BA778E55A3674E2014BAAA /* JainsEstimator.swift */; };
+		AB11CC06E11236D25F26F31095A43031 /* WaveCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778CDB9945523E9760C82E277A27D2CD /* WaveCalculator.swift */; };
+		AC5184D635D643ED6701EE4B87EAA354 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C8517039E6F4DBA3D5CDB2508726E /* Array+Extensions.swift */; };
+		B6CE6455F912C699232238A7C887F99D /* Pods-Play That NoteTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F5296D3BC063A4E8D953CE8502E69F6 /* Pods-Play That NoteTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFD77D77E0BB604C9FA6E4761283262B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06877B141A21925BA8BFE5943418A92 /* Config.swift */; };
+		C24EFCA469F14E3E68383B4097E5F2A8 /* Pods-Play That NoteUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6903D82CE36D32E7F4E7505D83781F12 /* Pods-Play That NoteUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C29F5A4D10B8F23A51BADC6F19CEAE4F /* EstimationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B506E61C40E96C5851A0AA19CAFE9BF3 /* EstimationError.swift */; };
+		DD284A96F6CD94CCC0B42ACFC9EC2B83 /* Pitchy-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 60973EC830244521B716CD1BA31216D6 /* Pitchy-dummy.m */; };
+		E9C9CDA99ACB0F421AE81B9CC75AD6FD /* Pods-Play That NoteTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D52186C5B92837FAB0FBD90DB35BD9 /* Pods-Play That NoteTests-dummy.m */; };
+		F0ECC5925A486032AA3D194ED428B621 /* AcousticWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD8BA09D0EB9288E4287B2F15ABFA33 /* AcousticWave.swift */; };
+		F9C1E18C8EF23B1BEF92BC1ACC2CB574 /* SimpleTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899A787A13C483C2A4A605B98D24B6EA /* SimpleTransformer.swift */; };
+		FAD72CBCA20AEEECD4DCA4D295DC79EC /* EstimationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060A417F62085944C84068E6368640CE /* EstimationStrategy.swift */; };
+		FCA5B5288BF889A474329AF0E6471783 /* Pitchy-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DBE87A21AB74DE7C8D09357C08600A4 /* Pitchy-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67C3536D1F887B402561F08474834318 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 800F39573EA188EF47EAF7DCF2B5E7B5;
+			remoteInfo = Pitchy;
+		};
+		689C9D3B3F4C6F905E1246942AF129FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 800F39573EA188EF47EAF7DCF2B5E7B5;
+			remoteInfo = Pitchy;
+		};
+		D713E253BF7215A2A87F4DC206698582 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BC3E8FBAD56AD03A1F952B604615D34;
+			remoteInfo = Beethoven;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		029E655BF691CD86534A2E2EEB530D75 /* Pods_Play_That_NoteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Play_That_NoteUITests.framework; path = "Pods-Play That NoteUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		060A417F62085944C84068E6368640CE /* EstimationStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EstimationStrategy.swift; path = Source/Estimation/EstimationStrategy.swift; sourceTree = "<group>"; };
+		0C8F5A3E6844F387565A3EC4F372929B /* Pitchy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pitchy.xcconfig; sourceTree = "<group>"; };
+		0E34758040152DAEEDECB655C2424225 /* Beethoven-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Beethoven-umbrella.h"; sourceTree = "<group>"; };
+		140C08AF8389E7613973B805C3827CBA /* SignalTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SignalTracker.swift; path = Source/SignalTracking/SignalTracker.swift; sourceTree = "<group>"; };
+		199FF693F99A5E27478739A9E30D6C1D /* NoteCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NoteCalculator.swift; path = Source/Calculators/NoteCalculator.swift; sourceTree = "<group>"; };
+		1E1F55A3B9788363D3BFEFFE740CF459 /* Pitchy.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pitchy.modulemap; sourceTree = "<group>"; };
+		20A8963FCA4E550E8CF974A8F7085501 /* Pods-Play That NoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Play That NoteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2266FF5667EB2E4FEAAFD74BAD51AF33 /* Pods-Play That NoteUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Play That NoteUITests-resources.sh"; sourceTree = "<group>"; };
+		256E14636023709906B879CABA22EE67 /* FFTTransformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FFTTransformer.swift; path = Source/Transform/Strategies/FFTTransformer.swift; sourceTree = "<group>"; };
+		262C2A0441C1079496F1D2AF9276506A /* MaxValueEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MaxValueEstimator.swift; path = Source/Estimation/Strategies/MaxValueEstimator.swift; sourceTree = "<group>"; };
+		2D1D4CDBFFA9D02EFCBEC8EFDF28F663 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D7259302FAF30539277483DA08F3C85 /* LocationEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocationEstimator.swift; path = Source/Estimation/LocationEstimator.swift; sourceTree = "<group>"; };
+		2E44289C7BA2133D14BA8870F04A2370 /* Beethoven.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Beethoven.modulemap; sourceTree = "<group>"; };
+		2F8D94A807C4F85870D18CFB4F181DE3 /* Pods_Play_That_Note.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Play_That_Note.framework; path = "Pods-Play That Note.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3342206978D843AC0E0C26694C8DFD29 /* Pitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pitch.swift; path = Source/Data/Pitch.swift; sourceTree = "<group>"; };
+		36F295F87ADBA8C1E4B173EE1794988B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ACDDE1A90BE5185CBFF5EB5989FE552 /* InputSignalTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputSignalTracker.swift; path = Source/SignalTracking/Units/InputSignalTracker.swift; sourceTree = "<group>"; };
+		3FC65E65D8857C43403C03171D8E3B81 /* Beethoven-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Beethoven-prefix.pch"; sourceTree = "<group>"; };
+		40B277869456F6BF4586FF2EB6BD7E32 /* QuinnsSecondEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuinnsSecondEstimator.swift; path = Source/Estimation/Strategies/QuinnsSecondEstimator.swift; sourceTree = "<group>"; };
+		4401BC4CC55A822231134D62EB04F493 /* Beethoven.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Beethoven.xcconfig; sourceTree = "<group>"; };
+		46228D88AD5A8781C31A85EFCB09A344 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		48D52186C5B92837FAB0FBD90DB35BD9 /* Pods-Play That NoteTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Play That NoteTests-dummy.m"; sourceTree = "<group>"; };
+		49AC782ABFB2D1711663F94E09F81050 /* EstimationFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EstimationFactory.swift; path = Source/Estimation/EstimationFactory.swift; sourceTree = "<group>"; };
+		4AA47870C12981F8FB370F2699F9878B /* Estimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Estimator.swift; path = Source/Estimation/Estimator.swift; sourceTree = "<group>"; };
+		4EAB7897BA70B8748CEF038815A6AD8F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EB970A808D8C61D4B9C235F11142C4B /* Pods-Play That NoteTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Play That NoteTests.modulemap"; sourceTree = "<group>"; };
+		4F3E27952B6549F846EF58A49629D751 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		506A5903D259858FE6C0CD4842E77503 /* Pods-Play That NoteTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Play That NoteTests-frameworks.sh"; sourceTree = "<group>"; };
+		50A16BF4A9E61DF8529B3F2DEE983DB3 /* Transformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transformer.swift; path = Source/Transform/Transformer.swift; sourceTree = "<group>"; };
+		50DADADD35E39C09AF25055D625C90ED /* Pods-Play That NoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Play That NoteTests.release.xcconfig"; sourceTree = "<group>"; };
+		54E6924E9DFEBD47F8EA740BAF006BFD /* Pods-Play That Note-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Play That Note-acknowledgements.plist"; sourceTree = "<group>"; };
+		57BB28339B56E0A3036C56867AAE88C4 /* Pods-Play That Note-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Play That Note-umbrella.h"; sourceTree = "<group>"; };
+		5CFEA292B67F8F893B0B39F837513DB6 /* Pods-Play That NoteUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Play That NoteUITests.modulemap"; sourceTree = "<group>"; };
+		60973EC830244521B716CD1BA31216D6 /* Pitchy-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pitchy-dummy.m"; sourceTree = "<group>"; };
+		657E077A3E80C9105AB564BD653F6C5C /* OutputSignalTracker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OutputSignalTracker.swift; path = Source/SignalTracking/Units/OutputSignalTracker.swift; sourceTree = "<group>"; };
+		66E39B476A9C8CAAD6BC2D34EAF45927 /* Pods_Play_That_NoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Play_That_NoteTests.framework; path = "Pods-Play That NoteTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68A2B59C2A69C1F05B2A25D200A91BB3 /* Note.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Source/Data/Note.swift; sourceTree = "<group>"; };
+		6903D82CE36D32E7F4E7505D83781F12 /* Pods-Play That NoteUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Play That NoteUITests-umbrella.h"; sourceTree = "<group>"; };
+		694FF9A07816DDAFA35C5357A03CEAB2 /* Pods-Play That Note.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Play That Note.release.xcconfig"; sourceTree = "<group>"; };
+		7210AEDB67D350596250FCDD3D595D4A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		74F283F890A3C1648E20F6320F3AAF0B /* Pods-Play That NoteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Play That NoteUITests.release.xcconfig"; sourceTree = "<group>"; };
+		778CDB9945523E9760C82E277A27D2CD /* WaveCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WaveCalculator.swift; path = Source/Calculators/WaveCalculator.swift; sourceTree = "<group>"; };
+		77C60142F686397104659AA9FC5C5CF0 /* Pods-Play That NoteUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Play That NoteUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		84BA1B4D81FEA27CC0D510DC3844DC9D /* Pods-Play That Note-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Play That Note-resources.sh"; sourceTree = "<group>"; };
+		8691A343D73CE46E47E04D97071383BD /* QuinnsFirstEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuinnsFirstEstimator.swift; path = Source/Estimation/Strategies/QuinnsFirstEstimator.swift; sourceTree = "<group>"; };
+		899A787A13C483C2A4A605B98D24B6EA /* SimpleTransformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SimpleTransformer.swift; path = Source/Transform/Strategies/SimpleTransformer.swift; sourceTree = "<group>"; };
+		89AD285B26A58DDFD9C03ADE5A185D17 /* YINEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YINEstimator.swift; path = Source/Estimation/Strategies/YINEstimator.swift; sourceTree = "<group>"; };
+		8B9ED90F0D4EE7C12AE1045CF3401DC2 /* Pods-Play That NoteTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Play That NoteTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8C1CA7967DE6DBF2878F2A117DE911E6 /* Pitchy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pitchy.framework; path = Pitchy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CEDE19A0568A03057574687DE78E31C /* Pods-Play That NoteTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Play That NoteTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		8DBE87A21AB74DE7C8D09357C08600A4 /* Pitchy-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pitchy-umbrella.h"; sourceTree = "<group>"; };
+		8F5296D3BC063A4E8D953CE8502E69F6 /* Pods-Play That NoteTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Play That NoteTests-umbrella.h"; sourceTree = "<group>"; };
+		901EA02C83EFC1092FDCEAC10E48765B /* YINTransformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YINTransformer.swift; path = Source/Transform/Strategies/YINTransformer.swift; sourceTree = "<group>"; };
+		905E262A5E29C25D93ABDB3D97C26BE3 /* Pods-Play That Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Play That Note.debug.xcconfig"; sourceTree = "<group>"; };
+		9280E3E413AD4A12CF02CA8533F72F1E /* PitchCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PitchCalculator.swift; path = Source/Calculators/PitchCalculator.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96DD32B2F175BA35F437553D38528EE4 /* Buffer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Buffer.swift; path = Source/Library/Buffer.swift; sourceTree = "<group>"; };
+		99B25A8EA0D6C88DBE68EF4A063EBD96 /* Beethoven.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Beethoven.framework; path = Beethoven.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D94D86491ECF1AE3E4C38B37F4738E2 /* Pods-Play That NoteTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Play That NoteTests-resources.sh"; sourceTree = "<group>"; };
+		9FFBFEC2D673D8EB2FF500EA744E1CD4 /* Pods-Play That Note-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Play That Note-dummy.m"; sourceTree = "<group>"; };
+		AAD1F273204474A3269F15B21616A0C2 /* Pods-Play That NoteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Play That NoteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B3E626B6309DE7E6EA24E6F50AE22D72 /* PitchEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PitchEngine.swift; path = Source/PitchEngine.swift; sourceTree = "<group>"; };
+		B506E61C40E96C5851A0AA19CAFE9BF3 /* EstimationError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EstimationError.swift; path = Source/Estimation/EstimationError.swift; sourceTree = "<group>"; };
+		B9BB02DDB559ECB81B425D751DA3CD64 /* Pods-Play That NoteUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Play That NoteUITests-dummy.m"; sourceTree = "<group>"; };
+		BA6AEEA578C17CBCB2CC9B91605B9F63 /* Pods-Play That NoteUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Play That NoteUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BC6F9991B5ADE3ED0C138F951422673A /* HPSEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HPSEstimator.swift; path = Source/Estimation/Strategies/HPSEstimator.swift; sourceTree = "<group>"; };
+		BDB74D7135F8104B69711D8A6B27539B /* YINUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YINUtil.swift; path = Source/Library/YINUtil.swift; sourceTree = "<group>"; };
+		BECF5919025A30CDAD2F7C2CD73A1BBA /* BarycentricEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarycentricEstimator.swift; path = Source/Estimation/Strategies/BarycentricEstimator.swift; sourceTree = "<group>"; };
+		C30D356E5EC46D76664CA6AF4FF20FBA /* Pods-Play That Note-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Play That Note-frameworks.sh"; sourceTree = "<group>"; };
+		C74AF6EB28238998C5B11977766C0D12 /* QuadradicEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuadradicEstimator.swift; path = Source/Estimation/Strategies/QuadradicEstimator.swift; sourceTree = "<group>"; };
+		C9951629F095B0BF5DCA141B29A73A58 /* Pitchy-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pitchy-prefix.pch"; sourceTree = "<group>"; };
+		CA507E43DB3D42618C420B53D4E095EA /* Pods-Play That NoteUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Play That NoteUITests-frameworks.sh"; sourceTree = "<group>"; };
+		CDB441885B8A3587E50A7CEA4667BA3C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1D64AFA4FE6A83D237DA0E0402C95BE /* Pods-Play That Note-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Play That Note-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D3CE40D3CA713D3372504837FE0FCD22 /* Pitchy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pitchy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF9C8517039E6F4DBA3D5CDB2508726E /* Array+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+Extensions.swift"; path = "Source/Library/Extensions/Array+Extensions.swift"; sourceTree = "<group>"; };
+		E2B9415DDE63FC2402999CAAAB48AD16 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E97DF3AE61486E59AA22E04A7980510D /* Config.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Source/Config.swift; sourceTree = "<group>"; };
+		F06877B141A21925BA8BFE5943418A92 /* Config.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Config.swift; path = Source/Config.swift; sourceTree = "<group>"; };
+		F4C4ADDDF01A3576643905E6A46CEBC2 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
+		F6DDABBB4FFB381635D2347ABE58C691 /* Pods-Play That Note.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Play That Note.modulemap"; sourceTree = "<group>"; };
+		F8887F7E3EF6ED008791AE045B24B214 /* Beethoven-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Beethoven-dummy.m"; sourceTree = "<group>"; };
+		FB219FDEC1BA778E55A3674E2014BAAA /* JainsEstimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JainsEstimator.swift; path = Source/Estimation/Strategies/JainsEstimator.swift; sourceTree = "<group>"; };
+		FFD8BA09D0EB9288E4287B2F15ABFA33 /* AcousticWave.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AcousticWave.swift; path = Source/Data/AcousticWave.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62D6A4BE3446ADE28CB4AA1F563E8562 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63BBA9004DCCE8CD71054679A7C3D071 /* Accelerate.framework in Frameworks */,
+				2CA78BAA28CDFDD97DA714FB5BFBD381 /* AVFoundation.framework in Frameworks */,
+				3B20D9D5ADE7D2F55134DD5DD17CA73A /* Foundation.framework in Frameworks */,
+				22C81372648684C1D6B6C9D8420D2541 /* Pitchy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		651CC643F449FABFBC3711D25BF35C4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E4B543CE8D9C50D7E94EF5CC405AAE0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7144D0114C38072FC1E9CCFD26D73616 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AF170CC500770EF267743E29672EAA6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7398D393224D7B0A798CDA8A60813583 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				555E4D190DF390C9A8CD695562CFF0D4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D90C5F302430F5B2F60950670411F211 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5177161F3D8DDF21BBBFCCCF78F6FE71 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2589323F006E9529B569B578976EF596 /* Beethoven */ = {
+			isa = PBXGroup;
+			children = (
+				DF9C8517039E6F4DBA3D5CDB2508726E /* Array+Extensions.swift */,
+				BECF5919025A30CDAD2F7C2CD73A1BBA /* BarycentricEstimator.swift */,
+				96DD32B2F175BA35F437553D38528EE4 /* Buffer.swift */,
+				F06877B141A21925BA8BFE5943418A92 /* Config.swift */,
+				B506E61C40E96C5851A0AA19CAFE9BF3 /* EstimationError.swift */,
+				49AC782ABFB2D1711663F94E09F81050 /* EstimationFactory.swift */,
+				060A417F62085944C84068E6368640CE /* EstimationStrategy.swift */,
+				4AA47870C12981F8FB370F2699F9878B /* Estimator.swift */,
+				256E14636023709906B879CABA22EE67 /* FFTTransformer.swift */,
+				BC6F9991B5ADE3ED0C138F951422673A /* HPSEstimator.swift */,
+				3ACDDE1A90BE5185CBFF5EB5989FE552 /* InputSignalTracker.swift */,
+				FB219FDEC1BA778E55A3674E2014BAAA /* JainsEstimator.swift */,
+				2D7259302FAF30539277483DA08F3C85 /* LocationEstimator.swift */,
+				262C2A0441C1079496F1D2AF9276506A /* MaxValueEstimator.swift */,
+				657E077A3E80C9105AB564BD653F6C5C /* OutputSignalTracker.swift */,
+				B3E626B6309DE7E6EA24E6F50AE22D72 /* PitchEngine.swift */,
+				C74AF6EB28238998C5B11977766C0D12 /* QuadradicEstimator.swift */,
+				8691A343D73CE46E47E04D97071383BD /* QuinnsFirstEstimator.swift */,
+				40B277869456F6BF4586FF2EB6BD7E32 /* QuinnsSecondEstimator.swift */,
+				140C08AF8389E7613973B805C3827CBA /* SignalTracker.swift */,
+				899A787A13C483C2A4A605B98D24B6EA /* SimpleTransformer.swift */,
+				50A16BF4A9E61DF8529B3F2DEE983DB3 /* Transformer.swift */,
+				89AD285B26A58DDFD9C03ADE5A185D17 /* YINEstimator.swift */,
+				901EA02C83EFC1092FDCEAC10E48765B /* YINTransformer.swift */,
+				BDB74D7135F8104B69711D8A6B27539B /* YINUtil.swift */,
+				E5F512BBC75A5D0392640F8F4C9B1E7C /* Support Files */,
+			);
+			name = Beethoven;
+			path = Beethoven;
+			sourceTree = "<group>";
+		};
+		3C8DBE8CCCF884918FBA8CB8F67DB55C /* Pods-Play That NoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D1D4CDBFFA9D02EFCBEC8EFDF28F663 /* Info.plist */,
+				4EB970A808D8C61D4B9C235F11142C4B /* Pods-Play That NoteTests.modulemap */,
+				8B9ED90F0D4EE7C12AE1045CF3401DC2 /* Pods-Play That NoteTests-acknowledgements.markdown */,
+				8CEDE19A0568A03057574687DE78E31C /* Pods-Play That NoteTests-acknowledgements.plist */,
+				48D52186C5B92837FAB0FBD90DB35BD9 /* Pods-Play That NoteTests-dummy.m */,
+				506A5903D259858FE6C0CD4842E77503 /* Pods-Play That NoteTests-frameworks.sh */,
+				9D94D86491ECF1AE3E4C38B37F4738E2 /* Pods-Play That NoteTests-resources.sh */,
+				8F5296D3BC063A4E8D953CE8502E69F6 /* Pods-Play That NoteTests-umbrella.h */,
+				20A8963FCA4E550E8CF974A8F7085501 /* Pods-Play That NoteTests.debug.xcconfig */,
+				50DADADD35E39C09AF25055D625C90ED /* Pods-Play That NoteTests.release.xcconfig */,
+			);
+			name = "Pods-Play That NoteTests";
+			path = "Target Support Files/Pods-Play That NoteTests";
+			sourceTree = "<group>";
+		};
+		3F48853AB28731A65D5682A632605365 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2589323F006E9529B569B578976EF596 /* Beethoven */,
+				CE81ED64036C151BF092A5F4263FD44C /* Pitchy */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		619989960252E32B494A5430667F700C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7210AEDB67D350596250FCDD3D595D4A /* Accelerate.framework */,
+				4F3E27952B6549F846EF58A49629D751 /* AVFoundation.framework */,
+				46228D88AD5A8781C31A85EFCB09A344 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				89A393472C9E49796F8438793244D3C8 /* Frameworks */,
+				3F48853AB28731A65D5682A632605365 /* Pods */,
+				B6882DD3283254149F103A6F67FBCE02 /* Products */,
+				A35FA75581B0E848C912588E440CC8F8 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		83F5EB156F151C639BC2388F38476D44 /* Pods-Play That Note */ = {
+			isa = PBXGroup;
+			children = (
+				36F295F87ADBA8C1E4B173EE1794988B /* Info.plist */,
+				F6DDABBB4FFB381635D2347ABE58C691 /* Pods-Play That Note.modulemap */,
+				D1D64AFA4FE6A83D237DA0E0402C95BE /* Pods-Play That Note-acknowledgements.markdown */,
+				54E6924E9DFEBD47F8EA740BAF006BFD /* Pods-Play That Note-acknowledgements.plist */,
+				9FFBFEC2D673D8EB2FF500EA744E1CD4 /* Pods-Play That Note-dummy.m */,
+				C30D356E5EC46D76664CA6AF4FF20FBA /* Pods-Play That Note-frameworks.sh */,
+				84BA1B4D81FEA27CC0D510DC3844DC9D /* Pods-Play That Note-resources.sh */,
+				57BB28339B56E0A3036C56867AAE88C4 /* Pods-Play That Note-umbrella.h */,
+				905E262A5E29C25D93ABDB3D97C26BE3 /* Pods-Play That Note.debug.xcconfig */,
+				694FF9A07816DDAFA35C5357A03CEAB2 /* Pods-Play That Note.release.xcconfig */,
+			);
+			name = "Pods-Play That Note";
+			path = "Target Support Files/Pods-Play That Note";
+			sourceTree = "<group>";
+		};
+		89A393472C9E49796F8438793244D3C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3CE40D3CA713D3372504837FE0FCD22 /* Pitchy.framework */,
+				619989960252E32B494A5430667F700C /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94A3285478AB3ED4AFD8E44821053709 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E2B9415DDE63FC2402999CAAAB48AD16 /* Info.plist */,
+				1E1F55A3B9788363D3BFEFFE740CF459 /* Pitchy.modulemap */,
+				0C8F5A3E6844F387565A3EC4F372929B /* Pitchy.xcconfig */,
+				60973EC830244521B716CD1BA31216D6 /* Pitchy-dummy.m */,
+				C9951629F095B0BF5DCA141B29A73A58 /* Pitchy-prefix.pch */,
+				8DBE87A21AB74DE7C8D09357C08600A4 /* Pitchy-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pitchy";
+			sourceTree = "<group>";
+		};
+		A35FA75581B0E848C912588E440CC8F8 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				83F5EB156F151C639BC2388F38476D44 /* Pods-Play That Note */,
+				3C8DBE8CCCF884918FBA8CB8F67DB55C /* Pods-Play That NoteTests */,
+				B0C0F636E0B07DAE69536AFA68B74476 /* Pods-Play That NoteUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B0C0F636E0B07DAE69536AFA68B74476 /* Pods-Play That NoteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4EAB7897BA70B8748CEF038815A6AD8F /* Info.plist */,
+				5CFEA292B67F8F893B0B39F837513DB6 /* Pods-Play That NoteUITests.modulemap */,
+				BA6AEEA578C17CBCB2CC9B91605B9F63 /* Pods-Play That NoteUITests-acknowledgements.markdown */,
+				77C60142F686397104659AA9FC5C5CF0 /* Pods-Play That NoteUITests-acknowledgements.plist */,
+				B9BB02DDB559ECB81B425D751DA3CD64 /* Pods-Play That NoteUITests-dummy.m */,
+				CA507E43DB3D42618C420B53D4E095EA /* Pods-Play That NoteUITests-frameworks.sh */,
+				2266FF5667EB2E4FEAAFD74BAD51AF33 /* Pods-Play That NoteUITests-resources.sh */,
+				6903D82CE36D32E7F4E7505D83781F12 /* Pods-Play That NoteUITests-umbrella.h */,
+				AAD1F273204474A3269F15B21616A0C2 /* Pods-Play That NoteUITests.debug.xcconfig */,
+				74F283F890A3C1648E20F6320F3AAF0B /* Pods-Play That NoteUITests.release.xcconfig */,
+			);
+			name = "Pods-Play That NoteUITests";
+			path = "Target Support Files/Pods-Play That NoteUITests";
+			sourceTree = "<group>";
+		};
+		B6882DD3283254149F103A6F67FBCE02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99B25A8EA0D6C88DBE68EF4A063EBD96 /* Beethoven.framework */,
+				8C1CA7967DE6DBF2878F2A117DE911E6 /* Pitchy.framework */,
+				2F8D94A807C4F85870D18CFB4F181DE3 /* Pods_Play_That_Note.framework */,
+				66E39B476A9C8CAAD6BC2D34EAF45927 /* Pods_Play_That_NoteTests.framework */,
+				029E655BF691CD86534A2E2EEB530D75 /* Pods_Play_That_NoteUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE81ED64036C151BF092A5F4263FD44C /* Pitchy */ = {
+			isa = PBXGroup;
+			children = (
+				FFD8BA09D0EB9288E4287B2F15ABFA33 /* AcousticWave.swift */,
+				E97DF3AE61486E59AA22E04A7980510D /* Config.swift */,
+				F4C4ADDDF01A3576643905E6A46CEBC2 /* Error.swift */,
+				68A2B59C2A69C1F05B2A25D200A91BB3 /* Note.swift */,
+				199FF693F99A5E27478739A9E30D6C1D /* NoteCalculator.swift */,
+				3342206978D843AC0E0C26694C8DFD29 /* Pitch.swift */,
+				9280E3E413AD4A12CF02CA8533F72F1E /* PitchCalculator.swift */,
+				778CDB9945523E9760C82E277A27D2CD /* WaveCalculator.swift */,
+				94A3285478AB3ED4AFD8E44821053709 /* Support Files */,
+			);
+			name = Pitchy;
+			path = Pitchy;
+			sourceTree = "<group>";
+		};
+		E5F512BBC75A5D0392640F8F4C9B1E7C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E44289C7BA2133D14BA8870F04A2370 /* Beethoven.modulemap */,
+				4401BC4CC55A822231134D62EB04F493 /* Beethoven.xcconfig */,
+				F8887F7E3EF6ED008791AE045B24B214 /* Beethoven-dummy.m */,
+				3FC65E65D8857C43403C03171D8E3B81 /* Beethoven-prefix.pch */,
+				0E34758040152DAEEDECB655C2424225 /* Beethoven-umbrella.h */,
+				CDB441885B8A3587E50A7CEA4667BA3C /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Beethoven";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0C72E0CA5B44BEB14725D68E2B69DBD0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6CE6455F912C699232238A7C887F99D /* Pods-Play That NoteTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E0687562536CAF20B0C585AB73CA981 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24EFCA469F14E3E68383B4097E5F2A8 /* Pods-Play That NoteUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C95D8C02D9A2B21A6E36C08F9B1718A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36977DB5D9BE23508D8EA743CF67D987 /* Beethoven-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF77BF0711FC71ACD471CF5F47FA7C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCA5B5288BF889A474329AF0E6471783 /* Pitchy-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		921DCD3D2D23BCFA7D26951E584684A7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341348DB826C075DEDFA5D537E41AE22 /* Pods-Play That Note-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		154A92B8BDDD4DC604E291E99109E57F /* Pods-Play That NoteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EA4C2C3C1213D4F80E601C90E6DC70D /* Build configuration list for PBXNativeTarget "Pods-Play That NoteUITests" */;
+			buildPhases = (
+				EE94DAD73F8C2A6E91156FA516FCF084 /* Sources */,
+				D90C5F302430F5B2F60950670411F211 /* Frameworks */,
+				3E0687562536CAF20B0C585AB73CA981 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Play That NoteUITests";
+			productName = "Pods-Play That NoteUITests";
+			productReference = 029E655BF691CD86534A2E2EEB530D75 /* Pods_Play_That_NoteUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		415F1CCA2E6264854A93DDBF74BD4A8E /* Pods-Play That Note */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F78DA626EEDD42F58D32C64F279146B /* Build configuration list for PBXNativeTarget "Pods-Play That Note" */;
+			buildPhases = (
+				9F7BAF08EA36E98EEFEF92B6A875BCA7 /* Sources */,
+				651CC643F449FABFBC3711D25BF35C4A /* Frameworks */,
+				921DCD3D2D23BCFA7D26951E584684A7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DCA5EA17EC1F756FFDE70BE0DE92310B /* PBXTargetDependency */,
+				F8B793A5A6CD22FC54856AFA83E60591 /* PBXTargetDependency */,
+			);
+			name = "Pods-Play That Note";
+			productName = "Pods-Play That Note";
+			productReference = 2F8D94A807C4F85870D18CFB4F181DE3 /* Pods_Play_That_Note.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		473348DFC0E886F9AE8594AF162E7885 /* Pods-Play That NoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C375361EB63F5D5633BFC8BC69EEFFC8 /* Build configuration list for PBXNativeTarget "Pods-Play That NoteTests" */;
+			buildPhases = (
+				85B8B73D871557F4EE2DA4981CF8C99C /* Sources */,
+				7398D393224D7B0A798CDA8A60813583 /* Frameworks */,
+				0C72E0CA5B44BEB14725D68E2B69DBD0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Play That NoteTests";
+			productName = "Pods-Play That NoteTests";
+			productReference = 66E39B476A9C8CAAD6BC2D34EAF45927 /* Pods_Play_That_NoteTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6BC3E8FBAD56AD03A1F952B604615D34 /* Beethoven */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D737880C1A845E6263014EEF7F24575F /* Build configuration list for PBXNativeTarget "Beethoven" */;
+			buildPhases = (
+				0B2F3D454A0C95D6864AA3098C33FBD8 /* Sources */,
+				62D6A4BE3446ADE28CB4AA1F563E8562 /* Frameworks */,
+				4C95D8C02D9A2B21A6E36C08F9B1718A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07ABE997D2FC73C32C7DB40A7B955F23 /* PBXTargetDependency */,
+			);
+			name = Beethoven;
+			productName = Beethoven;
+			productReference = 99B25A8EA0D6C88DBE68EF4A063EBD96 /* Beethoven.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		800F39573EA188EF47EAF7DCF2B5E7B5 /* Pitchy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B552356DF868A20021D17114B6405E7C /* Build configuration list for PBXNativeTarget "Pitchy" */;
+			buildPhases = (
+				123A8C84D0C204786C39E9C74091B719 /* Sources */,
+				7144D0114C38072FC1E9CCFD26D73616 /* Frameworks */,
+				6BF77BF0711FC71ACD471CF5F47FA7C8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pitchy;
+			productName = Pitchy;
+			productReference = 8C1CA7967DE6DBF2878F2A117DE911E6 /* Pitchy.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = B6882DD3283254149F103A6F67FBCE02 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6BC3E8FBAD56AD03A1F952B604615D34 /* Beethoven */,
+				800F39573EA188EF47EAF7DCF2B5E7B5 /* Pitchy */,
+				415F1CCA2E6264854A93DDBF74BD4A8E /* Pods-Play That Note */,
+				473348DFC0E886F9AE8594AF162E7885 /* Pods-Play That NoteTests */,
+				154A92B8BDDD4DC604E291E99109E57F /* Pods-Play That NoteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B2F3D454A0C95D6864AA3098C33FBD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC5184D635D643ED6701EE4B87EAA354 /* Array+Extensions.swift in Sources */,
+				6F53A77FC38726A98A9CE81E5F47FCB0 /* BarycentricEstimator.swift in Sources */,
+				658950949B2077330037FB6A7FEBA442 /* Beethoven-dummy.m in Sources */,
+				5FFABC2A07016276C1B7199AE4E62E44 /* Buffer.swift in Sources */,
+				BFD77D77E0BB604C9FA6E4761283262B /* Config.swift in Sources */,
+				C29F5A4D10B8F23A51BADC6F19CEAE4F /* EstimationError.swift in Sources */,
+				7A7363483516BEF52D6634222856AE7F /* EstimationFactory.swift in Sources */,
+				FAD72CBCA20AEEECD4DCA4D295DC79EC /* EstimationStrategy.swift in Sources */,
+				43D0FBED04DD05F4FAB28457C7400CD3 /* Estimator.swift in Sources */,
+				4301257650881EC75FD0F1EEB452ED05 /* FFTTransformer.swift in Sources */,
+				3BD34C102B617AD65226DBDFA533DFB7 /* HPSEstimator.swift in Sources */,
+				9A990EB7DCC9F135DD2A6624F8189CB9 /* InputSignalTracker.swift in Sources */,
+				AA0D91D8AED023BAAE8AAB6619EEA6D0 /* JainsEstimator.swift in Sources */,
+				5EAF5565DB4559B99E3184B7FD61C40A /* LocationEstimator.swift in Sources */,
+				75E11DD106D5BD413B47456CF40A6849 /* MaxValueEstimator.swift in Sources */,
+				2CDEE252F67391BC8A6D36AE38C83445 /* OutputSignalTracker.swift in Sources */,
+				9CBAADEC879CE9A0671F09053ED2125B /* PitchEngine.swift in Sources */,
+				21CFDFB8ECC6B1F5789DCD069A446538 /* QuadradicEstimator.swift in Sources */,
+				04D13F85B27A3A1B5C0222E483F5059D /* QuinnsFirstEstimator.swift in Sources */,
+				3BA8044ECC8A295422AE7CCD2E326586 /* QuinnsSecondEstimator.swift in Sources */,
+				537A488E42E39D3E82998DFD30A5AF7F /* SignalTracker.swift in Sources */,
+				F9C1E18C8EF23B1BEF92BC1ACC2CB574 /* SimpleTransformer.swift in Sources */,
+				1AFA6FFA0E2337EE70FC2579C9ED21BC /* Transformer.swift in Sources */,
+				23BE538C9C4C716EADE64F69E4C314DD /* YINEstimator.swift in Sources */,
+				7975F8BF699B87EDADECAA216466B14F /* YINTransformer.swift in Sources */,
+				25CABDF17F20F3ADEFDAE8D49467C8E6 /* YINUtil.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		123A8C84D0C204786C39E9C74091B719 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0ECC5925A486032AA3D194ED428B621 /* AcousticWave.swift in Sources */,
+				8E3B41758B80662F3B5AC74C118DD5C8 /* Config.swift in Sources */,
+				51EC9456AD3E137CC9BCFADCE33A2ECA /* Error.swift in Sources */,
+				08357A83E61021E347373792CAAFECEF /* Note.swift in Sources */,
+				25255DBB5F0EB9CE4F729D4105A84373 /* NoteCalculator.swift in Sources */,
+				7AF0A6F31C5B07F0899F09B06F0077A8 /* Pitch.swift in Sources */,
+				67A36459994B9D66D88EA5014B65C94A /* PitchCalculator.swift in Sources */,
+				DD284A96F6CD94CCC0B42ACFC9EC2B83 /* Pitchy-dummy.m in Sources */,
+				AB11CC06E11236D25F26F31095A43031 /* WaveCalculator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85B8B73D871557F4EE2DA4981CF8C99C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9C9CDA99ACB0F421AE81B9CC75AD6FD /* Pods-Play That NoteTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F7BAF08EA36E98EEFEF92B6A875BCA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				536849A7674DC8ADD2EC790F47975FA9 /* Pods-Play That Note-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE94DAD73F8C2A6E91156FA516FCF084 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AB2DF70BF555CA050BDA581F2844B1D /* Pods-Play That NoteUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		07ABE997D2FC73C32C7DB40A7B955F23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Pitchy;
+			target = 800F39573EA188EF47EAF7DCF2B5E7B5 /* Pitchy */;
+			targetProxy = 67C3536D1F887B402561F08474834318 /* PBXContainerItemProxy */;
+		};
+		DCA5EA17EC1F756FFDE70BE0DE92310B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Beethoven;
+			target = 6BC3E8FBAD56AD03A1F952B604615D34 /* Beethoven */;
+			targetProxy = D713E253BF7215A2A87F4DC206698582 /* PBXContainerItemProxy */;
+		};
+		F8B793A5A6CD22FC54856AFA83E60591 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Pitchy;
+			target = 800F39573EA188EF47EAF7DCF2B5E7B5 /* Pitchy */;
+			targetProxy = 689C9D3B3F4C6F905E1246942AF129FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2D6582ACDF02D57814D1C91B39548134 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4401BC4CC55A822231134D62EB04F493 /* Beethoven.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Beethoven/Beethoven-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Beethoven/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Beethoven/Beethoven.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Beethoven;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		72532534C82A7BEB6BFBCF5AD434D8A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 905E262A5E29C25D93ABDB3D97C26BE3 /* Pods-Play That Note.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Play That Note/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Play That Note/Pods-Play That Note.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Play_That_Note;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		73619B15B9D0F038A2FA248596E461E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74F283F890A3C1648E20F6320F3AAF0B /* Pods-Play That NoteUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Play That NoteUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Play That NoteUITests/Pods-Play That NoteUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Play_That_NoteUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		887E707761865B08D10D649352D5A590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C8F5A3E6844F387565A3EC4F372929B /* Pitchy.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pitchy/Pitchy-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pitchy/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pitchy/Pitchy.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Pitchy;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C102536395DFC8B4C6BC5830CC09A558 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 694FF9A07816DDAFA35C5357A03CEAB2 /* Pods-Play That Note.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Play That Note/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Play That Note/Pods-Play That Note.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Play_That_Note;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CACE7C8415F53E79F07C6BBE57F0F61D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		ED4FC68AB2A4E06C718CFF338F6F156B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FCF11D113A71F83DDC13810F40D59A5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4401BC4CC55A822231134D62EB04F493 /* Beethoven.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Beethoven/Beethoven-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Beethoven/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Beethoven/Beethoven.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Beethoven;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FD021424B7E5ECB27C2B5AF86582E938 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C8F5A3E6844F387565A3EC4F372929B /* Pitchy.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pitchy/Pitchy-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pitchy/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pitchy/Pitchy.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Pitchy;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FD5367BDD440601E9C16496D2DC6DEFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAD1F273204474A3269F15B21616A0C2 /* Pods-Play That NoteUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Play That NoteUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Play That NoteUITests/Pods-Play That NoteUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Play_That_NoteUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FF102EEAE81F7C87AD2F08510516B851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50DADADD35E39C09AF25055D625C90ED /* Pods-Play That NoteTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Play That NoteTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Play That NoteTests/Pods-Play That NoteTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Play_That_NoteTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FF962B27474BFF9888E1EC1D830DD2A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20A8963FCA4E550E8CF974A8F7085501 /* Pods-Play That NoteTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Play That NoteTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Play That NoteTests/Pods-Play That NoteTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Play_That_NoteTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CACE7C8415F53E79F07C6BBE57F0F61D /* Debug */,
+				ED4FC68AB2A4E06C718CFF338F6F156B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F78DA626EEDD42F58D32C64F279146B /* Build configuration list for PBXNativeTarget "Pods-Play That Note" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72532534C82A7BEB6BFBCF5AD434D8A4 /* Debug */,
+				C102536395DFC8B4C6BC5830CC09A558 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9EA4C2C3C1213D4F80E601C90E6DC70D /* Build configuration list for PBXNativeTarget "Pods-Play That NoteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD5367BDD440601E9C16496D2DC6DEFF /* Debug */,
+				73619B15B9D0F038A2FA248596E461E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B552356DF868A20021D17114B6405E7C /* Build configuration list for PBXNativeTarget "Pitchy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				887E707761865B08D10D649352D5A590 /* Debug */,
+				FD021424B7E5ECB27C2B5AF86582E938 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C375361EB63F5D5633BFC8BC69EEFFC8 /* Build configuration list for PBXNativeTarget "Pods-Play That NoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF962B27474BFF9888E1EC1D830DD2A2 /* Debug */,
+				FF102EEAE81F7C87AD2F08510516B851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D737880C1A845E6263014EEF7F24575F /* Build configuration list for PBXNativeTarget "Beethoven" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D6582ACDF02D57814D1C91B39548134 /* Debug */,
+				FCF11D113A71F83DDC13810F40D59A5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

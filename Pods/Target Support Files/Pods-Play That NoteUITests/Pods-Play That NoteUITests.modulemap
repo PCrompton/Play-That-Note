@@ -1,0 +1,6 @@
+framework module Pods_Play_That_NoteUITests {
+  umbrella header "Pods-Play That NoteUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
