@@ -61,6 +61,8 @@ class FlashcardViewController: UIViewController {
     // MARK: Lifecycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.hidesBarsWhenVerticallyCompact = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,8 +71,18 @@ class FlashcardViewController: UIViewController {
         flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.hidesBarsWhenVerticallyCompact = false
+        navigationController?.hidesBarsOnTap = false
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         _ = flashcardView?.reload()
+        if view.traitCollection.verticalSizeClass == .compact {
+            navigationController?.hidesBarsOnTap = true
+        } else {
+            navigationController?.hidesBarsOnTap = false
+        }
     }
     
     
