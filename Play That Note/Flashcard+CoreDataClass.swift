@@ -21,7 +21,7 @@ public class Flashcard: NSManagedObject {
         return 0.0
     }
     var plusMinus: Int {
-        return self.correct - self.incorrect
+        return Int(self.correct) - Int(self.incorrect)
     }
     
     convenience init(with clef: Clef, note: String, pitchIndex: Int32, insertInto context: NSManagedObjectContext) {

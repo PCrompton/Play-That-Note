@@ -1,9 +1,7 @@
 
 #note {
 /*    background-color: grey;*/
-
-/*    width: 90%;*/
-/*    margin: 5%;*/
+    height: 100%;
 }
 
 body {
@@ -14,5 +12,5 @@ body {
 }
 
 svg {
-    zoom: 100%;
+/*    background-color: yellow;*/
 }

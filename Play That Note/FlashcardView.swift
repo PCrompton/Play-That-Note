@@ -17,11 +17,6 @@ class FlashcardView: WKWebView, WKNavigationDelegate {
     let containerView: UIView
     let jsDrawStaffWithPitch = "drawStaffWithPitch"
     
-    var dimensions: String {
-        let dimParams = "\(Int(containerView.frame.width)), \(Int(containerView.frame.height))"
-        return dimParams
-    }
-    
     init(clef: Clef?, pitch: String?, containerView: UIView) {
         self.containerView = containerView
 
@@ -46,6 +41,7 @@ class FlashcardView: WKWebView, WKNavigationDelegate {
             self.load(request)
         }
         containerView.addSubview(self)
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +51,6 @@ class FlashcardView: WKWebView, WKNavigationDelegate {
     // MARK: WKNavigationDelegate functions
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("\(clef)")
-        webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \(dimensions))", completionHandler: nil)
+        webView.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\")", completionHandler: nil)
     }
 }

@@ -14,8 +14,6 @@ class FlashcardViewController: UIViewController {
     
     // MARK: Parameters
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var clefPercentageLabel: UILabel!
-    @IBOutlet weak var clefPlusMinusLabel: UILabel!
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
@@ -71,10 +69,10 @@ class FlashcardViewController: UIViewController {
         flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         _ = flashcardView?.reload()
     }
+    
     
     // MARK: Data Functions
     func getLabelColor(for value: Int) -> UIColor {
@@ -89,7 +87,6 @@ class FlashcardViewController: UIViewController {
     
     func updateStatsLabels() {
         updateFlashcardStatsLabels()
-        updateClefStatsLabels()
     }
     
     func updateFlashcardStatsLabels() {
@@ -102,16 +99,5 @@ class FlashcardViewController: UIViewController {
         percentageLabel.text = "\(Int(flashcard.percentage))%"
         plusMinusLabel.text = "+/-: \(flashcard.plusMinus)"
         plusMinusLabel.textColor = getLabelColor(for: flashcard.plusMinus)
-    }
-    
-    func updateClefStatsLabels() {
-        let clefStats = statsModelController.getStats(for: clef, lowest: nil, highest: nil)
-        clefPlusMinusLabel.text = "+/-: \(clefStats.plusMinus)"
-        clefPlusMinusLabel.textColor = getLabelColor(for: clefStats.plusMinus)
-        if let percentage = clefStats.percentage {
-            clefPercentageLabel.text = "\(Int(percentage))%"
-        } else {
-            clefPercentageLabel.text = "No Data"
-        }
     }
 }
