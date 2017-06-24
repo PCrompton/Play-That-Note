@@ -76,8 +76,11 @@ class FlashcardViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         _ = flashcardView?.reload()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if view.traitCollection.verticalSizeClass == .compact {
             navigationController?.hidesBarsOnTap = true
         } else {
