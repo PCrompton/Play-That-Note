@@ -77,7 +77,7 @@ class FlashcardViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        _ = flashcardView?.reload()
+        _ = self.flashcardView?.reload()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
