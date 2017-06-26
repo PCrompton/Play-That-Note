@@ -143,7 +143,7 @@ class FlashcardViewController: UIViewController {
         }
         correctLabel.text = "\(flashcard.correct)"
         incorrectLabel.text = "\(flashcard.incorrect)"
-        percentageLabel.text = "\(Int(flashcard.percentage))%"
+        percentageLabel.text = "\(Int(flashcard.percentage)) %"
         plusMinusLabel.text = "\(flashcard.plusMinus) +/- "
         plusMinusLabel.textColor = getLabelColor(for: flashcard.plusMinus)
     }

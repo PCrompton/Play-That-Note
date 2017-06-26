@@ -105,8 +105,8 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     override func updateStatsLabels() {
         correctLabel.text = "\(correct)"
         incorrectLabel.text = "\(incorrect)"
-        percentageLabel.text = "\(Int(percentage))%"
-        plusMinusLabel.text = "+/-: \(plusMinus)"
+        percentageLabel.text = "\(Int(percentage)) %"
+        plusMinusLabel.text = "\(plusMinus) +/-"
         plusMinusLabel.textColor = getLabelColor(for: plusMinus)
     }
 
