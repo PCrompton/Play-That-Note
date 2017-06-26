@@ -12,7 +12,7 @@ import Pitchy
 
 class FlashcardViewController: UIViewController {
     
-    // MARK: Parameters
+    // MARK: Parameters    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
@@ -58,34 +58,66 @@ class FlashcardViewController: UIViewController {
         }
     }
     
+    func setFlashcardView() {
+        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
+    }
+    
     // MARK: Lifecycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.hidesBarsWhenVerticallyCompact = true
-        
+        setFlashcardView()
+        //navigationController?.hidesBarsWhenVerticallyCompact = true
+    }
+    
+    func setBars() {
+        let navBar = navigationController?.navigationBar
+        let tabBar = tabBarController?.tabBar
+        if view.traitCollection.verticalSizeClass == .compact {
+            if let navBar = navBar {
+                navBar.isHidden = navBar.isHidden ? false : true
+            }
+            if let tabBar = tabBar {
+                tabBar.isHidden = tabBar.isHidden ? false : true
+            }
+        } else {
+            if let navBar = navBar {
+                navBar.isHidden = false
+            }
+            if let tabBar = tabBar {
+                tabBar.isHidden = false
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        let touch: UITouch? = touches.first
+        let navBar = navigationController?.navigationBar
+        let tabBar = tabBarController?.tabBar
+        if touch?.view != navBar && touch?.view != tabBar {
+            setBars()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         updateStatsLabels()
-        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
+        setFlashcardView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.hidesBarsWhenVerticallyCompact = false
-        navigationController?.hidesBarsOnTap = false
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         _ = self.flashcardView?.reload()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if view.traitCollection.verticalSizeClass == .compact {
-            navigationController?.hidesBarsOnTap = true
-        } else {
-            navigationController?.hidesBarsOnTap = false
-        }
+        super.traitCollectionDidChange(previousTraitCollection)
+        setBars()
     }
     
     
@@ -109,10 +141,10 @@ class FlashcardViewController: UIViewController {
             print("No flashcard found")
             return
         }
-        correctLabel.text = "Correct: \(flashcard.correct)"
-        incorrectLabel.text = "Incorrect: \(flashcard.incorrect)"
+        correctLabel.text = "\(flashcard.correct)"
+        incorrectLabel.text = "\(flashcard.incorrect)"
         percentageLabel.text = "\(Int(flashcard.percentage))%"
-        plusMinusLabel.text = "+/-: \(flashcard.plusMinus)"
+        plusMinusLabel.text = "\(flashcard.plusMinus) +/- "
         plusMinusLabel.textColor = getLabelColor(for: flashcard.plusMinus)
     }
 }

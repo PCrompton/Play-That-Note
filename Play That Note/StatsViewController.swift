@@ -27,11 +27,6 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    // MARK: IBActions
-    @IBAction func doneButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     // MARK: UITableViewDataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let flashcards = flashcards {

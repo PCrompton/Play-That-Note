@@ -33,9 +33,6 @@ class ClefStatsViewController: UIViewController, UITableViewDataSource, UITableV
         alertVC.addAction(deleteAction)
         present(alertVC, animated: true, completion: nil)
     }
-    @IBAction func doneButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     
     // MARK: TableViewDataSource Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

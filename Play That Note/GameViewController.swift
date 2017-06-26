@@ -16,10 +16,27 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
 
     // MARK: Parameters
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var buttonStackView: UIStackView!
     
+    @IBOutlet weak var flashCardActivityIndicator: UIActivityIndicatorView!
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
+    
+    var correct: Int = 0
+    var incorrect: Int = 0
+    var totalAnswered: Int {
+        return Int(self.correct + self.incorrect)
+    }
+    var percentage: Double {
+        if totalAnswered != 0 {
+            return Double(correct)/Double(totalAnswered)*100
+        }
+        return 0.0
+    }
+    var plusMinus: Int {
+        return Int(self.correct) - Int(self.incorrect)
+    }
 
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
@@ -34,6 +51,50 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        let touch: UITouch? = touches.first
+        //location is relative to the current view
+        // do something with the touched point
+        guard let pitchEngine = pitchEngine else {
+            fatalError("No Pitch Engine Found")
+        }
+        if view.traitCollection.verticalSizeClass == .compact {
+            if pitchEngine.active {
+                if touch?.view != buttonStackView {
+                    buttonStackView.isHidden = buttonStackView.isHidden ? false : true
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setButtonStackViewAxis()
+    }
+    
+    func setButtonStackViewAxis() {
+        if view.traitCollection.verticalSizeClass == .compact {
+            buttonStackView.axis = .horizontal
+        } else {
+            buttonStackView.axis = .vertical
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setButtonStackViewAxis()
+        guard let pitchEngine = pitchEngine else {
+            fatalError("No Pitch Engine Found")
+        }
+        if pitchEngine.active {
+            if view.traitCollection.verticalSizeClass == .compact {
+                buttonStackView.isHidden = true
+            } else {
+                buttonStackView.isHidden = false
+            }
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -41,21 +102,45 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         gameCenterModelController.sendScores()
     }
     
+    override func updateStatsLabels() {
+        correctLabel.text = "\(correct)"
+        incorrectLabel.text = "\(incorrect)"
+        percentageLabel.text = "\(Int(percentage))%"
+        plusMinusLabel.text = "+/-: \(plusMinus)"
+        plusMinusLabel.textColor = getLabelColor(for: plusMinus)
+    }
+
     // MARK: Gameplay Functions
+    @IBAction func cancelButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func startButton(_ sender: UIButton) {
         guard let pitchEngine = pitchEngine else {
             fatalError("No Pitch Engine Found")
         }
         if !pitchEngine.active {
-            pitchEngine.start()
-            
-            // These two lines of code are here to guard against a known bug in the Beethoven framework where the pitchEngine may not start on the first try
-            pitchEngine.stop()
-            pitchEngine.start()
-            
-            sender.setTitle("Stop", for: .normal)
-            print("Pitch Engine Started")
-            flashcard = getRandomflashcard()
+            flashCardActivityIndicator.startAnimating()
+            sender.isEnabled = false
+            let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
+            concurrentQueue.async {
+                pitchEngine.start()
+                
+                // These two lines of code are here to guard against a known bug in the Beethoven framework where the pitchEngine may not start on the first try
+                pitchEngine.stop()
+                pitchEngine.start()
+                self.flashcard = self.getRandomflashcard()
+                print("Pitch Engine Started")
+                DispatchQueue.main.async {
+                    sender.setTitle("Stop", for: .normal)
+                    sender.isEnabled = true
+                    self.flashCardActivityIndicator.stopAnimating()
+                    if self.view.traitCollection.verticalSizeClass == .compact {
+                        self.buttonStackView.isHidden = true
+                    }
+                }
+            }
+
         } else {
             pitchEngine.stop()
             sender.setTitle("Start", for: .normal)
@@ -98,6 +183,14 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         return true
     }
     
+    func configureAlertTitle(for alertController: UIAlertController, with title: String, with font: UIFont, with color: UIColor) {
+        let myString  = title
+        var myMutableString = NSMutableAttributedString()
+        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:font])
+        myMutableString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location:0,length:myString.characters.count))
+        alertController.setValue(myMutableString, forKey: "attributedTitle")
+    }
+    
     // MARK: PitchEngineDelegate functions
     public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
         let note = pitch.note
@@ -111,27 +204,46 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
                 pitchEngine.stop()
                 consecutivePitches.removeAll()
                 let alertController = UIAlertController(title: note.string, message: nil, preferredStyle: .alert)
-                let action = UIAlertAction(title: "Next", style: .default) {
-                    (action) in
-                    self.pitchEngine?.start()
-                    self.flashcard = self.getRandomflashcard()
-                }
-                alertController.addAction(action)
                 print(pitch.note.string, pitch.note.index)
                 guard let noteToDisplay = flashcard?.note else {
                     fatalError("No note found")
                 }
+                let font = UIFont.systemFont(ofSize: 42.0)
+                var color: UIColor
+                var title: String
+                
                 if note.index == Int((flashcard?.pitchIndex)!) {
-                    alertController.title = noteToDisplay
-                    alertController.message = "Congrates, you played \(noteToDisplay)"
+                    //alertController.title = "Correct!"
+                    title = "Correct!"
+                    color = UIColor.green
                     flashcard?.correct += 1
+                    correct += 1
                 } else {
-                    alertController.message = "Sorry, that was not \(noteToDisplay)"
+                    title = "Incorrect!"
+                    color = UIColor.red
                     flashcard?.incorrect += 1
+                    incorrect += 1
                 }
+                configureAlertTitle(for: alertController, with: title, with: font, with: color)
                 stack.save()
                 updateStatsLabels()
                 present(alertController, animated: true)
+                let delay = 1.5
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    alertController.dismiss(animated: true, completion: {
+                        DispatchQueue.main.async {
+                            self.flashCardActivityIndicator.startAnimating()
+                            let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
+                            concurrentQueue.async {
+                                self.pitchEngine?.start()
+                                self.flashcard = self.getRandomflashcard()
+                                DispatchQueue.main.async {
+                                    self.flashCardActivityIndicator.stopAnimating()
+                                }
+                            }
+                        }
+                    })
+                }
             }
         }
     }

@@ -34,11 +34,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     // MARK: IBActions
-    @IBAction func doneButton() {
-        dismiss(animated: true, completion: nil)
-    }
-
-    
     @IBAction func consecutivePitchesStepper(_ stepper: UIStepper) {
         consecutivePitchesLabel.text = "\(Int(stepper.value)) Pitches"
         Settings.consecutivePitches = Int(stepper.value)
