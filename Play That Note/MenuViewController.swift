@@ -29,7 +29,6 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bestScoreStackView.isHidden = true
-        title = "Choose a Clef"
         authenticatePlayerAndDownloadScores()
     }
     
