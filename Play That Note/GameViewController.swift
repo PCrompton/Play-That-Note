@@ -16,6 +16,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
 
     // MARK: Parameters
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var buttonStackView: UIStackView!
     
     @IBOutlet weak var flashCardActivityIndicator: UIActivityIndicatorView!
@@ -48,6 +49,9 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         if flashcards.count == 0 {
             flashcards = statsModelController.createFlashcards(clef: clef, lowest: lowest, highest: highest)
             stack.save()
+        }
+        for button in [startButton, cancelButton] {
+            addShadows(to: button!)
         }
     }
     
@@ -100,6 +104,13 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         super.viewWillDisappear(animated)
         pitchEngine?.stop()
         gameCenterModelController.sendScores()
+    }
+    
+    func addShadows(to button: UIButton) {
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        button.layer.shadowRadius = 5.0
+        button.layer.shadowColor = UIColor.darkGray.cgColor
     }
     
     override func updateStatsLabels() {

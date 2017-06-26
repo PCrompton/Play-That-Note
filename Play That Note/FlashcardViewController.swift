@@ -60,6 +60,14 @@ class FlashcardViewController: UIViewController {
     
     func setFlashcardView() {
         flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
+        addFlashcardShadow(to: flashcardView!)
+    }
+    
+    func addFlashcardShadow(to flashcardView: FlashcardView) {
+        flashcardView.layer.shadowOpacity = 0.7
+        flashcardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        flashcardView.layer.shadowRadius = 5.0
+        flashcardView.layer.shadowColor = UIColor.darkGray.cgColor
     }
     
     // MARK: Lifecycle functions

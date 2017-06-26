@@ -30,6 +30,9 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         bestScoreStackView.isHidden = true
         authenticatePlayerAndDownloadScores()
+        for button in [trebleClefButton, bassClefButton, altoClefButton, tenorClefButton] {
+            addButtonShadows(to: button!)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +74,14 @@ class MenuViewController: UIViewController {
             tenorClefButton.contentHorizontalAlignment = .left
         }
     }
+    
+    func addButtonShadows(to button: UIButton) {
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        button.layer.shadowRadius = 5.0
+        button.layer.shadowColor = UIColor.darkGray.cgColor
+    }
+
     
     func authenticatePlayerAndDownloadScores() {
         gameCenterModelController.authenticateLocalPlayer { (viewController, error) in
