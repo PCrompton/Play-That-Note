@@ -27,6 +27,8 @@
 		96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD321DD80430009A0AC8 /* MenuViewController.swift */; };
 		96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */; };
 		96A543CE1E21A56300094A49 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A543CD1E21A56300094A49 /* FlashcardView.swift */; };
+		96B74F271F01CEDC000B1097 /* License in Resources */ = {isa = PBXBuildFile; fileRef = 96B74F261F01CEDC000B1097 /* License */; };
+		96B74F291F01CF08000B1097 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B74F281F01CF08000B1097 /* LicenseViewController.swift */; };
 		96E27C771DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C741DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift */; };
 		96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C751DE52CB900B8AFF4 /* Model.xcdatamodeld */; };
 		96E27C7A1DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E27C791DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift */; };
@@ -84,6 +86,8 @@
 		96A2DD321DD80430009A0AC8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		96A543CD1E21A56300094A49 /* FlashcardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
+		96B74F261F01CEDC000B1097 /* License */ = {isa = PBXFileReference; lastKnownFileType = folder; path = License; sourceTree = "<group>"; };
+		96B74F281F01CF08000B1097 /* LicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		96E27C741DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Flashcard+CoreDataProperties.swift"; path = "Play That Note/Flashcard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		96E27C761DE52CB900B8AFF4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		96E27C791DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Flashcard+CoreDataClass.swift"; path = "Play That Note/Flashcard+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 			children = (
 				960144451DD132D1006146C2 /* Info.plist */,
 				960144401DD132D1006146C2 /* Assets.xcassets */,
+				96B74F261F01CEDC000B1097 /* License */,
 				9602EC7C1DD136AC0032CD83 /* vexFlow */,
 			);
 			name = "Supporting Files";
@@ -264,6 +269,7 @@
 				96A2DD341DDA6030009A0AC8 /* SettingsTableViewController.swift */,
 				9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */,
 				9670B71A1DDF9E6A00094762 /* StatsViewController.swift */,
+				96B74F281F01CF08000B1097 /* LicenseViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				960144441DD132D1006146C2 /* LaunchScreen.storyboard in Resources */,
 				960144411DD132D1006146C2 /* Assets.xcassets in Resources */,
 				9602EC7D1DD136AC0032CD83 /* vexFlow in Resources */,
+				96B74F271F01CEDC000B1097 /* License in Resources */,
 				9601443F1DD132D1006146C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +587,7 @@
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,
 				96E27C881DE9E5CC00B8AFF4 /* GameCenterModelController.swift in Sources */,
 				9670B71F1DE0D86000094762 /* ClefStatsViewController.swift in Sources */,
+				96B74F291F01CF08000B1097 /* LicenseViewController.swift in Sources */,
 				96A2DD351DDA6030009A0AC8 /* SettingsTableViewController.swift in Sources */,
 				96A2DD331DD80430009A0AC8 /* MenuViewController.swift in Sources */,
 				96E27C8A1DEA43F200B8AFF4 /* FlashcardViewController.swift in Sources */,
