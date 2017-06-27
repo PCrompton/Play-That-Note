@@ -61,17 +61,17 @@ class MenuViewController: UIViewController {
             tenorClefButton.contentVerticalAlignment = .center
             tenorClefButton.contentHorizontalAlignment = .center
         } else {
-            trebleClefButton.contentVerticalAlignment = .bottom
-            trebleClefButton.contentHorizontalAlignment = .right
-            
-            bassClefButton.contentVerticalAlignment = .bottom
-            bassClefButton.contentHorizontalAlignment = .left
-            
-            altoClefButton.contentVerticalAlignment = .top
-            altoClefButton.contentHorizontalAlignment = .right
-            
-            tenorClefButton.contentVerticalAlignment = .top
-            tenorClefButton.contentHorizontalAlignment = .left
+//            trebleClefButton.contentVerticalAlignment = .bottom
+//            trebleClefButton.contentHorizontalAlignment = .right
+//            
+//            bassClefButton.contentVerticalAlignment = .bottom
+//            bassClefButton.contentHorizontalAlignment = .left
+//            
+//            altoClefButton.contentVerticalAlignment = .top
+//            altoClefButton.contentHorizontalAlignment = .right
+//            
+//            tenorClefButton.contentVerticalAlignment = .top
+//            tenorClefButton.contentHorizontalAlignment = .left
         }
     }
     
