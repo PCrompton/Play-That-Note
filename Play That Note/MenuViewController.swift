@@ -46,35 +46,6 @@ class MenuViewController: UIViewController {
         }
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        if traitCollection.verticalSizeClass == .compact {
-            trebleClefButton.contentVerticalAlignment = .center
-            trebleClefButton.contentHorizontalAlignment = .center
-
-            bassClefButton.contentVerticalAlignment = .center
-            bassClefButton.contentHorizontalAlignment = .center
-            
-            altoClefButton.contentVerticalAlignment = .center
-            altoClefButton.contentHorizontalAlignment = .center
-            
-            tenorClefButton.contentVerticalAlignment = .center
-            tenorClefButton.contentHorizontalAlignment = .center
-        } else {
-//            trebleClefButton.contentVerticalAlignment = .bottom
-//            trebleClefButton.contentHorizontalAlignment = .right
-//            
-//            bassClefButton.contentVerticalAlignment = .bottom
-//            bassClefButton.contentHorizontalAlignment = .left
-//            
-//            altoClefButton.contentVerticalAlignment = .top
-//            altoClefButton.contentHorizontalAlignment = .right
-//            
-//            tenorClefButton.contentVerticalAlignment = .top
-//            tenorClefButton.contentHorizontalAlignment = .left
-        }
-    }
-    
     func addButtonShadows(to button: UIButton) {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)

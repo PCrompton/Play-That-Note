@@ -65,7 +65,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         //location is relative to the current view
         // do something with the touched point
         if view.traitCollection.verticalSizeClass == .compact {
-            if startButton.titleLabel?.text == "Stop" {
+            if running {
                 if touch?.view != buttonStackView {
                     buttonStackView.isHidden = buttonStackView.isHidden ? false : true
                 }
@@ -97,7 +97,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setButtonStackViewAxis()
-        if !running {
+        if running {
             if view.traitCollection.verticalSizeClass == .compact {
                 buttonStackView.isHidden = true
             } else {
