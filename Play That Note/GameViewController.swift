@@ -19,10 +19,13 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var buttonStackView: UIStackView!
     
+    @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var flashCardActivityIndicator: UIActivityIndicatorView!
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
+    
+    var running = false
     
     var correct: Int = 0
     var incorrect: Int = 0
@@ -42,6 +45,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        configDirectionLabel()
         let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = Settings.levelThreshold
@@ -60,11 +64,8 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         let touch: UITouch? = touches.first
         //location is relative to the current view
         // do something with the touched point
-        guard let pitchEngine = pitchEngine else {
-            fatalError("No Pitch Engine Found")
-        }
         if view.traitCollection.verticalSizeClass == .compact {
-            if pitchEngine.active {
+            if startButton.titleLabel?.text == "Stop" {
                 if touch?.view != buttonStackView {
                     buttonStackView.isHidden = buttonStackView.isHidden ? false : true
                 }
@@ -75,6 +76,14 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setButtonStackViewAxis()
+    }
+    
+    func configDirectionLabel() {
+        if view.traitCollection.verticalSizeClass == .compact {
+            directionLabel.isHidden = true
+        } else {
+            directionLabel.isHidden = !running
+        }
     }
     
     func setButtonStackViewAxis() {
@@ -88,16 +97,14 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setButtonStackViewAxis()
-        guard let pitchEngine = pitchEngine else {
-            fatalError("No Pitch Engine Found")
-        }
-        if pitchEngine.active {
+        if !running {
             if view.traitCollection.verticalSizeClass == .compact {
                 buttonStackView.isHidden = true
             } else {
                 buttonStackView.isHidden = false
             }
         }
+        configDirectionLabel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -127,6 +134,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
+        running = !running
         guard let pitchEngine = pitchEngine else {
             fatalError("No Pitch Engine Found")
         }
@@ -149,12 +157,13 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
                     if self.view.traitCollection.verticalSizeClass == .compact {
                         self.buttonStackView.isHidden = true
                     }
+                    self.configDirectionLabel()
                 }
             }
-
         } else {
             pitchEngine.stop()
             sender.setTitle("Start", for: .normal)
+            configDirectionLabel()
             print("Pitch Engine Stopped")
         }
     }
@@ -216,9 +225,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
                 consecutivePitches.removeAll()
                 let alertController = UIAlertController(title: note.string, message: nil, preferredStyle: .alert)
                 print(pitch.note.string, pitch.note.index)
-                guard let noteToDisplay = flashcard?.note else {
-                    fatalError("No note found")
-                }
                 let font = UIFont.systemFont(ofSize: 42.0)
                 var color: UIColor
                 var title: String
