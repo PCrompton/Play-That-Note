@@ -35,7 +35,7 @@ class SettingsTableViewController: UITableViewController {
     
     // MARK: IBActions
     @IBAction func consecutivePitchesStepper(_ stepper: UIStepper) {
-        consecutivePitchesLabel.text = "\(Int(stepper.value)) Pitches"
+        consecutivePitchesLabel.text = "\(Int(stepper.value)) Buffers"
         Settings.consecutivePitches = Int(stepper.value)
     }
     
