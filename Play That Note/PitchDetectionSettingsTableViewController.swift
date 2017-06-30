@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class SettingsTableViewController: UITableViewController {
+class PitchDetectionSettingsTableViewController: UITableViewController {
     
     // MARK: Properties
     @IBOutlet weak var consecutivePitchesLabel: UILabel!
