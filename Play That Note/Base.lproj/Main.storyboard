@@ -386,6 +386,10 @@
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hty-kX-bK7">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="xLf-cm-jkY" id="eHb-zS-t0h"/>
+                                                        <outlet property="delegate" destination="xLf-cm-jkY" id="RWB-ab-mcG"/>
+                                                    </connections>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -400,8 +404,57 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Range" id="E2s-8X-MCq" userLabel="Range">
                                 <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="98s-fJ-7w7">
+                                        <rect key="frame" x="0.0" y="258" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="98s-fJ-7w7" id="0Hu-Lu-bi2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P4Z-FO-TjI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVE-n4-2tI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="94" height="43.5"/>
+                                                            <state key="normal" title="Treble"/>
+                                                            <connections>
+                                                                <action selector="selectButton:" destination="xLf-cm-jkY" eventType="touchUpInside" id="1Ia-X1-Nv5"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDJ-A3-PCN">
+                                                            <rect key="frame" x="94" y="0.0" width="93.5" height="43.5"/>
+                                                            <state key="normal" title="Bass"/>
+                                                            <connections>
+                                                                <action selector="selectButton:" destination="xLf-cm-jkY" eventType="touchUpInside" id="w4V-Rn-rMX"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcS-aK-G1v">
+                                                            <rect key="frame" x="187.5" y="0.0" width="94" height="43.5"/>
+                                                            <state key="normal" title="Alto"/>
+                                                            <connections>
+                                                                <action selector="selectButton:" destination="xLf-cm-jkY" eventType="touchUpInside" id="lDS-Ko-1v7"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOv-MG-owi">
+                                                            <rect key="frame" x="281.5" y="0.0" width="93.5" height="43.5"/>
+                                                            <state key="normal" title="Tenor"/>
+                                                            <connections>
+                                                                <action selector="selectButton:" destination="xLf-cm-jkY" eventType="touchUpInside" id="3Jw-Wp-L3B"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P4Z-FO-TjI" firstAttribute="width" secondItem="0Hu-Lu-bi2" secondAttribute="width" id="IZc-cU-rIq"/>
+                                                <constraint firstItem="P4Z-FO-TjI" firstAttribute="height" secondItem="0Hu-Lu-bi2" secondAttribute="height" id="LSn-Ta-zzX"/>
+                                                <constraint firstItem="P4Z-FO-TjI" firstAttribute="centerX" secondItem="0Hu-Lu-bi2" secondAttribute="centerX" id="fBn-Ug-px2"/>
+                                                <constraint firstItem="P4Z-FO-TjI" firstAttribute="centerY" secondItem="0Hu-Lu-bi2" secondAttribute="centerY" id="tFn-yh-nTK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="158" id="fzc-95-Nm2">
-                                        <rect key="frame" x="0.0" y="258" width="375" height="158"/>
+                                        <rect key="frame" x="0.0" y="302" width="375" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fzc-95-Nm2" id="c5i-Ae-ilc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
@@ -409,6 +462,10 @@
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyh-LY-uRz">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="xLf-cm-jkY" id="ZYf-dU-DZ1"/>
+                                                        <outlet property="delegate" destination="xLf-cm-jkY" id="fSq-Iw-2gU"/>
+                                                    </connections>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -420,7 +477,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="skM-9X-Bt2">
-                                        <rect key="frame" x="0.0" y="416" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="460" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="skM-9X-Bt2" id="uKZ-1R-05x">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -452,6 +509,14 @@
                             <outlet property="delegate" destination="xLf-cm-jkY" id="W8i-nt-aoi"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="altoButton" destination="EcS-aK-G1v" id="q8S-OF-IQu"/>
+                        <outlet property="bassButton" destination="mDJ-A3-PCN" id="KIe-fD-gbu"/>
+                        <outlet property="rangePickerView" destination="Zyh-LY-uRz" id="9NA-wm-Bpc"/>
+                        <outlet property="tenorButton" destination="qOv-MG-owi" id="n2l-Ve-YRk"/>
+                        <outlet property="tranposePickerView" destination="Hty-kX-bK7" id="HsS-VT-OBs"/>
+                        <outlet property="trebleButton" destination="IVE-n4-2tI" id="tCm-ab-eWf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4R-Te-eIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

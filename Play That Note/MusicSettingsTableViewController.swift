@@ -8,22 +8,46 @@
 
 import UIKit
 
-class MusicSettingsTableViewController: UITableViewController {
+class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    @IBOutlet weak var trebleButton: UIButton!
+    @IBOutlet weak var bassButton: UIButton!
+    @IBOutlet weak var altoButton: UIButton!
+    @IBOutlet weak var tenorButton: UIButton!
+    
+    @IBOutlet weak var tranposePickerView: UIPickerView!
+    @IBOutlet weak var rangePickerView: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+//        let transposePickerViewService = TransposePickerViewService()
+//        tranposePickerView.dataSource = transposePickerViewService
+//        tranposePickerView.delegate = transposePickerViewService
+//        
+//        let rangePickerViewService = RangePickerViewService()
+//        rangePickerView.dataSource = rangePickerViewService
+//        rangePickerView.delegate = rangePickerViewService
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func selectButton(_ sender: UIButton) {
+        
+        let buttons = [trebleButton, bassButton, altoButton, tenorButton]
+        
+        for button in buttons {
+            if button === sender {
+                button!.isSelected = true
+            } else {
+                button!.isSelected = false
+            }
+        }
+    }
+    
 
     // MARK: - Table view data source
 
@@ -82,5 +106,21 @@ class MusicSettingsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: DataSource
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 4
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 5
+    }
+    
+    // MARK: Delegate
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "Row \(row)"
+    }
 
 }
