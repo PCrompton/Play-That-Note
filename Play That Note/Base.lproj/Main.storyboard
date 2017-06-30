@@ -349,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="1575" y="950"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Music Settings Table View Controller-->
         <scene sceneID="kQT-2Z-S3f">
             <objects>
-                <tableViewController id="xLf-cm-jkY" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MusicSettingsTableViewController" id="xLf-cm-jkY" customClass="MusicSettingsTableViewController" customModule="Play_That_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rz6-1h-BF5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -460,7 +460,7 @@
         <!--Pitch Detection Settings Table View Controller-->
         <scene sceneID="0vl-WB-VUY">
             <objects>
-                <tableViewController id="N7v-t8-xuT" customClass="PitchDetectionSettingsTableViewController" customModule="Play_That_Note" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PitchDetectionSettingsTableViewController" id="N7v-t8-xuT" customClass="PitchDetectionSettingsTableViewController" customModule="Play_That_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3ii-06-mXj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -599,7 +599,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="p9Q-8w-6sF">
-                        <barButtonItem key="leftBarButtonItem" title="Restore Defaults" id="fHn-x4-toP">
+                        <barButtonItem key="rightBarButtonItem" title="Restore Defaults" id="fHn-x4-toP">
                             <connections>
                                 <action selector="restoreDefaultsButton:" destination="N7v-t8-xuT" id="xUk-5m-IAL"/>
                             </connections>
@@ -621,7 +621,7 @@
         <!--License View Controller-->
         <scene sceneID="7bX-Ro-bZK">
             <objects>
-                <viewController id="Ryv-sM-k3o" customClass="LicenseViewController" customModule="Play_That_Note" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LicenseViewController" id="Ryv-sM-k3o" customClass="LicenseViewController" customModule="Play_That_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ri1-XE-k76"/>
                         <viewControllerLayoutGuide type="bottom" id="Qef-5d-7BL"/>
@@ -653,10 +653,10 @@
             </objects>
             <point key="canvasLocation" x="-151" y="-1157"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings Table View Controller-->
         <scene sceneID="5iQ-qA-Neu">
             <objects>
-                <tableViewController id="e29-22-SHx" sceneMemberID="viewController">
+                <tableViewController id="e29-22-SHx" customClass="SettingsTableViewController" customModule="Play_That_Note" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ASJ-7b-i8n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -680,9 +680,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="xLf-cm-jkY" kind="show" id="3dg-Q3-dDM"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ONI-eq-Yvz" style="IBUITableViewCellStyleDefault" id="G36-6l-0Qu">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -700,9 +697,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="N7v-t8-xuT" kind="show" trigger="accessoryAction" id="ZnX-Ot-Cwl"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="gSH-YF-rPH" style="IBUITableViewCellStyleDefault" id="bzk-8a-wDe">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
@@ -720,9 +714,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Ryv-sM-k3o" kind="show" id="O79-ff-qg2"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
