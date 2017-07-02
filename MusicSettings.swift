@@ -14,33 +14,28 @@ import Foundation
 
 struct MusicSettings {
     
-    static var direction = "Down"
+    static var direction = "Lower"
     static var octave = 0
-    static var quality = "Per"
+    static var quality = "Perfect"
     static var interval = "Unison"
     
     static var transposeDescription: String {
         let intervalExp: String
         if interval == "Unison" {
             intervalExp = ""
+        } else if quality == "Augmented" {
+            intervalExp = "an \(quality.lowercased()) \(interval) "
         } else {
-            intervalExp = "\(quality.lowercased()) \(interval) "
+            intervalExp = "a \(quality.lowercased()) \(interval) "
         }
         
         let octaveExp: String
         if octave == 1 {
-            octaveExp = "\(octave) octave "
+            octaveExp = "an octave "
         } else if octave > 1 {
             octaveExp = "\(octave) octaves "
         } else {
             octaveExp = ""
-        }
-        
-        let preposition: String
-        if intervalExp == "" && octaveExp == "" {
-            preposition = "as "
-        } else {
-            preposition = "than "
         }
         
         let and: String
@@ -50,24 +45,28 @@ struct MusicSettings {
             and = "and "
         }
         
+        let preposition: String
+        if intervalExp == "" && octaveExp == "" {
+            preposition = "as "
+        } else {
+            preposition = "than "
+        }
+        
+ 
         let dirExp: String
         if preposition == "as " {
             dirExp = ""
         } else {
-            if direction == "Down" {
-                dirExp = "lower "
-            } else {
-                dirExp = "higher "
-            }
+            dirExp = "\(direction.lowercased()) "
         }
    
         return "Sounds \(octaveExp)\(and)\(intervalExp)\(dirExp)\(preposition)written"
     }
     
     static let transposePickerView: [[String]] = [
-        ["Up", "Down"],
+        ["Lower", "Higher"],
         addOctaveSuffix(numArray(0, max: 2)),
-        ["Dim", "Min", "Per", "Maj", "Aug"],
+        ["Diminished", "Major",  "Perfect", "Minor", "Augmented"],
         addIntervalSuffix(numArray(1, max: 7))
     ]
     

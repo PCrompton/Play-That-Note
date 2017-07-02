@@ -30,7 +30,9 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
         tranposePickerView.selectRow(transposeData[0].index(of: MusicSettings.direction)!, inComponent: 0, animated: false)
         tranposePickerView.selectRow(MusicSettings.octave, inComponent: 1, animated: false)
         let rows = getRowsForQualities()
-        tranposePickerView.selectRow(rows.index(of: MusicSettings.quality)!, inComponent: 2, animated: false)
+        if let rowToSelect = rows.index(of: MusicSettings.quality) {
+            tranposePickerView.selectRow(rowToSelect, inComponent: 2, animated: false)
+        }
         tranposePickerView.selectRow(transposeData[3].index(of: MusicSettings.interval)!, inComponent: 3, animated: false)
     }
 
@@ -55,17 +57,17 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
     func getRowsForQualities() -> [String] {
         var rows = MusicSettings.transposePickerView[2]
         if MusicSettings.interval == "4th" || MusicSettings.interval == "5th" {
-            rows.remove(at: rows.index(of: "Min")!)
-            rows.remove(at: rows.index(of: "Maj")!)
+            rows.remove(at: rows.index(of: "Minor")!)
+            rows.remove(at: rows.index(of: "Major")!)
         } else if MusicSettings.interval == "Unison" {
-            rows.remove(at: rows.index(of: "Dim")!)
-            rows.remove(at: rows.index(of: "Min")!)
-            rows.remove(at: rows.index(of: "Maj")!)
-            rows.remove(at: rows.index(of: "Aug")!)
+            rows.remove(at: rows.index(of: "Diminished")!)
+            rows.remove(at: rows.index(of: "Minor")!)
+            rows.remove(at: rows.index(of: "Major")!)
+            rows.remove(at: rows.index(of: "Augmented")!)
         } else {
-            rows.remove(at: rows.index(of: "Per")!)
-            rows.remove(at: rows.index(of: "Dim")!)
-            rows.remove(at: rows.index(of: "Aug")!)
+            rows.remove(at: rows.index(of: "Perfect")!)
+            rows.remove(at: rows.index(of: "Diminished")!)
+            rows.remove(at: rows.index(of: "Augmented")!)
         }
         return rows
     }
@@ -185,7 +187,8 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
         switch pickerView {
         case tranposePickerView:
             if component == 2 {
-                return getRowsForQualities()[row]
+                let rows = getRowsForQualities()[row]
+                return rows
             } else {
                 return MusicSettings.transposePickerView[component][row]
             }
@@ -206,13 +209,22 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
             case 1:
                 MusicSettings.octave = Int(rowTitle.components(separatedBy: " ")[0])!
             case 2:
-                MusicSettings.quality = rowTitle
+                let rows = getRowsForQualities()
+                MusicSettings.quality = rows[row]
             case 3:
                 MusicSettings.interval = rowTitle
-                let rows = getRowsForQualities()
-                pickerView.selectRow(0, inComponent: 2, animated: true)
-                MusicSettings.quality = rows[pickerView.selectedRow(inComponent: 2)]
+                if rowTitle == "4th" || rowTitle == "5th" {
+                    MusicSettings.quality = "Perfect"
+                } else {
+                    MusicSettings.quality = "Major"
+                }
                 pickerView.reloadComponent(2)
+                
+                let rows = getRowsForQualities()
+                print("number of rows in componant 2:", pickerView.numberOfRows(inComponent: 2))
+                if let rowToSelect = rows.index(of: MusicSettings.quality) {
+                    pickerView.selectRow(rowToSelect, inComponent: 2, animated: true)
+                }
             default:
                 break
             }
