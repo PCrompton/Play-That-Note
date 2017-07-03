@@ -311,7 +311,7 @@ struct MusicSettings {
             return [lowArray, highArray]
         }
         
-        func resetToDefaults() {
+        static func resetToDefaults() {
             Range.treble = Defaults.treble
             Range.bass = Defaults.bass
             Range.alto = Defaults.alto

@@ -17,21 +17,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkIfFirstLaunch() {
         if (UserDefaults.standard.bool(forKey: "hasLaunchedBefore")) {
             print("App has launched before")
+            
             Settings.consecutivePitches = UserDefaults.standard.value(forKey: "consecutivePitches") as! Int
             Settings.bufferSize = UserDefaults.standard.value(forKey: "bufferSize") as! AVAudioFrameCount
             Settings.levelThreshold = UserDefaults.standard.value(forKey: "levelThreshold") as! Float
             
-            MusicSettings.Transpose.direction = MusicSettings.Transpose.Direction(rawValue: UserDefaults.standard.value(forKey: "direction") as! String)!
-            MusicSettings.Transpose.octave = UserDefaults.standard.value(forKey: "octave") as! Int
-            MusicSettings.Transpose.quality = MusicSettings.Transpose.Quality(rawValue: UserDefaults.standard.value(forKey: "quality") as! String)!
-            MusicSettings.Transpose.interval =  MusicSettings.Transpose.Interval(rawValue: UserDefaults.standard.value(forKey: "interval") as! String)!
-            
+            if let direction = UserDefaults.standard.value(forKey: "direction") as? String,
+                let octave = UserDefaults.standard.value(forKey: "octave") as? Int,
+                let quality = UserDefaults.standard.value(forKey: "quality") as? String,
+                let interval = UserDefaults.standard.value(forKey: "interval") as? String {
+                MusicSettings.Transpose.direction = MusicSettings.Transpose.Direction(rawValue: direction)!
+                MusicSettings.Transpose.octave = octave
+                MusicSettings.Transpose.quality = MusicSettings.Transpose.Quality(rawValue: quality)!
+                MusicSettings.Transpose.interval =  MusicSettings.Transpose.Interval(rawValue: interval)!
+            } else {
+                MusicSettings.Transpose.resetToDefaults()
+            }
+
         } else {
             print("This is the first launch ever!")
             UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-            Settings.resetToDefaults()
-            MusicSettings.Transpose.resetToDefaults()
+            setDefaults()
         }
+    }
+    
+    func setDefaults() {
+        Settings.resetToDefaults()
+        MusicSettings.Transpose.resetToDefaults()
+        MusicSettings.Range.resetToDefaults()
     }
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
