@@ -80,7 +80,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         configDirectionLabel()
         setButtonStackViewAxis()
         configTranspositionLabel()
-        transpositionLabel.text = MusicSettings.transposeDescription
+        transpositionLabel.text = MusicSettings.Transpose.description
     }
     
     func configDirectionLabel() {
