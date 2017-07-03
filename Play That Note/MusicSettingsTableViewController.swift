@@ -296,28 +296,20 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
             }
             transposeDescription.text = MusicSettings.Transpose.description
         case rangePickerView:
-            guard let selectedClef = selectedClef else {
-                return
-            }
-            let lowest = MusicSettings.Range.range(for: selectedClef)!.lowestIndex
-            let highest = MusicSettings.Range.range(for: selectedClef)!.highestIndex
-            let newLowest: Int
-            let newHighest: Int
             switch component {
             case 0:
-                newLowest = MusicSettings.Range.pickerView(for: selectedClef)[0][row]
-                newHighest = highest
+                if pickerView.selectedRow(inComponent: 1) < row {
+                    pickerView.selectRow(row, inComponent: 1, animated: true)
+                }
             case 1:
-                newLowest = lowest
-                newHighest = MusicSettings.Range.pickerView(for: selectedClef)[1][row]
+                if pickerView.selectedRow(inComponent: 0) > row {
+                    pickerView.selectRow(row, inComponent: 0, animated: true)
+                }
             default:
-                newLowest = lowest
-                newHighest = highest
                 break
             }
-            MusicSettings.Range.set(for: selectedClef, lowest: newLowest, highest: newHighest)
+            setRange()
             pickerView.reloadAllComponents()
-            rangeDescription.text = MusicSettings.Range.description(for: selectedClef)
         default:
             break
         }
