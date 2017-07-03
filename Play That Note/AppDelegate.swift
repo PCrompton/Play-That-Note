@@ -20,10 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Settings.consecutivePitches = UserDefaults.standard.value(forKey: "consecutivePitches") as! Int
             Settings.bufferSize = UserDefaults.standard.value(forKey: "bufferSize") as! AVAudioFrameCount
             Settings.levelThreshold = UserDefaults.standard.value(forKey: "levelThreshold") as! Float
+            
+            MusicSettings.Transpose.direction = MusicSettings.Transpose.Direction(rawValue: UserDefaults.standard.value(forKey: "direction") as! String)!
+            MusicSettings.Transpose.octave = UserDefaults.standard.value(forKey: "octave") as! Int
+            MusicSettings.Transpose.quality = MusicSettings.Transpose.Quality(rawValue: UserDefaults.standard.value(forKey: "quality") as! String)!
+            MusicSettings.Transpose.interval =  MusicSettings.Transpose.Interval(rawValue: UserDefaults.standard.value(forKey: "interval") as! String)!
+            
         } else {
             print("This is the first launch ever!")
             UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
             Settings.resetToDefaults()
+            MusicSettings.Transpose.resetToDefaults()
         }
     }
     

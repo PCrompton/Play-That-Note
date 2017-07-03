@@ -11,6 +11,12 @@ import Foundation
 struct MusicSettings {
 
     struct Transpose {
+        struct Defaults {
+            static var direction = Direction.lower
+            static var octave = 0
+            static var quality = Quality.perfect
+            static let interval = Interval.unison
+        }
         
         enum Direction: String {
             case lower = "Lower"
@@ -18,7 +24,7 @@ struct MusicSettings {
         }
         
         enum Quality: String {
-            case diminished = "Diminished"
+            case diminished = "Diminished" 
             case minor = "Minor"
             case perfect = "Perfect"
             case major = "Major"
@@ -35,10 +41,26 @@ struct MusicSettings {
             case seventh = "7th"
         }
         
-        static var direction = Direction.lower
-        static var octave = 0
-        static var quality = Quality.perfect
-        static var interval = Interval.unison
+        static var direction: Direction = Defaults.direction {
+            didSet {
+                UserDefaults.standard.set(direction.rawValue, forKey: "direction")
+            }
+        }
+        static var octave: Int = Defaults.octave {
+            didSet {
+                UserDefaults.standard.set(octave, forKey: "octave")
+            }
+        }
+        static var quality: Quality = Defaults.quality {
+            didSet {
+                UserDefaults.standard.set(quality.rawValue, forKey: "quality")
+            }
+        }
+        static var interval: Interval = Defaults.interval {
+            didSet {
+                UserDefaults.standard.set(interval.rawValue, forKey: "interval")
+            }
+        }
         
         static var semitones: Int {
             var semitones = 0
@@ -177,6 +199,12 @@ struct MusicSettings {
                 }
             }
             return newArray
+        }
+        static func resetToDefaults() {
+            direction = Defaults.direction
+            octave = Defaults.octave
+            quality = Defaults.quality
+            interval = Defaults.interval
         }
     }
 }
