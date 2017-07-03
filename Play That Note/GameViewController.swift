@@ -24,6 +24,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     
     @IBOutlet weak var transpositionLabel: UILabel!
     
+    @IBOutlet weak var rangeLabel: UILabel!
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
@@ -81,7 +82,9 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         configDirectionLabel()
         setButtonStackViewAxis()
         configTranspositionLabel()
+        configRangeLabel()
         transpositionLabel.text = MusicSettings.Transpose.description
+        rangeLabel.text = MusicSettings.Range.description(for: clef)
     }
     
     func configDirectionLabel() {
@@ -97,6 +100,14 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
             transpositionLabel.isHidden = true
         } else {
             transpositionLabel.isHidden = false
+        }
+    }
+    
+    func configRangeLabel() {
+        if view.traitCollection.verticalSizeClass == .compact {
+            rangeLabel.isHidden = true
+        } else {
+            rangeLabel.isHidden = false
         }
     }
     
@@ -120,6 +131,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
         configDirectionLabel()
         configTranspositionLabel()
+        configRangeLabel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

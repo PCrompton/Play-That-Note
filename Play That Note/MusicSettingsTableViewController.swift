@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Pitchy
 
 class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -19,12 +20,17 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
     @IBOutlet weak var rangePickerView: UIPickerView!
     
     @IBOutlet weak var transposeDescription: UILabel!
+    
+    @IBOutlet weak var rangeDescription: UILabel!
+    var selectedClef: Clef?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         transposeDescription.text = MusicSettings.Transpose.description
         let transposeData = MusicSettings.Transpose.pickerView
         tranposePickerView.selectRow(transposeData[0].index(of: MusicSettings.Transpose.direction.rawValue)!, inComponent: 0, animated: false)
@@ -34,6 +40,11 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
             tranposePickerView.selectRow(rowToSelect, inComponent: 2, animated: false)
         }
         tranposePickerView.selectRow(transposeData[3].index(of: MusicSettings.Transpose.interval.rawValue)!, inComponent: 3, animated: false)
+        
+        selectButton(trebleButton)
+        if let selectedClef = selectedClef {
+            selectRows(for: selectedClef)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,9 +59,34 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
         for button in buttons {
             if button === sender {
                 button!.isSelected = true
+                switch button! {
+                case trebleButton:
+                    selectedClef = .treble
+                case bassButton:
+                    selectedClef = .bass
+                case altoButton:
+                    selectedClef = .alto
+                case tenorButton:
+                    selectedClef = .tenor
+                default:
+                    selectedClef = nil
+                }
             } else {
                 button!.isSelected = false
             }
+        }
+        if let selectedClef = selectedClef {
+            rangeDescription.text = MusicSettings.Range.description(for: selectedClef)
+            selectRows(for: selectedClef)
+        }
+        rangePickerView.reloadAllComponents()
+        
+    }
+    
+    func selectRows(for selectedClef: Clef) {
+        if let rangeForSelectedClef = MusicSettings.Range.range(for: selectedClef) {
+            rangePickerView.selectRow(MusicSettings.Range.pickerView(for: selectedClef)[0].index(of: rangeForSelectedClef.lowestIndex)!, inComponent: 0, animated: false)
+            rangePickerView.selectRow(MusicSettings.Range.pickerView(for: selectedClef)[1].index(of: rangeForSelectedClef.highestIndex)!, inComponent: 1, animated: false)
         }
     }
     
@@ -151,11 +187,14 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
         case tranposePickerView:
             return MusicSettings.Transpose.pickerView.count
         case rangePickerView:
-            return 3
+            if let selectedClef = selectedClef {
+                return MusicSettings.Range.pickerView(for: selectedClef).count
+            } else {
+                return 0
+            }
         default:
             return 0
         }
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -173,7 +212,11 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
             }
             return rows
         case rangePickerView:
-            return 0
+            if let selectedClef = selectedClef {
+                return MusicSettings.Range.pickerView(for: selectedClef)[component].count
+            } else {
+                return 0
+            }
         default:
             return 0
         }
@@ -191,16 +234,20 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
                 return MusicSettings.Transpose.pickerView[component][row]
             }
         case rangePickerView:
-            return nil
+            if let selectedClef = selectedClef {
+                return try! Note(index: MusicSettings.Range.pickerView(for: selectedClef)[component][row]).string
+            } else {
+                return nil
+            }
         default:
             return nil
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let rowTitle = MusicSettings.Transpose.pickerView[component][row]
         switch pickerView {
         case tranposePickerView:
+            let rowTitle = MusicSettings.Transpose.pickerView[component][row]
             switch component {
             case 0:
                 MusicSettings.Transpose.direction = MusicSettings.Transpose.Direction(rawValue: rowTitle)!
@@ -228,7 +275,28 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
             }
             transposeDescription.text = MusicSettings.Transpose.description
         case rangePickerView:
-            break
+            guard let selectedClef = selectedClef else {
+                return
+            }
+            let lowest = MusicSettings.Range.range(for: selectedClef)!.lowestIndex
+            let highest = MusicSettings.Range.range(for: selectedClef)!.highestIndex
+            let newLowest: Int
+            let newHighest: Int
+            switch component {
+            case 0:
+                newLowest = MusicSettings.Range.pickerView(for: selectedClef)[0][row]
+                newHighest = highest
+            case 1:
+                newLowest = lowest
+                newHighest = MusicSettings.Range.pickerView(for: selectedClef)[1][row]
+            default:
+                newLowest = lowest
+                newHighest = highest
+                break
+            }
+            MusicSettings.Range.set(for: selectedClef, lowest: newLowest, highest: newHighest)
+            pickerView.reloadAllComponents()
+            rangeDescription.text = MusicSettings.Range.description(for: selectedClef)
         default:
             break
         }

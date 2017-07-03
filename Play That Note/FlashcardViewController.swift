@@ -25,6 +25,7 @@ class FlashcardViewController: UIViewController {
     
     var lowest = try! Note(letter: .C, octave: 1)
     var highest = try! Note(letter: .C, octave: 7)
+    
     var clef = Clef.treble {
         didSet {
             switch clef {
