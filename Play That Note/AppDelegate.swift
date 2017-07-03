@@ -45,11 +45,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let treble = UserDefaults.standard.value(forKey: "trebleRange") as? [Int],
                 let bass = UserDefaults.standard.value(forKey: "bassRange") as? [Int],
                 let alto = UserDefaults.standard.value(forKey: "altoRange") as? [Int],
-                let tenor = UserDefaults.standard.value(forKey: "tenorRange") as? [Int] {
+                let tenor = UserDefaults.standard.value(forKey: "tenorRange") as? [Int],
+                let trebleOmitAccidentals = UserDefaults.standard.value(forKey: "trebleOmitAccidentals") as? Bool,
+                let bassOmitAccidentals = UserDefaults.standard.value(forKey: "bassOmitAccidentals") as? Bool,
+                let altoOmitAccidentals = UserDefaults.standard.value(forKey: "altoOmitAccidentals") as? Bool,
+                let tenorOmitAccidentals = UserDefaults.standard.value(forKey: "tenorOmitAccidentals") as? Bool {
+                
                 MusicSettings.Range.treble = MusicSettings.Range.ClefRange(clef: .treble, lowestIndex: treble[0], highestIndex: treble[1])
                 MusicSettings.Range.bass = MusicSettings.Range.ClefRange(clef: .bass, lowestIndex: bass[0], highestIndex: bass[1])
                 MusicSettings.Range.alto = MusicSettings.Range.ClefRange(clef: .alto, lowestIndex: alto[0], highestIndex: alto[1])
                 MusicSettings.Range.tenor = MusicSettings.Range.ClefRange(clef: .tenor, lowestIndex: tenor[0], highestIndex: tenor[1])
+                
+                MusicSettings.Range.trebleOmitAccidentals = trebleOmitAccidentals
+                MusicSettings.Range.bassOmitAccidentals = bassOmitAccidentals
+                MusicSettings.Range.altoOmitAccidentals = altoOmitAccidentals
+                MusicSettings.Range.tenorOmitAccidentals = tenorOmitAccidentals
             } else {
                 MusicSettings.Range.resetToDefaults()
             }

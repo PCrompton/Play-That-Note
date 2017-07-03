@@ -19,6 +19,7 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
     @IBOutlet weak var tranposePickerView: UIPickerView!
     @IBOutlet weak var rangePickerView: UIPickerView!
     
+    @IBOutlet weak var omitAccidentalsSwitch: UISwitch!
     @IBOutlet weak var transposeDescription: UILabel!
     
     @IBOutlet weak var rangeDescription: UILabel!
@@ -42,14 +43,20 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
         tranposePickerView.selectRow(transposeData[3].index(of: MusicSettings.Transpose.interval.rawValue)!, inComponent: 3, animated: false)
         
         selectButton(trebleButton)
-        if let selectedClef = selectedClef {
-            selectRows(for: selectedClef)
-        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func omitAccidentalsSwitch(_ sender: UISwitch) {
+        if let selectedClef = selectedClef {
+            MusicSettings.Range.omitAccidentals(for: selectedClef, bool: sender.isOn)
+            rangeDescription.text = MusicSettings.Range.description(for: selectedClef)
+        }
+        rangePickerView.reloadAllComponents()
+        setRange()
     }
     
     @IBAction func selectButton(_ sender: UIButton) {
@@ -77,10 +84,24 @@ class MusicSettingsTableViewController: UITableViewController, UIPickerViewDataS
         }
         if let selectedClef = selectedClef {
             rangeDescription.text = MusicSettings.Range.description(for: selectedClef)
+            if let omitAccidentals = MusicSettings.Range.omitAccidentals(for: selectedClef) {
+                omitAccidentalsSwitch.isOn = omitAccidentals
+            }
             selectRows(for: selectedClef)
         }
         rangePickerView.reloadAllComponents()
+        setRange()
         
+        
+    }
+    func setRange() {
+        guard let selectedClef = selectedClef else {
+            return
+        }
+        let lowest = MusicSettings.Range.pickerView(for: selectedClef)[0][rangePickerView.selectedRow(inComponent: 0)]
+        let highest = MusicSettings.Range.pickerView(for: selectedClef)[1][rangePickerView.selectedRow(inComponent: 1)]
+        MusicSettings.Range.set(for: selectedClef, lowest: lowest, highest: highest)
+        rangeDescription.text = MusicSettings.Range.description(for: selectedClef)
     }
     
     func selectRows(for selectedClef: Clef) {

@@ -209,6 +209,7 @@ struct MusicSettings {
     }
     
     struct Range {
+        
         struct ClefRange {
             let clef: Clef
             var lowest: Note {
@@ -227,6 +228,27 @@ struct MusicSettings {
             static var bass = ClefRange(clef: .bass, lowestIndex: try! Note(letter: .A, octave: 1).index, highestIndex: try! Note(letter: .G, octave: 4).index)
             static var alto = ClefRange(clef: .alto, lowestIndex: try! Note(letter: .G, octave: 2).index, highestIndex: try! Note(letter: .F, octave: 5).index)
             static let tenor = ClefRange(clef: .tenor, lowestIndex: try! Note(letter: .E, octave: 2).index, highestIndex: try! Note(letter: .D, octave: 5).index)
+        }
+        
+        static var trebleOmitAccidentals = false {
+            didSet {
+                UserDefaults.standard.set(trebleOmitAccidentals, forKey: "trebleOmitAccidentals")
+            }
+        }
+        static var bassOmitAccidentals = false {
+            didSet {
+                UserDefaults.standard.set(bassOmitAccidentals, forKey: "bassOmitAccidentals")
+            }
+        }
+        static var altoOmitAccidentals = false {
+            didSet {
+                UserDefaults.standard.set(altoOmitAccidentals, forKey: "altoOmitAccidentals")
+            }
+        }
+        static var tenorOmitAccidentals = false {
+            didSet {
+                UserDefaults.standard.set(tenorOmitAccidentals, forKey: "tenorOmitAccidentals")
+            }
         }
         
         static var treble = Defaults.treble {
@@ -250,19 +272,59 @@ struct MusicSettings {
             }
         }
         
-        static func description(for clef: Clef) -> String {
+        static func omitAccidentals(for clef: Clef) -> Bool? {
             switch clef {
             case .treble:
-                return "\(treble.lowest.string) to \(treble.highest.string)"
+                return trebleOmitAccidentals
             case .bass:
-                return "\(bass.lowest.string) to \(bass.highest.string)"
+                return bassOmitAccidentals
             case .alto:
-                return "\(alto.lowest.string) to \(alto.highest.string)"
+                return altoOmitAccidentals
             case .tenor:
-                return "\(tenor.lowest.string) to \(tenor.highest.string)"
+                return tenorOmitAccidentals
             default:
-                return String()
+                return nil
             }
+        }
+        
+        static func omitAccidentals(for clef: Clef, bool: Bool) {
+            switch clef {
+            case .treble:
+                trebleOmitAccidentals = bool
+            case .bass:
+                bassOmitAccidentals = bool
+            case .alto:
+                altoOmitAccidentals = bool
+            case .tenor:
+                tenorOmitAccidentals = bool
+            default:
+                break
+            }
+        }
+        
+        static func description(for clef: Clef) -> String {
+            var description = String()
+            switch clef {
+            case .treble:
+                description = "\(treble.lowest.string) to \(treble.highest.string)"
+            case .bass:
+                description = "\(bass.lowest.string) to \(bass.highest.string)"
+            case .alto:
+                description = "\(alto.lowest.string) to \(alto.highest.string)"
+            case .tenor:
+                description = "\(tenor.lowest.string) to \(tenor.highest.string)"
+            default:
+                break
+            }
+            
+            guard let omitAccidentals = omitAccidentals(for: clef) else {
+                return description
+            }
+            
+            if omitAccidentals {
+                description += " (omit accidentals)"
+            }
+            return description
         }
         
         static func set(for clef: Clef, lowest: Int, highest: Int) {
@@ -297,7 +359,7 @@ struct MusicSettings {
         }
         
         static func pickerView(for clef: Clef) -> [[Int]] {
-             var rangeArray = [Int]()
+            var rangeArray = [Int]()
             let range: ClefRange?
             switch clef {
             case .treble:
@@ -309,31 +371,46 @@ struct MusicSettings {
             case .tenor:
                 range = Defaults.tenor
             default:
+                range = nil
+            }
+            guard let unwrappedRange = range,
+                let omitAccidentals = omitAccidentals(for: clef) else {
                 return [rangeArray, rangeArray]
             }
-            let lowest = range!.lowest.index
-            let highest = range!.highest.index
+           
+            let lowest = unwrappedRange.lowest.index
+            let highest = unwrappedRange.highest.index
             var i = lowest
             while i <= highest {
-                rangeArray.append(i)
+            
+                if omitAccidentals {
+                    if try! Note(index: i).string.characters.count == 2 {
+                        rangeArray.append(i)
+                    }
+                } else {
+                    rangeArray.append(i)
+                }
                 i += 1
             }
             var lowArray = rangeArray
             var highArray = rangeArray
-            
+        
             lowArray.removeLast()
             highArray.removeFirst()
-            
+
             return [lowArray, highArray]
         }
         
         static func resetToDefaults() {
             Range.treble = Defaults.treble
+            Range.trebleOmitAccidentals = false
             Range.bass = Defaults.bass
+            Range.bassOmitAccidentals = false
             Range.alto = Defaults.alto
+            Range.altoOmitAccidentals = false
             Range.tenor = Defaults.tenor
+            Range.tenorOmitAccidentals = false
         }
-        
     }
 }
 
