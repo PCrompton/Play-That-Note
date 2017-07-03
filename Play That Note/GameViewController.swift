@@ -49,13 +49,13 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = Settings.levelThreshold
-        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(lowest.index), highest: Int32(highest.index))
+        let range = MusicSettings.Range.range(for: clef)!
+        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(range.lowestIndex), highest: Int32(range.highestIndex))
         if flashcards.count == 0 {
-            flashcards = statsModelController.createFlashcards(clef: clef, lowest: lowest, highest: highest)
+            flashcards = statsModelController.createFlashcards(clef: clef, lowest: range.lowest, highest: range.highest)
             stack.save()
         }
         for button in [startButton, cancelButton] {
