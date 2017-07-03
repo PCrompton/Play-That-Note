@@ -358,6 +358,21 @@ struct MusicSettings {
             }
         }
         
+        static func defaultRange(for clef: Clef) -> ClefRange? {
+            switch clef {
+            case .treble:
+                return Defaults.treble
+            case .bass:
+                return Defaults.bass
+            case .alto:
+                return Defaults.alto
+            case .tenor:
+                return Defaults.tenor
+            default:
+                return nil
+            }
+        }
+        
         static func pickerView(for clef: Clef) -> [[Int]] {
             var rangeArray = [Int]()
             let range: ClefRange?

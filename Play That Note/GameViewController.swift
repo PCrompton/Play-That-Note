@@ -52,12 +52,18 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
         pitchEngine?.levelThreshold = Settings.levelThreshold
-        let range = MusicSettings.Range.range(for: clef)!
-        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(range.lowestIndex), highest: Int32(range.highestIndex))
+        
+        let defaultRange = MusicSettings.Range.defaultRange(for: clef)!
+        
+        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(defaultRange.lowestIndex), highest: Int32(defaultRange.highestIndex))
+        
         if flashcards.count == 0 {
-            flashcards = statsModelController.createFlashcards(clef: clef, lowest: range.lowest, highest: range.highest)
+            flashcards = statsModelController.createFlashcards(clef: clef, lowest: defaultRange.lowest, highest: defaultRange.highest)
             stack.save()
         }
+        
+        flashcards = statsModelController.filter(for: flashcards, range: MusicSettings.Range.range(for: clef)!, omitAccidentals: MusicSettings.Range.omitAccidentals(for: clef)!)
+        
         for button in [startButton, cancelButton] {
             addShadows(to: button!)
         }
