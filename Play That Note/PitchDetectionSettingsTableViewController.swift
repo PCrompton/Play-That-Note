@@ -23,42 +23,42 @@ class PitchDetectionSettingsTableViewController: UITableViewController {
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        consecutivePitchesLabel.text = "\(Settings.consecutivePitches) Pitches"
-        consecutivePitchesStepper.value = Double(Settings.consecutivePitches)
+        consecutivePitchesLabel.text = "\(PitchDetectionSettings.consecutivePitches) Pitches"
+        consecutivePitchesStepper.value = Double(PitchDetectionSettings.consecutivePitches)
         
-        bufferSizeLabel.text = "\(Settings.bufferSize)"
-        bufferSizeSlider.value = Float(Settings.bufferSize)
+        bufferSizeLabel.text = "\(PitchDetectionSettings.bufferSize)"
+        bufferSizeSlider.value = Float(PitchDetectionSettings.bufferSize)
         
-        levelThresholdLabel.text = "\(Settings.levelThreshold) dB"
-        levelThresholdSlider.value = Settings.levelThreshold
+        levelThresholdLabel.text = "\(PitchDetectionSettings.levelThreshold) dB"
+        levelThresholdSlider.value = PitchDetectionSettings.levelThreshold
     }
     
     // MARK: IBActions
     @IBAction func consecutivePitchesStepper(_ stepper: UIStepper) {
         consecutivePitchesLabel.text = "\(Int(stepper.value)) Buffers"
-        Settings.consecutivePitches = Int(stepper.value)
+        PitchDetectionSettings.consecutivePitches = Int(stepper.value)
     }
     
     @IBAction func bufferSlider(_ slider: UISlider) {
         bufferSizeLabel.text = "\(Int(slider.value))"
-        Settings.bufferSize = AVAudioFrameCount(slider.value)
+        PitchDetectionSettings.bufferSize = AVAudioFrameCount(slider.value)
     }
     
     @IBAction func levelThresholdSlider(_ slider: UISlider) {
         levelThresholdLabel.text = "\(slider.value) dB"
-        Settings.levelThreshold = slider.value
+        PitchDetectionSettings.levelThreshold = slider.value
     }
 
     @IBAction func restoreDefaultsButton(_ sender: UIBarButtonItem) {
-        Settings.resetToDefaults()
-        consecutivePitchesLabel.text = "\(Settings.consecutivePitches) Pitches"
-        consecutivePitchesStepper.value = Double(Settings.consecutivePitches)
+        PitchDetectionSettings.resetToDefaults()
+        consecutivePitchesLabel.text = "\(PitchDetectionSettings.consecutivePitches) Pitches"
+        consecutivePitchesStepper.value = Double(PitchDetectionSettings.consecutivePitches)
 
-        bufferSizeLabel.text = "\(Settings.bufferSize)"
-        bufferSizeSlider.value = Float(Settings.bufferSize)
+        bufferSizeLabel.text = "\(PitchDetectionSettings.bufferSize)"
+        bufferSizeSlider.value = Float(PitchDetectionSettings.bufferSize)
 
-        levelThresholdLabel.text = "\(Settings.levelThreshold) db"
-        levelThresholdSlider.value = Settings.levelThreshold
+        levelThresholdLabel.text = "\(PitchDetectionSettings.levelThreshold) db"
+        levelThresholdSlider.value = PitchDetectionSettings.levelThreshold
 
     }
 }

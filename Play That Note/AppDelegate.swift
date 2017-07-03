@@ -23,11 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let bufferSize = UserDefaults.standard.value(forKey: "bufferSize") as? AVAudioFrameCount,
             let levelThreshhold = UserDefaults.standard.value(forKey: "levelThreshold") as? Float {
                 
-                Settings.consecutivePitches = consecutivePitches
-                Settings.bufferSize = bufferSize
-                Settings.levelThreshold = levelThreshhold
+                PitchDetectionSettings.consecutivePitches = consecutivePitches
+                PitchDetectionSettings.bufferSize = bufferSize
+                PitchDetectionSettings.levelThreshold = levelThreshhold
             } else {
-                Settings.resetToDefaults()
+                PitchDetectionSettings.resetToDefaults()
             }
 
             if let direction = UserDefaults.standard.value(forKey: "direction") as? String,

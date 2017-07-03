@@ -49,9 +49,9 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
+        let config = Config(bufferSize: PitchDetectionSettings.bufferSize, estimationStrategy: PitchDetectionSettings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
-        pitchEngine?.levelThreshold = Settings.levelThreshold
+        pitchEngine?.levelThreshold = PitchDetectionSettings.levelThreshold
         
         let defaultRange = MusicSettings.Range.defaultRange(for: clef)!
         
@@ -248,7 +248,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
         let note = pitch.note
         print(note.string, pitchEngine.signalLevel)
-        if consecutivePitches.count < Settings.consecutivePitches {
+        if consecutivePitches.count < PitchDetectionSettings.consecutivePitches {
             consecutivePitches.append(pitch)
         } else {
             consecutivePitches.remove(at: 0)

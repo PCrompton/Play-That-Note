@@ -10,7 +10,7 @@ import Foundation
 import Beethoven
 import AVFoundation
 
-struct Settings {
+struct PitchDetectionSettings {
     struct Defaults {
         static var consecutivePitches = 3
         static var bufferSize: AVAudioFrameCount = 4096
