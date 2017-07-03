@@ -23,6 +23,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     @IBOutlet weak var flashCardActivityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var transpositionLabel: UILabel!
+    
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
@@ -243,8 +244,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
                 var color: UIColor
                 var title: String
                 
-                if note.index == Int((flashcard?.pitchIndex)!) {
-                    //alertController.title = "Correct!"
+                if note.index == Int((flashcard?.pitchIndex)!) + MusicSettings.Transpose.semitones {
                     title = "Correct!"
                     color = UIColor.green
                     flashcard?.correct += 1

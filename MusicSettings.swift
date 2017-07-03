@@ -40,6 +40,60 @@ struct MusicSettings {
         static var quality = Quality.perfect
         static var interval = Interval.unison
         
+        static var semitones: Int {
+            var semitones = 0
+            switch interval {
+            case .unison:
+                break
+            case .second:
+                if quality == .minor {
+                    semitones += 1
+                } else if quality == .major {
+                    semitones += 2
+                }
+            case .third:
+                if quality == .minor {
+                    semitones += 3
+                } else if quality == .major {
+                    semitones += 4
+                }
+            case .fourth:
+                if quality == .diminished {
+                    semitones += 4
+                } else if quality == .perfect {
+                    semitones += 5
+                } else if quality == .augmented {
+                    semitones += 6
+                }
+            case .fifth:
+                if quality == .diminished {
+                    semitones += 6
+                } else if quality == .perfect {
+                    semitones += 7
+                } else if quality == .augmented {
+                    semitones += 8
+                }
+            case .sixth:
+                if quality == .minor {
+                    semitones += 8
+                } else if quality == .major {
+                    semitones += 9
+                }
+            case .seventh:
+                if quality == .minor {
+                    semitones += 10
+                } else if quality == .major {
+                    semitones += 11
+                }
+            }
+            switch direction {
+            case .higher:
+                return semitones + 12*octave
+            case .lower:
+                return -semitones - 12*octave
+            }
+        }
+        
         static var description: String {
             let intervalExp: String
             if interval == .unison {
