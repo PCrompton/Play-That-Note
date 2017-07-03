@@ -20,7 +20,7 @@
 		9627E0061EFA1577002225B0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961ED7491DEBC44000DA941B /* GameKit.framework */; };
 		966362791DDCDF7400E2E000 /* Clef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362761DDCDF7400E2E000 /* Clef.swift */; };
 		9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362771DDCDF7400E2E000 /* CoreDataStack.swift */; };
-		9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362781DDCDF7400E2E000 /* Settings.swift */; };
+		9663627B1DDCDF7400E2E000 /* PitchDetectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966362781DDCDF7400E2E000 /* PitchDetectionSettings.swift */; };
 		9670B71B1DDF9E6A00094762 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B71A1DDF9E6A00094762 /* StatsViewController.swift */; };
 		9670B71F1DE0D86000094762 /* ClefStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */; };
 		9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */; };
@@ -82,7 +82,7 @@
 		961ED7491DEBC44000DA941B /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		966362761DDCDF7400E2E000 /* Clef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clef.swift; path = "Play That Note/Clef.swift"; sourceTree = "<group>"; };
 		966362771DDCDF7400E2E000 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = "Play That Note/CoreDataStack.swift"; sourceTree = "<group>"; };
-		966362781DDCDF7400E2E000 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = "Play That Note/Settings.swift"; sourceTree = "<group>"; };
+		966362781DDCDF7400E2E000 /* PitchDetectionSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchDetectionSettings.swift; path = "Play That Note/PitchDetectionSettings.swift"; sourceTree = "<group>"; };
 		9670B71A1DDF9E6A00094762 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClefStatsViewController.swift; sourceTree = "<group>"; };
 		9670B7201DE0DBB900094762 /* ClefTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClefTableViewCell.swift; sourceTree = "<group>"; };
@@ -238,8 +238,8 @@
 				96E27C751DE52CB900B8AFF4 /* Model.xcdatamodeld */,
 				966362771DDCDF7400E2E000 /* CoreDataStack.swift */,
 				966362761DDCDF7400E2E000 /* Clef.swift */,
-				966362781DDCDF7400E2E000 /* Settings.swift */,
 				96E9A4911F085041004FCCA0 /* MusicSettings.swift */,
+				966362781DDCDF7400E2E000 /* PitchDetectionSettings.swift */,
 				96E27C811DE5D62100B8AFF4 /* Stats.swift */,
 				966362851DDCE22200E2E000 /* Managed Objects */,
 			);
@@ -589,7 +589,7 @@
 				9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */,
 				96E27C861DE9211E00B8AFF4 /* StatsModelController.swift in Sources */,
 				96E27C821DE5D62100B8AFF4 /* Stats.swift in Sources */,
-				9663627B1DDCDF7400E2E000 /* Settings.swift in Sources */,
+				9663627B1DDCDF7400E2E000 /* PitchDetectionSettings.swift in Sources */,
 				96A543CE1E21A56300094A49 /* FlashcardView.swift in Sources */,
 				96E9A4921F085041004FCCA0 /* MusicSettings.swift in Sources */,
 				96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */,
