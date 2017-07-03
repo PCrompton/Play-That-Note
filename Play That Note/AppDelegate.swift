@@ -41,6 +41,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 MusicSettings.Transpose.resetToDefaults()
             }
+            
+            if let treble = UserDefaults.standard.value(forKey: "trebleRange") as? [Int],
+                let bass = UserDefaults.standard.value(forKey: "bassRange") as? [Int],
+                let alto = UserDefaults.standard.value(forKey: "altoRange") as? [Int],
+                let tenor = UserDefaults.standard.value(forKey: "tenorRange") as? [Int] {
+                MusicSettings.Range.treble = MusicSettings.Range.ClefRange(clef: .treble, lowestIndex: treble[0], highestIndex: treble[1])
+                MusicSettings.Range.bass = MusicSettings.Range.ClefRange(clef: .bass, lowestIndex: bass[0], highestIndex: bass[1])
+                MusicSettings.Range.alto = MusicSettings.Range.ClefRange(clef: .alto, lowestIndex: alto[0], highestIndex: alto[1])
+                MusicSettings.Range.tenor = MusicSettings.Range.ClefRange(clef: .tenor, lowestIndex: tenor[0], highestIndex: tenor[1])
+            } else {
+                MusicSettings.Range.resetToDefaults()
+            }
 
         } else {
             print("This is the first launch ever!")

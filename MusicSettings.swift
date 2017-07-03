@@ -229,10 +229,26 @@ struct MusicSettings {
             static let tenor = ClefRange(clef: .tenor, lowestIndex: try! Note(letter: .E, octave: 2).index, highestIndex: try! Note(letter: .D, octave: 5).index)
         }
         
-        static var treble = Defaults.treble
-        static var bass = Defaults.bass
-        static var alto = Defaults.alto
-        static var tenor = Defaults.tenor
+        static var treble = Defaults.treble {
+            didSet {
+                UserDefaults.standard.set([treble.lowestIndex, treble.highestIndex], forKey: "trebleRange")
+            }
+        }
+        static var bass = Defaults.bass {
+            didSet {
+                UserDefaults.standard.set([bass.lowestIndex, bass.highestIndex], forKey: "bassRange")
+            }
+        }
+        static var alto = Defaults.alto {
+            didSet {
+                UserDefaults.standard.set([alto.lowestIndex, alto.highestIndex], forKey: "altoRange")
+            }
+        }
+        static var tenor = Defaults.tenor {
+            didSet {
+                UserDefaults.standard.set([tenor.lowestIndex, tenor.highestIndex], forKey: "tenorRange")
+            }
+        }
         
         static func description(for clef: Clef) -> String {
             switch clef {
