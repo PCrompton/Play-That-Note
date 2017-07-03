@@ -18,10 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (UserDefaults.standard.bool(forKey: "hasLaunchedBefore")) {
             print("App has launched before")
             
-            Settings.consecutivePitches = UserDefaults.standard.value(forKey: "consecutivePitches") as! Int
-            Settings.bufferSize = UserDefaults.standard.value(forKey: "bufferSize") as! AVAudioFrameCount
-            Settings.levelThreshold = UserDefaults.standard.value(forKey: "levelThreshold") as! Float
             
+            if let consecutivePitches = UserDefaults.standard.value(forKey: "consecutivePitches") as? Int,
+            let bufferSize = UserDefaults.standard.value(forKey: "bufferSize") as? AVAudioFrameCount,
+            let levelThreshhold = UserDefaults.standard.value(forKey: "levelThreshold") as? Float {
+                
+                Settings.consecutivePitches = consecutivePitches
+                Settings.bufferSize = bufferSize
+                Settings.levelThreshold = levelThreshhold
+            } else {
+                Settings.resetToDefaults()
+            }
+
             if let direction = UserDefaults.standard.value(forKey: "direction") as? String,
                 let octave = UserDefaults.standard.value(forKey: "octave") as? Int,
                 let quality = UserDefaults.standard.value(forKey: "quality") as? String,
@@ -37,14 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("This is the first launch ever!")
             UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-            setDefaults()
         }
-    }
-    
-    func setDefaults() {
-        Settings.resetToDefaults()
-        MusicSettings.Transpose.resetToDefaults()
-        MusicSettings.Range.resetToDefaults()
     }
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
