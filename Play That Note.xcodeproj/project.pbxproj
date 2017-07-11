@@ -39,6 +39,9 @@
 		96E9A4891F069C32004FCCA0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9A4881F069C32004FCCA0 /* SettingsTableViewController.swift */; };
 		96E9A48B1F069C45004FCCA0 /* MusicSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9A48A1F069C45004FCCA0 /* MusicSettingsTableViewController.swift */; };
 		96E9A4921F085041004FCCA0 /* MusicSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9A4911F085041004FCCA0 /* MusicSettings.swift */; };
+		96E9A4961F15193C004FCCA0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E9A4951F15193C004FCCA0 /* StoreKit.framework */; };
+		96E9A4991F151A3F004FCCA0 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9A4981F151A3F004FCCA0 /* IAPManager.swift */; };
+		96E9A49B1F151B2F004FCCA0 /* products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96E9A49A1F151B2F004FCCA0 /* products.plist */; };
 		ED7426AFCB660F125F8040FC /* Pods_Play_That_NoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7C8BC10250FEBA43CF59DF /* Pods_Play_That_NoteUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +104,9 @@
 		96E9A4881F069C32004FCCA0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		96E9A48A1F069C45004FCCA0 /* MusicSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSettingsTableViewController.swift; sourceTree = "<group>"; };
 		96E9A4911F085041004FCCA0 /* MusicSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicSettings.swift; sourceTree = "<group>"; };
+		96E9A4951F15193C004FCCA0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		96E9A4981F151A3F004FCCA0 /* IAPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		96E9A49A1F151B2F004FCCA0 /* products.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = products.plist; sourceTree = "<group>"; };
 		C44BEB530F3AA0293DED9441 /* Pods_Play_That_NoteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Play_That_NoteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5DDE78E1FC9615133B6B701 /* Pods-Play That NoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play That NoteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Play That NoteTests/Pods-Play That NoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF336B75975639BB2C029960 /* Pods-Play That NoteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play That NoteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Play That NoteUITests/Pods-Play That NoteUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E9A4961F15193C004FCCA0 /* StoreKit.framework in Frameworks */,
 				858020F83A2000EC2F7CFB7C /* Pods_Play_That_Note.framework in Frameworks */,
 				9627E0061EFA1577002225B0 /* GameKit.framework in Frameworks */,
 			);
@@ -208,6 +215,7 @@
 				960144401DD132D1006146C2 /* Assets.xcassets */,
 				96B74F261F01CEDC000B1097 /* License */,
 				9602EC7C1DD136AC0032CD83 /* vexFlow */,
+				96E9A49A1F151B2F004FCCA0 /* products.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 		9602EC811DD137220032CD83 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				96E9A4971F151A22004FCCA0 /* Managers */,
 				96E27C841DE920E600B8AFF4 /* Model Controllers */,
 				96E27C831DE920DA00B8AFF4 /* View Controllers */,
 			);
@@ -250,6 +259,7 @@
 		9602EC841DD137A90032CD83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96E9A4951F15193C004FCCA0 /* StoreKit.framework */,
 				961ED7491DEBC44000DA941B /* GameKit.framework */,
 				EDF707EC8BA94A4B91BF34C9 /* Pods_Play_That_Note.framework */,
 				C44BEB530F3AA0293DED9441 /* Pods_Play_That_NoteTests.framework */,
@@ -290,6 +300,14 @@
 				96E27C871DE9E5CC00B8AFF4 /* GameCenterModelController.swift */,
 			);
 			name = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		96E9A4971F151A22004FCCA0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				96E9A4981F151A3F004FCCA0 /* IAPManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +393,9 @@
 							com.apple.GameCenter = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 						};
 					};
 					960144491DD132D1006146C2 = {
@@ -416,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E9A49B1F151B2F004FCCA0 /* products.plist in Resources */,
 				960144441DD132D1006146C2 /* LaunchScreen.storyboard in Resources */,
 				960144411DD132D1006146C2 /* Assets.xcassets in Resources */,
 				9602EC7D1DD136AC0032CD83 /* vexFlow in Resources */,
@@ -592,6 +614,7 @@
 				9663627B1DDCDF7400E2E000 /* PitchDetectionSettings.swift in Sources */,
 				96A543CE1E21A56300094A49 /* FlashcardView.swift in Sources */,
 				96E9A4921F085041004FCCA0 /* MusicSettings.swift in Sources */,
+				96E9A4991F151A3F004FCCA0 /* IAPManager.swift in Sources */,
 				96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */,
 				96E9A48B1F069C45004FCCA0 /* MusicSettingsTableViewController.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,

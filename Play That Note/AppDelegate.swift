@@ -73,5 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         checkIfFirstLaunch()
     }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        IAPManager.sharedInstance.requestProducts()
+        
+        return true
+    }
 }
 
