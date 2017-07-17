@@ -284,10 +284,7 @@
 				96A2DD321DD80430009A0AC8 /* MenuViewController.swift */,
 				96E27C891DEA43F200B8AFF4 /* FlashcardViewController.swift */,
 				9601443B1DD132D0006146C2 /* GameViewController.swift */,
-				96E9A4881F069C32004FCCA0 /* SettingsTableViewController.swift */,
-				96E9A48A1F069C45004FCCA0 /* MusicSettingsTableViewController.swift */,
-				96A2DD341DDA6030009A0AC8 /* PitchDetectionSettingsTableViewController.swift */,
-				96B74F281F01CF08000B1097 /* LicenseViewController.swift */,
+				96E9A4AD1F1D7BED004FCCA0 /* Settings View Controllers */,
 				9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */,
 				9670B71A1DDF9E6A00094762 /* StatsViewController.swift */,
 			);
@@ -319,6 +316,17 @@
 				966362781DDCDF7400E2E000 /* PitchDetectionSettings.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		96E9A4AD1F1D7BED004FCCA0 /* Settings View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				96E9A4881F069C32004FCCA0 /* SettingsTableViewController.swift */,
+				96E9A48A1F069C45004FCCA0 /* MusicSettingsTableViewController.swift */,
+				96A2DD341DDA6030009A0AC8 /* PitchDetectionSettingsTableViewController.swift */,
+				96B74F281F01CF08000B1097 /* LicenseViewController.swift */,
+			);
+			name = "Settings View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

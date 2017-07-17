@@ -13,6 +13,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Settings"
         IAPManager.sharedInstance.settingsVC = self
         menuConfig()
     }
@@ -66,8 +67,10 @@ class SettingsTableViewController: UITableViewController {
 
         case Settings.pitchDetection.hashValue:
             cell.textLabel?.text = "Pitch Detection"
+            cell.detailTextLabel?.text = "Set Buffers and Level Threshhold"
         case Settings.license.hashValue:
             cell.textLabel?.text = "License"
+            cell.detailTextLabel?.isHidden = true
         default:
             break
         }
