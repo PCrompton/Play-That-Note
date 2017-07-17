@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (UserDefaults.standard.bool(forKey: "hasLaunchedBefore")) {
             print("App has launched before")
             
-            
             if let consecutivePitches = UserDefaults.standard.value(forKey: "consecutivePitches") as? Int,
             let bufferSize = UserDefaults.standard.value(forKey: "bufferSize") as? AVAudioFrameCount,
             let levelThreshhold = UserDefaults.standard.value(forKey: "levelThreshold") as? Float {
@@ -70,12 +69,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        checkIfFirstLaunch()
-    }
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        IAPManager.sharedInstance.requestProducts()
+        
+        checkIfFirstLaunch()
+        
+        IAPManager.sharedInstance.setupPurchases { (success) in
+            if success {
+                IAPManager.sharedInstance.requestProducts()
+                UserDefaults.standard.set(true, forKey: "IAPCapable")
+                UserDefaults.standard.synchronize()
+            }
+        }
+        
+        IAPManager.sharedInstance.validateReceipt { (success) in
+            if success {
+                print("Receipt validated")
+            } else {
+                print("Receipt not validated")
+            }
+        }
         
         return true
     }

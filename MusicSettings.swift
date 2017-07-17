@@ -9,6 +9,16 @@
 import Foundation
 import Pitchy
 struct MusicSettings {
+    
+    static var productID = "com.playThatNote.transposition_range"
+    
+    static var isUnlocked: Bool {
+        if let isUnlocked = UserDefaults.standard.value(forKey: MusicSettings.productID) as? Bool {
+            return isUnlocked
+        } else {
+            return false
+        }
+    }
 
     struct Transpose {
         struct Defaults {

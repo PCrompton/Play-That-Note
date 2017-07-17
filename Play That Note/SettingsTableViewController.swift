@@ -7,22 +7,77 @@
 //
 
 import UIKit
+import StoreKit
 
 class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        IAPManager.sharedInstance.settingsVC = self
+        menuConfig()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        menuConfig()
+    }
+    
+    func menuConfig() {
+        tableView.reloadData()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - UITableViewDataSource Function
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return Settings.count
+        default:
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") else {
+            fatalError("Unable to instantiate SettingsTableView cell")
+        }
+        
+        switch indexPath.row {
+        case Settings.music.hashValue:
+            cell.textLabel?.text = "Music"
+            cell.detailTextLabel?.text = "Set custom range and transposition"
+            if !MusicSettings.isUnlocked {
+                if let product = IAPManager.sharedInstance.getProduct(by: MusicSettings.productID) {
+                    cell.textLabel?.text?.append(" - Unlock for \(priceStringForProduct(product: product))")
+                    cell.detailTextLabel?.text = product.localizedDescription
+                } else {
+                    cell.textLabel?.text?.append(" - Needs IAP Permission")
+                }
+            }
+
+        case Settings.pitchDetection.hashValue:
+            cell.textLabel?.text = "Pitch Detection"
+        case Settings.license.hashValue:
+            cell.textLabel?.text = "License"
+        default:
+            break
+        }
+        
+        return cell
+    }
+    
+    func showMusicSettings(sender: Any?) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MusicSettingsTableViewController") as! MusicSettingsTableViewController
+        show(vc, sender: sender)
     }
     
     // MARK: - UITableViewDelegate Functions
@@ -31,18 +86,32 @@ class SettingsTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else {
             fatalError("Cell Not Found")
         }
-        switch (cell.tag) {
-        case 0:
-            let vc = storyboard?.instantiateViewController(withIdentifier: "MusicSettingsTableViewController") as! MusicSettingsTableViewController
-            show(vc, sender: cell)
-        case 1:
+        switch indexPath.row {
+        case Settings.music.hashValue:
+            if MusicSettings.isUnlocked {
+                showMusicSettings(sender: cell)
+            } else {
+                if let product = IAPManager.sharedInstance.getProduct(by: MusicSettings.productID) {
+                    IAPManager.sharedInstance.createPaymentRequestForProduct(product: product)
+                }
+            }
+
+        case Settings.pitchDetection.hashValue:
             let vc = storyboard?.instantiateViewController(withIdentifier: "PitchDetectionSettingsTableViewController") as! PitchDetectionSettingsTableViewController
             show(vc, sender: cell)
-        case 2:
+        case Settings.license.hashValue:
             let vc = storyboard?.instantiateViewController(withIdentifier: "LicenseViewController") as! LicenseViewController
             show(vc, sender: cell)
         default: return
         }
+    }
+    
+    func priceStringForProduct(product: SKProduct) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = product.priceLocale
+        
+        return formatter.string(from: product.price)!
     }
 
     // MARK: - Navigation
