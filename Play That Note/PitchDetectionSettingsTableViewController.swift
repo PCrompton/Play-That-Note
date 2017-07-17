@@ -23,7 +23,7 @@ class PitchDetectionSettingsTableViewController: UITableViewController {
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        consecutivePitchesLabel.text = "\(PitchDetectionSettings.consecutivePitches) Pitches"
+        consecutivePitchesLabel.text = "\(PitchDetectionSettings.consecutivePitches) Buffers"
         consecutivePitchesStepper.value = Double(PitchDetectionSettings.consecutivePitches)
         
         bufferSizeLabel.text = "\(PitchDetectionSettings.bufferSize)"
