@@ -73,6 +73,7 @@ class SettingsTableViewController: UITableViewController {
             cell.detailTextLabel?.isHidden = true
         case Settings.restorePurchases.hashValue:
             cell.textLabel?.text = "Restore In-App Purchases"
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: (cell.textLabel?.font.pointSize)!)
             cell.detailTextLabel?.isHidden = true
         default:
             break
