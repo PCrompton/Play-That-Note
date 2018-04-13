@@ -33,7 +33,7 @@ class StatsModelController {
     func fetchSavedFlashcards(for clef: Clef, lowest: Int32?, highest: Int32?) -> [Flashcard] {
         var predicates = [NSPredicate]()
         let clefPredicate = NSPredicate(format: "clef = %@", argumentArray: [clef.rawValue])
-        predicates.append(clefPredicate)
+        predicates.append(clefPredicate)        
         if let lowest = lowest {
             let minPredicate = NSPredicate(format: "pitchIndex >= %@", argumentArray: [lowest])
             predicates.append(minPredicate)
@@ -71,6 +71,22 @@ class StatsModelController {
             }
         }
         return flashcards
+    }
+    
+    func filter(for flashcards: [Flashcard], range: MusicSettings.Range.ClefRange, omitAccidentals: Bool) -> [Flashcard] {
+        var newFlashcards = [Flashcard]()
+        for flashcard in flashcards {
+            let pitchIndex = Int(flashcard.pitchIndex)
+            if pitchIndex >= range.lowestIndex
+                && pitchIndex <= range.highestIndex {
+                if omitAccidentals && (flashcard.note?.characters.count)! > 2 {
+                    continue
+                } else {
+                    newFlashcards.append(flashcard)
+                }
+            }
+        }
+        return newFlashcards
     }
     
     func deleteAllFlashcards() {

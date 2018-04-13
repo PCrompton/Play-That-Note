@@ -21,6 +21,10 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var flashCardActivityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var transpositionLabel: UILabel!
+    
+    @IBOutlet weak var rangeLabel: UILabel!
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
@@ -45,15 +49,21 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        configDirectionLabel()
-        let config = Config(bufferSize: Settings.bufferSize, estimationStrategy: Settings.estimationStrategy)
+        let config = Config(bufferSize: PitchDetectionSettings.bufferSize, estimationStrategy: PitchDetectionSettings.estimationStrategy)
         pitchEngine = PitchEngine(config: config, delegate: self)
-        pitchEngine?.levelThreshold = Settings.levelThreshold
-        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(lowest.index), highest: Int32(highest.index))
+        pitchEngine?.levelThreshold = PitchDetectionSettings.levelThreshold
+        
+        let defaultRange = MusicSettings.Range.defaultRange(for: clef)!
+        
+        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(defaultRange.lowestIndex), highest: Int32(defaultRange.highestIndex))
+        
         if flashcards.count == 0 {
-            flashcards = statsModelController.createFlashcards(clef: clef, lowest: lowest, highest: highest)
+            flashcards = statsModelController.createFlashcards(clef: clef, lowest: defaultRange.lowest, highest: defaultRange.highest)
             stack.save()
         }
+        
+        flashcards = statsModelController.filter(for: flashcards, range: MusicSettings.Range.range(for: clef)!, omitAccidentals: MusicSettings.Range.omitAccidentals(for: clef)!)
+        
         for button in [startButton, cancelButton] {
             addShadows(to: button!)
         }
@@ -75,7 +85,12 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configDirectionLabel()
         setButtonStackViewAxis()
+        configTranspositionLabel()
+        configRangeLabel()
+        transpositionLabel.text = MusicSettings.Transpose.description
+        rangeLabel.text = MusicSettings.Range.description(for: clef)
     }
     
     func configDirectionLabel() {
@@ -83,6 +98,22 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
             directionLabel.isHidden = true
         } else {
             directionLabel.isHidden = !running
+        }
+    }
+    
+    func configTranspositionLabel() {
+        if view.traitCollection.verticalSizeClass == .compact {
+            transpositionLabel.isHidden = true
+        } else {
+            transpositionLabel.isHidden = false
+        }
+    }
+    
+    func configRangeLabel() {
+        if view.traitCollection.verticalSizeClass == .compact {
+            rangeLabel.isHidden = true
+        } else {
+            rangeLabel.isHidden = false
         }
     }
     
@@ -105,6 +136,8 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
             }
         }
         configDirectionLabel()
+        configTranspositionLabel()
+        configRangeLabel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -215,7 +248,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
         let note = pitch.note
         print(note.string, pitchEngine.signalLevel)
-        if consecutivePitches.count < Settings.consecutivePitches {
+        if consecutivePitches.count < PitchDetectionSettings.consecutivePitches {
             consecutivePitches.append(pitch)
         } else {
             consecutivePitches.remove(at: 0)
@@ -229,8 +262,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
                 var color: UIColor
                 var title: String
                 
-                if note.index == Int((flashcard?.pitchIndex)!) {
-                    //alertController.title = "Correct!"
+                if note.index == Int((flashcard?.pitchIndex)!) + MusicSettings.Transpose.semitones {
                     title = "Correct!"
                     color = UIColor.green
                     flashcard?.correct += 1

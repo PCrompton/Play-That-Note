@@ -22,29 +22,8 @@ class FlashcardViewController: UIViewController {
     let stack = (UIApplication.shared.delegate as! AppDelegate).stack
     let statsModelController = StatsModelController()
     let gameCenterModelController = GameCenterModelController()
-    
-    var lowest = try! Note(letter: .C, octave: 1)
-    var highest = try! Note(letter: .C, octave: 7)
-    var clef = Clef.treble {
-        didSet {
-            switch clef {
-            case .treble:
-                lowest = try! Note(letter: .F, octave: 3);
-                highest = try! Note(letter: .E, octave: 6)
-            case .bass:
-                lowest = try! Note(letter: .A, octave: 1);
-                highest = try! Note(letter: .G, octave: 4)
-            case .alto:
-                lowest = try! Note(letter: .G, octave: 2);
-                highest = try! Note(letter: .F, octave: 5)
-            case .tenor:
-                lowest = try! Note(letter: .E, octave: 2);
-                highest = try! Note(letter: .D, octave: 5)
-            default:
-                return
-            }
-        }
-    }
+         
+    var clef = Clef.treble
     
     var flashcardView: FlashcardView?
     

@@ -10,6 +10,7 @@ target 'Play That Note' do
   # Pods for Play That Note
 
   pod 'Beethoven'
+  pod 'TPInAppReceipt', '~> 1.1'
   
   target 'Play That NoteTests' do
     inherit! :search_paths
