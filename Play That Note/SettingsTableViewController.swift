@@ -71,6 +71,9 @@ class SettingsTableViewController: UITableViewController {
         case Settings.license.hashValue:
             cell.textLabel?.text = "License"
             cell.detailTextLabel?.isHidden = true
+        case Settings.restorePurchases.hashValue:
+            cell.textLabel?.text = "Restore In-App Purchases"
+            cell.detailTextLabel?.isHidden = true
         default:
             break
         }
@@ -98,13 +101,14 @@ class SettingsTableViewController: UITableViewController {
                     IAPManager.sharedInstance.createPaymentRequestForProduct(product: product)
                 }
             }
-
         case Settings.pitchDetection.hashValue:
             let vc = storyboard?.instantiateViewController(withIdentifier: "PitchDetectionSettingsTableViewController") as! PitchDetectionSettingsTableViewController
             show(vc, sender: cell)
         case Settings.license.hashValue:
             let vc = storyboard?.instantiateViewController(withIdentifier: "LicenseViewController") as! LicenseViewController
             show(vc, sender: cell)
+        case Settings.restorePurchases.hashValue:
+            IAPManager.sharedInstance.restorePurchasedItems()
         default: return
         }
     }

@@ -40,11 +40,8 @@ class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDeleg
             for product in products as! [String]{
                 identifiers.append(product)
             }
-            
         }
-        
         return identifiers
-        
     }
     func performProductRequestForIdentifiers(identifiers:[String]){
         let products = NSSet(array: identifiers) as! Set<String>
@@ -117,7 +114,6 @@ class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDeleg
     
     // MARK - SKProductsRequestDelegate
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        //
         self.products = response.products
     }
     

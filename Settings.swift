@@ -12,6 +12,7 @@ enum Settings: Int {
     case music
     case pitchDetection
     case license
+    case restorePurchases
     
     static let count: Int = {
         var max: Int = 0
