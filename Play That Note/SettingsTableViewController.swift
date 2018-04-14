@@ -28,8 +28,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,15 +56,20 @@ class SettingsTableViewController: UITableViewController {
             cell.titleTextLabel.text = "Music"
             cell.subtitleTextLabel.text = "Set custom range and transposition"
             if !MusicSettings.isUnlocked {
-                if let product = IAPManager.shared.getProduct(by: MusicSettings.productID) {
-                    cell.titleTextLabel.text?.append(" - Unlock for \(priceStringForProduct(product: product))")
-                    let localizedDescription = product.localizedDescription
-                    if localizedDescription != "" {
-                        cell.subtitleTextLabel.text = product.localizedDescription
+                if IAPManager.shared.canMakePayments {
+                    if let product = IAPManager.shared.getProduct(by: MusicSettings.productID) {
+                        cell.titleTextLabel.text?.append(" - Unlock for \(priceStringForProduct(product: product))")
+                        let localizedDescription = product.localizedDescription
+                        if localizedDescription != "" {
+                            cell.subtitleTextLabel.text = product.localizedDescription
+                        }
+                    } else {
+                        cell.titleTextLabel?.text?.append(" - Unable to get product info")
                     }
                 } else {
-                    cell.titleTextLabel?.text?.append(" - Needs IAP Permission")
+                    cell.titleTextLabel.text?.append(" - Needs IAP Permission")
                 }
+
             }
         case Settings.pitchDetection.hashValue:
             cell.titleTextLabel?.text = "Pitch Detection"

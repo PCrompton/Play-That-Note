@@ -15,6 +15,9 @@ class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDeleg
     
     var request:SKProductsRequest!
     var products:[SKProduct] = []
+    var canMakePayments: Bool {
+        return SKPaymentQueue.canMakePayments()
+    }
     
     var receiptRefreshRequest: SKReceiptRefreshRequest?
     
@@ -57,6 +60,8 @@ class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDeleg
     }
     
     func getProduct(by productID: String) -> SKProduct? {
+        print("getProduct called")
+        requestProducts()
         for product in products {
             if product.productIdentifier == productID {
                 return product
