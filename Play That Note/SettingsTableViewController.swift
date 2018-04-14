@@ -48,35 +48,35 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell") as? SettingsTableViewCell else {
             fatalError("Unable to instantiate SettingsTableView cell")
         }
-        
         switch indexPath.row {
         case Settings.music.hashValue:
-            cell.textLabel?.text = "Music"
-            cell.detailTextLabel?.text = "Set custom range and transposition"
+            cell.titleTextLabel?.text = "Music"
+            cell.subtitleTextLabel?.text = "Set custom range and transposition"
             if !MusicSettings.isUnlocked {
                 if let product = IAPManager.sharedInstance.getProduct(by: MusicSettings.productID) {
-                    cell.textLabel?.text?.append(" - Unlock for \(priceStringForProduct(product: product))")
-                    cell.detailTextLabel?.text = product.localizedDescription
+                    cell.titleTextLabel?.text?.append(" - Unlock for \(priceStringForProduct(product: product))")
+                    cell.subtitleTextLabel?.text = product.localizedDescription
                 } else {
-                    cell.textLabel?.text?.append(" - Needs IAP Permission")
+                    cell.titleTextLabel?.text?.append(" - Needs IAP Permission")
                 }
             }
+            
 
         case Settings.pitchDetection.hashValue:
-            cell.textLabel?.text = "Pitch Detection"
-            cell.detailTextLabel?.text = "Set Buffers and Level Threshhold"
+            cell.titleTextLabel?.text = "Pitch Detection"
+            cell.subtitleTextLabel?.text = "Set Buffers and Level Threshhold"
         case Settings.license.hashValue:
-            cell.textLabel?.text = "License"
-            cell.detailTextLabel?.isHidden = true
+            cell.titleTextLabel?.text = "License"
+            cell.subtitleTextLabel?.isHidden = true
         case Settings.restorePurchases.hashValue:
             IAPManager.sharedInstance.getProductIdentifiers()
-            cell.textLabel?.text = "Restore In-App Purchases"
-            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: (cell.textLabel?.font.pointSize)!)
-            cell.accessoryView?.isHidden = true
-            cell.detailTextLabel?.isHidden = true
+            cell.titleTextLabel?.text = "Restore In-App Purchases"
+            cell.titleTextLabel?.font = UIFont.boldSystemFont(ofSize: (cell.titleTextLabel?.font.pointSize)!)
+            cell.accessoryType = .none
+            cell.subtitleTextLabel?.isHidden = true
         default:
             break
         }
@@ -112,6 +112,7 @@ class SettingsTableViewController: UITableViewController {
             show(vc, sender: cell)
         case Settings.restorePurchases.hashValue:
             IAPManager.sharedInstance.restorePurchasedItems()
+            cell.setSelected(false, animated: false)
         default: return
         }
     }
