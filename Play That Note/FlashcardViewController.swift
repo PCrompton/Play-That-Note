@@ -34,7 +34,7 @@ class FlashcardViewController: UIViewController {
                 flashcardView?.clef = flashcard.clef!
             }
             DispatchQueue.main.async {
-                _ = flashcardView?.reload()
+                _ = self.flashcardView?.reload()
             }
         }
     }
