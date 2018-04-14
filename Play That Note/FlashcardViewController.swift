@@ -33,7 +33,9 @@ class FlashcardViewController: UIViewController {
                 flashcardView?.pitch = flashcard.note!
                 flashcardView?.clef = flashcard.clef!
             }
-            _ = flashcardView?.reload()
+            DispatchQueue.main.async {
+                _ = flashcardView?.reload()
+            }
         }
     }
     
