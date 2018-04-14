@@ -72,8 +72,10 @@ class SettingsTableViewController: UITableViewController {
             cell.textLabel?.text = "License"
             cell.detailTextLabel?.isHidden = true
         case Settings.restorePurchases.hashValue:
+            IAPManager.sharedInstance.getProductIdentifiers()
             cell.textLabel?.text = "Restore In-App Purchases"
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: (cell.textLabel?.font.pointSize)!)
+            cell.accessoryView?.isHidden = true
             cell.detailTextLabel?.isHidden = true
         default:
             break

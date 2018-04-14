@@ -63,7 +63,7 @@ class StatsModelController {
             let note = try! Note(index: i)
             let flashcard = Flashcard(with: clef, note: note.string, pitchIndex: Int32(i), insertInto: stack.context)
             flashcards.append(flashcard)
-            if note.letter.rawValue.characters.count == 1 {
+            if note.letter.rawValue.count == 1 {
                 if note.letter != .C && note.letter != .F {
                     let flatFlashcard = Flashcard(with: clef, note: "\(note.letter.rawValue)b\(note.octave)", pitchIndex: Int32(i-1), insertInto: stack.context)
                     flashcards.append(flatFlashcard)
@@ -79,7 +79,7 @@ class StatsModelController {
             let pitchIndex = Int(flashcard.pitchIndex)
             if pitchIndex >= range.lowestIndex
                 && pitchIndex <= range.highestIndex {
-                if omitAccidentals && (flashcard.note?.characters.count)! > 2 {
+                if omitAccidentals && (flashcard.note?.count)! > 2 {
                     continue
                 } else {
                     newFlashcards.append(flashcard)

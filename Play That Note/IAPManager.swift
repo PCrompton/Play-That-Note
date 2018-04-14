@@ -77,7 +77,7 @@ class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDeleg
     
     func validateReceipt(completion: @escaping (Bool) -> Void){
         do {
-            let receipt = try InAppReceiptManager.shared.receipt()
+            let receipt = try InAppReceipt.localReceipt()
             do {
                 try receipt.verify()
                 print("Verification Successful")

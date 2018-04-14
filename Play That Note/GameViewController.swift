@@ -239,13 +239,13 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     func configureAlertTitle(for alertController: UIAlertController, with title: String, with font: UIFont, with color: UIColor) {
         let myString  = title
         var myMutableString = NSMutableAttributedString()
-        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSFontAttributeName:font])
-        myMutableString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location:0,length:myString.characters.count))
+        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedStringKey.font:font])
+        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRange(location:0,length:myString.count))
         alertController.setValue(myMutableString, forKey: "attributedTitle")
     }
     
     // MARK: PitchEngineDelegate functions
-    public func pitchEngineDidReceivePitch(_ pitchEngine: PitchEngine, pitch: Pitch) {
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
         let note = pitch.note
         print(note.string, pitchEngine.signalLevel)
         if consecutivePitches.count < PitchDetectionSettings.consecutivePitches {
@@ -297,7 +297,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
     }
     
-    public func pitchEngineDidReceiveError(_ pitchEngine: PitchEngine, error: Error) {
+    func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
         print(Error.self)
         consecutivePitches.removeAll()
     }

@@ -1,17 +1,17 @@
 PODS:
-  - Beethoven (3.0.1):
-    - Pitchy
-  - Pitchy (2.0.1)
-  - TPInAppReceipt (1.1.4)
+  - Beethoven (4.0.2):
+    - Pitchy (~> 3.0)
+  - Pitchy (3.0.0)
+  - TPInAppReceipt (1.2.1)
 
 DEPENDENCIES:
   - Beethoven
   - TPInAppReceipt (~> 1.1)
 
 SPEC CHECKSUMS:
-  Beethoven: 2530f27d1881f24f9e5d757aeb7f654b735f1080
-  Pitchy: 00dbe7cb7ac87fd9c32cb2aa6ce50d11f931289f
-  TPInAppReceipt: df20c542f4ecadd6b357185635b283ec03ff50b6
+  Beethoven: e517331e5087064e1c1fd3d3775fddb8d9f3017d
+  Pitchy: 15407e4425b6d88fa3e7eef8927ba659fab52d7a
+  TPInAppReceipt: c72a2587f53c1e9a28d411b25da14282c28c4e6a
 
 PODFILE CHECKSUM: be6bb89a07904b0adc8a60b0d5c72c3bb14a5a79
 

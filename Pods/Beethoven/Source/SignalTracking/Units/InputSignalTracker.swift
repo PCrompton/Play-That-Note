@@ -4,28 +4,27 @@ public enum InputSignalTrackerError: Error {
   case inputNodeMissing
 }
 
-class InputSignalTracker: SignalTracker {
-
+final class InputSignalTracker: SignalTracker {
   weak var delegate: SignalTrackerDelegate?
   var levelThreshold: Float?
 
-  fileprivate let bufferSize: AVAudioFrameCount
-  fileprivate var audioChannel: AVCaptureAudioChannel?
-  fileprivate let captureSession = AVCaptureSession()
-  fileprivate var audioEngine: AVAudioEngine?
-  fileprivate let session = AVAudioSession.sharedInstance()
-  fileprivate let bus = 0
+  private let bufferSize: AVAudioFrameCount
+  private var audioChannel: AVCaptureAudioChannel?
+  private let captureSession = AVCaptureSession()
+  private var audioEngine: AVAudioEngine?
+  private let session = AVAudioSession.sharedInstance()
+  private let bus = 0
 
   var peakLevel: Float? {
-    get {
-      return audioChannel?.peakHoldLevel
-    }
+    return audioChannel?.peakHoldLevel
   }
 
   var averageLevel: Float? {
-    get {
-      return audioChannel?.averagePowerLevel
-    }
+    return audioChannel?.averagePowerLevel
+  }
+
+  var mode: SignalTrackerMode {
+    return .record
   }
 
   // MARK: - Initialization
@@ -34,7 +33,6 @@ class InputSignalTracker: SignalTracker {
                 delegate: SignalTrackerDelegate? = nil) {
     self.bufferSize = bufferSize
     self.delegate = delegate
-
     setupAudio()
   }
 
@@ -42,8 +40,19 @@ class InputSignalTracker: SignalTracker {
 
   func start() throws {
     try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
-    try session.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
 
+    // check input type
+    let currentRoute = session.currentRoute
+    if currentRoute.outputs.count != 0 {
+        for description in currentRoute.outputs {
+            if (description.portType != AVAudioSessionPortHeadphones) { // input from speaker if port is not headphones
+                try session.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+            } else { // input from default (headphones)
+                try session.overrideOutputAudioPort(.none)
+            }
+        }
+    }
+    
     audioEngine = AVAudioEngine()
 
     guard let inputNode = audioEngine?.inputNode else {
@@ -68,9 +77,11 @@ class InputSignalTracker: SignalTracker {
       }
     }
 
-    captureSession.startRunning()
-    audioEngine?.prepare()
     try audioEngine?.start()
+    captureSession.startRunning()
+    guard captureSession.isRunning == true else {
+        throw InputSignalTrackerError.inputNodeMissing
+    }
   }
 
   func stop() {
@@ -84,18 +95,18 @@ class InputSignalTracker: SignalTracker {
     captureSession.stopRunning()
   }
 
-  fileprivate func setupAudio() {
+  private func setupAudio() {
     do {
-      let audioDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
-      let audioCaptureInput = try AVCaptureDeviceInput(device: audioDevice)
+      let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio)
+      let audioCaptureInput = try AVCaptureDeviceInput(device: audioDevice!)
 
       captureSession.addInput(audioCaptureInput)
 
       let audioOutput = AVCaptureAudioDataOutput()
       captureSession.addOutput(audioOutput)
 
-      let connection = audioOutput.connections[0] as? AVCaptureConnection
-      audioChannel = connection?.audioChannels[0] as? AVCaptureAudioChannel
+      let connection = audioOutput.connections[0]
+      audioChannel = connection.audioChannels[0]
     } catch {}
   }
 }

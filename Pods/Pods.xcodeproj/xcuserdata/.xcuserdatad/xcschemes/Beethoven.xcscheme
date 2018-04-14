@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6BC3E8FBAD56AD03A1F952B604615D34'
+               BlueprintIdentifier = '8B8C1004EB20C58A2EEFF8A858689EF1'
                BlueprintName = 'Beethoven'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Beethoven.framework'>

@@ -409,7 +409,7 @@ struct MusicSettings {
             while i <= highest {
             
                 if omitAccidentals {
-                    if try! Note(index: i).string.characters.count == 2 {
+                    if try! Note(index: i).string.count == 2 {
                         rangeArray.append(i)
                     }
                 } else {
