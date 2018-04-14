@@ -14,7 +14,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
-        IAPManager.sharedInstance.settingsVC = self
+        IAPManager.shared.settingsVC = self
         menuConfig()
     }
     
@@ -26,6 +26,8 @@ class SettingsTableViewController: UITableViewController {
     func menuConfig() {
         tableView.reloadData()
     }
+    
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -53,18 +55,19 @@ class SettingsTableViewController: UITableViewController {
         }
         switch indexPath.row {
         case Settings.music.hashValue:
-            cell.titleTextLabel?.text = "Music"
-            cell.subtitleTextLabel?.text = "Set custom range and transposition"
+            cell.titleTextLabel.text = "Music"
+            cell.subtitleTextLabel.text = "Set custom range and transposition"
             if !MusicSettings.isUnlocked {
-                if let product = IAPManager.sharedInstance.getProduct(by: MusicSettings.productID) {
-                    cell.titleTextLabel?.text?.append(" - Unlock for \(priceStringForProduct(product: product))")
-                    cell.subtitleTextLabel?.text = product.localizedDescription
+                if let product = IAPManager.shared.getProduct(by: MusicSettings.productID) {
+                    cell.titleTextLabel.text?.append(" - Unlock for \(priceStringForProduct(product: product))")
+                    let localizedDescription = product.localizedDescription
+                    if localizedDescription != "" {
+                        cell.subtitleTextLabel.text = product.localizedDescription
+                    }
                 } else {
                     cell.titleTextLabel?.text?.append(" - Needs IAP Permission")
                 }
             }
-            
-
         case Settings.pitchDetection.hashValue:
             cell.titleTextLabel?.text = "Pitch Detection"
             cell.subtitleTextLabel?.text = "Set Buffers and Level Threshhold"
@@ -72,7 +75,6 @@ class SettingsTableViewController: UITableViewController {
             cell.titleTextLabel?.text = "License"
             cell.subtitleTextLabel?.isHidden = true
         case Settings.restorePurchases.hashValue:
-            IAPManager.sharedInstance.getProductIdentifiers()
             cell.titleTextLabel?.text = "Restore In-App Purchases"
             cell.titleTextLabel?.font = UIFont.boldSystemFont(ofSize: (cell.titleTextLabel?.font.pointSize)!)
             cell.accessoryType = .none
@@ -80,7 +82,6 @@ class SettingsTableViewController: UITableViewController {
         default:
             break
         }
-        
         return cell
     }
     
@@ -100,8 +101,8 @@ class SettingsTableViewController: UITableViewController {
             if MusicSettings.isUnlocked {
                 showMusicSettings(sender: cell)
             } else {
-                if let product = IAPManager.sharedInstance.getProduct(by: MusicSettings.productID) {
-                    IAPManager.sharedInstance.createPaymentRequestForProduct(product: product)
+                if let product = IAPManager.shared.getProduct(by: MusicSettings.productID) {
+                    IAPManager.shared.createPaymentRequestForProduct(product: product)
                 }
             }
         case Settings.pitchDetection.hashValue:
@@ -111,7 +112,7 @@ class SettingsTableViewController: UITableViewController {
             let vc = storyboard?.instantiateViewController(withIdentifier: "LicenseViewController") as! LicenseViewController
             show(vc, sender: cell)
         case Settings.restorePurchases.hashValue:
-            IAPManager.sharedInstance.restorePurchasedItems()
+            IAPManager.shared.restorePurchasedItems()
             cell.setSelected(false, animated: false)
         default: return
         }

@@ -11,7 +11,7 @@ import StoreKit
 import TPInAppReceipt
 
 class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDelegate {
-    static let sharedInstance = IAPManager()
+    static let shared = IAPManager()
     
     var request:SKProductsRequest!
     var products:[SKProduct] = []
@@ -123,8 +123,8 @@ class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDeleg
             let alert = UIAlertController(title: "Transaction Failed", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
             let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
             let tryAgain = UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default, handler: { (action) in
-                if let product = IAPManager.sharedInstance.getProduct(by: MusicSettings.productID) {
-                    IAPManager.sharedInstance.createPaymentRequestForProduct(product: product)
+                if let product = IAPManager.shared.getProduct(by: MusicSettings.productID) {
+                    IAPManager.shared.createPaymentRequestForProduct(product: product)
                 }
             })
             alert.addAction(tryAgain)
@@ -145,7 +145,7 @@ class IAPManager: NSObject, SKPaymentTransactionObserver, SKProductsRequestDeleg
                 SKPaymentQueue.default().finishTransaction(transaction)
                 if productID == MusicSettings.productID {
                     self.settingsVC?.menuConfig()
-                    self.settingsVC?.showMusicSettings(sender: self.settingsVC?.tableView.cellForRow(at: IndexPath(item: Settings.music.rawValue, section: 0)))
+//                    self.settingsVC?.showMusicSettings(sender: self.settingsVC?.tableView.cellForRow(at: IndexPath(item: Settings.music.rawValue, section: 0)))
                 }
             } else {
                 print("There was a problem validating the receipt")

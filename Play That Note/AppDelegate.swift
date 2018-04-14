@@ -73,15 +73,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         checkIfFirstLaunch()
         
-        IAPManager.sharedInstance.setupPurchases { (success) in
+        IAPManager.shared.setupPurchases { (success) in
             if success {
-                IAPManager.sharedInstance.requestProducts()
+                IAPManager.shared.requestProducts()
                 UserDefaults.standard.set(true, forKey: "IAPCapable")
                 UserDefaults.standard.synchronize()
             }
         }
         
-        IAPManager.sharedInstance.validateReceipt { (success) in
+        IAPManager.shared.validateReceipt { (success) in
             if success {
                 print("Receipt validated")
             } else {
