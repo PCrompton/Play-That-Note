@@ -19,6 +19,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var buttonStackView: UIStackView!
     
+    @IBOutlet weak var buttonStackViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var flashCardActivityIndicator: UIActivityIndicatorView!
     
@@ -28,7 +29,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
-    
+    var randomFlashcards = [Flashcard]()
     var running = false
     
     var correct: Int = 0
@@ -63,7 +64,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
         
         flashcards = statsModelController.filter(for: flashcards, range: MusicSettings.Range.range(for: clef)!, omitAccidentals: MusicSettings.Range.omitAccidentals(for: clef)!)
-        
+        setRandomFlashcards()
         for button in [startButton, cancelButton] {
             addShadows(to: button!)
         }
@@ -77,7 +78,11 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         if view.traitCollection.verticalSizeClass == .compact {
             if running {
                 if touch?.view != buttonStackView {
-                    buttonStackView.isHidden = buttonStackView.isHidden ? false : true
+                    buttonStackViewBottomConstraint.constant = -(buttonStackView.frame.height + 1)
+                    UIView.animate(withDuration: 0.5) {
+                        self.view.layoutIfNeeded()
+                    }
+                    //buttonStackView.isHidden = buttonStackView.isHidden ? false : true
                 }
             }
         }
@@ -201,28 +206,62 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
     }
     
+    func setRandomFlashcards() {
+        randomFlashcards = flashcards
+        for flashcard in flashcards {
+            if flashcard.plusMinus < 0 {
+                for _ in 0...(abs(flashcard.plusMinus)+1) {
+                    randomFlashcards.append(flashcard)
+                }
+            }
+        }
+        print("random", randomFlashcards.count,
+              "distinct", flashcards.count)
+    }
+    
+    func occurences(of flashcard: Flashcard, in flashcardArray: [Flashcard]) -> Int {
+        var count = 0
+        for item in flashcardArray {
+            if item == flashcard {
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    func updateRandomFlashcards(with flashcard: Flashcard) {
+        
+        var occurances = occurences(of: flashcard, in: randomFlashcards)
+        if occurances > 0 {
+            occurances -= 1
+        }
+        if occurances <= flashcard.plusMinus {
+            for _ in 0...flashcard.plusMinus-occurances {
+                randomFlashcards.append(flashcard)
+            }
+        } else {
+            if flashcard.plusMinus >= 0 {
+                for _ in 0...occurances-flashcard.plusMinus {
+                    randomFlashcards.remove(at: randomFlashcards.index(of: flashcard)!)
+                }
+            } else {
+                for _ in 0...occurances {
+                    randomFlashcards.remove(at: randomFlashcards.index(of: flashcard)!)
+                }
+            }
+        }
+    }
+    
     func getRandomBool() -> Bool {
         return Int(arc4random_uniform(2)) == 0
     }
     
     func getRandomflashcard() -> Flashcard {
-        let index = Int(arc4random_uniform(UInt32(flashcards.count)))
-        let flashcard = flashcards[index]
+        let index = Int(arc4random_uniform(UInt32(randomFlashcards.count)))
+        print (randomFlashcards.count, index)
+        let flashcard = randomFlashcards[index]
         if flashcard === self.flashcard {
             return getRandomflashcard()
-        }
-        if flashcard.percentage > 50.0 {
-            var bool = getRandomBool()
-            if bool {
-                return getRandomflashcard()
-            } else {
-                if flashcard.percentage > 75.0 {
-                    bool = getRandomBool()
-                    if bool {
-                        return getRandomflashcard()
-                    }
-                }
-            }
         }
         return flashcard
     }
@@ -274,6 +313,9 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
                     incorrect += 1
                 }
                 configureAlertTitle(for: alertController, with: title, with: font, with: color)
+                if let flashcard = flashcard {
+                    updateRandomFlashcards(with: flashcard)
+                }
                 stack.save()
                 updateStatsLabels()
                 present(alertController, animated: true)
