@@ -29,7 +29,7 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     var pitchEngine: PitchEngine?
     var consecutivePitches = [Pitch]()
     var flashcards = [Flashcard]()
-    var randomFlashcards = [Flashcard]()
+    
     var running = false
     
     var correct: Int = 0
@@ -50,26 +50,28 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        let config = Config(bufferSize: PitchDetectionSettings.bufferSize, estimationStrategy: PitchDetectionSettings.estimationStrategy)
-        pitchEngine = PitchEngine(config: config, delegate: self)
-        pitchEngine?.levelThreshold = PitchDetectionSettings.levelThreshold
-        
-        let defaultRange = MusicSettings.Range.defaultRange(for: clef)!
-        
-        flashcards = statsModelController.fetchSavedFlashcards(for: clef, lowest: Int32(defaultRange.lowestIndex), highest: Int32(defaultRange.highestIndex))
-        
-        if flashcards.count == 0 {
-            flashcards = statsModelController.createFlashcards(clef: clef, lowest: defaultRange.lowest, highest: defaultRange.highest)
-            stack.save()
-        }
-        
-        flashcards = statsModelController.filter(for: flashcards, range: MusicSettings.Range.range(for: clef)!, omitAccidentals: MusicSettings.Range.omitAccidentals(for: clef)!)
-        setRandomFlashcards()
-        for button in [startButton, cancelButton] {
-            addShadows(to: button!)
-        }
+        configurePitchEngine()
+        configureFlashcards()
+        configButtons()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configDirectionLabel()
+        setButtonStackViewAxis()
+        configTranspositionLabel()
+        configRangeLabel()
+        setTranspositionLabel()
+        setRangeLabel()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        pitchEngine?.stop()
+        gameCenterModelController.sendScores()
+    }
+    
+    //Layout control functions
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         let touch: UITouch? = touches.first
@@ -88,48 +90,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configDirectionLabel()
-        setButtonStackViewAxis()
-        configTranspositionLabel()
-        configRangeLabel()
-        transpositionLabel.text = MusicSettings.Transpose.description
-        rangeLabel.text = MusicSettings.Range.description(for: clef)
-    }
-    
-    func configDirectionLabel() {
-        if view.traitCollection.verticalSizeClass == .compact {
-            directionLabel.isHidden = true
-        } else {
-            directionLabel.isHidden = !running
-        }
-    }
-    
-    func configTranspositionLabel() {
-        if view.traitCollection.verticalSizeClass == .compact {
-            transpositionLabel.isHidden = true
-        } else {
-            transpositionLabel.isHidden = false
-        }
-    }
-    
-    func configRangeLabel() {
-        if view.traitCollection.verticalSizeClass == .compact {
-            rangeLabel.isHidden = true
-        } else {
-            rangeLabel.isHidden = false
-        }
-    }
-    
-    func setButtonStackViewAxis() {
-        if view.traitCollection.verticalSizeClass == .compact {
-            buttonStackView.axis = .horizontal
-        } else {
-            buttonStackView.axis = .vertical
-        }
-    }
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setButtonStackViewAxis()
@@ -143,19 +103,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         configDirectionLabel()
         configTranspositionLabel()
         configRangeLabel()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        pitchEngine?.stop()
-        gameCenterModelController.sendScores()
-    }
-    
-    func addShadows(to button: UIButton) {
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
-        button.layer.shadowRadius = 5.0
-        button.layer.shadowColor = UIColor.darkGray.cgColor
     }
     
     override func updateStatsLabels() {
@@ -172,182 +119,15 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
-        running = !running
+        
         guard let pitchEngine = pitchEngine else {
             fatalError("No Pitch Engine Found")
         }
         if !pitchEngine.active {
-            flashCardActivityIndicator.startAnimating()
-            sender.isEnabled = false
-            let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
-            concurrentQueue.async {
-                pitchEngine.start()
-                
-                // These two lines of code are here to guard against a known bug in the Beethoven framework where the pitchEngine may not start on the first try
-                pitchEngine.stop()
-                pitchEngine.start()
-                self.flashcard = self.getRandomflashcard()
-                print("Pitch Engine Started")
-                DispatchQueue.main.async {
-                    sender.setTitle("Stop", for: .normal)
-                    sender.isEnabled = true
-                    self.flashCardActivityIndicator.stopAnimating()
-                    if self.view.traitCollection.verticalSizeClass == .compact {
-                        self.buttonStackView.isHidden = true
-                    }
-                    self.configDirectionLabel()
-                }
-            }
+            startGame(sender: sender, pitchEngine: pitchEngine)
         } else {
-            pitchEngine.stop()
-            sender.setTitle("Start", for: .normal)
-            configDirectionLabel()
-            print("Pitch Engine Stopped")
+            stopGame(sender: sender, pitchEngine: pitchEngine)
         }
-    }
-    
-    func setRandomFlashcards() {
-        randomFlashcards = flashcards
-        for flashcard in flashcards {
-            if flashcard.plusMinus < 0 {
-                for _ in 0...(abs(flashcard.plusMinus)+1) {
-                    randomFlashcards.append(flashcard)
-                }
-            }
-        }
-        print("random", randomFlashcards.count,
-              "distinct", flashcards.count)
-    }
-    
-    func occurences(of flashcard: Flashcard, in flashcardArray: [Flashcard]) -> Int {
-        var count = 0
-        for item in flashcardArray {
-            if item == flashcard {
-                count += 1
-            }
-        }
-        return count
-    }
-    
-    func updateRandomFlashcards(with flashcard: Flashcard) {
-        
-        var occurances = occurences(of: flashcard, in: randomFlashcards)
-        if occurances > 0 {
-            occurances -= 1
-        }
-        if occurances <= flashcard.plusMinus {
-            for _ in 0...flashcard.plusMinus-occurances {
-                randomFlashcards.append(flashcard)
-            }
-        } else {
-            if flashcard.plusMinus >= 0 {
-                for _ in 0...occurances-flashcard.plusMinus {
-                    randomFlashcards.remove(at: randomFlashcards.index(of: flashcard)!)
-                }
-            } else {
-                for _ in 0...occurances {
-                    randomFlashcards.remove(at: randomFlashcards.index(of: flashcard)!)
-                }
-            }
-        }
-    }
-    
-    func getRandomBool() -> Bool {
-        return Int(arc4random_uniform(2)) == 0
-    }
-    
-    func getRandomflashcard() -> Flashcard {
-        let index = Int(arc4random_uniform(UInt32(randomFlashcards.count)))
-        print (randomFlashcards.count, index)
-        let flashcard = randomFlashcards[index]
-        if flashcard === self.flashcard {
-            return getRandomflashcard()
-        }
-        return flashcard
-    }
-    
-    func checkIfIsPitch(pitches: [Pitch]) -> Bool {
-        for i in 1..<pitches.count {
-            if pitches[i].note.index != pitches[i-1].note.index {
-                return false
-            }
-        }
-        return true
-    }
-    
-    func configureAlertTitle(for alertController: UIAlertController, with title: String, with font: UIFont, with color: UIColor) {
-        let myString  = title
-        var myMutableString = NSMutableAttributedString()
-        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedStringKey.font:font])
-        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRange(location:0,length:myString.count))
-        alertController.setValue(myMutableString, forKey: "attributedTitle")
-    }
-    
-    // MARK: PitchEngineDelegate functions
-    func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
-        let note = pitch.note
-        print(note.string, pitchEngine.signalLevel)
-        if consecutivePitches.count < PitchDetectionSettings.consecutivePitches {
-            consecutivePitches.append(pitch)
-        } else {
-            consecutivePitches.remove(at: 0)
-            consecutivePitches.append(pitch)
-            if checkIfIsPitch(pitches: consecutivePitches) {
-                pitchEngine.stop()
-                consecutivePitches.removeAll()
-                let alertController = UIAlertController(title: note.string, message: nil, preferredStyle: .alert)
-                print(pitch.note.string, pitch.note.index)
-                let font = UIFont.systemFont(ofSize: 42.0)
-                var color: UIColor
-                var title: String
-                
-                if note.index == Int((flashcard?.pitchIndex)!) + MusicSettings.Transpose.semitones {
-                    title = "Correct!"
-                    color = UIColor.green
-                    flashcard?.correct += 1
-                    correct += 1
-                } else {
-                    title = "Incorrect!"
-                    color = UIColor.red
-                    flashcard?.incorrect += 1
-                    incorrect += 1
-                }
-                configureAlertTitle(for: alertController, with: title, with: font, with: color)
-                if let flashcard = flashcard {
-                    updateRandomFlashcards(with: flashcard)
-                }
-                stack.save()
-                updateStatsLabels()
-                present(alertController, animated: true)
-                let delay = 1.5
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                    alertController.dismiss(animated: true, completion: {
-                        DispatchQueue.main.async {
-                            self.flashCardActivityIndicator.startAnimating()
-                            let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
-                            concurrentQueue.async {
-                                self.pitchEngine?.start()
-                                self.flashcard = self.getRandomflashcard()
-                                DispatchQueue.main.async {
-                                    self.flashCardActivityIndicator.stopAnimating()
-                                }
-                            }
-                        }
-                    })
-                }
-            }
-        }
-    }
-    
-    func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
-        print(Error.self)
-        consecutivePitches.removeAll()
-    }
-    
-    public func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine) {
-        print("Below Threshhold", pitchEngine.signalLevel)
-        consecutivePitches.removeAll()
-        return
     }
 }
 

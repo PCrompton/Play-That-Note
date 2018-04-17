@@ -23,6 +23,14 @@ public class Flashcard: NSManagedObject {
     var plusMinus: Int {
         return Int(self.correct) - Int(self.incorrect)
     }
+    var weight: Int {
+        let weight = Int(100 - self.percentage)/10
+        if weight == 0 {
+            return 1
+        } else {
+            return weight
+        }
+    }
     
     convenience init(with clef: Clef, note: String, pitchIndex: Int32, insertInto context: NSManagedObjectContext) {
         if let ent = NSEntityDescription.entity(forEntityName: "Flashcard", in: context) {
