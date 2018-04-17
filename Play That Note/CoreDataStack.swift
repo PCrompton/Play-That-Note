@@ -18,6 +18,7 @@ struct CoreDataStack {
     private let persistingContext: NSManagedObjectContext
     private let backgroundContext: NSManagedObjectContext
     let context : NSManagedObjectContext
+    let secondContext: NSManagedObjectContext
     
     // MARK:  - Initializers
     init?(modelName: String){
@@ -50,6 +51,8 @@ struct CoreDataStack {
         // Create a background context child of main context
         backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         backgroundContext.parent = context
+        
+        secondContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         
         // Add a SQLite store located in the documents folder
         let fm = FileManager.default

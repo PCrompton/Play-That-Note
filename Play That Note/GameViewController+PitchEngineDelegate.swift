@@ -49,6 +49,16 @@ extension GameViewController {
         }
     }
     
+    func configureFlashcardAlertViewController() -> FlashcardAlertViewController {
+        var flashcardAlertViewController = self.storyboard?.instantiateViewController(withIdentifier: "FlashcardAlertViewController") as! FlashcardAlertViewController
+        flashcardAlertViewController.clef = clef
+        flashcardAlertViewController.providesPresentationContextTransitionStyle = true
+        flashcardAlertViewController.definesPresentationContext = true
+        flashcardAlertViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        flashcardAlertViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        return flashcardAlertViewController
+    }
     
     // MARK: PitchEngineDelegate functions
     func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
@@ -62,31 +72,37 @@ extension GameViewController {
             if checkIfIsPitch(pitches: consecutivePitches) {
                 pitchEngine.stop()
                 consecutivePitches.removeAll()
-                let alertController = UIAlertController(title: note.string, message: nil, preferredStyle: .alert)
-                print(pitch.note.string, pitch.note.index)
                 
-                let font = UIFont.systemFont(ofSize: 42.0)
-                var color: UIColor
-                var title: String
+                let flashcardAlertViewController = configureFlashcardAlertViewController()
+                
+//                let alertController = UIAlertController(title: note.string, message: nil, preferredStyle: .alert)
+                
+                print(pitch.note.string, pitch.note.index)
+                flashcardAlertViewController.flashcard = Flashcard(with: self.clef, note: note.string, pitchIndex: Int32(note.index), insertInto: self.stack.context)
+                        
                 
                 if note.index == Int((flashcard?.pitchIndex)!) + MusicSettings.Transpose.semitones {
-                    title = "Correct!"
-                    color = UIColor.green
+                    flashcardAlertViewController.labelTitle = "Correct!"
+                    flashcardAlertViewController.textColor = UIColor.green
                     flashcard?.correct += 1
                     correct += 1
                 } else {
-                    title = "Incorrect!"
-                    color = UIColor.red
+                    flashcardAlertViewController.labelTitle = "Incorrect!"
+                    flashcardAlertViewController.textColor = UIColor.red
                     flashcard?.incorrect += 1
                     incorrect += 1
                 }
-                configureAlertTitle(for: alertController, with: title, with: font, with: color)
                 stack.save()
                 updateStatsLabels()
-                present(alertController, animated: true)
+                
+                
+                
+                //configureAlertTitle(for: flashcardAlertViewController, with: title, with: font, with: color)
+                present(flashcardAlertViewController, animated: true)
                 let delay = 1.5
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                    alertController.dismiss(animated: true, completion: {
+                    flashcardAlertViewController.dismiss(animated: true, completion: {
+                        self.stack.context.delete(flashcardAlertViewController.flashcard!)
                         DispatchQueue.main.async {
                             self.flashCardActivityIndicator.startAnimating()
                             let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
@@ -125,11 +141,10 @@ extension GameViewController {
         return true
     }
     
-    func configureAlertTitle(for alertController: UIAlertController, with title: String, with font: UIFont, with color: UIColor) {
-        let myString  = title
-        var myMutableString = NSMutableAttributedString()
-        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedStringKey.font:font])
-        myMutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSRange(location:0,length:myString.count))
-        alertController.setValue(myMutableString, forKey: "attributedTitle")
+    
+    func configureAlertTitle(for alertController: FlashcardAlertViewController, with title: String, with font: UIFont, with color: UIColor) {
+        alertController.label.text = title
+        alertController.label.font = font
+        alertController.label.textColor = color
     }
 }

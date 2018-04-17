@@ -47,6 +47,7 @@
 		E8AFC0C220857218001AF6B3 /* GameViewController+GetRandomFlashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C120857218001AF6B3 /* GameViewController+GetRandomFlashcard.swift */; };
 		E8AFC0C420857278001AF6B3 /* GameViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C320857278001AF6B3 /* GameViewController+Appearance.swift */; };
 		E8AFC0C6208572EB001AF6B3 /* GameViewController+PitchEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C5208572EB001AF6B3 /* GameViewController+PitchEngineDelegate.swift */; };
+		E8AFC0C820864A93001AF6B3 /* FlashcardAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C720864A93001AF6B3 /* FlashcardAlertViewController.swift */; };
 		ED7426AFCB660F125F8040FC /* Pods_Play_That_NoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7C8BC10250FEBA43CF59DF /* Pods_Play_That_NoteUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		E8AFC0C120857218001AF6B3 /* GameViewController+GetRandomFlashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+GetRandomFlashcard.swift"; sourceTree = "<group>"; };
 		E8AFC0C320857278001AF6B3 /* GameViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+Appearance.swift"; sourceTree = "<group>"; };
 		E8AFC0C5208572EB001AF6B3 /* GameViewController+PitchEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+PitchEngineDelegate.swift"; sourceTree = "<group>"; };
+		E8AFC0C720864A93001AF6B3 /* FlashcardAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardAlertViewController.swift; sourceTree = "<group>"; };
 		EDF707EC8BA94A4B91BF34C9 /* Pods_Play_That_Note.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Play_That_Note.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -297,6 +299,7 @@
 				96E9A4AD1F1D7BED004FCCA0 /* Settings View Controllers */,
 				9670B71E1DE0D86000094762 /* ClefStatsViewController.swift */,
 				9670B71A1DDF9E6A00094762 /* StatsViewController.swift */,
+				E8AFC0C720864A93001AF6B3 /* FlashcardAlertViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				96A543CE1E21A56300094A49 /* FlashcardView.swift in Sources */,
 				96E9A4921F085041004FCCA0 /* MusicSettings.swift in Sources */,
 				96E9A4991F151A3F004FCCA0 /* IAPManager.swift in Sources */,
+				E8AFC0C820864A93001AF6B3 /* FlashcardAlertViewController.swift in Sources */,
 				96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */,
 				96E9A48B1F069C45004FCCA0 /* MusicSettingsTableViewController.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
