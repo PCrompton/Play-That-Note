@@ -111,6 +111,17 @@ function drawStaffWithPitch(pitch, clef, zoomFactor=4, secondPitch) {
         if (accidental != null) {
             note = note.addAccidental(higher[0], new VF.Accidental(accidental))
         }
+        
+        if (letter == secondLetter && octave == secondOctave && accidental != secondAccidental) {
+            if (accidental == null) {
+                note.addAccidental(higher[0], new VF.Accidental("n"));
+            }
+            
+            if (secondAccidental == null) {
+                note.addAccidental(higher[1], new VF.Accidental("n"));
+            }
+        }
+        
         var notes = [note];
 
         var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
