@@ -85,10 +85,19 @@ extension GameViewController {
                     correct += 1
                     
                 } else {
-                    flashcardAlertViewController.flashcardHidden = false
-                    flashcardAlertViewController.flashcard = flashcard
-                    flashcardAlertViewController.secondPitch = note.string
-                    flashcardAlertViewController.labelTitle = "Incorrect!"
+                    if note.index > Int((flashcard?.pitchIndex)!) + 12 {
+                        flashcardAlertViewController.flashcardHidden = true
+                        flashcardAlertViewController.labelTitle = "Way too high!"
+                    } else if note.index < Int((flashcard?.pitchIndex)!) - 12 {
+                        flashcardAlertViewController.flashcardHidden = true
+                        flashcardAlertViewController.labelTitle = "Way too low!"
+                    } else {
+                        flashcardAlertViewController.flashcardHidden = false
+                        flashcardAlertViewController.flashcard = flashcard
+                        flashcardAlertViewController.secondPitch = note.string
+                        flashcardAlertViewController.labelTitle = "Incorrect!"
+                    }
+                    
                     flashcardAlertViewController.textColor = UIColor.red
                     flashcard?.incorrect += 1
                     incorrect += 1
