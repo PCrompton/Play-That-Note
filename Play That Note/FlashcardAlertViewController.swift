@@ -17,6 +17,9 @@ class FlashcardAlertViewController: UIViewController {
     var textColor: UIColor?
     var labelTitle: String?
     
+    var flashcardHidden = false
+    var secondPitch: String?
+    
     var flashcard: Flashcard? {
         didSet {
             if let flashcard = flashcard {
@@ -41,21 +44,30 @@ class FlashcardAlertViewController: UIViewController {
     }
     
     func setFlashcardView() {
-        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
-        addFlashcardShadow(to: flashcardView!)
+        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView, secondPitch: secondPitch)
+        flashcardView.zoomFactor = 3
+        addShadow(to: flashcardView!.containerView)
+        addShadow(to: label)
     }
     
-    func addFlashcardShadow(to flashcardView: FlashcardView) {
-        flashcardView.layer.shadowOpacity = 0.7
-        flashcardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
-        flashcardView.layer.shadowRadius = 5.0
-        flashcardView.layer.shadowColor = UIColor.darkGray.cgColor
+    func addShadow(to view: UIView) {
+        view.layer.shadowOpacity = 0.7
+        view.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        view.layer.shadowRadius = 5.0
+        view.layer.shadowColor = UIColor.darkGray.cgColor
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setFlashcardView()
         configureTitle()
+
+        if flashcardHidden {
+            containerView?.isHidden = true
+        } else {
+            containerView?.isHidden = false
+        }
+        
         // Do any additional setup after loading the view.
     }
 

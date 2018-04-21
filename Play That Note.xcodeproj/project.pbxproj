@@ -48,6 +48,8 @@
 		E8AFC0C420857278001AF6B3 /* GameViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C320857278001AF6B3 /* GameViewController+Appearance.swift */; };
 		E8AFC0C6208572EB001AF6B3 /* GameViewController+PitchEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C5208572EB001AF6B3 /* GameViewController+PitchEngineDelegate.swift */; };
 		E8AFC0C820864A93001AF6B3 /* FlashcardAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C720864A93001AF6B3 /* FlashcardAlertViewController.swift */; };
+		E8AFC0CA2088E57D001AF6B3 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0C92088E57C001AF6B3 /* CoreDataController.swift */; };
+		E8AFC0CC2088E597001AF6B3 /* FlashcardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AFC0CB2088E597001AF6B3 /* FlashcardController.swift */; };
 		ED7426AFCB660F125F8040FC /* Pods_Play_That_NoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7C8BC10250FEBA43CF59DF /* Pods_Play_That_NoteUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +124,8 @@
 		E8AFC0C320857278001AF6B3 /* GameViewController+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+Appearance.swift"; sourceTree = "<group>"; };
 		E8AFC0C5208572EB001AF6B3 /* GameViewController+PitchEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+PitchEngineDelegate.swift"; sourceTree = "<group>"; };
 		E8AFC0C720864A93001AF6B3 /* FlashcardAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardAlertViewController.swift; sourceTree = "<group>"; };
+		E8AFC0C92088E57C001AF6B3 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		E8AFC0CB2088E597001AF6B3 /* FlashcardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardController.swift; sourceTree = "<group>"; };
 		EDF707EC8BA94A4B91BF34C9 /* Pods_Play_That_Note.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Play_That_Note.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -307,6 +311,8 @@
 		96E27C841DE920E600B8AFF4 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E8AFC0C92088E57C001AF6B3 /* CoreDataController.swift */,
+				E8AFC0CB2088E597001AF6B3 /* FlashcardController.swift */,
 				96E27C851DE9211E00B8AFF4 /* StatsModelController.swift */,
 				96E27C871DE9E5CC00B8AFF4 /* GameCenterModelController.swift */,
 			);
@@ -666,6 +672,7 @@
 			files = (
 				96E27C771DE52CB900B8AFF4 /* Flashcard+CoreDataProperties.swift in Sources */,
 				9663627A1DDCDF7400E2E000 /* CoreDataStack.swift in Sources */,
+				E8AFC0CA2088E57D001AF6B3 /* CoreDataController.swift in Sources */,
 				96E27C7A1DE52D1800B8AFF4 /* Flashcard+CoreDataClass.swift in Sources */,
 				E8AFC0C420857278001AF6B3 /* GameViewController+Appearance.swift in Sources */,
 				9670B7211DE0DBB900094762 /* ClefTableViewCell.swift in Sources */,
@@ -678,6 +685,7 @@
 				E8AFC0C820864A93001AF6B3 /* FlashcardAlertViewController.swift in Sources */,
 				96E27C781DE52CB900B8AFF4 /* Model.xcdatamodeld in Sources */,
 				96E9A48B1F069C45004FCCA0 /* MusicSettingsTableViewController.swift in Sources */,
+				E8AFC0CC2088E597001AF6B3 /* FlashcardController.swift in Sources */,
 				9601443C1DD132D0006146C2 /* GameViewController.swift in Sources */,
 				E89E051E208197A4000DA692 /* SettingsTableViewCell.swift in Sources */,
 				9601443A1DD132D0006146C2 /* AppDelegate.swift in Sources */,

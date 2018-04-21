@@ -50,7 +50,7 @@ extension GameViewController {
     }
     
     func configureFlashcardAlertViewController() -> FlashcardAlertViewController {
-        var flashcardAlertViewController = self.storyboard?.instantiateViewController(withIdentifier: "FlashcardAlertViewController") as! FlashcardAlertViewController
+        let flashcardAlertViewController = self.storyboard?.instantiateViewController(withIdentifier: "FlashcardAlertViewController") as! FlashcardAlertViewController
         flashcardAlertViewController.clef = clef
         flashcardAlertViewController.providesPresentationContextTransitionStyle = true
         flashcardAlertViewController.definesPresentationContext = true
@@ -58,6 +58,7 @@ extension GameViewController {
         flashcardAlertViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         
         return flashcardAlertViewController
+        
     }
     
     // MARK: PitchEngineDelegate functions
@@ -73,36 +74,35 @@ extension GameViewController {
                 pitchEngine.stop()
                 consecutivePitches.removeAll()
                 
+                print(pitch.note.string, pitch.note.index)
                 let flashcardAlertViewController = configureFlashcardAlertViewController()
                 
-//                let alertController = UIAlertController(title: note.string, message: nil, preferredStyle: .alert)
-                
-                print(pitch.note.string, pitch.note.index)
-                flashcardAlertViewController.flashcard = Flashcard(with: self.clef, note: note.string, pitchIndex: Int32(note.index), insertInto: self.stack.context)
-                        
-                
                 if note.index == Int((flashcard?.pitchIndex)!) + MusicSettings.Transpose.semitones {
+                    flashcardAlertViewController.flashcardHidden = true
                     flashcardAlertViewController.labelTitle = "Correct!"
                     flashcardAlertViewController.textColor = UIColor.green
                     flashcard?.correct += 1
                     correct += 1
+                    
                 } else {
+                    flashcardAlertViewController.flashcardHidden = false
+                    flashcardAlertViewController.flashcard = flashcard
+                    flashcardAlertViewController.secondPitch = note.string
                     flashcardAlertViewController.labelTitle = "Incorrect!"
                     flashcardAlertViewController.textColor = UIColor.red
                     flashcard?.incorrect += 1
                     incorrect += 1
+                    
                 }
                 stack.save()
                 updateStatsLabels()
                 
-                
-                
-                //configureAlertTitle(for: flashcardAlertViewController, with: title, with: font, with: color)
                 present(flashcardAlertViewController, animated: true)
+                
                 let delay = 1.5
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                     flashcardAlertViewController.dismiss(animated: true, completion: {
-                        self.stack.context.delete(flashcardAlertViewController.flashcard!)
+                        
                         DispatchQueue.main.async {
                             self.flashCardActivityIndicator.startAnimating()
                             let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)

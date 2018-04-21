@@ -32,23 +32,23 @@ class FlashcardViewController: UIViewController {
             if let flashcard = flashcard {
                 flashcardView?.pitch = flashcard.note!
                 flashcardView?.clef = flashcard.clef!
-            }
-            DispatchQueue.main.async {
-                _ = self.flashcardView?.reload()
+                DispatchQueue.main.async {
+                    self.flashcardView?.reload()
+                }
             }
         }
     }
     
     func setFlashcardView() {
-        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView)
+        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView, secondPitch: nil)
         addFlashcardShadow(to: flashcardView!)
     }
     
     func addFlashcardShadow(to flashcardView: FlashcardView) {
-        flashcardView.layer.shadowOpacity = 0.7
-        flashcardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
-        flashcardView.layer.shadowRadius = 5.0
-        flashcardView.layer.shadowColor = UIColor.darkGray.cgColor
+        flashcardView.containerView.layer.shadowOpacity = 0.7
+        flashcardView.containerView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        flashcardView.containerView.layer.shadowRadius = 5.0
+        flashcardView.containerView.layer.shadowColor = UIColor.darkGray.cgColor
     }
     
     // MARK: Lifecycle functions

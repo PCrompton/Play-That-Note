@@ -46,6 +46,20 @@ class StatsModelController {
         return fetchSavedFlashcards(with: predicates)
     }
     
+    func fetchFlashcard(for clef: Clef, note: Note) -> Flashcard {
+        var predicates = [NSPredicate]()
+        let clefPredicate = NSPredicate(format: "clef = %@", argumentArray: [clef.rawValue])
+        let notePredicate = NSPredicate(format: "note = %@", argumentArray: [note.string])
+        predicates.append(clefPredicate)
+        predicates.append(notePredicate)
+        let fetchedFlashcards = fetchSavedFlashcards(with: predicates)
+        if fetchedFlashcards.count > 0 {
+            return fetchedFlashcards.first!
+        } else {
+            return Flashcard(with: clef, note: note.string, pitchIndex: Int32(note.index), insertInto: stack.context)
+        }
+        
+    }
     
     func executeSearch() {
         if let fc = fetchedResultsController {
