@@ -85,30 +85,42 @@ extension GameViewController {
                     correct += 1
                     
                 } else {
-                    if note.index > Int((flashcard?.pitchIndex)!) + 12 {
+                    let pitchIndex = Int((flashcard?.pitchIndex)!)
+                    if note.index > pitchIndex + 12 {
                         flashcardAlertViewController.flashcardHidden = true
                         flashcardAlertViewController.labelTitle = "Way too high!"
-                    } else if note.index < Int((flashcard?.pitchIndex)!) - 12 {
+                    } else if note.index < pitchIndex - 12 {
                         flashcardAlertViewController.flashcardHidden = true
                         flashcardAlertViewController.labelTitle = "Way too low!"
                     } else {
                         flashcardAlertViewController.flashcardHidden = false
                         flashcardAlertViewController.flashcard = flashcard
                         flashcardAlertViewController.secondPitch = note.string
-                        flashcardAlertViewController.labelTitle = "Incorrect!"
+                        if note.index > pitchIndex {
+                            flashcardAlertViewController.labelTitle = "Too high!"
+                        } else if note.index < pitchIndex {
+                            flashcardAlertViewController.labelTitle = "Too low!"
+                        }
+                    }
+                    
+                    if samePitchClass(pitchIndex1: note.index, pitchIndex2: pitchIndex) {
+                        flashcardAlertViewController.labelTitle?.append("\nWrong octave!")
+                        //flashcardAlertViewController.flashcardHidden = true
                     }
                     
                     flashcardAlertViewController.textColor = UIColor.red
                     flashcard?.incorrect += 1
                     incorrect += 1
-                    
                 }
                 stack.save()
                 updateStatsLabels()
                 
                 present(flashcardAlertViewController, animated: true)
+                var delay = 1.5
+                if !flashcardAlertViewController.flashcardHidden {
+                    delay = 2.0
+                }
                 
-                let delay = 1.5
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                     flashcardAlertViewController.dismiss(animated: true, completion: {
                         
@@ -150,6 +162,17 @@ extension GameViewController {
         return true
     }
     
+    func samePitchClass(pitchIndex1: Int, pitchIndex2: Int) -> Bool {
+        var sortedArray = [pitchIndex1, pitchIndex2].sorted()
+        var lower = sortedArray[0]
+        var higher = sortedArray[1]
+        if lower < 0 {
+            let diff = abs(lower)
+            lower += diff
+            higher += diff
+        }
+        return lower%12 == higher%12
+    }
     
     func configureAlertTitle(for alertController: FlashcardAlertViewController, with title: String, with font: UIFont, with color: UIColor) {
         alertController.label.text = title

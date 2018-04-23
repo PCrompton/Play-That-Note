@@ -20,6 +20,44 @@ class FlashcardAlertViewController: UIViewController {
     var flashcardHidden = false
     var secondPitch: String?
     
+    private var formattedSecondPitch: String? {
+        if let pitch = self.secondPitch {
+            var pitchTable: [String:String] = [
+                "C#":"Db",
+                "D#":"Eb",
+                "F#":"Gb",
+                "G#":"Ab",
+                "A#":"Bb"
+            ]
+            
+            if pitch.count > 2 {
+                let flat = pitchTable[String(pitch[..<pitch.index(before: pitch.endIndex)])]
+                let oct = pitch.last
+                if let originalPitch = flashcard?.note {
+                    let accidental = String(originalPitch[originalPitch.index(after: originalPitch.startIndex)])
+                    if accidental == "b" {
+                        if let flat = flat, let oct = oct {
+                            return "\(flat)\(oct)"
+                        }
+                    }
+                }
+                if let originalPitch = flashcard?.note {
+                    if originalPitch.count < 3 {
+                        let letter = String(pitch[pitch.startIndex])
+                        if letter == "A" || letter == "D" {
+                            if let flat = flat, let oct = oct {
+                                return "\(flat)\(oct)"
+                            }
+                        }
+                    }
+                }
+            }
+            return pitch
+            
+        }
+        return nil
+    }
+    
     var flashcard: Flashcard? {
         didSet {
             if let flashcard = flashcard {
@@ -40,11 +78,11 @@ class FlashcardAlertViewController: UIViewController {
         if let color = textColor {
             label.textColor = color
         }
-    
+        
     }
     
     func setFlashcardView() {
-        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView, secondPitch: secondPitch)
+        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView, secondPitch: formattedSecondPitch)
         flashcardView.zoomFactor = 3
         addShadow(to: flashcardView!.containerView)
         addShadow(to: label)
@@ -61,7 +99,7 @@ class FlashcardAlertViewController: UIViewController {
         super.viewDidLoad()
         setFlashcardView()
         configureTitle()
-
+        
         if flashcardHidden {
             containerView?.isHidden = true
         } else {
@@ -70,7 +108,7 @@ class FlashcardAlertViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -81,6 +119,11 @@ class FlashcardAlertViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        _ = self.flashcardView?.reload()
+    }
+    
     func animateView() {
         flashcardView.alpha = 0;
         self.flashcardView.frame.origin.y = self.flashcardView.frame.origin.y + 50
@@ -89,15 +132,15 @@ class FlashcardAlertViewController: UIViewController {
             self.flashcardView.frame.origin.y = self.flashcardView.frame.origin.y - 50
         })
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
