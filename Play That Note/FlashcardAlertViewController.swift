@@ -53,7 +53,6 @@ class FlashcardAlertViewController: UIViewController {
                 }
             }
             return pitch
-            
         }
         return nil
     }

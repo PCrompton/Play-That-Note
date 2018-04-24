@@ -70,7 +70,6 @@ class FlashcardView: WKWebView, WKNavigationDelegate {
         } else {
             self.evaluateJavaScript("\(jsDrawStaffWithPitch)(\"\(pitch)\", \"\(clef)\", \"\(zoomFactor)\")", completionHandler: nil)
         }
-        
     }
 
     

@@ -1,51 +1,116 @@
 
 
 
-function higherPitch(firstPitch, secondPitch) {
-    var firstOctave = Number(firstPitch.charAt(firstPitch.length-1));
-    var secondOctave = Number(secondPitch.charAt(secondPitch.length-1));
+function sort(pitchObjects) {
+    pitchObject1 = pitchObjects[0];
+    pitchObject2 = pitchObjects[1];
     
-    if (firstOctave > secondOctave) {
-        return [1, 0]
-    } else if (firstOctave < secondOctave) {
-        return [0, 1]
-    } else {
-        pitches = ["C", "D", "E", "F", "G", "A", "B"];
-        var firstLetter = firstPitch.charAt(0);
-        var secondLetter = secondPitch.charAt(0);
-        
-        if (pitches.indexOf(firstLetter) > pitches.indexOf(secondLetter)) {
-            return [1, 0]
-        } else if (pitches.indexOf(firstLetter) < pitches.indexOf(secondLetter)){
-            return [0, 1]
-        } else {
-            var firstAccidental;
-            if (firstPitch.length == 3) {
-                firstAccidental = firstPitch.charAt(1);
-            } else {
-                firstAccidental = [0,0];
-            }
-            
-            var secondAccidental;
-            if (secondPitch.length == 3) {
-                secondAccidental = secondPitch.charAt(1);
-            } else {
-                secondAccidental = [0,0];
-            }
-            
-            if (firstAccidental != secondAccidental) {
-                if (firstAccidental == "#") {
-                    return [1, 0]
-                } else if (firstAccidental == "b") {
-                    return [0, 1]
-                } else {
-                    return [0,0];
-                }
-            } else {
-                return [0,0];
-            }
+    var octave1 = Number(pitchObject1.octave);
+    var octave2 = Number(pitchObject2.octave);
+    
+    if (octave1 > octave2) {
+        console.log("octave1 > octave2");
+        return [pitchObject2, pitchObject1]
+    } else if (octave1 < octave2) {
+        console.log("octave1 < octave2");
+        return [pitchObject1, pitchObject2]
+    }
+    pitches = ["C", "D", "E", "F", "G", "A", "B"];
+    console.log(pitchObject1.letter, pitchObject2.letter);
+    if (pitches.indexOf(pitchObject1.letter) > pitches.indexOf(pitchObject2.letter)) {
+        console.log("letter1 > letter2");
+        return [pitchObject2, pitchObject1]
+    } else if (pitches.indexOf(pitchObject1.letter) < pitches.indexOf(pitchObject2.letter)){
+        console.log("letter1 < letter2");
+        return [pitchObject1, pitchObject2]
+    }
+    if (pitchObject1.accidental != pitchObject2.accidental) {
+        console.log("accidental1 != accidental2");
+        if (pitchObject1.accidental == "#") {
+            console.log("accidental1 == \"#\"");
+            return [pitchObject2, pitchObject1]
+        } else if (pitchObject1.accidental == "b") {
+            console.log("accidental1 == \"b\"");
+            return [pitchObject1, pitchObject2]
         }
     }
+    return [pitchObject1, pitchObject2];
+}
+
+function getKeys(pitches) {
+    var keys = [];
+    pitches.forEach(function (pitch) {
+                    keys.push(pitch.key);
+                    });
+    return keys;
+}
+
+function pitchKey(pitch) {
+    return getLetter(pitch)+"/"+getOctave(pitch)
+}
+
+function getLetter(pitch) {
+    return letter = pitch.charAt(0);
+}
+
+function getOctave(pitch) {
+    return pitch.charAt(pitch.length-1);
+}
+
+function getAccidental(pitch) {
+    var accidental;
+    if (pitch.length == 3) {
+        accidental = pitch.charAt(1);
+    } else {
+        accidental = null;
+    }
+    return accidental
+}
+
+function noteObject(pitch) {
+    return {
+        "letter": getLetter(pitch),
+        "octave": getOctave(pitch),
+        "accidental": getAccidental(pitch),
+        "key": pitchKey(pitch)
+    }
+}
+
+function addAccidentals(note, pitches) {
+    for (i=0; i<pitches.length; i++) {
+        var pitch = pitches[i];
+        if (pitch.accidental != null) {
+            note.addAccidental(i, new VF.Accidental(pitch.accidental))
+        }
+    }
+    //add naturals
+    if (pitches.length == 2) {
+        pitch1 = pitches[0];
+        pitch2 = pitches[1];
+        
+        if (pitch1.letter == pitch2.letter && pitch1.accidental != pitch2.accidental) {
+            
+            pitches.forEach(function (pitch) {
+                            var index = pitches.indexOf(pitch);
+                            if (pitch.accidental == null) {
+                                note.addAccidental(index, new VF.Accidental("n"));
+                            }
+                            });
+
+        }
+    }
+    return note;
+}
+
+function addStyles(note, pitches) {
+    for (i=0; i<pitches.length; i++) {
+        var style = {
+            fillStyle: pitches[i].color,
+            strokeStyle: pitches[i].color
+        };
+        note.setKeyStyle(i, style);
+    }
+    return note;
 }
 
 function drawStaffWithPitch(pitch, clef, zoomFactor=4, secondPitch) {
@@ -70,60 +135,24 @@ function drawStaffWithPitch(pitch, clef, zoomFactor=4, secondPitch) {
     stave.setContext(context).draw();
     
     if (pitch != null) {
-        
-        var letter = pitch.charAt(0);
-        var octave = pitch.charAt(pitch.length-1);
-        var accidental;
-        if (pitch.length == 3) {
-            accidental = pitch.charAt(1);
-        } else {
-            accidental = null;
-        }
-        var note;
-        var higher = [0,0]
+        var pitchObject = noteObject(pitch);
+        pitchObject.color = "black";
+        var pitches = [pitchObject];
         if (secondPitch != null) {
-            higher = higherPitch(pitch, secondPitch);
-            console.log("higher", higher);
-            var secondLetter = secondPitch.charAt(0);
-            var secondOctave = secondPitch.charAt(secondPitch.length-1);
-            var secondAccidental;
-            if (secondPitch.length == 3) {
-                secondAccidental = secondPitch.charAt(1);
-            } else {
-                secondAccidental = null;
-            }
-
-            note = new VF.StaveNote({clef: clef, keys: [letter+"/"+octave, secondLetter+"/"+secondOctave], duration: "w", align_center: true});
-            
-            var redStyle = {
-                fillStyle: "red",
-                strokeStyle: "red"
-            };
-            
-            note.setKeyStyle(higher[1], redStyle);
-            if (secondAccidental != null) {
-                note = note.addAccidental(higher[1], new VF.Accidental(secondAccidental))
-            }
-        } else {
-            note = new VF.StaveNote({clef: clef, keys: [letter+"/"+octave], duration: "w", align_center: true});
+            pitchObject2 =  noteObject(secondPitch);
+            pitchObject2.color = "red";
+            pitches.push(pitchObject2);
+            pitches = sort(pitches);
         }
-
-        if (accidental != null) {
-            note = note.addAccidental(higher[0], new VF.Accidental(accidental))
-        }
+        console.log(pitches);
+        console.log(getKeys(pitches));
+        note = new VF.StaveNote({clef: clef, keys: getKeys(pitches), duration: "w", align_center: true});
         
-        if (letter == secondLetter && octave == secondOctave && accidental != secondAccidental) {
-            if (accidental == null) {
-                note.addAccidental(higher[0], new VF.Accidental("n"));
-            }
-            
-            if (secondAccidental == null) {
-                note.addAccidental(higher[1], new VF.Accidental("n"));
-            }
-        }
+        note = addAccidentals(note, pitches);
+        note = addStyles(note, pitches);
         
         var notes = [note];
-
+        
         var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
         voice.addTickables(notes);
         var formatter = new VF.Formatter().joinVoices([voice]).format([voice], width * 0.34 - 22);
