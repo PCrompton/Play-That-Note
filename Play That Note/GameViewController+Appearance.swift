@@ -10,14 +10,7 @@ import Foundation
 import UIKit
 
 extension GameViewController {
-    func configDirectionLabel() {
-        if view.traitCollection.verticalSizeClass == .compact {
-            directionLabel.isHidden = true
-        } else {
-            directionLabel.isHidden = !running
-        }
-    }
-    
+
     func configTranspositionLabel() {
         if view.traitCollection.verticalSizeClass == .compact {
             transpositionLabel.isHidden = true

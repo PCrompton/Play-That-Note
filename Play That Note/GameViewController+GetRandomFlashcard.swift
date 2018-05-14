@@ -48,13 +48,27 @@ extension GameViewController {
         return nil
     }
     
+    func startActivityIndicator() {
+        DispatchQueue.main.async {
+           self.flashCardActivityIndicator.startAnimating()
+        }
+    }
+    
+    func stopActivityIndicator() {
+        DispatchQueue.main.async {
+            self.flashCardActivityIndicator.stopAnimating()
+        }
+    }
+    
     func getRandomflashcard() -> Flashcard {
+        
         let weightIntervals = getWeightIntervals(from: flashcards)
         let index = getFlashcardIndex(from: weightIntervals)!
         let flashcard = flashcards[index]
         if flashcard === self.flashcard {
             return getRandomflashcard()
         }
+       
         return flashcard
     }
 }

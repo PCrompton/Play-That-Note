@@ -41,7 +41,9 @@ class FlashcardViewController: UIViewController {
     
     func setFlashcardView() {
         flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView, secondPitch: nil)
-        addFlashcardShadow(to: flashcardView!)
+        if let flashcardView = flashcardView {
+            addFlashcardShadow(to: flashcardView)
+        }
     }
     
     func addFlashcardShadow(to flashcardView: FlashcardView) {

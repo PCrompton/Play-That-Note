@@ -77,5 +77,6 @@ class FlashcardView: WKWebView, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("\(clef)")
         drawStaffWithPitch(pitch: pitch, clef: clef)
+        //containerView.sendSubview(toBack: self)
     }
 }

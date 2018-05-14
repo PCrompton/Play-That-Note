@@ -18,10 +18,10 @@ class FlashcardAlertViewController: UIViewController {
     var labelTitle: String?
     
     var flashcardHidden = false
-    var secondPitch: String?
+    var pitchPlayed: String?
     
-    private var formattedSecondPitch: String? {
-        if let pitch = self.secondPitch {
+    private var formattedPitchPlayed: String? {
+        if let pitch = self.pitchPlayed {
             var pitchTable: [String:String] = [
                 "C#":"Db",
                 "D#":"Eb",
@@ -70,6 +70,13 @@ class FlashcardAlertViewController: UIViewController {
     }
     var clef = Clef.treble
     
+    func setFlashcardView() {
+        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView, secondPitch: formattedPitchPlayed)
+        flashcardView.zoomFactor = 3
+        addShadow(to: flashcardView!.containerView)
+        addShadow(to: label)
+    }
+    
     func configureTitle() {
         if let title = labelTitle {
             label.text = title
@@ -77,14 +84,14 @@ class FlashcardAlertViewController: UIViewController {
         if let color = textColor {
             label.textColor = color
         }
-        
     }
     
-    func setFlashcardView() {
-        flashcardView = FlashcardView(clef: clef, pitch: flashcard?.note, containerView: containerView, secondPitch: formattedSecondPitch)
-        flashcardView.zoomFactor = 3
-        addShadow(to: flashcardView!.containerView)
-        addShadow(to: label)
+    func configurePresentation() {
+        if flashcardHidden {
+            containerView?.isHidden = true
+        } else {
+            containerView?.isHidden = false
+        }
     }
     
     func addShadow(to view: UIView) {
@@ -96,21 +103,11 @@ class FlashcardAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setFlashcardView()
         configureTitle()
-        
-        if flashcardHidden {
-            containerView?.isHidden = true
-        } else {
-            containerView?.isHidden = false
-        }
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        configurePresentation()
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -131,15 +128,4 @@ class FlashcardAlertViewController: UIViewController {
             self.flashcardView.frame.origin.y = self.flashcardView.frame.origin.y - 50
         })
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

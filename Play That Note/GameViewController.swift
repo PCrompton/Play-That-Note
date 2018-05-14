@@ -20,7 +20,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     @IBOutlet weak var buttonStackView: UIStackView!
     
     @IBOutlet weak var buttonStackViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var flashCardActivityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var transpositionLabel: UILabel!
@@ -34,6 +33,33 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     
     var correct: Int = 0
     var incorrect: Int = 0
+    var strikes: Int = 0 {
+        didSet {
+            if strikes > 0 {
+                note1.isHighlighted = true
+            }
+            if strikes > 1 {
+                note2.isHighlighted = true
+            }
+            
+            if strikes > 2 {
+                note3.isHighlighted = true
+            }
+            
+            if strikes == 0 {
+                note1.isHighlighted = false
+                note2.isHighlighted = false
+                note3.isHighlighted = false
+            }
+        }
+    }
+    
+    @IBOutlet weak var noteStack: UIStackView!
+    @IBOutlet weak var note1: UIImageView!
+    @IBOutlet weak var note2: UIImageView!
+    @IBOutlet weak var note3: UIImageView!
+    
+    
     var totalAnswered: Int {
         return Int(self.correct + self.incorrect)
     }
@@ -43,9 +69,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         }
         return 0.0
     }
-    var plusMinus: Int {
-        return Int(self.correct) - Int(self.incorrect)
-    }
 
     // MARK: Lifecyle Functions
     override func viewDidLoad() {
@@ -53,11 +76,11 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         configurePitchEngine()
         configureFlashcards()
         configButtons()
+        view.bringSubview(toFront: noteStack)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configDirectionLabel()
         setButtonStackViewAxis()
         configTranspositionLabel()
         configRangeLabel()
@@ -71,6 +94,16 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         gameCenterModelController.sendScores()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.layoutIfNeeded()
+    }
+    
+    
+    override func viewLayoutMarginsDidChange() {
+        animateButtons()
+    }
+    
     //Layout control functions
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -80,27 +113,54 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         if view.traitCollection.verticalSizeClass == .compact {
             if running {
                 if touch?.view != buttonStackView {
-                    buttonStackViewBottomConstraint.constant = -(buttonStackView.frame.height + 1)
-                    UIView.animate(withDuration: 0.5) {
-                        self.view.layoutIfNeeded()
-                    }
+                   
+                    animateButtons()
                     //buttonStackView.isHidden = buttonStackView.isHidden ? false : true
                 }
             }
         }
     }
     
+    var hidden: Bool = false
+    func animateButtons() {
+        if view.traitCollection.verticalSizeClass == .compact {
+            if hidden {
+                buttonStackViewBottomConstraint.constant = 0
+                hidden = false
+            } else {
+                buttonStackViewBottomConstraint.constant = -(buttonStackView.frame.height + 1)
+                hidden = true
+            }
+            UIView.animate(withDuration: 0.25) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { (_) in
+            if self.running {
+                if self.view.traitCollection.verticalSizeClass == .compact {
+                    if self.running {
+                        self.hidden = false
+                    } else {
+                        self.hidden = true
+                    }
+                    self.animateButtons()
+                } else {
+                    self.hidden = true
+                    self.animateButtons()
+                }
+            }
+        }
+    }
+
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         setButtonStackViewAxis()
-        if running {
-            if view.traitCollection.verticalSizeClass == .compact {
-                buttonStackView.isHidden = true
-            } else {
-                buttonStackView.isHidden = false
-            }
-        }
-        configDirectionLabel()
+
         configTranspositionLabel()
         configRangeLabel()
     }
@@ -109,8 +169,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         correctLabel.text = "\(correct)"
         incorrectLabel.text = "\(incorrect)"
         percentageLabel.text = "\(Int(percentage)) %"
-        plusMinusLabel.text = "\(plusMinus) +/-"
-        plusMinusLabel.textColor = getLabelColor(for: plusMinus)
     }
 
     // MARK: Gameplay Functions
@@ -119,7 +177,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
     }
     
     @IBAction func startButton(_ sender: UIButton) {
-        
         guard let pitchEngine = pitchEngine else {
             fatalError("No Pitch Engine Found")
         }

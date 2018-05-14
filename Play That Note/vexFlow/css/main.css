@@ -1,17 +1,11 @@
 
 #note {
-/*    background-color: grey;*/
     height: 100%;
 }
 
 body {
-/*    background-color: whitesmoke;*/
+
     background-image: url("../images/rough-beige-paper-texture.jpg");
-/*    background-color: clear;*/
     overflow: hidden;
     margin: 0;
-}
-
-svg {
-/*    background-color: yellow;*/
 }

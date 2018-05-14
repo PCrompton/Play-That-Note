@@ -22,14 +22,16 @@ extension GameViewController {
     
     func stopGame(sender: UIButton, pitchEngine: PitchEngine) {
         running = false
+        hidden = false
         pitchEngine.stop()
         sender.setTitle("Start", for: .normal)
-        configDirectionLabel()
         print("Pitch Engine Stopped")
     }
     
     func startGame(sender: UIButton, pitchEngine: PitchEngine) {
         running = true
+        hidden = false
+        animateButtons()
         flashCardActivityIndicator.startAnimating()
         sender.isEnabled = false
         let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
@@ -41,15 +43,11 @@ extension GameViewController {
                 sender.setTitle("Stop", for: .normal)
                 sender.isEnabled = true
                 self.flashCardActivityIndicator.stopAnimating()
-                if self.view.traitCollection.verticalSizeClass == .compact {
-                    self.buttonStackView.isHidden = true
-                }
-                self.configDirectionLabel()
             }
         }
     }
     
-    func configureFlashcardAlertViewController() -> FlashcardAlertViewController {
+    func configureFlashcardAlertViewController(with note: Note) -> FlashcardAlertViewController {
         let flashcardAlertViewController = self.storyboard?.instantiateViewController(withIdentifier: "FlashcardAlertViewController") as! FlashcardAlertViewController
         flashcardAlertViewController.clef = clef
         flashcardAlertViewController.providesPresentationContextTransitionStyle = true
@@ -57,8 +55,43 @@ extension GameViewController {
         flashcardAlertViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         flashcardAlertViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         
+        if note.index == Int((flashcard?.pitchIndex)!) + MusicSettings.Transpose.semitones {
+            strikes = 0
+            flashcardAlertViewController.flashcardHidden = true
+            flashcardAlertViewController.labelTitle = "Correct!"
+            flashcardAlertViewController.textColor = UIColor.green
+            updateScore(isCorrect: true)
+            
+        } else {
+            strikes += 1
+            let pitchIndex = Int((flashcard?.pitchIndex)!)
+            if note.index > pitchIndex + 12 {
+                flashcardAlertViewController.flashcardHidden = true
+                flashcardAlertViewController.labelTitle = "Way too high!"
+            } else if note.index < pitchIndex - 12 {
+                flashcardAlertViewController.flashcardHidden = true
+                flashcardAlertViewController.labelTitle = "Way too low!"
+            } else {
+                flashcardAlertViewController.flashcardHidden = false
+                flashcardAlertViewController.flashcard = flashcard
+                flashcardAlertViewController.pitchPlayed = note.string
+                if note.index > pitchIndex {
+                    flashcardAlertViewController.labelTitle = "Too high!"
+                } else if note.index < pitchIndex {
+                    flashcardAlertViewController.labelTitle = "Too low!"
+                }
+            }
+            
+            if samePitchClass(pitchIndex1: note.index, pitchIndex2: pitchIndex) {
+                flashcardAlertViewController.labelTitle?.append("\nWrong octave!")
+            }
+            if strikes < 3 {
+                flashcardAlertViewController.labelTitle?.append("\nTry Again!")
+            }
+            flashcardAlertViewController.textColor = UIColor.red
+            updateScore(isCorrect: false)
+        }
         return flashcardAlertViewController
-        
     }
     
     // MARK: PitchEngineDelegate functions
@@ -73,71 +106,41 @@ extension GameViewController {
             if checkIfIsPitch(pitches: consecutivePitches) {
                 pitchEngine.stop()
                 consecutivePitches.removeAll()
-                
-                print(pitch.note.string, pitch.note.index)
-                let flashcardAlertViewController = configureFlashcardAlertViewController()
-                
-                if note.index == Int((flashcard?.pitchIndex)!) + MusicSettings.Transpose.semitones {
-                    flashcardAlertViewController.flashcardHidden = true
-                    flashcardAlertViewController.labelTitle = "Correct!"
-                    flashcardAlertViewController.textColor = UIColor.green
-                    flashcard?.correct += 1
-                    correct += 1
-                    
-                } else {
-                    let pitchIndex = Int((flashcard?.pitchIndex)!)
-                    if note.index > pitchIndex + 12 {
-                        flashcardAlertViewController.flashcardHidden = true
-                        flashcardAlertViewController.labelTitle = "Way too high!"
-                    } else if note.index < pitchIndex - 12 {
-                        flashcardAlertViewController.flashcardHidden = true
-                        flashcardAlertViewController.labelTitle = "Way too low!"
-                    } else {
-                        flashcardAlertViewController.flashcardHidden = false
-                        flashcardAlertViewController.flashcard = flashcard
-                        flashcardAlertViewController.secondPitch = note.string
-                        if note.index > pitchIndex {
-                            flashcardAlertViewController.labelTitle = "Too high!"
-                        } else if note.index < pitchIndex {
-                            flashcardAlertViewController.labelTitle = "Too low!"
-                        }
-                    }
-                    
-                    if samePitchClass(pitchIndex1: note.index, pitchIndex2: pitchIndex) {
-                        flashcardAlertViewController.labelTitle?.append("\nWrong octave!")
-                        //flashcardAlertViewController.flashcardHidden = true
-                    }
-                    
-                    flashcardAlertViewController.textColor = UIColor.red
-                    flashcard?.incorrect += 1
-                    incorrect += 1
-                }
-                stack.save()
-                updateStatsLabels()
-                
-                present(flashcardAlertViewController, animated: true)
-                var delay = 1.5
-                if !flashcardAlertViewController.flashcardHidden {
-                    delay = 2.0
-                }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                    flashcardAlertViewController.dismiss(animated: true, completion: {
-                        
-                        DispatchQueue.main.async {
-                            self.flashCardActivityIndicator.startAnimating()
-                            let concurrentQueue = DispatchQueue(label: "queuename", attributes: .concurrent)
-                            concurrentQueue.async {
-                                self.pitchEngine?.start()
-                                self.flashcard = self.getRandomflashcard()
-                                DispatchQueue.main.async {
-                                    self.flashCardActivityIndicator.stopAnimating()
-                                }
-                            }
-                        }
-                    })
-                }
+                respond(to: note)
             }
+        }
+    }
+    
+    func respond(to note: Note) {
+        print(note.string, note.index)
+        let flashcardAlertViewController = configureFlashcardAlertViewController(with: note)
+        
+        stack.save()
+        updateStatsLabels()
+        
+        present(flashcardAlertViewController, animated: true)
+
+        var delay = 1.5
+        if !flashcardAlertViewController.flashcardHidden {
+            delay = 2.0
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            
+            if 0 == self.strikes || self.strikes >= 3 {
+                
+                let newFlashcardDelay = 0.5
+                self.startActivityIndicator()
+                DispatchQueue.main.asyncAfter(deadline: .now() + newFlashcardDelay, execute: {
+                    self.strikes = 0
+                    self.flashcard = self.getRandomflashcard()
+                    self.stopActivityIndicator()
+                })
+                
+            }
+            
+            flashcardAlertViewController.dismiss(animated: true, completion: {
+                self.pitchEngine?.start()
+            })
         }
     }
     
@@ -172,6 +175,16 @@ extension GameViewController {
             higher += diff
         }
         return lower%12 == higher%12
+    }
+    
+    func updateScore(isCorrect: Bool) {
+        if isCorrect {
+            flashcard?.correct += 1
+            correct += 1
+        } else {
+            flashcard?.incorrect += 1
+            incorrect += 1
+        }
     }
     
     func configureAlertTitle(for alertController: FlashcardAlertViewController, with title: String, with font: UIFont, with color: UIColor) {

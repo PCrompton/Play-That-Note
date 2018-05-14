@@ -9,28 +9,21 @@ function sort(pitchObjects) {
     var octave2 = Number(pitchObject2.octave);
     
     if (octave1 > octave2) {
-        console.log("octave1 > octave2");
         return [pitchObject2, pitchObject1]
     } else if (octave1 < octave2) {
-        console.log("octave1 < octave2");
         return [pitchObject1, pitchObject2]
     }
     pitches = ["C", "D", "E", "F", "G", "A", "B"];
     console.log(pitchObject1.letter, pitchObject2.letter);
     if (pitches.indexOf(pitchObject1.letter) > pitches.indexOf(pitchObject2.letter)) {
-        console.log("letter1 > letter2");
         return [pitchObject2, pitchObject1]
     } else if (pitches.indexOf(pitchObject1.letter) < pitches.indexOf(pitchObject2.letter)){
-        console.log("letter1 < letter2");
         return [pitchObject1, pitchObject2]
     }
     if (pitchObject1.accidental != pitchObject2.accidental) {
-        console.log("accidental1 != accidental2");
         if (pitchObject1.accidental == "#") {
-            console.log("accidental1 == \"#\"");
             return [pitchObject2, pitchObject1]
         } else if (pitchObject1.accidental == "b") {
-            console.log("accidental1 == \"b\"");
             return [pitchObject1, pitchObject2]
         }
     }
@@ -131,6 +124,7 @@ function drawStaffWithPitch(pitch, clef, zoomFactor=4, secondPitch) {
     svgCanvas.setAttribute('style', 'zoom:' + (100 * zoomFactor) +'%;');
     
     var stave = new VF.Stave(width * 0.17, (height * 0.5) - heightOffset, width * 0.66);
+    console.log("stave_length", stave.width)
     stave.addClef(clef);
     stave.setContext(context).draw();
     
@@ -150,12 +144,16 @@ function drawStaffWithPitch(pitch, clef, zoomFactor=4, secondPitch) {
         
         note = addAccidentals(note, pitches);
         note = addStyles(note, pitches);
-        
+        note.width = stave.width;
         var notes = [note];
-        
-        var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+        console.log("context:", note.context);
+        var voice = new VF.Voice({num_beats: 1,  beat_value: 1});
         voice.addTickables(notes);
-        var formatter = new VF.Formatter().joinVoices([voice]).format([voice], width * 0.34 - 22);
+        var formatter = new VF.Formatter()
+        formatter.joinVoices([voice])
+        formatter.format([voice]);
+        var minTotalWidth = formatter.getMinTotalWidth();
+        formatter.format([voice], width * 0.34 - 22);
         voice.draw(context, stave);
     }
 }
