@@ -1,5 +1,29 @@
-
-
+const CONSTANTS = {
+    1 : {
+        "widthLeft" : 0.17,
+        "widthRight" : 0.66,
+        "noteMultiplier": 0.34,
+        "noteConstant": -22
+    },
+    2 : {
+        "widthLeft" : 0.17,
+        "widthRight" : 0.66,
+        "noteMultiplier": 0.34,
+        "noteConstant": -22
+    },
+    3 : {
+        "widthLeft" : 0.17,
+        "widthRight" : 0.66,
+        "noteMultiplier": 0.50,
+        "noteConstant": -50
+    },
+    4 : {
+        "widthLeft" : 0.17,
+        "widthRight" : 0.66,
+        "noteMultiplier": 0.34,
+        "noteConstant": -22.5
+    }
+}
 
 function sort(pitchObjects) {
     pitchObject1 = pitchObjects[0];
@@ -123,7 +147,12 @@ function drawStaffWithPitch(pitch, clef, zoomFactor=4, secondPitch) {
     var svgCanvas = document.getElementsByTagName("svg")[0];
     svgCanvas.setAttribute('style', 'zoom:' + (100 * zoomFactor) +'%;');
     
-    var stave = new VF.Stave(width * 0.17, (height * 0.5) - heightOffset, width * 0.66);
+    zoomFactorString = zoomFactor.toString();
+    console.log("zoomFactorString", zoomFactorString)
+    var localConstants = CONSTANTS[zoomFactorString]
+    console.log(localConstants);
+    
+    var stave = new VF.Stave(width * localConstants.widthLeft, (height * 0.5) - heightOffset, width * localConstants.widthRight);
     console.log("stave_length", stave.width)
     stave.addClef(clef);
     stave.setContext(context).draw();
@@ -153,7 +182,7 @@ function drawStaffWithPitch(pitch, clef, zoomFactor=4, secondPitch) {
         formatter.joinVoices([voice])
         formatter.format([voice]);
         var minTotalWidth = formatter.getMinTotalWidth();
-        formatter.format([voice], width * 0.34 - 22);
+        formatter.format([voice], width * localConstants.noteMultiplier + localConstants.noteConstant);
         voice.draw(context, stave);
     }
 }

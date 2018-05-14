@@ -76,7 +76,6 @@ class GameViewController: FlashcardViewController, PitchEngineDelegate {
         configurePitchEngine()
         configureFlashcards()
         configButtons()
-        view.bringSubview(toFront: noteStack)
     }
     
     override func viewWillAppear(_ animated: Bool) {
